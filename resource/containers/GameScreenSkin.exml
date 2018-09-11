@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="GameScreenSkin" xmlns:e="http://ns.egret.com/eui" xmlns:game="game.*">
+    <e:Group width="720" height="170">
+        <e:Button id="btnNotice" left="17" verticalCenter="0">
+            <e:Skin>
+                <e:Image source="btn-board"></e:Image>
+                <e:Label text="返回" y="120" bold="true" textColor="0x000000" horizontalCenter="0"></e:Label>
+            </e:Skin>
+        </e:Button>
+        <e:Button id="btnRank" x="125" verticalCenter="0">
+            <e:Skin>
+                <e:Image source="btn-rank"></e:Image>
+                <e:Label text="保存" y="120" bold="true" textColor="0x000000" horizontalCenter="0"></e:Label>
+            </e:Skin>
+        </e:Button>
+        <e:Button id="btnGuide" x="233" verticalCenter="0">
+            <e:Skin>
+                <e:Image source="btn-game-bar"></e:Image>
+                <e:Label text="经营" y="120" bold="true" textColor="0x000000" horizontalCenter="0"></e:Label>
+            </e:Skin>
+        </e:Button>
+        <e:Button id="btnSetting" verticalCenter="0" x="340">
+            <e:Skin>
+                <e:Image source="btn-settings"></e:Image>
+                <e:Label text="图鉴" y="120" bold="true" textColor="0x000000" horizontalCenter="0"></e:Label>
+            </e:Skin>
+        </e:Button>
+    </e:Group>
+    <e:Group y="170" width="720">
+        <e:Group>
+            <e:Image width="720" height="500" source="{question.img}"/>
+            <e:Label text="{question.points1}" textColor="0x000000" horizontalCenter="0" bottom="50"/>       
+        </e:Group>
+        <e:Group y="500">
+            <e:Image width="720" height="500" source=""/>
+            <e:Scroller width="640" y="30" horizontalCenter="0" height="350">
+                <e:viewport>
+                    <e:Group>
+                        <e:Label text="{description}" textColor="0x000000" y="20" horizontalCenter="0" width="640"/>
+                    </e:Group>
+                </e:viewport>
+            </e:Scroller>
+            <e:Group horizontalCenter="0" y="403">
+                <e:Label text="{question.question}" textColor="0x000000" horizontalCenter="0" width="640" textAlign="center"/>
+                <e:Group visible="{showInput}" y="71" horizontalCenter="0">
+                    <e:TextInput id="answerInput"/>
+                </e:Group>
+                <e:Group visible="{showSelect}">
+                    <e:List id="selectList" horizontalCenter="0">
+                        <!--<e:layout>
+                            <e:VerticalLayout gap="20" />
+                        </e:layout>-->
+                        <e:layout>
+                            <e:TileLayout orientation="columns" requestedColumnCount="2" verticalGap="0" horizontalGap="5" />
+                        </e:layout>
+                    </e:List>
+                </e:Group>
+            </e:Group>
+        </e:Group>
+    </e:Group>
+</e:Skin>

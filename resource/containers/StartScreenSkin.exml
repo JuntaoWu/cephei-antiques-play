@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="StartScreenSkin" xmlns:e="http://ns.egret.com/eui" xmlns:game="game.*">
+    <e:Group y="10">
+
+    </e:Group>
+    <e:Group id="nav" y="1180" width="720" height="170">
+        <e:Button id="btnNotice" left="17" verticalCenter="0">
+            <e:Skin>
+                <e:Image source="btn-board"></e:Image>
+                <e:Label text="返回" y="120" bold="true" textColor="0x000000" horizontalCenter="0"></e:Label>
+            </e:Skin>
+        </e:Button>
+        <e:Button id="btnRank" x="125" verticalCenter="0">
+            <e:Skin>
+                <e:Image source="btn-rank"></e:Image>
+                <e:Label text="保存" y="120" bold="true" textColor="0x000000" horizontalCenter="0"></e:Label>
+            </e:Skin>
+        </e:Button>
+        <e:Button id="btnGuide" x="233" verticalCenter="0">
+            <e:Skin>
+                <e:Image source="btn-game-bar"></e:Image>
+                <e:Label text="经营" y="120" bold="true" textColor="0x000000" horizontalCenter="0"></e:Label>
+            </e:Skin>
+        </e:Button>
+        <e:Button id="btnSetting" verticalCenter="0" x="340">
+            <e:Skin>
+                <e:Image source="btn-settings"></e:Image>
+                <e:Label text="图鉴" y="120" bold="true" textColor="0x000000" horizontalCenter="0"></e:Label>
+            </e:Skin>
+        </e:Button>
+    </e:Group>
+</e:Skin>
