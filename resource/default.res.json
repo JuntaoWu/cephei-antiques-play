@@ -1,7 +1,7 @@
 {
 	"groups": [
 		{
-			"keys": "checkbox_select_disabled_png,checkbox_select_down_png,checkbox_select_up_png,checkbox_unselect_png,selected_png,border_png,header_png,radiobutton_select_disabled_png,radiobutton_select_down_png,radiobutton_select_up_png,radiobutton_unselect_png,roundthumb_png,thumb_png,track_png,tracklight_png,handle_png,off_png,on_png,button_down_png,button_up_png,thumb_pb_png,track_pb_png,track_sb_png,bg_jpg,egret_icon_png,question_json,m01,m03,m04,m06,m10,M11,m12,m15,m16,m17,m18,m19,m20,m21",
+			"keys": "checkbox_select_disabled_png,checkbox_select_down_png,checkbox_select_up_png,checkbox_unselect_png,selected_png,border_png,header_png,radiobutton_select_disabled_png,radiobutton_select_down_png,radiobutton_select_up_png,radiobutton_unselect_png,roundthumb_png,thumb_png,track_png,tracklight_png,handle_png,off_png,on_png,button_down_png,button_up_png,thumb_pb_png,track_pb_png,track_sb_png,bg_jpg,egret_icon_png,question_json,m01,m03,m04,m06,m10,M11,m12,m15,m16,m17,m19,m20,m21,m18-item_json,m18,m20-item_json",
 			"name": "preload"
 		}
 	],
@@ -187,11 +187,6 @@
 			"name": "m17"
 		},
 		{
-			"url": "assets/questions/m18.png",
-			"type": "image",
-			"name": "m18"
-		},
-		{
 			"url": "assets/questions/m19.png",
 			"type": "image",
 			"name": "m19"
@@ -205,6 +200,23 @@
 			"url": "assets/questions/m21.png",
 			"type": "image",
 			"name": "m21"
+		},
+		{
+			"url": "assets/questions/m18-item.json",
+			"type": "sheet",
+			"name": "m18-item_json",
+			"subkeys": "m18_1,m18_2,m18_3,m18_4,m18_5,m18_6,m18_7,m18_8,m18_9"
+		},
+		{
+			"url": "assets/questions/m18.png",
+			"type": "image",
+			"name": "m18"
+		},
+		{
+			"name": "m20-item_json",
+			"type": "sheet",
+			"url": "assets/questions/m20-item.json",
+			"subkeys": "m20_2,m20_3,m20_4,m20_5,m20_6,m20_7,m20_8,m20_9,m20_0,m20_1"
 		}
 	]
 }

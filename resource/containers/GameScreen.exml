@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<e:Skin class="GameScreenSkin" xmlns:e="http://ns.egret.com/eui" xmlns:game="game.*">
+<e:Skin class="GameScreen" xmlns:e="http://ns.egret.com/eui" xmlns:game="game.*" xmlns:w="http://ns.egret.com/wing">
     <e:Group width="720" height="170">
         <e:Button id="btnNotice" left="17" verticalCenter="0">
             <e:Skin>
@@ -25,13 +25,21 @@
                 <e:Label text="图鉴" y="120" bold="true" textColor="0x000000" horizontalCenter="0"></e:Label>
             </e:Skin>
         </e:Button>
+
+        <e:Button id="nextTest" verticalCenter="0" x="540">
+            <e:Skin>
+                <e:Label text="下一步" y="120" bold="true" textColor="0x000000" horizontalCenter="0"></e:Label>
+            </e:Skin>
+        </e:Button>
     </e:Group>
     <e:Group y="170" width="720">
         <e:Group>
             <e:Image width="720" height="500" source="{question.img}"/>
-            <e:Label text="{question.points1}" textColor="0x000000" horizontalCenter="0" bottom="50"/>       
+            <!-- 小游戏 -->
+            <game:MiniGame visible="{showMiniGame}" width="720" height="500" />
+            <e:Label text="{question.points1}" textColor="0x000000" horizontalCenter="0" bottom="40"/>       
         </e:Group>
-        <e:Group y="500">
+        <e:Group y="520">
             <e:Image width="720" height="500" source=""/>
             <e:Scroller width="640" y="30" horizontalCenter="0" height="350">
                 <e:viewport>
@@ -47,9 +55,6 @@
                 </e:Group>
                 <e:Group visible="{showSelect}">
                     <e:List id="selectList" horizontalCenter="0">
-                        <!--<e:layout>
-                            <e:VerticalLayout gap="20" />
-                        </e:layout>-->
                         <e:layout>
                             <e:TileLayout orientation="columns" requestedColumnCount="2" verticalGap="0" horizontalGap="5" />
                         </e:layout>

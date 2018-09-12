@@ -98,19 +98,10 @@ class Main extends eui.UILayer {
      * Create scene interface
      */
     protected createGameScene(): void {
-        // let sky = this.createBitmapByName("bg_jpg");
-        // this.addChild(sky);
-        // let stageW = this.stage.stageWidth;
-        // let stageH = this.stage.stageHeight;
-        // sky.width = stageW;
-        // sky.height = stageH;
-
         const appContainer = new game.AppContainer();
         this.addChild(appContainer);
 
-        appContainer.enterGameScreen();
-        // let gameScreen = new game.GameScreen();
-        // this.addChild(gameScreen);
+        game.ApplicationFacade.getInstance().startUp(appContainer);
     }
     /**
      * 根据name关键字创建一个Bitmap对象。name属性请参考resources/resource.json配置文件的内容。
