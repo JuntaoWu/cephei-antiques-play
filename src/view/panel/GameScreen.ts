@@ -13,14 +13,25 @@ module game {
             ApplicationFacade.getInstance().registerMediator(new GameScreenMediator(this));
         }
 
-        public answerInput: eui.TextInput;
         public question: any;
         public description: string;
-        public showInput: boolean;
-        public showSelect: boolean;
-        public showResult: boolean;
+        public showBottomGroup: boolean;
         public showMiniGame: boolean;
-        public selectList: eui.List;
+        public bottomGroup: eui.Group;
         public nextTest: eui.Button;
+
+        public inputGroup: MiniGameInput = new MiniGameInput();
+        public selectGroup: MiniGameSelect = new MiniGameSelect();
+
+        public showInput(answer: string) {
+            this.bottomGroup.removeChildren();
+            this.inputGroup.setAnswer(answer);
+            this.bottomGroup.addChild(this.inputGroup);
+        }
+
+        public showSelect() {
+            this.bottomGroup.removeChildren();
+            this.bottomGroup.addChild(this.selectGroup);
+        }
     }
 }

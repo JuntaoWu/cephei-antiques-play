@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="MiniGameInput" xmlns:e="http://ns.egret.com/eui" xmlns:game="game.*" xmlns:w="http://ns.egret.com/wing">
+     <e:Group y="70" horizontalCenter="0">
+        <e:TextInput id="answerInput"/>
+    </e:Group>
+</e:Skin>

@@ -24,20 +24,19 @@ module game {
 		}
 
         public id: number = 1;
+        public showResult: boolean;
 
         public initData() {
-            this.gameScreen.showInput = this.gameScreen.showSelect 
-            = this.gameScreen.showResult = this.gameScreen.showMiniGame = false;
+            this.gameScreen.showBottomGroup = this.gameScreen.showMiniGame = this.showResult = false;
             this.gameScreen.question = { ...this.questions.get(this.id.toString()) };
             this.gameScreen.description = this.gameScreen.question.description;
             if (this.gameScreen.question.type == "填空") {
-                this.gameScreen.showInput = true;
+                this.gameScreen.showBottomGroup = true;
+                this.gameScreen.showInput(this.gameScreen.question.answer);
             }
             else if (this.gameScreen.question.type == "选择") {
-                
-                this.gameScreen.selectList.dataProvider = new eui.ArrayCollection(this.gameScreen.question.select);
-                this.gameScreen.selectList.itemRenderer = QuestionSelectItemRenderer;
-                this.gameScreen.showSelect = true;
+                this.gameScreen.showBottomGroup = true;
+                this.gameScreen.showSelect();
             }
             else if (this.gameScreen.question.type == "小游戏") {
                 this.sendNotification(GameProxy.SHOW_MINIGAME, this.gameScreen.question.keyword);
@@ -50,7 +49,7 @@ module game {
 
         public showRightResult() {
             this.gameScreen.description = this.gameScreen.question.right;
-            this.gameScreen.showResult = true;
+            this.showResult = true;
         }
 
         public nextQuestion() {
@@ -61,29 +60,11 @@ module game {
         }
         
         public nextTestClick() {
-            if (!this.gameScreen.showResult) {
+            if (!this.showResult) {
                 this.showRightResult();
             } 
             else {
                 this.nextQuestion();
-            }
-        }
-
-        public onClick() {
-            if (this.gameScreen.question.type == "填空") {
-                if (this.gameScreen.answerInput.text != this.gameScreen.question.answer) {
-                    return;
-                }
-            }
-            else if (this.gameScreen.question.type == "选择") {
-                console.log(this.gameScreen.selectList.selectedItem)
-                if (this.gameScreen.selectList.selectedItem != this.gameScreen.question.answer) {
-                    return;
-                }
-            }
-            else if (this.gameScreen.question.type == "小游戏") {
-                
-                return;
             }
         }
 

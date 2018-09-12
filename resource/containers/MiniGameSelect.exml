@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="MiniGameSelect" xmlns:e="http://ns.egret.com/eui" xmlns:game="game.*" xmlns:w="http://ns.egret.com/wing">
+    <e:List id="buttonList" x="120" y="35" width="720">
+        <e:layout>
+            <e:TileLayout orientation="columns" requestedColumnCount="2" verticalGap="20" horizontalGap="20" />
+        </e:layout>
+    </e:List>
+</e:Skin>

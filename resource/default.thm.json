@@ -22,6 +22,8 @@
 		"resource/containers/GameScreen.exml",
 		"resource/containers/MiniGameCubeStop.exml",
 		"resource/containers/MiniGameFloorSwitch.exml",
+		"resource/containers/MiniGameInput.exml",
+		"resource/containers/MiniGameSelect.exml",
 		"resource/containers/StartScreen.exml",
 		"resource/eui_skins/ButtonSkin.exml",
 		"resource/eui_skins/CheckBoxSkin.exml",
