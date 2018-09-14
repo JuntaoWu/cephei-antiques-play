@@ -10,7 +10,6 @@ module game {
 
             this.cubeStop.buttonList.addEventListener(eui.ItemTapEvent.ITEM_TAP, this.selectItem, this);
             this.cubeStop.addEventListener(egret.Event.ADDED_TO_STAGE, this.initData, this);
-            this.initData();
         }
 
         public async initData() {
@@ -39,7 +38,20 @@ module game {
             console.log(this.cubeStop.buttonList.selectedItem);
             let selectedItem = this.cubeStop.buttonList.selectedItem;
             let selected = this.dataList.find(i => i.img == selectedItem.img);
+            let selectedIndex = this.dataList.findIndex(i => i.img == selectedItem.img);
             selected.isSelected = !selected.isSelected;
+            if (selectedIndex + 3 < 9) {
+                this.dataList[selectedIndex + 3].isSelected = !this.dataList[selectedIndex + 3].isSelected;
+            }
+            if (selectedIndex - 3 >= 0) {
+                this.dataList[selectedIndex - 3].isSelected = !this.dataList[selectedIndex - 3].isSelected;
+            }
+            if (selectedIndex % 3 != 2) {
+                this.dataList[selectedIndex + 1].isSelected = !this.dataList[selectedIndex + 1].isSelected;
+            }
+            if (selectedIndex % 3 != 0) {
+                this.dataList[selectedIndex - 1].isSelected = !this.dataList[selectedIndex - 1].isSelected;
+            }
 
             if (!this.dataList.find(i => !i.isSelected)) {
                 this.cubeStop.buttonList.touchEnabled = false;

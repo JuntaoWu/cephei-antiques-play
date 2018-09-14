@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="StoreScreen" xmlns:e="http://ns.egret.com/eui" xmlns:game="game.*">
+    <e:Group >
+
+    </e:Group>
+</e:Skin>

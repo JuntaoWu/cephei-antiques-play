@@ -12,6 +12,7 @@ module game {
             this.proxy = <GameProxy><any>this.facade().retrieveProxy(GameProxy.NAME);
 
             this.gameScreen.nextTest.addEventListener(egret.TouchEvent.TOUCH_TAP, this.nextTestClick, this);
+            this.gameScreen.addEventListener(egret.Event.ADDED_TO_STAGE, this.initData, this);
             this.initData();
         }
 
@@ -23,16 +24,17 @@ module game {
 			return this._questions;
 		}
 
-        public id: number = 1;
+        public id: number = 7;
         public showResult: boolean;
 
         public initData() {
             this.gameScreen.showBottomGroup = this.gameScreen.showMiniGame = this.showResult = false;
             this.gameScreen.question = { ...this.questions.get(this.id.toString()) };
             this.gameScreen.description = this.gameScreen.question.description;
+            this.gameScreen.scrollGroup.viewport.scrollH = 0;
             if (this.gameScreen.question.type == "填空") {
                 this.gameScreen.showBottomGroup = true;
-                this.gameScreen.showInput(this.gameScreen.question.answer);
+                this.gameScreen.showInput();
             }
             else if (this.gameScreen.question.type == "选择") {
                 this.gameScreen.showBottomGroup = true;

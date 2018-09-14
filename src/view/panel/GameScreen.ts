@@ -14,23 +14,26 @@ module game {
         }
 
         public question: any;
+        public points: string;
         public description: string;
         public showBottomGroup: boolean;
         public showMiniGame: boolean;
+        public scrollGroup: eui.Scroller;
         public bottomGroup: eui.Group;
         public nextTest: eui.Button;
 
         public inputGroup: MiniGameInput = new MiniGameInput();
         public selectGroup: MiniGameSelect = new MiniGameSelect();
 
-        public showInput(answer: string) {
+        public showInput() {
             this.bottomGroup.removeChildren();
-            this.inputGroup.setAnswer(answer);
+            this.inputGroup.setAnswer(this.question.answer);
             this.bottomGroup.addChild(this.inputGroup);
         }
 
         public showSelect() {
             this.bottomGroup.removeChildren();
+            this.selectGroup.setOptionsId(this.question.optionsId);
             this.bottomGroup.addChild(this.selectGroup);
         }
     }

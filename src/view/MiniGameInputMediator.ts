@@ -10,7 +10,6 @@ module game {
 
             this.gameInput.answerInput.addEventListener(egret.Event.CHANGE, this.onChang, this)
             this.gameInput.addEventListener(egret.Event.ADDED_TO_STAGE, this.initData, this);
-            this.initData();
         }
 
         public async initData() {

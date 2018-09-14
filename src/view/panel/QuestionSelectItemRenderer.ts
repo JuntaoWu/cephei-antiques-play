@@ -12,6 +12,9 @@ module game {
         }
 
         protected dataChanged(): void {
+            if (this.data.isSelected) {
+                this.scaleX = this.scaleY = 0.9;
+            }
         }
     }
 }

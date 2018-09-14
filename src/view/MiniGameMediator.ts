@@ -19,14 +19,25 @@ module game {
             // if (this.gameName) {
             //     this.miniGame.addMiniGame(this.gameName);
             // }
+            let displayObject = this.getGameDisplayObject(this.gameName);
+            displayObject && this.miniGame.addMiniGameObject(displayObject);
+        }
+
+        private getGameDisplayObject(gameName): egret.DisplayObject {
+            let displayObject: egret.DisplayObject = null;
             if (this.gameName == gameKey.FloorSwitch) {
-                let displayObject = new MiniGameFloorSwitch();
-                this.miniGame.addMiniGameObject(displayObject);
+                displayObject = new MiniGameFloorSwitch();
             }
             else if (this.gameName == gameKey.CubeStop) {
-                let displayObject = new MiniGameCubeStop();
-                this.miniGame.addMiniGameObject(displayObject);
+                displayObject = new MiniGameCubeStop();
             }
+            else if (this.gameName == "迷宫") {
+                displayObject = new MiniGameJigsawM16();
+            }
+            else if (this.gameName == "古董组合") {
+                displayObject = new MiniGameJigsawM08();
+            }
+            return displayObject;
         }
 
         public listNotificationInterests(): Array<any> {

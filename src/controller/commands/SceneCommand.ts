@@ -34,7 +34,12 @@ module game {
             var gameProxy: GameProxy = <GameProxy><any>this.facade().retrieveProxy(GameProxy.NAME);
             switch (notification.getName()) {
                 case SceneCommand.CHANGE: 
-                    appMediator.main.enterGameScreen();
+                    if (data == Scene.Start) {
+                        appMediator.main.enterStartScreen();
+                    }
+                    else if (data == Scene.Game) {
+                        appMediator.main.enterGameScreen();
+                    }
                     break;
             }
         }

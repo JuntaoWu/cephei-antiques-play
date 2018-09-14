@@ -1,7 +1,7 @@
 {
 	"groups": [
 		{
-			"keys": "checkbox_select_disabled_png,checkbox_select_down_png,checkbox_select_up_png,checkbox_unselect_png,selected_png,border_png,header_png,radiobutton_select_disabled_png,radiobutton_select_down_png,radiobutton_select_up_png,radiobutton_unselect_png,roundthumb_png,thumb_png,track_png,tracklight_png,handle_png,off_png,on_png,button_down_png,button_up_png,thumb_pb_png,track_pb_png,track_sb_png,bg_jpg,egret_icon_png,question_json,m01,m03,m04,m06,m10,M11,m12,m15,m16,m17,m19,m20,m21,m18-item_json,m18,m20-item_json",
+			"keys": "checkbox_select_disabled_png,checkbox_select_down_png,checkbox_select_up_png,checkbox_unselect_png,selected_png,border_png,header_png,radiobutton_select_disabled_png,radiobutton_select_down_png,radiobutton_select_up_png,radiobutton_unselect_png,roundthumb_png,thumb_png,track_png,tracklight_png,handle_png,off_png,on_png,button_down_png,button_up_png,thumb_pb_png,track_pb_png,track_sb_png,bg_jpg,egret_icon_png,question_json,m01,m03,m04,m06,m10,m11,m12,m15,m17,m19,m21,m18-item_json,m20-item_json,m16-item_json,m24,m02,m05,m07,m08,m09,m22,m18-bg,m20-bg,m16-bg,m20,m16,m18,m08-item_json,m08-bg,select-options_json",
 			"name": "preload"
 		}
 	],
@@ -164,7 +164,7 @@
 		{
 			"url": "assets/questions/M11.png",
 			"type": "image",
-			"name": "M11"
+			"name": "m11"
 		},
 		{
 			"url": "assets/questions/m12.png",
@@ -177,11 +177,6 @@
 			"name": "m15"
 		},
 		{
-			"url": "assets/questions/m16.png",
-			"type": "image",
-			"name": "m16"
-		},
-		{
 			"url": "assets/questions/m17.png",
 			"type": "image",
 			"name": "m17"
@@ -190,11 +185,6 @@
 			"url": "assets/questions/m19.png",
 			"type": "image",
 			"name": "m19"
-		},
-		{
-			"url": "assets/questions/m20.png",
-			"type": "image",
-			"name": "m20"
 		},
 		{
 			"url": "assets/questions/m21.png",
@@ -208,15 +198,97 @@
 			"subkeys": "m18_1,m18_2,m18_3,m18_4,m18_5,m18_6,m18_7,m18_8,m18_9"
 		},
 		{
+			"url": "assets/questions/m20-item.json",
+			"type": "sheet",
+			"name": "m20-item_json",
+			"subkeys": "m20_0,m20_1,m20_2,m20_3,m20_4,m20_5,m20_6,m20_7,m20_8,m20_9"
+		},
+		{
+			"url": "assets/questions/m16-item.json",
+			"type": "sheet",
+			"name": "m16-item_json",
+			"subkeys": "m16_1,m16_2,m16_3,m16_4,m16_choose,m16_move,m16_trans"
+		},
+		{
+			"url": "assets/questions/M24.png",
+			"type": "image",
+			"name": "m24"
+		},
+		{
+			"url": "assets/questions/m02.png",
+			"type": "image",
+			"name": "m02"
+		},
+		{
+			"url": "assets/questions/m05.png",
+			"type": "image",
+			"name": "m05"
+		},
+		{
+			"url": "assets/questions/M07.png",
+			"type": "image",
+			"name": "m07"
+		},
+		{
+			"url": "assets/questions/M08.png",
+			"type": "image",
+			"name": "m08"
+		},
+		{
+			"url": "assets/questions/M09.png",
+			"type": "image",
+			"name": "m09"
+		},
+		{
+			"url": "assets/questions/m22.png",
+			"type": "image",
+			"name": "m22"
+		},
+		{
+			"url": "assets/questions/m18-bg.png",
+			"type": "image",
+			"name": "m18-bg"
+		},
+		{
+			"url": "assets/questions/m20-bg.png",
+			"type": "image",
+			"name": "m20-bg"
+		},
+		{
+			"url": "assets/questions/m16-bg.png",
+			"type": "image",
+			"name": "m16-bg"
+		},
+		{
+			"url": "assets/questions/m20.png",
+			"type": "image",
+			"name": "m20"
+		},
+		{
+			"url": "assets/questions/m16.png",
+			"type": "image",
+			"name": "m16"
+		},
+		{
 			"url": "assets/questions/m18.png",
 			"type": "image",
 			"name": "m18"
 		},
 		{
-			"name": "m20-item_json",
+			"url": "assets/questions/m08-item.json",
 			"type": "sheet",
-			"url": "assets/questions/m20-item.json",
-			"subkeys": "m20_2,m20_3,m20_4,m20_5,m20_6,m20_7,m20_8,m20_9,m20_0,m20_1"
+			"name": "m08-item_json",
+			"subkeys": "m08_1,m08_2,m08_3,m08_4,m08_5,m08_6,m08_7,m08_8"
+		},
+		{
+			"url": "assets/questions/m08-bg.png",
+			"type": "image",
+			"name": "m08-bg"
+		},
+		{
+			"name": "select-options_json",
+			"type": "json",
+			"url": "config/select-options.json"
 		}
 	]
 }

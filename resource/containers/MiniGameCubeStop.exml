@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <e:Skin class="MiniGameCubeStop" xmlns:e="http://ns.egret.com/eui" xmlns:game="game.*" xmlns:w="http://ns.egret.com/wing">
-    <e:Image source="m20"/>
+    <e:Image source="m20-bg"/>
     <e:List id="buttonList" x="120" y="35" width="485" height="480">
         <e:layout>
             <e:TileLayout orientation="columns" requestedColumnCount="3" verticalGap="23" horizontalGap="32" />

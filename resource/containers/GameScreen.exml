@@ -37,20 +37,20 @@
             <e:Image width="720" height="500" source="{question.img}"/>
             <!-- 小游戏 -->
             <game:MiniGame visible="{showMiniGame}" width="720" height="500" />
-            <e:Label text="{question.points1}" textColor="0x000000" horizontalCenter="0" bottom="40"/>       
+            <e:Label text="{points}" textColor="0x000000" horizontalCenter="0" bottom="40"/>       
         </e:Group>
         <e:Group y="520">
             <e:Image width="720" height="500" source=""/>
-            <e:Scroller width="640" y="30" horizontalCenter="0" height="350">
+            <e:Scroller id="scrollGroup" width="640" y="15" horizontalCenter="0" height="330">
                 <e:viewport>
                     <e:Group>
                         <e:Label text="{description}" textColor="0x000000" y="20" horizontalCenter="0" width="640"/>
                     </e:Group>
                 </e:viewport>
             </e:Scroller>
-            <e:Group horizontalCenter="0" y="403">
+            <e:Group horizontalCenter="0" width="640" y="360">
                 <e:Label text="{question.question}" textColor="0x000000" horizontalCenter="0" width="640" textAlign="center"/>
-                <e:Group id="bottomGroup" visible="{showBottomGroup}" y="50" horizontalCenter="0">
+                <e:Group id="bottomGroup" visible="{showBottomGroup}" y="40" horizontalCenter="0">
                 </e:Group>
             </e:Group>
         </e:Group>

@@ -10,7 +10,6 @@ module game {
 
             this.floorSwitch.buttonList.addEventListener(eui.ItemTapEvent.ITEM_TAP, this.selectItem, this);
             this.floorSwitch.addEventListener(egret.Event.ADDED_TO_STAGE, this.initData, this);
-            this.initData();
         }
 
         public async initData() {
@@ -27,6 +26,15 @@ module game {
                 , {name: "鹰", img: "m18_9", isSelected: false}
             ];
             
+            let len = this.dataList.length;
+            for (var i = 0; i < len - 1; i++) {
+                var index = Math.floor(Math.random() * (len - i));
+                var temp = this.dataList[index];
+                this.dataList[index] = this.dataList[len - i - 1];
+                this.dataList[len - i - 1] = temp;
+            }
+
+
             this.floorSwitch.buttonList.dataProvider = new eui.ArrayCollection(this.dataList);
             this.floorSwitch.buttonList.itemRenderer = SwitchItemRenderer;
 

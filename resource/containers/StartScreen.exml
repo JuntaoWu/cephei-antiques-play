@@ -16,13 +16,13 @@
                 <e:Label text="保存" y="120" bold="true" textColor="0x000000" horizontalCenter="0"></e:Label>
             </e:Skin>
         </e:Button>
-        <e:Button id="btnGuide" x="233" verticalCenter="0">
+        <e:Button id="btnGuide" verticalCenter="0" right="125">
             <e:Skin>
                 <e:Image source="btn-game-bar"></e:Image>
                 <e:Label text="经营" y="120" bold="true" textColor="0x000000" horizontalCenter="0"></e:Label>
             </e:Skin>
         </e:Button>
-        <e:Button id="btnSetting" verticalCenter="0" x="340">
+        <e:Button id="btnSetting" verticalCenter="0" right="0">
             <e:Skin>
                 <e:Image source="btn-settings"></e:Image>
                 <e:Label text="图鉴" y="120" bold="true" textColor="0x000000" horizontalCenter="0"></e:Label>

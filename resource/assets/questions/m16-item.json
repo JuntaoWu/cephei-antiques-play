@@ -1,0 +1,8 @@
+{"file":"m16-item.png","frames":{
+"m16_2":{"x":662,"y":0,"w":329,"h":245,"offX":0,"offY":0,"sourceW":329,"sourceH":245},
+"m16_3":{"x":331,"y":247,"w":329,"h":245,"offX":0,"offY":0,"sourceW":329,"sourceH":245},
+"m16_4":{"x":331,"y":0,"w":329,"h":245,"offX":0,"offY":0,"sourceW":329,"sourceH":245},
+"m16_choose":{"x":0,"y":247,"w":329,"h":245,"offX":0,"offY":0,"sourceW":329,"sourceH":245},
+"m16_move":{"x":662,"y":348,"w":99,"h":99,"offX":0,"offY":0,"sourceW":99,"sourceH":99},
+"m16_trans":{"x":662,"y":247,"w":99,"h":99,"offX":0,"offY":0,"sourceW":99,"sourceH":99},
+"m16_1":{"x":0,"y":0,"w":329,"h":245,"offX":0,"offY":0,"sourceW":329,"sourceH":245}}}
