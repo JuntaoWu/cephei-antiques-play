@@ -15,13 +15,15 @@ module game {
          * 进入开始页面
          */
         public enterStartScreen(): void {
-            this.removeChildren();
+            this.gameScreen.parent && this.removeChild(this.gameScreen);
 
             this.addChild(this.startScreen);
             egret.Tween.get(this).to({ alpha: 1 }, 1500);
         }
 
         public enterGameScreen(): void {
+            this.startScreen.parent && this.removeChild(this.startScreen);
+
             this.addChild(this.gameScreen);
             egret.Tween.get(this).to({ alpha: 1 }, 1500);
         }

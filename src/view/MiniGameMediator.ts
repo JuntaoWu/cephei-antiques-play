@@ -19,6 +19,7 @@ module game {
             // if (this.gameName) {
             //     this.miniGame.addMiniGame(this.gameName);
             // }
+            this.miniGame.clearStage();
             let displayObject = this.getGameDisplayObject(this.gameName);
             displayObject && this.miniGame.addMiniGameObject(displayObject);
         }
@@ -37,11 +38,14 @@ module game {
             else if (this.gameName == "古董组合") {
                 displayObject = new MiniGameJigsawM08();
             }
+            else if (this.gameName == "拼装分水镜") {
+                displayObject = new MiniGameM42();
+            }
             return displayObject;
         }
 
         public listNotificationInterests(): Array<any> {
-            return [GameProxy.SHOW_MINIGAME, GameProxy.PASS_MINIGAME];
+            return [GameProxy.SHOW_MINIGAME];
         }
 
         public handleNotification(notification: puremvc.INotification): void {
@@ -50,9 +54,6 @@ module game {
                 case GameProxy.SHOW_MINIGAME: 
                     this.gameName = data;
                     this.initData();
-                    break;
-                case GameProxy.PASS_MINIGAME: 
-                    this.miniGame.clearStage();
                     break;
             }
         }

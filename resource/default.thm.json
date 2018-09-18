@@ -25,6 +25,7 @@
 		"resource/containers/MiniGameInput.exml",
 		"resource/containers/MiniGameJigsawM08.exml",
 		"resource/containers/MiniGameJigsawM16.exml",
+		"resource/containers/MiniGameM42.exml",
 		"resource/containers/MiniGameSelect.exml",
 		"resource/containers/StartScreen.exml",
 		"resource/containers/StoreScreen.exml",

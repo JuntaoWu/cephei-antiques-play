@@ -28,7 +28,7 @@ module game {
         public startUp(rootView: egret.DisplayObjectContainer): void {
             this.sendNotification(ApplicationFacade.STARTUP, rootView);
             this.removeCommand(ApplicationFacade.STARTUP); //PureMVC初始化完成，注销STARUP命令
-            this.sendNotification(game.SceneCommand.CHANGE, Scene.Game);
+            this.sendNotification(game.SceneCommand.CHANGE, Scene.Start);
         }
 
         public registerMediator(mediator: puremvc.IMediator) {

@@ -21,6 +21,8 @@ module game {
         public scrollGroup: eui.Scroller;
         public bottomGroup: eui.Group;
         public nextTest: eui.Button;
+        public btnTips: eui.Button;
+        public btnHelp: eui.Button;
 
         public inputGroup: MiniGameInput = new MiniGameInput();
         public selectGroup: MiniGameSelect = new MiniGameSelect();

@@ -126,8 +126,12 @@ module game {
                 if (jigsawImg.source != imgList[index] || jigsawImg.rotation != 0) {
                     isSuccess = false;
                 }
+                i.getChildByName("border").visible = i.getChildByName("jigsawMove").visible 
+                = i.getChildByName("jigsawTrans").visible = false;
             })
             if (isSuccess) {
+                this.gameJigsaw.touchEnabled = false;
+                this.gameJigsaw.touchChildren = false;
                 this.sendNotification(GameProxy.PASS_MINIGAME);
             }
         }

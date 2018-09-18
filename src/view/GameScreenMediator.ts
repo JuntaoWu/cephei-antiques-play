@@ -12,6 +12,7 @@ module game {
             this.proxy = <GameProxy><any>this.facade().retrieveProxy(GameProxy.NAME);
 
             this.gameScreen.nextTest.addEventListener(egret.TouchEvent.TOUCH_TAP, this.nextTestClick, this);
+            this.gameScreen.btnTips.addEventListener(egret.TouchEvent.TOUCH_TAP, this.btnTipsClick, this);
             this.gameScreen.addEventListener(egret.Event.ADDED_TO_STAGE, this.initData, this);
             this.initData();
         }
@@ -24,12 +25,16 @@ module game {
 			return this._questions;
 		}
 
-        public id: number = 7;
+        public id: number = 1;
         public showResult: boolean;
 
         public initData() {
             this.gameScreen.showBottomGroup = this.gameScreen.showMiniGame = this.showResult = false;
-            this.gameScreen.question = { ...this.questions.get(this.id.toString()) };
+            this.gameScreen.points = this.gameScreen.description = "";
+            this.gameScreen.question = {
+                ...this.questions.get(this.id.toString()),
+                showPointsNum: 2,
+            };
             this.gameScreen.description = this.gameScreen.question.description;
             this.gameScreen.scrollGroup.viewport.scrollH = 0;
             if (this.gameScreen.question.type == "填空") {
@@ -43,8 +48,6 @@ module game {
             else if (this.gameScreen.question.type == "小游戏") {
                 this.sendNotification(GameProxy.SHOW_MINIGAME, this.gameScreen.question.keyword);
                 this.gameScreen.showMiniGame = true;
-                // let game = new MiniGameFloorSwitch();
-                // this.gameScreen.miniGame.addChild(game);
             }
             console.log(this.id);
         }
@@ -67,6 +70,20 @@ module game {
             } 
             else {
                 this.nextQuestion();
+            }
+        }
+
+        public btnTipsClick() {
+            if (this.gameScreen.question.showPointsNum == 2) {
+                this.gameScreen.points = this.gameScreen.question.points1;
+                this.gameScreen.question.showPointsNum--;
+            }
+            else if (this.gameScreen.question.showPointsNum == 1) {
+                this.gameScreen.points = this.gameScreen.question.points2;
+                this.gameScreen.question.showPointsNum--;
+            }
+            else {
+                this.gameScreen.points = "";
             }
         }
 

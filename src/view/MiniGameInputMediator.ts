@@ -17,7 +17,6 @@ module game {
         }
 
         private onChang(e:egret.Event){
-            console.log(e.target.text);
             if (e.target.text == this.gameInput.answer) {
                 this.sendNotification(GameProxy.PASS_MINIGAME);
             }
