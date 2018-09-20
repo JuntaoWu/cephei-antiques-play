@@ -1,7 +1,7 @@
 {
 	"groups": [
 		{
-			"keys": "checkbox_select_disabled_png,checkbox_select_down_png,checkbox_select_up_png,checkbox_unselect_png,selected_png,border_png,header_png,radiobutton_select_disabled_png,radiobutton_select_down_png,radiobutton_select_up_png,radiobutton_unselect_png,roundthumb_png,thumb_png,track_png,tracklight_png,handle_png,off_png,on_png,button_down_png,button_up_png,thumb_pb_png,track_pb_png,track_sb_png,bg_jpg,egret_icon_png,question_json,m01,m03,m04,m06,m10,m11,m12,m15,m17,m19,m21,m18-item_json,m20-item_json,m16-item_json,m24,m02,m05,m07,m08,m09,m22,m18-bg,m20-bg,m16-bg,m20,m16,m18,m08-item_json,m08-bg,select-options_json,m42,m42-item_json",
+			"keys": "checkbox_select_disabled_png,checkbox_select_down_png,checkbox_select_up_png,checkbox_unselect_png,selected_png,border_png,header_png,radiobutton_select_disabled_png,radiobutton_select_down_png,radiobutton_select_up_png,radiobutton_unselect_png,roundthumb_png,thumb_png,track_png,tracklight_png,handle_png,off_png,on_png,button_down_png,button_up_png,thumb_pb_png,track_pb_png,track_sb_png,bg_jpg,egret_icon_png,question_json,m01,m03,m04,m06,m10,m11,m12,m15,m17,m19,m21,m18-item_json,m20-item_json,m16-item_json,m24,m02,m05,m07,m08,m09,m22,m18-bg,m20-bg,m16-bg,m20,m16,m18,m08-item_json,m08-bg,select-options_json,m42,m42-item_json,game-bg,game-btn_json,input-item,option-bg,m42-tips,input-bg,btn-finish",
 			"name": "preload"
 		}
 	],
@@ -300,6 +300,42 @@
 			"type": "sheet",
 			"name": "m42-item_json",
 			"subkeys": "ED-01,ED-02,ED-03,ED-04,ED-05,ED-bg,btn-ED,btn-back,btn-confirm,btn-left,btn-reset,btn-right"
+		},
+		{
+			"url": "assets/game/game-bg.png",
+			"type": "image",
+			"name": "game-bg"
+		},
+		{
+			"url": "assets/game/game-btn.json",
+			"type": "sheet",
+			"name": "game-btn_json",
+			"subkeys": "btn-back-game,btn-help,btn-manage,btn-picture,btn-save,btn-tips,tips-bg"
+		},
+		{
+			"url": "assets/game/input-item.png",
+			"type": "image",
+			"name": "input-item"
+		},
+		{
+			"url": "assets/game/option-bg.png",
+			"type": "image",
+			"name": "option-bg"
+		},
+		{
+			"url": "assets/questions/m42-tips.png",
+			"type": "image",
+			"name": "m42-tips"
+		},
+		{
+			"url": "assets/game/input-bg.png",
+			"type": "image",
+			"name": "input-bg"
+		},
+		{
+			"url": "assets/game/btn-finish.png",
+			"type": "image",
+			"name": "btn-finish"
 		}
 	]
 }

@@ -14,11 +14,14 @@ module game {
         }
 
         public jigsawGroup: eui.Group;
+        public btnGroup: eui.Group;
         public jigsawResult: eui.Group;
         public btnLeft: eui.Button;
         public btnRight: eui.Button;
         public btnED: eui.Button;
         public btnConfirm: eui.Button;
         public btnReset: eui.Button;
+        public btnBack: eui.Button;
+        public showTipsImg: boolean;
     }
 }

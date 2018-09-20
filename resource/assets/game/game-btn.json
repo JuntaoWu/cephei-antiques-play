@@ -1,0 +1,8 @@
+{"file":"game-btn.png","frames":{
+"btn-picture":{"x":157,"y":62,"w":73,"h":97,"offX":0,"offY":0,"sourceW":73,"sourceH":97},
+"btn-save":{"x":0,"y":62,"w":78,"h":107,"offX":0,"offY":0,"sourceW":78,"sourceH":107},
+"btn-back-game":{"x":232,"y":62,"w":68,"h":95,"offX":0,"offY":0,"sourceW":68,"sourceH":95},
+"btn-manage":{"x":80,"y":62,"w":75,"h":104,"offX":0,"offY":0,"sourceW":75,"sourceH":104},
+"btn-tips":{"x":302,"y":62,"w":68,"h":91,"offX":0,"offY":0,"sourceW":68,"sourceH":91},
+"btn-help":{"x":372,"y":62,"w":66,"h":90,"offX":0,"offY":0,"sourceW":66,"sourceH":90},
+"tips-bg":{"x":0,"y":0,"w":470,"h":60,"offX":0,"offY":0,"sourceW":470,"sourceH":60}}}

@@ -2,49 +2,49 @@
   "1": {
     "id": 1,
     "options": ["上", "下","左","右"],
-    "answer": "下",
+    "answer": "左",
     "next": 2
   },
   "2": {
     "id": 2,
     "options": ["上", "下","左","右"],
-    "answer": "右",
+    "answer": "下",
     "next": 3
   },
   "3": {
     "id": 3,
     "options": ["上", "下","左","右"],
-    "answer": "下",
+    "answer": "左",
     "next": 4
   },
   "4": {
     "id": 4,
     "options": ["上", "下","左","右"],
-    "answer": "右",
+    "answer": "下",
     "next": 5
   },
   "5": {
     "id": 5,
     "options": ["上", "下","左","右"],
-    "answer": "上",
+    "answer": "右",
     "next": 6
   },
   "6": {
     "id": 6,
     "options": ["上", "下","左","右"],
-    "answer": "左",
+    "answer": "上",
     "next": 7
   },
   "7": {
     "id": 7,
     "options": ["上", "下","左","右"],
-    "answer": "上",
+    "answer": "右",
     "next": 8
   },
   "8": {
     "id": 8,
     "options": ["上", "下","左","右"],
-    "answer": "左",
+    "answer": "上",
     "next": 0.0
   },
   "9": {

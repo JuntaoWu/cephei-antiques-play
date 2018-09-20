@@ -1,69 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
 <e:Skin class="GameScreen" xmlns:e="http://ns.egret.com/eui" xmlns:game="game.*" xmlns:w="http://ns.egret.com/wing">
-    <e:Group width="720" height="170">
-        <e:Button id="btnNotice" left="17" verticalCenter="0">
+    <e:Group width="720" height="150">
+        <e:Image width="720" height="150" source="game-bg"/>
+        <e:Button id="btnBack" verticalCenter="0" x="20">
             <e:Skin>
-                <e:Image source="btn-board"></e:Image>
-                <e:Label text="返回" y="120" bold="true" textColor="0x000000" horizontalCenter="0"></e:Label>
+                <e:Image source="btn-back-game"></e:Image>
             </e:Skin>
         </e:Button>
-        <e:Button id="btnRank" x="125" verticalCenter="0">
+        <e:Button id="btnSave" x="130" verticalCenter="0">
             <e:Skin>
-                <e:Image source="btn-rank"></e:Image>
-                <e:Label text="保存" y="120" bold="true" textColor="0x000000" horizontalCenter="0"></e:Label>
+                <e:Image source="btn-save"></e:Image>
             </e:Skin>
         </e:Button>
-        <e:Button id="btnGuide" x="233" verticalCenter="0">
+        <e:Button id="btnManage" x="240" verticalCenter="0">
             <e:Skin>
-                <e:Image source="btn-game-bar"></e:Image>
-                <e:Label text="经营" y="120" bold="true" textColor="0x000000" horizontalCenter="0"></e:Label>
+                <e:Image source="btn-manage"></e:Image>
             </e:Skin>
         </e:Button>
-        <e:Button id="btnSetting" verticalCenter="0" x="340">
+        <e:Button id="btnPicture" verticalCenter="0" x="350">
             <e:Skin>
-                <e:Image source="btn-settings"></e:Image>
-                <e:Label text="图鉴" y="120" bold="true" textColor="0x000000" horizontalCenter="0"></e:Label>
+                <e:Image source="btn-picture"></e:Image>
             </e:Skin>
         </e:Button>
 
         <e:Button id="nextTest" verticalCenter="0" x="540">
             <e:Skin>
-                <e:Label text="下一步" y="120" bold="true" textColor="0x000000" horizontalCenter="0"></e:Label>
+                <e:Label text="下一步" y="20" bold="true" textColor="0x000000" horizontalCenter="0"></e:Label>
             </e:Skin>
         </e:Button>
     </e:Group>
-    <e:Group y="170" width="720">
-        <e:Group y="520">
-            <e:Image width="720" height="500" source=""/>
-            <e:Scroller id="scrollGroup" width="640" y="15" horizontalCenter="0" height="330">
+    <e:Group width="720" y="150">
+        <e:Group id="textTipsGroup">
+            <e:Image width="720" source="game-bg"/>
+            <e:Scroller id="scrollGroup" width="640" y="15" horizontalCenter="0" height="180">
                 <e:viewport>
                     <e:Group>
                         <e:Label text="{description}" textColor="0x000000" y="20" horizontalCenter="0" width="640"/>
                     </e:Group>
                 </e:viewport>
             </e:Scroller>
-            <e:Group horizontalCenter="0" width="640" y="360">
-                <e:Label text="{question.question}" textColor="0x000000" horizontalCenter="0" width="640" textAlign="center"/>
-                <e:Group id="bottomGroup" visible="{showBottomGroup}" y="40" horizontalCenter="0">
-                </e:Group>
+            <e:Label text="{question.question}" y="220" textColor="0x000000" horizontalCenter="0" width="640" textAlign="center"/>
+            <e:Group id="bottomGroup" visible="{showBottomGroup}" bottom="0" horizontalCenter="0">
             </e:Group>
         </e:Group>
         <e:Group>
-            <e:Image width="720" height="500" source="{question.img}"/>
+            <e:Image width="720" source="{question.img}"/>
             <!-- 小游戏 -->
-            <game:MiniGame visible="{showMiniGame}" width="720" height="500" />
-
+            <game:MiniGame visible="{showMiniGame}" width="720" height="600" />
             <e:Button id="btnTips" bottom="35" left="30">
                 <e:Skin>
-                    <e:Label text="提示"  bold="true" textColor="0xffffff" horizontalCenter="0"></e:Label>
+                    <e:Image source="btn-tips"></e:Image>
                 </e:Skin>
             </e:Button>
             <e:Button id="btnHelp" right="30" bottom="35">
                 <e:Skin>
-                    <e:Label text="求助" bold="true" textColor="0xffffff" horizontalCenter="0"></e:Label>
+                    <e:Image source="btn-help"></e:Image>
                 </e:Skin>
             </e:Button>
-            <e:Label text="{points}" textColor="0x000000" horizontalCenter="0" bottom="35" width="450" verticalAlign="middle" textAlign="center"/>       
+            <e:Group visible="{points}" horizontalCenter="0" bottom="50">
+                <e:Image source="tips-bg" width="460"/>
+                <e:Label text="{points}" textColor="0x000000" horizontalCenter="0" maxWidth="450" verticalAlign="middle" textAlign="center" verticalCenter="0"/>       
+            </e:Group>
         </e:Group>
     </e:Group>
 </e:Skin>

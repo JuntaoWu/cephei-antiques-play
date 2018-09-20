@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <e:Skin class="MiniGameJigsawM16" xmlns:e="http://ns.egret.com/eui" xmlns:game="game.*" xmlns:w="http://ns.egret.com/wing">
     <e:Image source="m16-bg"/>
-    <e:Group width="640" height="470" verticalCenter="0" horizontalCenter="0">
+    <e:Group width="640" height="470" y="10" horizontalCenter="0">
         <e:Group id="jigsawImgGroup1">
             <e:Image name="jigsawImg" source="m16_1" rotation="180" verticalCenter="0" horizontalCenter="0"/>
             <e:Image visible="false" name="border" source="m16_choose" />

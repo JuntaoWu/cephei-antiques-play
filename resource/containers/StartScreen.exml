@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <e:Skin class="StartScreen" xmlns:e="http://ns.egret.com/eui" xmlns:game="game.*">
-    <e:Group y="10">
+    <e:Group y="10" horizontalCenter="0">
     
         <e:Button id="btnGame" left="17" verticalCenter="0">
             <e:Skin>
-                <e:Image source="btn-right"></e:Image>
-                <e:Label text="进入游戏" y="120" bold="true" textColor="0x000000" horizontalCenter="0"></e:Label>
+                <e:Image source="option-bg"></e:Image>
+                <e:Label text="进入游戏" bold="true" textColor="0xffffff" verticalCenter="0" horizontalCenter="0"></e:Label>
             </e:Skin>
         </e:Button>
     </e:Group>

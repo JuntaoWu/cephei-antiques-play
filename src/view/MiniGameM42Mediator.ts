@@ -8,10 +8,20 @@ module game {
             super(MiniGameM42Mediator.NAME, viewComponent);
             super.initializeNotifier("ApplicationFacade");
 
+            let colorMatrix = [
+                1,0,0,0,100,
+                0,1,0,0,100,
+                0,0,1,0,100,
+                0,0,0,1,0
+            ];
+            this._colorFlilter = new egret.ColorMatrixFilter(colorMatrix);
+
             this.miniGame.btnLeft.addEventListener(egret.TouchEvent.TOUCH_TAP, this.leftClick, this);
             this.miniGame.btnRight.addEventListener(egret.TouchEvent.TOUCH_TAP, this.rightClick, this);
             this.miniGame.btnConfirm.addEventListener(egret.TouchEvent.TOUCH_TAP, this.confirmClick, this);
             this.miniGame.btnReset.addEventListener(egret.TouchEvent.TOUCH_TAP, this.initData, this);
+            this.miniGame.btnED.addEventListener(egret.TouchEvent.TOUCH_TAP, this.btnEDClick, this);
+            this.miniGame.btnBack.addEventListener(egret.TouchEvent.TOUCH_TAP, this.btnBackClick, this);
             this.miniGame.addEventListener(egret.Event.ADDED_TO_STAGE, this.initData, this);
             this.initData();
         }
@@ -25,11 +35,22 @@ module game {
                 jigsaw.rotation = initRotation[index];
                 let jigsawResult = this.miniGame.jigsawResult.getChildByName(i) as eui.Image;
                 jigsawResult.visible = false;
+                jigsaw.filters = [];
+                jigsawResult.filters = [];
             })
+            let jigsaw = this.miniGame.jigsawGroup.getChildByName(this.jigsawNameList[this.nowIndex]) as eui.Image;
+            let jigsawResult = this.miniGame.jigsawResult.getChildByName(this.jigsawNameList[this.nowIndex]) as eui.Image;
+            if (!jigsawResult.visible) {
+                jigsawResult.visible = true;
+            }
+            jigsawResult.rotation = jigsaw.rotation;
+            jigsaw.filters = [this._colorFlilter];
+            jigsawResult.filters = [this._colorFlilter];
         }
 
         public jigsawNameList: Array<string>;
         public nowIndex: number;
+        private _colorFlilter: egret.ColorMatrixFilter;
 
         public leftClick() {
             this.jigsawNameList.forEach(i => {
@@ -39,9 +60,6 @@ module game {
             if (this.jigsawNameList[this.nowIndex]) {
                 let jigsaw = this.miniGame.jigsawGroup.getChildByName(this.jigsawNameList[this.nowIndex]) as eui.Image;
                 let jigsawResult = this.miniGame.jigsawResult.getChildByName(this.jigsawNameList[this.nowIndex]) as eui.Image;
-                if (!jigsawResult.visible) {
-                    jigsawResult.visible = true;
-                }
                 jigsawResult.rotation = jigsaw.rotation;
             }
         }
@@ -54,15 +72,28 @@ module game {
             if (this.jigsawNameList[this.nowIndex]) {
                 let jigsaw = this.miniGame.jigsawGroup.getChildByName(this.jigsawNameList[this.nowIndex]) as eui.Image;
                 let jigsawResult = this.miniGame.jigsawResult.getChildByName(this.jigsawNameList[this.nowIndex]) as eui.Image;
-                if (!jigsawResult.visible) {
-                    jigsawResult.visible = true;
-                }
                 jigsawResult.rotation = jigsaw.rotation;
             }
         }
 
         public confirmClick() {
+            if (this.jigsawNameList[this.nowIndex]) {
+                let jigsaw = this.miniGame.jigsawGroup.getChildByName(this.jigsawNameList[this.nowIndex]) as eui.Image;
+                let jigsawResult = this.miniGame.jigsawResult.getChildByName(this.jigsawNameList[this.nowIndex]) as eui.Image;
+                jigsaw.filters = [];
+                jigsawResult.filters = [];
+            }
             this.nowIndex++;
+            if (this.jigsawNameList[this.nowIndex]) {
+                let jigsaw = this.miniGame.jigsawGroup.getChildByName(this.jigsawNameList[this.nowIndex]) as eui.Image;
+                let jigsawResult = this.miniGame.jigsawResult.getChildByName(this.jigsawNameList[this.nowIndex]) as eui.Image;
+                if (!jigsawResult.visible) {
+                    jigsawResult.visible = true;
+                }
+                jigsawResult.rotation = jigsaw.rotation;
+                jigsaw.filters = [this._colorFlilter];
+                jigsawResult.filters = [this._colorFlilter];
+            }
             if (this.nowIndex == 5) {
                 this.setResult();
             }
@@ -83,6 +114,16 @@ module game {
                 this.miniGame.touchChildren = false;
                 this.sendNotification(GameProxy.PASS_MINIGAME);
             }
+        }
+
+        public btnEDClick() {
+            this.miniGame.showTipsImg = this.miniGame.btnBack.visible = true;
+            this.miniGame.btnGroup.visible = this.miniGame.jigsawGroup.visible = false;
+        }
+
+        public btnBackClick() {
+            this.miniGame.showTipsImg = this.miniGame.btnBack.visible = false;
+            this.miniGame.btnGroup.visible = this.miniGame.jigsawGroup.visible = true;
         }
 
         public get miniGame(): MiniGameM42 {

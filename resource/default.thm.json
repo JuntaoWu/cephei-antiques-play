@@ -17,6 +17,7 @@
 	"autoGenerateExmlsList": true,
 	"exmls": [
 		"resource/components/CubeStopItemSkin.exml",
+		"resource/components/InputItemSkin.exml",
 		"resource/components/QuestionSelectItemSkin.exml",
 		"resource/components/SwitchItemSkin.exml",
 		"resource/containers/GameScreen.exml",

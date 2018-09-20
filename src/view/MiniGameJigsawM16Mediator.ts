@@ -19,10 +19,18 @@ module game {
                     let isShow = !i.getChildByName("jigsawMove").visible
                     i.getChildByName("border").visible = i.getChildByName("jigsawMove").visible 
                     = i.getChildByName("jigsawTrans").visible = isShow;
+                    this.jigsawImgGroupList.forEach((item, index) => {
+                        if (item != e.currentTarget) {
+                            item.getChildByName("border").visible = item.getChildByName("jigsawMove").visible 
+                            = item.getChildByName("jigsawTrans").visible = false;
+                        }
+                    })
                 }, this);
 
                 i.getChildByName("jigsawTrans").addEventListener(egret.TouchEvent.TOUCH_TAP, (e: egret.TouchEvent) => {
                     e.stopImmediatePropagation();
+                    i.getChildByName("border").visible = i.getChildByName("jigsawMove").visible 
+                    = i.getChildByName("jigsawTrans").visible = false;
                     let jigsawImg = i.getChildByName("jigsawImg") as eui.Image;
                     jigsawImg.rotation = !jigsawImg.rotation ? 180 : 0;
                     this.setResult();
@@ -126,8 +134,6 @@ module game {
                 if (jigsawImg.source != imgList[index] || jigsawImg.rotation != 0) {
                     isSuccess = false;
                 }
-                i.getChildByName("border").visible = i.getChildByName("jigsawMove").visible 
-                = i.getChildByName("jigsawTrans").visible = false;
             })
             if (isSuccess) {
                 this.gameJigsaw.touchEnabled = false;
