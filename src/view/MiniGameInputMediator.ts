@@ -31,6 +31,7 @@ module game {
         }
 
         public inputTextList: Array<string>;
+        public isSend: boolean = false;
 
         private onChang(e:egret.Event){
             this.inputTextList = this.inputTextList.map(i => "");
@@ -41,8 +42,9 @@ module game {
             })
             this.gameInput.inputItemList.dataProvider = new eui.ArrayCollection(this.inputTextList);
             this.gameInput.inputItemList.itemRenderer = InputItemRenderer;
-            if (e.target.text == this.gameInput.answer) {
+            if (e.target.text == this.gameInput.answer && !this.isSend) {
                 this.sendNotification(GameProxy.PASS_MINIGAME);
+                this.isSend = true;
             }
         }
 
