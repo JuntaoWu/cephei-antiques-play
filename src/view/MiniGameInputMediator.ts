@@ -9,6 +9,7 @@ module game {
             super.initializeNotifier("ApplicationFacade");
 
             this.gameInput.answerInput.addEventListener(egret.Event.CHANGE, this.onChang, this)
+            this.gameInput.btnConfirm.addEventListener(egret.Event.CHANGE, this.confirmClick, this)
             this.gameInput.addEventListener(egret.Event.ADDED_TO_STAGE, this.initData, this);
             this.initData();
         }
@@ -16,6 +17,7 @@ module game {
         public async initData() {
             this.gameInput.answerInput.textDisplay.size = 45;
             this.gameInput.answerInput.text = null;
+            this.isSend = false;
             this.inputTextList = [];
             for (let i = 0; i < this.gameInput.answer.length; i++) {
                 this.inputTextList.push("");
@@ -42,7 +44,11 @@ module game {
             })
             this.gameInput.inputItemList.dataProvider = new eui.ArrayCollection(this.inputTextList);
             this.gameInput.inputItemList.itemRenderer = InputItemRenderer;
-            if (e.target.text == this.gameInput.answer && !this.isSend) {
+        }
+
+        private confirmClick() {
+            let text = this.inputTextList.join();
+            if (text == this.gameInput.answer && !this.isSend) {
                 this.sendNotification(GameProxy.PASS_MINIGAME);
                 this.isSend = true;
             }

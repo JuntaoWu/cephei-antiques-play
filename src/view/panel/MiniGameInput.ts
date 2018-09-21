@@ -16,6 +16,7 @@ module game {
         public answerInput: eui.TextInput;
         public inputItemList: eui.List;
         public answer: string;
+        public btnConfirm: eui.Button;
 
         public setAnswer(str: string): void {
             this.answer = str;
