@@ -17,14 +17,6 @@ module game {
             this.initData();
         }
 
-        private _questions: Map<string, any>;
-		public get questions(): Map<string, any> {
-			if (!this._questions) {
-				this._questions = new Map(Object.entries(RES.getRes("question_json")));
-			}
-			return this._questions;
-		}
-
         public id: number = 1;
         public showResult: boolean;
 
@@ -32,7 +24,7 @@ module game {
             this.gameScreen.showBottomGroup = this.gameScreen.showMiniGame = this.showResult = false;
             this.gameScreen.points = this.gameScreen.description = "";
             this.gameScreen.question = {
-                ...this.questions.get(this.id.toString()),
+                ...this.proxy.questions.get(this.id.toString()),
                 showPointsNum: 2,
             };
             this.gameScreen.description = this.gameScreen.question.description;
