@@ -12,7 +12,7 @@
 		"libs/modules/puremvc/puremvc.js"
 	],
 	"game": [
-		"bin-debug/view/MiniGameInputMediator.js",
+		"bin-debug/view/MiniGameFloorSwitchMediator.js",
 		"bin-debug/ApplicationFacade.js",
 		"bin-debug/LoadingUI.js",
 		"bin-debug/Main.js",
@@ -30,11 +30,17 @@
 		"bin-debug/model/common/Constants.js",
 		"bin-debug/view/ApplicationMediator.js",
 		"bin-debug/view/GameScreenMediator.js",
+		"bin-debug/view/M14.js",
+		"bin-debug/view/M2.js",
+		"bin-debug/view/M3_2.js",
+		"bin-debug/view/M5.js",
+		"bin-debug/view/M6.js",
 		"bin-debug/view/MiniGameCubeStopMediator.js",
-		"bin-debug/view/MiniGameFloorSwitchMediator.js",
 		"bin-debug/AssetAdapter.js",
+		"bin-debug/view/MiniGameInputMediator.js",
 		"bin-debug/view/MiniGameJigsawM08Mediator.js",
 		"bin-debug/view/MiniGameJigsawM16Mediator.js",
+		"bin-debug/view/MiniGameM14Mediator.js",
 		"bin-debug/view/MiniGameM42Mediator.js",
 		"bin-debug/view/MiniGameMediator.js",
 		"bin-debug/view/MiniGameSelectMediator.js",
@@ -48,10 +54,12 @@
 		"bin-debug/view/panel/MiniGameInput.js",
 		"bin-debug/view/panel/MiniGameJigsawM08.js",
 		"bin-debug/view/panel/MiniGameJigsawM16.js",
+		"bin-debug/view/panel/MiniGameM14.js",
 		"bin-debug/view/panel/MiniGameM42.js",
 		"bin-debug/view/panel/MiniGameSelect.js",
 		"bin-debug/view/panel/QuestionSelectItemRenderer.js",
 		"bin-debug/view/panel/StartScreen.js",
-		"bin-debug/view/panel/SwitchItemRenderer.js"
+		"bin-debug/view/panel/SwitchItemRenderer.js",
+		"bin-debug/view/view/wordList.js"
 	]
 }

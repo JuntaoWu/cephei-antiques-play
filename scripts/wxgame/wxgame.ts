@@ -34,8 +34,46 @@ export class WxgamePlugin implements plugins.Command {
                 }
                 content = "var egret = window.egret;" + content;
                 if (filename == 'main.js') {
-                    content += "\n;window.Main = Main;"
+                    content += ";window.Main = Main;window.game = game;"
+                    fs.readdirSync("./src/view/panel").forEach(name => {
+                        var dotIndex = name.indexOf(".");
+                        name = name.slice(0, dotIndex);
+                        content += `;window["game"]["${name}"] = game.${name};`;
+                    });
                 }
+
+                if (filename == 'libs/modules/photon/photon.js' || filename == 'libs/modules/photon/photon.min.js') {
+                    content += ";window.Photon = Photon";
+                    content += ";window.Exitgames = Exitgames";
+                }
+
+                if (filename == 'libs/modules/puremvc/puremvc.js') {
+                    content = content.replace(/var rootExport = function \(root, __umodule__\) {/g, `var rootExport = function (root, __umodule__) {
+                        root['puremvc'] = __umodule__;`);
+                    content = content.replace(/\).call\(this\)/g, `).call(window)`);
+                    content = content.replace(/rootExport\(global, factory\(require/g, `rootExport(window, factory.call(this, require`);
+                }
+
+                if (filename == 'libs/modules/puremvc/puremvc.min.js') {
+                    content = content.replace(/var n=function\(i,n\){/g, `var n=function(i,n){i.puremvc=n;`);
+                    content = content.replace(/\).call\(this\)/g, `).call(window)`);
+                    content = content.replace(/n\(global,i\(/g, `n(window,i.call(this,`);
+                    
+                    content += ";window.puremvc = puremvc";
+                }
+
+                if (filename == 'libs/modules/lodash/lodash.js') {
+                    content = content.replace(`var root = freeGlobal || freeSelf || Function('return this')();`,
+                        `var root = freeSelf || window;`);
+                    content = content.replace(`var _ = runInContext();`, `var _ = runInContext();
+                        root._ = _;`)
+                }
+                if (filename == 'libs/modules/lodash/lodash.min.js') {
+                    content = content.replace(`Xe=Ye||Qe||Function("return this")()`,
+                        `Xe=Qe||window`);
+                    content = content.replace(`gu=_u();`, `gu=_u();Xe._=gu;`);
+                }
+
                 file.contents = new Buffer(content);
             }
         }
@@ -44,10 +82,6 @@ export class WxgamePlugin implements plugins.Command {
     async onFinish(pluginContext: plugins.CommandContext) {
         //同步 index.html 配置到 game.js
         const gameJSPath = path.join(pluginContext.outputDir, "game.js");
-        if(!fs.existsSync(gameJSPath)) {
-            console.log(`${gameJSPath}不存在，请先使用 Launcher 发布微信小游戏`);
-            return;
-        }
         let gameJSContent = fs.readFileSync(gameJSPath, { encoding: "utf8" });
         const projectConfig = pluginContext.buildConfig.projectConfig;
         const optionStr =

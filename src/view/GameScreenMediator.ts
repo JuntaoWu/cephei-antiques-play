@@ -47,9 +47,9 @@ module game {
         public showRightResult() {
             this.gameScreen.description = this.gameScreen.question.right;
             this.showResult = true;
-            egret.setTimeout(() => {
-                this.nextQuestion();
-            }, this, 2000);
+            // egret.setTimeout(() => {
+            //     this.nextQuestion();
+            // }, this, 2000);
         }
 
         public nextQuestion() {
@@ -58,11 +58,11 @@ module game {
                 this.initData();
             }
         }
-        
+
         public nextTestClick() {
             if (!this.showResult) {
                 this.showRightResult();
-            } 
+            }
             else {
                 this.nextQuestion();
             }
@@ -89,7 +89,7 @@ module game {
         public handleNotification(notification: puremvc.INotification): void {
             var data: any = notification.getBody();
             switch (notification.getName()) {
-                case GameProxy.PASS_MINIGAME: 
+                case GameProxy.PASS_MINIGAME:
                     this.showRightResult();
                     break;
             }
