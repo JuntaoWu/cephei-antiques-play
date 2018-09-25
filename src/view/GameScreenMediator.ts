@@ -11,19 +11,19 @@ module game {
             super.initializeNotifier("ApplicationFacade");
             this.proxy = <GameProxy><any>this.facade().retrieveProxy(GameProxy.NAME);
 
-            // this.gameScreen.nextTest.addEventListener(egret.TouchEvent.TOUCH_TAP, this.nextTestClick, this);
+            this.gameScreen.nextTest.addEventListener(egret.TouchEvent.TOUCH_TAP, this.nextTestClick, this);
             this.gameScreen.btnTips.addEventListener(egret.TouchEvent.TOUCH_TAP, this.btnTipsClick, this);
             this.gameScreen.addEventListener(egret.Event.ADDED_TO_STAGE, this.initData, this);
             this.initData();
         }
 
         private _questions: Map<string, any>;
-		public get questions(): Map<string, any> {
-			if (!this._questions) {
-				this._questions = new Map(Object.entries(RES.getRes("question_json")));
-			}
-			return this._questions;
-		}
+        public get questions(): Map<string, any> {
+            if (!this._questions) {
+                this._questions = new Map(Object.entries(RES.getRes("question_json")));
+            }
+            return this._questions;
+        }
 
         public id: number = 1;
         public showResult: boolean;
@@ -55,9 +55,9 @@ module game {
         public showRightResult() {
             this.gameScreen.description = this.gameScreen.question.right;
             this.showResult = true;
-            egret.setTimeout(() => {
-                this.nextQuestion();
-            }, this, 2000);
+            // egret.setTimeout(() => {
+            //     this.nextQuestion();
+            // }, this, 2000);
         }
 
         public nextQuestion() {
@@ -66,11 +66,11 @@ module game {
                 this.initData();
             }
         }
-        
+
         public nextTestClick() {
             if (!this.showResult) {
                 this.showRightResult();
-            } 
+            }
             else {
                 this.nextQuestion();
             }
@@ -97,7 +97,7 @@ module game {
         public handleNotification(notification: puremvc.INotification): void {
             var data: any = notification.getBody();
             switch (notification.getName()) {
-                case GameProxy.PASS_MINIGAME: 
+                case GameProxy.PASS_MINIGAME:
                     this.showRightResult();
                     break;
             }

@@ -41,6 +41,21 @@ module game {
             else if (this.gameName == "拼装分水镜") {
                 displayObject = new MiniGameM42();
             }
+            else if (this.gameName == "古董组合1") {
+                displayObject = new M14();
+            }
+            else if (this.gameName == "密码锁2") {
+                displayObject = new M2();
+            }
+            else if (this.gameName == "M3aaa") {
+                displayObject = new M3_2();
+            }
+            else if (this.gameName == "拼图迷宫5") {
+                displayObject = new M5();
+            }
+            else if (this.gameName == "暗号6") {
+                displayObject = new M6();
+            }
             return displayObject;
         }
 
@@ -51,7 +66,7 @@ module game {
         public handleNotification(notification: puremvc.INotification): void {
             var data: any = notification.getBody();
             switch (notification.getName()) {
-                case GameProxy.SHOW_MINIGAME: 
+                case GameProxy.SHOW_MINIGAME:
                     this.gameName = data;
                     this.initData();
                     break;
