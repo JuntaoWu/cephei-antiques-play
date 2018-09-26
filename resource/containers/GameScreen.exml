@@ -23,9 +23,9 @@
             </e:Skin>
         </e:Button>
 
-        <e:Button id="nextTest" verticalCenter="0" x="437">
+        <e:Button id="nextTest" x="442" anchorOffsetX="0" width="265" anchorOffsetY="0" height="144" verticalCenter="0">
             <e:Skin>
-                <e:Label text="下一步" y="20" bold="true" textColor="0x000000" horizontalCenter="0"></e:Label>
+                <e:Label text="下一步" verticalCenter="0" bold="true" textColor="0x000000" horizontalCenter="0" size="80"></e:Label>
             </e:Skin>
         </e:Button>
     </e:Group>
