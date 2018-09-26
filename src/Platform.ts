@@ -14,102 +14,120 @@ declare interface Platform {
 
     login(): Promise<any>;
 
+    checkForUpdate(): Promise<any>;
+
     getVersion(): Promise<any>;
 
     applyUpdate(version: string);
 
-    onNetworkStatusChange(callback: Function);
+    getOpenDataContext();
 
-    showToast(message: string);
+    shareAppMessage(message?: string, query?: string, callback?: Function);
 
-    setStorage(key, data);
+    showShareMenu();
+
+    setStorage(key, value);
 
     getStorage(key);
 
-    playVideo(src: string);
+    setStorageAsync(key, value);
 
-    showModal(message: string, confirmText?: string, cancelText?: string): Promise<any>;
+    getStorageAsync(key): Promise<any>;
 
-    showLoading(message?: string);
+    getLaunchInfo();
 
-    hideLoading();
-
-    shareAppMessage();
-
-    showPreImage(data: Array<string>);
+    authorizeUserInfo(callback);
 
     createBannerAd(name: string, adUnitId: string, style: any);
 
     showBannerAd(name: string);
 
     hideAllBannerAds();
+
+    createRewardedVideoAd(name: string, adUnitId: string, callback: Function, onError: Function);
+
+    showVideoAd(name: string);
+
+    isVideoAdDisabled(name: string);
+
+    disableVideoAd(name: string);
 }
 
 class DebugPlatform implements Platform {
 
-    public get env(): string {
+    public get env() {
         return "dev";
     }
 
-    public get name(): string {
+    public get name() {
         return "DebugPlatform";
     }
 
-    public get appVersion(): string {
+    public get appVersion() {
         return "0.1.1";
     }
 
     public async getUserInfo() {
-        return { nickName: "username" };
+        return {
+            nickName: "盒中闪电测试账号",
+            avatarUrl: `unit(001-050)_json#hero(004)`
+        };
     }
+
     public async login() {
-        return { code: "debug" };
+        return { code: "debug-code" };
+    }
+
+    public async checkForUpdate() {
+        return {
+            hasUpdate: false
+        };
     }
 
     public async getVersion() {
-
+        return "0";
     }
 
     public applyUpdate() {
         return true;
     }
 
-    public onNetworkStatusChange(callback: Function) {
-        return true;
+    public getOpenDataContext() {
+        return {
+            postMessage: () => { },
+            createDisplayObject: () => { },
+        };
     }
 
-    public showToast(message: string) {
-        console.log(message);
+    public shareAppMessage(message?: string, query?: string, callback?: Function) {
+
+    }
+
+    public showShareMenu() {
+
     }
 
     public setStorage(key, data) {
-        sessionStorage.setItem(key, JSON.stringify(data));
+        localStorage.setItem(key, JSON.stringify(data));
     }
 
     public getStorage(key) {
-        return JSON.parse(sessionStorage.getItem(key));
+        return JSON.parse(localStorage.getItem(key));
     }
 
-    public playVideo() {
-        return {};
+    public setStorageAsync(key, data) {
+        localStorage.setItem(key, JSON.stringify(data));
     }
 
-    public showPreImage(data) {
+    public async getStorageAsync(key): Promise<any> {
+        return JSON.parse(localStorage.getItem(key));
     }
 
-    public async showModal(message: string, confirmText?: string, cancelText?: string): Promise<any> {
-        return { confirm: false, cancel: true };
+    public getLaunchInfo() {
+
     }
 
-    public showLoading() {
-        return true;
-    }
-
-    public hideLoading() {
-        return true;
-    }
-
-    public shareAppMessage() {
+    public authorizeUserInfo(callback) {
 
     }
 
@@ -117,14 +135,31 @@ class DebugPlatform implements Platform {
 
     }
 
-    public showBannerAd(name: string = "bottom") {
+    public showBannerAd(name: string) {
 
     }
 
     public hideAllBannerAds() {
-        
+
+    }
+
+    public async createRewardedVideoAd(name: string, adUnitId: string, callback: Function, onError: Function) {
+
+    }
+
+    public async showVideoAd(name: string) {
+
+    }
+
+    public async isVideoAdDisabled(name: string) {
+
+    }
+
+    public async disableVideoAd(name: string) {
+
     }
 }
+
 
 if (!window.platform) {
     window.platform = new DebugPlatform();
@@ -133,11 +168,5 @@ if (!window.platform) {
 declare let platform: Platform;
 
 declare interface Window {
-
     platform: Platform
 }
-
-
-
-
-
