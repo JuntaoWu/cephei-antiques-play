@@ -42,12 +42,17 @@ module game {
                     this.inputTextList[i] = v;
                 }
             })
+            if (e.target.text == this.gameInput.answer && !this.isSend) {
+                e.target.text = "";
+                this.sendNotification(GameProxy.PASS_MINIGAME);
+                this.isSend = true;
+            }
             this.gameInput.inputItemList.dataProvider = new eui.ArrayCollection(this.inputTextList);
             this.gameInput.inputItemList.itemRenderer = InputItemRenderer;
         }
 
         private confirmClick() {
-            let text = this.inputTextList.join();
+            let text = this.inputTextList.join("");
             if (text == this.gameInput.answer && !this.isSend) {
                 this.sendNotification(GameProxy.PASS_MINIGAME);
                 this.isSend = true;

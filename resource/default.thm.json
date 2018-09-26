@@ -21,6 +21,7 @@
 		"resource/components/QuestionSelectItemSkin.exml",
 		"resource/components/SwitchItemSkin.exml",
 		"resource/containers/GameScreen.exml",
+		"resource/containers/LoadingUI.exml",
 		"resource/containers/M14.exml",
 		"resource/containers/M2.exml",
 		"resource/containers/M3_2.exml",

@@ -23,15 +23,15 @@
             </e:Skin>
         </e:Button>
 
-        <e:Button id="nextTest" verticalCenter="0" x="540">
+        <e:Button id="nextTest" x="457" y="75">
             <e:Skin>
                 <e:Label text="下一步" y="20" bold="true" textColor="0x000000" horizontalCenter="0"></e:Label>
             </e:Skin>
         </e:Button>
     </e:Group>
-    <e:Group width="720" y="150">
-        <e:Group id="textTipsGroup">
-            <e:Image width="720" source="game-bg"/>
+    <e:Group width="720" bottom="0" top="150">
+        <e:Group id="textTipsGroup" bottom="0" top="600">
+            <e:Image width="720" source="game-bg" height="100%" scale9Grid="90,70,540,422"/>
             <e:Scroller id="scrollGroup" width="640" y="15" horizontalCenter="0" height="180">
                 <e:viewport>
                     <e:Group>

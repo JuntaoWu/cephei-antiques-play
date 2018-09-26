@@ -9,7 +9,7 @@ module game {
         }
 
         public createCompleteEvent(event: eui.UIEvent): void {
-            this.textTipsGroup.y = this.stage.stageHeight - this.textTipsGroup.height - 150;
+            this.height = this.stage.stageHeight;
             this.removeEventListener(eui.UIEvent.CREATION_COMPLETE, this.createCompleteEvent, this);
             ApplicationFacade.getInstance().registerMediator(new GameScreenMediator(this));
         }
@@ -24,7 +24,6 @@ module game {
         public nextTest: eui.Button;
         public btnTips: eui.Button;
         public btnHelp: eui.Button;
-        public textTipsGroup: eui.Group;
 
         public inputGroup: MiniGameInput = new MiniGameInput();
         public selectGroup: MiniGameSelect = new MiniGameSelect();
