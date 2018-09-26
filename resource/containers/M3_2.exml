@@ -3,10 +3,10 @@
 	<w:Config id="165c73e93a9" ></w:Config>
 	<e:Group id="dark" width="720" height="591" verticalCenter="0" horizontalCenter="0">
 		<e:Image id="darkBg" width="720" height="591" verticalCenter="0" horizontalCenter="0" x="0" y="0" scaleX="1" scaleY="1" source="bg2_png"/>
-		<e:Button id="turnOnLight" label="" x="624" y="0">
+		<e:Button id="turnOnLight" label="" x="576" y="0">
 			<e:skinName>
 				<e:Skin states="up,down,disabled">
-				<e:Image width="100%" height="100%" source="turnon_png"/>
+				<e:Image width="100%" height="100%" source="key2_png"/>
 				<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
 				</e:Skin>
 			</e:skinName>
@@ -15,34 +15,26 @@
 	<e:Group id="bright" width="720" height="591" verticalCenter="0" horizontalCenter="0">
 		<e:Group width="720" height="591" verticalCenter="0" horizontalCenter="0">
 			<e:Image id="brightBg" width="720" height="591" verticalCenter="0" horizontalCenter="0" x="0" y="0" scaleX="1" scaleY="1" source="bg1_png"/>
-			<e:Image x="148" y="157" scaleX="1" scaleY="1" source="xia_png"/>
-			<e:Image x="148" y="365" scaleX="1" scaleY="1" source="shang_png"/>
-			<e:Image x="272" y="157" scaleX="1" scaleY="1" source="xia_png"/>
-			<e:Image x="272" y="365" scaleX="1" scaleY="1" source="shang_png"/>
-			<e:Image x="396" y="157" scaleX="1" scaleY="1" source="xia_png"/>
-			<e:Image x="396" y="365" scaleX="1" scaleY="1" source="shang_png"/>
-			<e:Image x="521" y="156" scaleX="1" scaleY="1" source="xia_png"/>
-			<e:Image x="521" y="365" scaleX="1" scaleY="1" source="shang_png"/>
 		</e:Group>
-		<e:Button id="turnOffLight" label="" x="624" y="0">
+		<e:Button id="turnOffLight" label="" x="576" y="0">
 			<e:skinName>
 				<e:Skin states="up,down,disabled">
-				<e:Image width="100%" height="100%" source="trunoff_png"/>
+				<e:Image width="100%" height="100%" source="key1_png"/>
 				<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
 				</e:Skin>
 			</e:skinName>
 		</e:Button>
 	</e:Group>
-	<e:Scroller id="word1" width="100" height="140" x="138" y="214" anchorOffsetY="0" anchorOffsetX="0">
+	<e:Scroller id="word1" width="100" height="140" x="103" y="214" anchorOffsetY="0" anchorOffsetX="0">
 		<e:List id="wordList1" itemRendererSkinName="M3_2_List"/>
 	</e:Scroller>
-	<e:Scroller id="word2" width="100" height="140" x="262" y="214" anchorOffsetY="0" anchorOffsetX="0">
+	<e:Scroller id="word2" width="100" height="140" x="217" y="214" anchorOffsetY="0" anchorOffsetX="0">
 		<e:List id="wordList2" itemRendererSkinName="M3_2_List"/>
 	</e:Scroller>
-	<e:Scroller id="word3" width="100" height="140" x="386" y="214" anchorOffsetY="0" anchorOffsetX="0">
+	<e:Scroller id="word3" width="100" height="140" x="333" y="214" anchorOffsetY="0" anchorOffsetX="0">
 		<e:List id="wordList3" itemRendererSkinName="M3_2_List"/>
 	</e:Scroller>
-	<e:Scroller id="word4" width="100" height="140" x="510" y="214" anchorOffsetY="0" anchorOffsetX="0">
+	<e:Scroller id="word4" width="100" height="140" x="446" y="214" anchorOffsetY="0" anchorOffsetX="0">
 		<e:List id="wordList4" itemRendererSkinName="M3_2_List"/>
 	</e:Scroller>
 	<e:Label id="win" text="解锁成功" width="720" height="600" verticalCenter="0" horizontalCenter="0" textColor="0xff0000" size="100" verticalAlign="middle" textAlign="center" visible="false"/>
