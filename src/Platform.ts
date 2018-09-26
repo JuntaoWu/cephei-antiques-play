@@ -5,6 +5,9 @@
  * 由于不同平台的接口形式各有不同，白鹭推荐开发者将所有接口封装为基于 Promise 的异步形式
  */
 declare interface Platform {
+    env: string;
+    name: string;
+    appVersion: string;
 
     getUserInfo(): Promise<any>;
 
@@ -13,6 +16,19 @@ declare interface Platform {
 }
 
 class DebugPlatform implements Platform {
+
+    public get env(): string {
+        return "dev";
+    }
+
+    public get name(): string {
+        return "DebugPlatform";
+    }
+
+    public get appVersion(): string {
+        return "0.1.0";
+    }
+
     async getUserInfo() {
         return { nickName: "username" }
     }
