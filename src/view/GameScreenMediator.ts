@@ -55,9 +55,9 @@ module game {
         public showRightResult() {
             this.gameScreen.description = this.gameScreen.question.right;
             this.showResult = true;
-            // egret.setTimeout(() => {
-            //     this.nextQuestion();
-            // }, this, 2000);
+            egret.setTimeout(() => {
+                this.nextQuestion();
+            }, this, 2000);
         }
 
         public nextQuestion() {

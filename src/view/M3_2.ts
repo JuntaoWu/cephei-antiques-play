@@ -29,10 +29,10 @@ module game{
 		super.childrenCreated();
 
 		let dataArr: any[] = [
-			{ image: 'resource/assets/M3/word_ren.png' },
-			{ image: 'resource/assets/M3/word_xin.png' },
-			{ image: 'resource/assets/M3/word_guo.png' },
-			{ image: 'resource/assets/M3/word_shi.png' }
+			{ image: 'word_ren' },
+			{ image: 'word_xin' },
+			{ image: 'word_guo' },
+			{ image: 'word_shi' }
 		]
 		let euiArr: eui.ArrayCollection = new eui.ArrayCollection(dataArr);
 		this.wordList1.dataProvider = euiArr;
