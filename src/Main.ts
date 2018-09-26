@@ -69,6 +69,12 @@ class Main extends eui.UILayer {
 
     private async loadResource() {
         try {
+            const checkVersionResult: any = await AccountAdapter.checkForUpdate();
+
+            if (checkVersionResult.hasUpdate) {
+                platform.applyUpdate(checkVersionResult.version);
+            }
+
             const loadingView = new LoadingUI();
             this.stage.addChild(loadingView);
             await RES.loadConfig("default.res.json", `${game.Constants.ResourceEndpoint}resource/`);
