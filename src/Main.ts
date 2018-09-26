@@ -69,10 +69,13 @@ class Main extends eui.UILayer {
 
     private async loadResource() {
         try {
-            const loadingView = new LoadingUI();
-            this.stage.addChild(loadingView);
             await RES.loadConfig("default.res.json", `${game.Constants.ResourceEndpoint}resource/`);
             await this.loadTheme();
+            
+            await RES.loadGroup("loading", 1);
+            const loadingView = new LoadingUI();
+            this.stage.addChild(loadingView);
+
             await RES.loadGroup("preload", 0, loadingView);
             this.stage.removeChild(loadingView);
         }
