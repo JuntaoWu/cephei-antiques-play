@@ -49,7 +49,7 @@ module game {
             this.showResult = true;
             egret.setTimeout(() => {
                 this.nextQuestion();
-            }, this, 1000);
+            }, this, 1500);
         }
 
         public nextQuestion() {
