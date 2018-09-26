@@ -3,7 +3,6 @@
 	<w:Config id="165cbda4bdd" ></w:Config>
 	<e:Image id="BG" source="M2bg_png" verticalCenter="0" horizontalCenter="0"/>
 	<e:Label id="win" text="解锁成功" width="720" height="700" verticalCenter="0" horizontalCenter="0" verticalAlign="middle" textAlign="center" textColor="0xff0000" size="100" visible="false"/>
-	<e:Image source="kuang_png" verticalCenter="-3" horizontalCenter="0"/>
 	<e:Group width="516" height="516" anchorOffsetX="0" anchorOffsetY="0" verticalCenter="-6" horizontalCenter="0">
 		<e:Image id="white1" source="bai_png" x="173" y="2" scaleX="1" scaleY="1"/>
 		<e:Image id="black1" source="hei_png" x="229" y="2" scaleX="1" scaleY="1"/>
@@ -65,4 +64,5 @@
 		<e:Image id="column2_1" source="xia_png" x="343" y="-17" scaleX="0.5" scaleY="0.5"/>
 		<e:Image id="column3_1" source="xia_png" x="400" y="-17" scaleX="0.5" scaleY="0.5"/>
 	</e:Group>
+	<e:Image source="kuang_png" verticalCenter="-3" horizontalCenter="0"/>
 </e:Skin>
