@@ -13,7 +13,8 @@
 	],
 	"game": [
 		"bin-debug/view/MiniGameFloorSwitchMediator.js",
-		"bin-debug/ApplicationFacade.js",
+		"bin-debug/AccountAdapter.js",
+		"bin-debug/AssetAdapter.js",
 		"bin-debug/LoadingUI.js",
 		"bin-debug/Main.js",
 		"bin-debug/Platform.js",
@@ -36,7 +37,7 @@
 		"bin-debug/view/M5.js",
 		"bin-debug/view/M6.js",
 		"bin-debug/view/MiniGameCubeStopMediator.js",
-		"bin-debug/AssetAdapter.js",
+		"bin-debug/ApplicationFacade.js",
 		"bin-debug/view/MiniGameInputMediator.js",
 		"bin-debug/view/MiniGameJigsawM08Mediator.js",
 		"bin-debug/view/MiniGameJigsawM16Mediator.js",
