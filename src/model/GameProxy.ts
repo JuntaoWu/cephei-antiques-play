@@ -9,6 +9,8 @@ module game {
         public static PASS_MINIGAME: string = "pass_minigame";
 
         public playerInfo;
+        public pointHunag: number = 1;
+        public pointMu: number = 1; 
 
         public constructor() {
             super(GameProxy.NAME);
@@ -20,6 +22,14 @@ module game {
 				this._questions = new Map(Object.entries(RES.getRes("question_json")));
 			}
 			return this._questions;
+		}
+        
+        private _chapterPlot: Map<string, any>;
+		public get chapterPlot(): Map<string, any> {
+			if (!this._chapterPlot) {
+				this._chapterPlot = new Map(Object.entries(RES.getRes("chapter-plot_json")));
+			}
+			return this._chapterPlot;
 		}
     }
 }

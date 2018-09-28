@@ -1,0 +1,18 @@
+{
+  "1": {
+    "id": 1,
+    "question": "",
+    "option1": "A 哼，明知故问。",
+    "option2": "B 你说什么我完全不知道！",
+    "result1": 1,
+    "result2": -1
+  },
+  "2": {
+    "id": 2,
+    "question": "",
+    "option1": "A 你到底是何方神圣？",
+    "option2": "B 你想从我这得到什么？",
+    "result1": -2,
+    "result2": 2
+  }
+}
