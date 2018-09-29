@@ -106,20 +106,22 @@ module game {
                     this.gameScreen.plotSelectList.visible = true;
                     let plotOption = this.plotOptions.get(plot.talkId.toString());
                     console.log(plotOption)
-                    this.gameScreen.question = plotOption.question;
-                    let options = [
-                        {
-                            option: plotOption.option1,
-                            result: plotOption.result1
-                        },
-                        {
-                            option: plotOption.option2,
-                            result: plotOption.result2
-                        }
-                    ]
-                    this.gameScreen.plotSelectList.dataProvider = new eui.ArrayCollection(options);
-                    this.gameScreen.plotSelectList.itemRenderer = QuestionSelectItemRenderer;
-                    this.gameScreen.scrollGroup.height = 180;
+                    if (plotOption) {
+                        this.gameScreen.question = plotOption.question || "";
+                        let options = [
+                            {
+                                option: plotOption.option1,
+                                result: plotOption.result1
+                            },
+                            {
+                                option: plotOption.option2,
+                                result: plotOption.result2
+                            }
+                        ]
+                        this.gameScreen.plotSelectList.dataProvider = new eui.ArrayCollection(options);
+                        this.gameScreen.plotSelectList.itemRenderer = QuestionSelectItemRenderer;
+                        this.gameScreen.scrollGroup.height = 180;
+                    }
                 }
             }
         }
