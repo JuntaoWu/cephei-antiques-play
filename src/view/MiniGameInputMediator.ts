@@ -22,11 +22,11 @@ module game {
             for (let i = 0; i < this.gameInput.answer.length; i++) {
                 this.inputTextList.push("");
             }
-            let tLayout:eui.TileLayout = new eui.TileLayout();
+            let tLayout: eui.TileLayout = new eui.TileLayout();
             tLayout.horizontalGap = 20;
             tLayout.verticalGap = 20;
             tLayout.orientation = "columns";
-            tLayout.requestedColumnCount = this.gameInput.answer.length < 7 ? this.gameInput.answer.length : 6; 
+            tLayout.requestedColumnCount = this.gameInput.answer.length < 7 ? this.gameInput.answer.length : 6;
             this.gameInput.inputItemList.layout = tLayout;
             this.gameInput.inputItemList.dataProvider = new eui.ArrayCollection(this.inputTextList);
             this.gameInput.inputItemList.itemRenderer = InputItemRenderer;
@@ -35,7 +35,7 @@ module game {
         public inputTextList: Array<string>;
         public isSend: boolean = false;
 
-        private onChang(e:egret.Event){
+        private onChang(e: egret.Event) {
             this.inputTextList = this.inputTextList.map(i => "");
             e.target.text.split("").forEach((v, i) => {
                 if (i < this.inputTextList.length) {

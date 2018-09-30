@@ -33,7 +33,7 @@ class Main extends eui.UILayer {
     protected createChildren(): void {
         super.createChildren();
         Object.entries = typeof Object.entries === 'function' ? Object.entries : obj => Object.keys(obj).map(k => [k, obj[k]] as [string, any]);
-        
+
         egret.lifecycle.addLifecycleListener((context) => {
             // custom lifecycle plugin
         })
@@ -69,9 +69,14 @@ class Main extends eui.UILayer {
 
     private async loadResource() {
         try {
+            const checkVersionResult: any = await AccountAdapter.checkForUpdate();
+
+            if (checkVersionResult.hasUpdate) {
+                platform.applyUpdate(checkVersionResult.version);
+            }
             await RES.loadConfig("default.res.json", `${game.Constants.ResourceEndpoint}resource/`);
             await this.loadTheme();
-            
+
             await RES.loadGroup("loading", 1);
             const loadingView = new LoadingUI();
             this.stage.addChild(loadingView);
