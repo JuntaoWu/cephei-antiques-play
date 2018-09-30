@@ -30,14 +30,14 @@ module game {
 
 			this.paperList = [this.no1, this.no2, this.no3, this.no4, this.no5, this.no6, this.no7, this.no8];
 			this.answerList = [
-				{ x: 451.5, y: 250, ro: 0 },
-				{ x: 271.5, y: 100, ro: 0 },
-				{ x: 86.5, y: 100, ro: 0 },
-				{ x: 451.5, y: 100, ro: 0 },
-				{ x: 86.5, y: 250, ro: 0 },
-				{ x: 631.5, y: 250, ro: 0 },
-				{ x: 631.5, y: 100, ro: 0 },
-				{ x: 271.5, y: 250, ro: 0 }
+				{ x: 450.5, y: 250, ro: 0 },
+				{ x: 270.5, y: 100, ro: 0 },
+				{ x: 85.5, y: 100, ro: 0 },
+				{ x: 450.5, y: 100, ro: 0 },
+				{ x: 85.5, y: 250, ro: 0 },
+				{ x: 630.5, y: 250, ro: 0 },
+				{ x: 630.5, y: 100, ro: 0 },
+				{ x: 270.5, y: 250, ro: 0 }
 			];
 
 			this.paperList.forEach(ele => {
@@ -51,48 +51,65 @@ module game {
 		private first_img_x: number;
 		private first_img_y: number;
 		private first_img: eui.Image;
+		private is_touch_begin: boolean = false;
 		private record(img: eui.Image) {
-			this.first_img = img;
-			this.first_img.parent.addChild(this.first_img);
-			this.first_img_x = img.x;
-			this.first_img_y = img.y;
+			if (this.is_move_end) {
+				this.first_img = img;
+				this.first_img.parent.addChild(this.first_img);
+				this.first_img_x = img.x;
+				this.first_img_y = img.y;
+				this.is_move_end = false;
+				this.is_touch_begin = true;
+			}
 		}
 
-		private rotate(img: eui.Image) {
-			img.rotation = img.rotation == 0 ? 180 : 0;
-		}
-
+		private is_touch_move: boolean = false;
 		private move(s: egret.TouchEvent) {
-			this.first_img.x = s.stageX;
-			this.first_img.y = (s.stageY - 90 - 64.5);
+			if (this.is_touch_begin) {
+				this.first_img.x = s.stageX;
+				this.first_img.y = (s.stageY - 90 - 64.5);
+				this.is_touch_move = true;
+			}
 		}
 
 		private second_img_x: number;
 		private second_img_y: number;
 		private ischang: boolean = false;
 		private transposition(s: egret.TouchEvent) {
-			this.ischang = false;
-			if (this.first_img.x == this.first_img_x && this.first_img.y == this.first_img_y) {
-				this.first_img.rotation = this.first_img.rotation == 0 ? 180 : 0;
-			}
-
-			this.paperList.forEach(ele => {
-				if ((ele.x - 86.5) <= s.stageX && s.stageX <= (ele.x + 86.5) && (ele.y - 64.5) <= (s.stageY - 90) && (s.stageY - 90) <= (ele.y + 64.5) && ele != this.first_img) {
-					this.first_img.x = ele.x;
-					this.first_img.y = ele.y;
-					ele.x = this.first_img_x;
-					ele.y = this.first_img_y;
-					this.ischang = true;
-					// egret.Tween.get(ele).to({ x: this.first_img_x, y: this.first_img_y }, 1000);				
+			if (this.is_touch_move) {
+				this.is_touch_begin = false;
+				this.ischang = false;
+				if (this.first_img.x == this.first_img_x && this.first_img.y == this.first_img_y) {
+					this.first_img.rotation = this.first_img.rotation == 0 ? 180 : 0;
+				} else {
+					this.paperList.forEach(ele => {
+						// if ((ele.x - 84.5) <= s.stageX && s.stageX <= (ele.x + 84.5) && (ele.y - 64.5) <= (s.stageY - 180) && (s.stageY - 180) <= (ele.y + 64.5) && ele != this.first_img) {
+						if (Math.abs(this.first_img.x - ele.x) <= 84.5 && Math.abs(this.first_img.y - ele.y) <= 64.5 && this.first_img != ele) {
+							// this.first_img.x = ele.x;
+							// this.first_img.y = ele.y;
+							egret.Tween.get(this.first_img).to({ x: ele.x, y: ele.y }, 300);
+							// ele.x = this.first_img_x;
+							// ele.y = this.first_img_y;
+							egret.Tween.get(ele).to({ x: this.first_img_x, y: this.first_img_y }, 300);
+							this.ischang = true;
+						}
+					});
 				}
-			});
 
-			if (!this.ischang) {
-				this.first_img.x = this.first_img_x;
-				this.first_img.y = this.first_img_y;
+				if (!this.ischang) {
+					// this.first_img.x = this.first_img_x;
+					// this.first_img.y = this.first_img_y;
+					egret.Tween.get(this.first_img).to({ x: this.first_img_x, y: this.first_img_y }, 300);
+				}
+				egret.setTimeout(this.move_end, this, 300);
+				this.iswin();
+				this.is_touch_move = false;
 			}
+		}
 
-			this.iswin();
+		private is_move_end: boolean = true;
+		private move_end() {
+			this.is_move_end = true;
 		}
 
 		private ww: boolean = true;
