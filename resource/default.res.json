@@ -1,7 +1,7 @@
 {
 	"groups": [
 		{
-			"keys": "checkbox_select_disabled_png,checkbox_select_down_png,checkbox_select_up_png,checkbox_unselect_png,selected_png,border_png,header_png,radiobutton_select_disabled_png,radiobutton_select_down_png,radiobutton_select_up_png,radiobutton_unselect_png,roundthumb_png,thumb_png,track_png,tracklight_png,handle_png,off_png,on_png,button_down_png,button_up_png,thumb_pb_png,track_pb_png,track_sb_png,question_json,m01,m03,m04,m06,m10,m11,m12,m15,m17,m19,m21,m18-item_json,m20-item_json,m16-item_json,m24,m02,m05,m07,m08,m09,m22,m18-bg,m20-bg,m16-bg,m20,m16,m18,m08-item_json,m08-bg,select-options_json,m42,m42-item_json,game-bg,game-btn_json,input-item,option-bg,m42-tips,input-bg,btn-finish,1_png,2_png,3_png,4_png,5_png,6_png,7_png,8_png,M14_bg_png,bg_png,ha1_png,ha2_png,ha3_png,ha4_png,ha5_png,bai_png,hei_png,hong_png,huang_png,kuang_png,lan_png,M2bg_png,bg1_png,bg2_png,shang_png,trunoff_png,turnon_png,word_guo,word_ren,word_shi,word_xin,xia_png,M5_1_png,M5_2_png,M5_3_png,M5_4_png,M5_5_png,M5_6_png,M5_7_png,M5_8_png,M5_9_png,M5_bg_png,chapter-plot_json,plot-options_json,s67,s2,s4,s5,s6,s11,s12,s13,s20,s23,s25,s26,s27,s28,s29,s31,s32,s33,s35,s38,s43,s44,s54,s55,s59,s62,s63,s66,s33_png,s13_png,huangyanyan,img-h,img-m,m-bar,bar-bg,h-bar,munai,key2_png,key1_png,m13_png",
+			"keys": "checkbox_select_disabled_png,checkbox_select_down_png,checkbox_select_up_png,checkbox_unselect_png,selected_png,border_png,header_png,radiobutton_select_disabled_png,radiobutton_select_down_png,radiobutton_select_up_png,radiobutton_unselect_png,roundthumb_png,thumb_png,track_png,tracklight_png,handle_png,off_png,on_png,button_down_png,button_up_png,thumb_pb_png,track_pb_png,track_sb_png,question_json,m01,m03,m04,m06,m10,m11,m12,m15,m17,m19,m21,m18-item_json,m20-item_json,m16-item_json,m24,m02,m05,m07,m08,m09,m22,m18-bg,m20-bg,m16-bg,m20,m16,m18,m08-item_json,m08-bg,select-options_json,m42,m42-item_json,game-bg,game-btn_json,input-item,option-bg,m42-tips,input-bg,btn-finish,1_png,2_png,3_png,4_png,5_png,6_png,7_png,8_png,M14_bg_png,bg_png,ha1_png,ha2_png,ha3_png,ha4_png,ha5_png,bai_png,hei_png,hong_png,huang_png,kuang_png,lan_png,M2bg_png,bg1_png,bg2_png,shang_png,trunoff_png,turnon_png,word_guo,word_ren,word_shi,word_xin,xia_png,M5_1_png,M5_2_png,M5_3_png,M5_4_png,M5_5_png,M5_6_png,M5_7_png,M5_8_png,M5_9_png,M5_bg_png,chapter-plot_json,plot-options_json,s67,s2,s4,s5,s6,s11,s12,s13,s20,s23,s25,s26,s27,s28,s29,s31,s32,s35,s38,s43,s44,s54,s55,s59,s62,s63,s66,s33_png,huangyanyan,img-h,img-m,m-bar,bar-bg,h-bar,munai,key2_png,key1_png,m13_png,s0,s19,s56,s61,s65,s64,s68,s14,s16,s58,s9,s60,s1,s3,s10,s15,s17,s18,s21,s22,s53,s57",
 			"name": "preload"
 		},
 		{
@@ -652,11 +652,6 @@
 			"name": "s32"
 		},
 		{
-			"url": "assets/scene/s33.jpg",
-			"type": "image",
-			"name": "s33"
-		},
-		{
 			"url": "assets/scene/s35.jpg",
 			"type": "image",
 			"name": "s35"
@@ -712,11 +707,6 @@
 			"name": "s33_png"
 		},
 		{
-			"url": "assets/scene/s13.png",
-			"type": "image",
-			"name": "s13_png"
-		},
-		{
 			"url": "assets/game/huangyanyan.png",
 			"type": "image",
 			"name": "huangyanyan"
@@ -752,19 +742,129 @@
 			"name": "munai"
 		},
 		{
-			"name": "key2_png",
+			"url": "assets/M3/key2.png",
 			"type": "image",
-			"url": "assets/M3/key2.png"
+			"name": "key2_png"
 		},
 		{
-			"name": "key1_png",
+			"url": "assets/M3/key1.png",
 			"type": "image",
-			"url": "assets/M3/key1.png"
+			"name": "key1_png"
 		},
 		{
-			"name": "m13_png",
+			"url": "assets/questions/m13.png",
 			"type": "image",
-			"url": "assets/questions/m13.png"
+			"name": "m13_png"
+		},
+		{
+			"url": "assets/scene/s0.png",
+			"type": "image",
+			"name": "s0"
+		},
+		{
+			"url": "assets/scene/s19.png",
+			"type": "image",
+			"name": "s19"
+		},
+		{
+			"url": "assets/scene/s56.png",
+			"type": "image",
+			"name": "s56"
+		},
+		{
+			"url": "assets/scene/s61.png",
+			"type": "image",
+			"name": "s61"
+		},
+		{
+			"url": "assets/scene/s65.png",
+			"type": "image",
+			"name": "s65"
+		},
+		{
+			"url": "assets/scene/s64.png",
+			"type": "image",
+			"name": "s64"
+		},
+		{
+			"url": "assets/scene/s68.png",
+			"type": "image",
+			"name": "s68"
+		},
+		{
+			"url": "assets/scene/s14.png",
+			"type": "image",
+			"name": "s14"
+		},
+		{
+			"url": "assets/scene/s16.png",
+			"type": "image",
+			"name": "s16"
+		},
+		{
+			"url": "assets/scene/s58.png",
+			"type": "image",
+			"name": "s58"
+		},
+		{
+			"url": "assets/scene/s9.png",
+			"type": "image",
+			"name": "s9"
+		},
+		{
+			"url": "assets/scene/s60.png",
+			"type": "image",
+			"name": "s60"
+		},
+		{
+			"url": "assets/scene/s1.png",
+			"type": "image",
+			"name": "s1"
+		},
+		{
+			"url": "assets/scene/s3.png",
+			"type": "image",
+			"name": "s3"
+		},
+		{
+			"url": "assets/scene/s10.png",
+			"type": "image",
+			"name": "s10"
+		},
+		{
+			"url": "assets/scene/s15.png",
+			"type": "image",
+			"name": "s15"
+		},
+		{
+			"url": "assets/scene/s17.png",
+			"type": "image",
+			"name": "s17"
+		},
+		{
+			"url": "assets/scene/s18.png",
+			"type": "image",
+			"name": "s18"
+		},
+		{
+			"url": "assets/scene/s21.png",
+			"type": "image",
+			"name": "s21"
+		},
+		{
+			"url": "assets/scene/s22.png",
+			"type": "image",
+			"name": "s22"
+		},
+		{
+			"url": "assets/scene/s53.png",
+			"type": "image",
+			"name": "s53"
+		},
+		{
+			"url": "assets/scene/s57.png",
+			"type": "image",
+			"name": "s57"
 		}
 	]
 }
