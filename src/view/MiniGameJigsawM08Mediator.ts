@@ -23,31 +23,31 @@ module game {
         }
 
         public async initData() {
-            let imgList = ["m08_1", "", "m08_2", "m08_3", "m08_4", "m08_5", "m08_6", "m08_7", "m08_8"];
-            let changeNum = 1;
-            while (changeNum % 2 != 0) {
-                for (let i = 0; i < 9; i++) {
-                    let index1 = Math.floor(Math.random() * 9);
-                    let index2 = Math.floor(Math.random() * 9);
-                    if (index1 != index2) {
-                        let temp = imgList[index1];
-                        imgList[index1] = imgList[index2];
-                        imgList[index2] = temp;
-                    }
-                }
-                //计算交换后不含空元素逆序数
-                changeNum = 0;
-                for (let i = 0; i < imgList.length; i++) {
-                    if (imgList[i]) {
-                        for (let j = imgList.length - 1; j > i; j--) {
-                            if (imgList[j] && imgList[i] > imgList[j]) {
-                                changeNum++
-                            }
-                        }
-                    }
-                }
-            } 
-            console.log("changeNum", changeNum, imgList);
+            let imgList = ["m08_2", "m08_5", "m08_8", "m08_4", "", "m08_7", "m08_1", "m08_3", "m08_6"];
+            // let changeNum = 1;
+            // while (changeNum % 2 != 0) {
+            //     for (let i = 0; i < 9; i++) {
+            //         let index1 = Math.floor(Math.random() * 9);
+            //         let index2 = Math.floor(Math.random() * 9);
+            //         if (index1 != index2) {
+            //             let temp = imgList[index1];
+            //             imgList[index1] = imgList[index2];
+            //             imgList[index2] = temp;
+            //         }
+            //     }
+            //     //计算交换后不含空元素逆序数
+            //     changeNum = 0;
+            //     for (let i = 0; i < imgList.length; i++) {
+            //         if (imgList[i]) {
+            //             for (let j = imgList.length - 1; j > i; j--) {
+            //                 if (imgList[j] && imgList[i] > imgList[j]) {
+            //                     changeNum++
+            //                 }
+            //             }
+            //         }
+            //     }
+            // } 
+            // console.log("changeNum", changeNum, imgList);
 
             this.jigsawImgGroupList.forEach((i, index) => {
                 let jigsawImg = i.getChildByName("jigsawImg") as eui.Image;

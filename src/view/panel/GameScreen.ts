@@ -9,35 +9,41 @@ module game {
         }
 
         public createCompleteEvent(event: eui.UIEvent): void {
-            this.textTipsGroup.y = this.stage.stageHeight - this.textTipsGroup.height - 150;
+            this.height = this.stage.stageHeight;
             this.removeEventListener(eui.UIEvent.CREATION_COMPLETE, this.createCompleteEvent, this);
             ApplicationFacade.getInstance().registerMediator(new GameScreenMediator(this));
         }
 
-        public question: any;
+        public plotRes: string; //情节图
+        public questionRes: string; //谜题图
+        public question: string; 
         public points: string;
         public description: string;
-        public showBottomGroup: boolean;
         public showMiniGame: boolean;
+
+        public sceneGroup: eui.Group;
+        public questionGroup: eui.Group;
+        public textGroup: eui.Group;
+        public huangAndMubar: eui.Group;
         public scrollGroup: eui.Scroller;
         public bottomGroup: eui.Group;
+        public plotSelectList: eui.List;
         public nextTest: eui.Button;
         public btnTips: eui.Button;
         public btnHelp: eui.Button;
-        public textTipsGroup: eui.Group;
 
         public inputGroup: MiniGameInput = new MiniGameInput();
         public selectGroup: MiniGameSelect = new MiniGameSelect();
 
-        public showInput() {
+        public showInput(answer: string) {
             this.bottomGroup.removeChildren();
-            this.inputGroup.setAnswer(this.question.answer);
+            this.inputGroup.setAnswer(answer);
             this.bottomGroup.addChild(this.inputGroup);
         }
 
-        public showSelect() {
+        public showSelect(optionsId: number) {
             this.bottomGroup.removeChildren();
-            this.selectGroup.setOptionsId(this.question.optionsId);
+            this.selectGroup.setOptionsId(optionsId);
             this.bottomGroup.addChild(this.selectGroup);
         }
     }

@@ -3,7 +3,7 @@
     <e:Image source="m20-bg"/>
     <e:List id="buttonList" x="120" y="35" width="485" height="480">
         <e:layout>
-            <e:TileLayout orientation="columns" requestedColumnCount="3" verticalGap="23" horizontalGap="32" />
+            <e:TileLayout orientation="rows" requestedColumnCount="3" verticalGap="23" horizontalGap="32" />
         </e:layout>
     </e:List>
 </e:Skin>

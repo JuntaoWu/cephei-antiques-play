@@ -43,6 +43,7 @@ module game {
                 }
             })
             if (e.target.text == this.gameInput.answer && !this.isSend) {
+                e.target.text = "";
                 this.sendNotification(GameProxy.PASS_MINIGAME);
                 this.isSend = true;
             }
@@ -51,7 +52,7 @@ module game {
         }
 
         private confirmClick() {
-            let text = this.inputTextList.join();
+            let text = this.inputTextList.join("");
             if (text == this.gameInput.answer && !this.isSend) {
                 this.sendNotification(GameProxy.PASS_MINIGAME);
                 this.isSend = true;

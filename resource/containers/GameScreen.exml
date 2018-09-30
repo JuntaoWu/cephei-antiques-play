@@ -29,22 +29,43 @@
             </e:Skin>
         </e:Button>
     </e:Group>
-    <e:Group width="720" y="150">
-        <e:Group id="textTipsGroup">
-            <e:Image width="720" source="game-bg"/>
-            <e:Scroller id="scrollGroup" width="640" y="15" horizontalCenter="0" height="180">
-                <e:viewport>
-                    <e:Group>
-                        <e:Label text="{description}" textColor="0x000000" y="20" horizontalCenter="0" width="640"/>
-                    </e:Group>
-                </e:viewport>
-            </e:Scroller>
-            <e:Label text="{question.question}" y="220" textColor="0x000000" horizontalCenter="0" width="640" textAlign="center"/>
-            <e:Group id="bottomGroup" visible="{showBottomGroup}" bottom="0" horizontalCenter="0">
+    <e:Group id="sceneGroup" width="720" top="150">
+        <e:Image width="720" source="{plotRes}"/>
+        <e:Group width="720" y="25">
+            <e:Image source="img-h" left="20"/>
+            <e:Image source="img-m" right="20"/>
+            <e:Group horizontalCenter="0" width="490" y="10">
+                <e:Image source="bar-bg" width="100%"  scale9Grid="66,3,397,23"/>
+                <e:Image source="huangyanyan" y="29" width="150" left="19"/>
+                <e:Image y="29" source="munai" right="19" width="150"/>
+                <e:Group id="huangAndMubar" horizontalCenter="0" width="450" y="2">
+                    <e:Image name="huangyanyan" source="h-bar" maxWidth="450" left="0"/>
+                    <e:Image name="munai" source="m-bar" maxWidth="450" right="-1"/>
+                </e:Group>
             </e:Group>
         </e:Group>
+    </e:Group>
+    <e:Group id="textGroup" bottom="0" top="750">
+        <e:Image width="720" source="game-bg" height="100%" scale9Grid="90,70,540,422"/>
+        <e:Scroller id="scrollGroup" width="640" y="40" horizontalCenter="0" height="180">
+            <e:viewport>
+                <e:Group>
+                    <e:Label text="{description}" textColor="0x000000" y="20" horizontalCenter="0" width="640"/>
+                </e:Group>
+            </e:viewport>
+        </e:Scroller>
+        <e:Label text="{question}" y="240" textColor="0x000000" horizontalCenter="0" width="640" textAlign="center"/>
+        <e:Group id="bottomGroup" bottom="0" horizontalCenter="0">
+        </e:Group>
+        <e:List id="plotSelectList" visible="false" bottom="20" horizontalCenter="0" width="640">
+            <e:layout>
+                <e:TileLayout orientation="columns" requestedColumnCount="1" />
+            </e:layout>
+        </e:List>
+    </e:Group>
+    <e:Group id="questionGroup" visible="false" width="720" top="150">
         <e:Group>
-            <e:Image width="720" source="{question.img}"/>
+            <e:Image width="720" source="{questionRes}"/>
             <!-- 小游戏 -->
             <game:MiniGame visible="{showMiniGame}" width="720" height="600" />
             <e:Button id="btnTips" bottom="35" left="30">
