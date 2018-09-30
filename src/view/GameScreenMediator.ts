@@ -43,6 +43,8 @@ module game {
             this.gameScreen.showMiniGame = this.showResult = this.isQuestion = false;
             this.gameScreen.question = this.gameScreen.points = "";
             this.gameScreen.scrollGroup.height = 480;
+            this.gameScreen.scrollGroup.viewport.scrollH = 0;
+            this.gameScreen.scrollGroup.viewport.scrollV = 0;
             
             let barH = this.gameScreen.huangAndMubar.getChildByName("huangyanyan") as eui.Image;
             let barM = this.gameScreen.huangAndMubar.getChildByName("munai") as eui.Image;
@@ -57,7 +59,7 @@ module game {
                 ...this.proxy.chapterPlot.get(this.id.toString())
             }
             console.log(plot);
-            if (plot.type == plotType.question || !plot.type) {
+            if (plot.type == plotType.Question || !plot.type) {
                 this.gameScreen.sceneGroup.visible = false;
                 this.gameScreen.questionGroup.visible = this.isQuestion = true;
 
@@ -93,15 +95,28 @@ module game {
                     this.gameScreen.description = plot.description;
                 }
                 
-                if (plot.type == plotType.sceneChange) {
+                if (plot.type == plotType.ChangeScene) {
                     this.gameScreen.plotRes = plot.res;
+                    if (this.addScene) {
+                        this.gameScreen.sceneGroup.removeChild(this.addScene);
+                        this.addScene = null;
+                    }
                 }
-                else if (plot.type == plotType.sceneAdd) {
+                else if (plot.type == plotType.AddScene) {
                     if (!this.addScene) {
                         this.addScene = new eui.Image();
                     }
                     this.addScene.source = plot.res;
+                    this.addScene.scaleX = this.addScene.scaleY = 0.5;
+                    this.addScene.horizontalCenter = 0;
+                    this.addScene.y = 135;
                     this.gameScreen.sceneGroup.addChild(this.addScene);
+                }
+                else if (plot.type == plotType.DeleteScene) {
+                    this.addScene && this.gameScreen.sceneGroup.removeChild(this.addScene);
+                }
+                else if (plot.type == plotType.SceneReplenish) {
+                    this.gameScreen.description = this.gameScreen.description + plot.description;
                 }
 
                 if (plot.sound) {
@@ -113,7 +128,7 @@ module game {
                 }
                 if (plot.talkId) {
                     this.gameScreen.plotSelectList.visible = true;
-                    this.gameScreen.scrollGroup.height = 180;
+                    this.gameScreen.scrollGroup.height = 280;
                     let plotOption = this.plotOptions.get(plot.talkId.toString());
                     if (plotOption) {
                         this.gameScreen.question = plotOption.question || "";
@@ -129,6 +144,17 @@ module game {
                         ]
                         this.gameScreen.plotSelectList.dataProvider = new eui.ArrayCollection(options);
                         this.gameScreen.plotSelectList.itemRenderer = QuestionSelectItemRenderer;
+                    }
+                }
+                //场景图
+                if (!this.gameScreen.plotRes) {
+                    let historyId = this.id - 1;
+                    while (!this.gameScreen.plotRes) {
+                        let plotHistory = this.proxy.chapterPlot.get(historyId.toString());
+                        if (plotHistory.type == plotType.ChangeScene) {
+                            this.gameScreen.plotRes = plotHistory.res;
+                        }
+                        historyId--;
                     }
                 }
             }

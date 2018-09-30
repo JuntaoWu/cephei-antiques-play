@@ -42,10 +42,12 @@ module game {
     }
 
     export const plotType = {
-        sceneChange: "场景切换",
-        sceneAdd: "添加场景",
-        textChange: "文本切换",
-        playSound: "播放音效",
-        question: "谜题",
+        ChangeScene: "切换场景",
+        AddScene: "添加场景",
+        DeleteScene: "删除场景",
+        ChangeText: "切换文本",
+        PlaySound: "播放音效",
+        Question: "谜题",
+        SceneReplenish : "场景切换追加",
     }
 }

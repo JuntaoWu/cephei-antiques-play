@@ -30,7 +30,7 @@
         </e:Button>
     </e:Group>
     <e:Group id="sceneGroup" width="720" top="150">
-        <e:Image width="720" source="{plotRes}" height="590"/>
+        <e:Image maxWidth="720" horizontalCenter="0" source="{plotRes}" height="590"/>
         <e:Group width="720" y="25">
             <e:Image source="img-h" left="20"/>
             <e:Image source="img-m" right="20"/>
@@ -50,11 +50,11 @@
         <e:Scroller id="scrollGroup" width="640" y="40" horizontalCenter="0" height="180">
             <e:viewport>
                 <e:Group>
-                    <e:Label text="{description}" textColor="0x000000" y="20" horizontalCenter="0" width="640"/>
+                    <e:Label text="{description}" lineSpacing="10" textColor="0x000000" y="20" horizontalCenter="0" width="640"/>
                 </e:Group>
             </e:viewport>
         </e:Scroller>
-        <e:Label text="{question}" y="240" textColor="0x000000" horizontalCenter="0" width="640" textAlign="center"/>
+        <e:Label text="{question}" y="240" lineSpacing="10" textColor="0x000000" horizontalCenter="0" width="640" textAlign="center"/>
         <e:Group id="bottomGroup" bottom="0" horizontalCenter="0">
         </e:Group>
         <e:List id="plotSelectList" visible="false" bottom="20" horizontalCenter="0" width="640">
