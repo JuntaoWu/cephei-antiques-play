@@ -29,7 +29,7 @@ module game {
             return this._plotOptions;
         }
 
-        public id: number = 132;
+        public id: number = 1;
         public showResult: boolean;
         public isQuestion: boolean;
         public questionId: number;

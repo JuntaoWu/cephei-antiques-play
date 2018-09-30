@@ -76,7 +76,7 @@ module game {
 		private second_img_y: number;
 		private ischang: boolean = false;
 		private transposition(s: egret.TouchEvent) {
-			if (this.is_touch_move) {
+			if (this.is_touch_move || this.is_touch_begin) {
 				this.is_touch_begin = false;
 				this.ischang = false;
 				if (this.first_img.x == this.first_img_x && this.first_img.y == this.first_img_y) {
