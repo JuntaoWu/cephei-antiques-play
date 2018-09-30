@@ -14,7 +14,7 @@ module game {
             this.gameScreen.textGroup.addEventListener(egret.TouchEvent.TOUCH_BEGIN, this.touchBegin, this);
             this.gameScreen.textGroup.addEventListener(egret.TouchEvent.TOUCH_END, this.touchEnd, this);
             this.gameScreen.plotSelectList.addEventListener(eui.ItemTapEvent.ITEM_TAP, this.selectItem, this);
-            
+
             this.gameScreen.nextTest.addEventListener(egret.TouchEvent.TOUCH_TAP, this.nextTestClick, this);
             this.gameScreen.btnTips.addEventListener(egret.TouchEvent.TOUCH_TAP, this.btnTipsClick, this);
             this.gameScreen.addEventListener(egret.Event.ADDED_TO_STAGE, this.initData, this);
@@ -22,14 +22,14 @@ module game {
         }
 
         private _plotOptions: Map<string, any>;
-		public get plotOptions(): Map<string, any> {
-			if (!this._plotOptions) {
-				this._plotOptions = new Map(Object.entries(RES.getRes("plot-options_json")));
-			}
-			return this._plotOptions;
-		}
+        public get plotOptions(): Map<string, any> {
+            if (!this._plotOptions) {
+                this._plotOptions = new Map(Object.entries(RES.getRes("plot-options_json")));
+            }
+            return this._plotOptions;
+        }
 
-        public id: number = 1;
+        public id: number = 132;
         public showResult: boolean;
         public isQuestion: boolean;
         public questionId: number;
@@ -43,7 +43,7 @@ module game {
             this.gameScreen.showMiniGame = this.showResult = this.isQuestion = false;
             this.gameScreen.question = this.gameScreen.points = "";
             this.gameScreen.scrollGroup.height = 480;
-            
+
             let barH = this.gameScreen.huangAndMubar.getChildByName("huangyanyan") as eui.Image;
             let barM = this.gameScreen.huangAndMubar.getChildByName("munai") as eui.Image;
             barH.width = this.gameScreen.huangAndMubar.width * this.proxy.pointHunag / (this.proxy.pointHunag + this.proxy.pointMu);
@@ -70,7 +70,7 @@ module game {
                 this.rightText = question.right;
                 this.questionPoints = [question.points1, question.points2];
                 this.showPointsNum = 0;
-                
+
                 this.gameScreen.scrollGroup.height = 180;
                 this.gameScreen.scrollGroup.viewport.scrollH = 0;
                 if (question.type == "填空") {
@@ -92,7 +92,7 @@ module game {
                 if (!!plot.description) {
                     this.gameScreen.description = plot.description;
                 }
-                
+
                 if (plot.type == plotType.sceneChange) {
                     this.gameScreen.plotRes = plot.res;
                 }
