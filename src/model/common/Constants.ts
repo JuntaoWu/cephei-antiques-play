@@ -45,6 +45,7 @@ module game {
         sceneChange: "场景切换",
         sceneAdd: "添加场景",
         textChange: "文本切换",
+        playSound: "播放音效",
         question: "谜题",
     }
 }

@@ -30,7 +30,7 @@
         </e:Button>
     </e:Group>
     <e:Group id="sceneGroup" width="720" top="150">
-        <e:Image width="720" source="{plotRes}"/>
+        <e:Image width="720" source="{plotRes}" height="590"/>
         <e:Group width="720" y="25">
             <e:Image source="img-h" left="20"/>
             <e:Image source="img-m" right="20"/>
@@ -45,7 +45,7 @@
             </e:Group>
         </e:Group>
     </e:Group>
-    <e:Group id="textGroup" bottom="0" top="750">
+    <e:Group id="textGroup" bottom="0" top="740">
         <e:Image width="720" source="game-bg" height="100%" scale9Grid="90,70,540,422"/>
         <e:Scroller id="scrollGroup" width="640" y="40" horizontalCenter="0" height="180">
             <e:viewport>
@@ -59,7 +59,7 @@
         </e:Group>
         <e:List id="plotSelectList" visible="false" bottom="20" horizontalCenter="0" width="640">
             <e:layout>
-                <e:TileLayout orientation="columns" requestedColumnCount="1" />
+                <e:TileLayout orientation="columns" requestedColumnCount="1" verticalGap="20" columnWidth="640" />
             </e:layout>
         </e:List>
     </e:Group>

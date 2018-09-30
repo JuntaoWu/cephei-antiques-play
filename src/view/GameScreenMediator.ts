@@ -36,11 +36,12 @@ module game {
         public questionPoints: Array<string>;
         public rightText: string;
         public showPointsNum: number;
+        public addScene: eui.Image;
 
         public initData() {
             this.gameScreen.bottomGroup.visible = this.gameScreen.plotSelectList.visible = false;
             this.gameScreen.showMiniGame = this.showResult = this.isQuestion = false;
-            this.gameScreen.question = this.gameScreen.points = this.gameScreen.description = "";
+            this.gameScreen.question = this.gameScreen.points = "";
             this.gameScreen.scrollGroup.height = 480;
             
             let barH = this.gameScreen.huangAndMubar.getChildByName("huangyanyan") as eui.Image;
@@ -55,7 +56,6 @@ module game {
             plot = {
                 ...this.proxy.chapterPlot.get(this.id.toString())
             }
-            console.log(this.id);
             console.log(plot);
             if (plot.type == plotType.question || !plot.type) {
                 this.gameScreen.sceneGroup.visible = false;
@@ -89,23 +89,29 @@ module game {
             else {
                 this.gameScreen.sceneGroup.visible = true;
                 this.gameScreen.questionGroup.visible = false;
-                this.gameScreen.plotRes = plot.res;
-                this.gameScreen.description = plot.description;
+                if (!!plot.description) {
+                    this.gameScreen.description = plot.description;
+                }
                 
                 if (plot.type == plotType.sceneChange) {
-
+                    this.gameScreen.plotRes = plot.res;
                 }
                 else if (plot.type == plotType.sceneAdd) {
-
+                    if (!this.addScene) {
+                        this.addScene = new eui.Image();
+                    }
+                    this.addScene.source = plot.res;
+                    this.gameScreen.sceneGroup.addChild(this.addScene);
                 }
-                else if (plot.type == plotType.textChange) {
 
+                if (plot.sound) {
+                    let timeout = +plot.playTime.replace(/[s|S]/, "") * 1000;
+                    console.log(timeout)
+                    SoundPool.playSoundEffect(plot.sound);
                 }
-
                 if (plot.talkId) {
                     this.gameScreen.plotSelectList.visible = true;
                     let plotOption = this.plotOptions.get(plot.talkId.toString());
-                    console.log(plotOption)
                     if (plotOption) {
                         this.gameScreen.question = plotOption.question || "";
                         let options = [

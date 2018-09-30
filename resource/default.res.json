@@ -7,6 +7,10 @@
 		{
 			"keys": "loading-background,progress-bg,progress",
 			"name": "loading"
+		},
+		{
+			"keys": "Y1,Y10,Y11,Y12,Y13,Y14,Y15,Y16,Y2,Y3,Y4,Y5,Y6,Y7,Y8,Y9",
+			"name": "lazyload"
 		}
 	],
 	"resources": [
@@ -750,6 +754,86 @@
 			"url": "assets/game/munai.png",
 			"type": "image",
 			"name": "munai"
+		},
+		{
+			"url": "assets/sound/Y1.mp3",
+			"type": "sound",
+			"name": "Y1"
+		},
+		{
+			"url": "assets/sound/Y10.mp3",
+			"type": "sound",
+			"name": "Y10"
+		},
+		{
+			"url": "assets/sound/Y11.mp3",
+			"type": "sound",
+			"name": "Y11"
+		},
+		{
+			"url": "assets/sound/Y12.mp3",
+			"type": "sound",
+			"name": "Y12"
+		},
+		{
+			"url": "assets/sound/Y13.mp3",
+			"type": "sound",
+			"name": "Y13"
+		},
+		{
+			"url": "assets/sound/Y14.mp3",
+			"type": "sound",
+			"name": "Y14"
+		},
+		{
+			"url": "assets/sound/Y15.mp3",
+			"type": "sound",
+			"name": "Y15"
+		},
+		{
+			"url": "assets/sound/Y16.mp3",
+			"type": "sound",
+			"name": "Y16"
+		},
+		{
+			"url": "assets/sound/Y2.mp3",
+			"type": "sound",
+			"name": "Y2"
+		},
+		{
+			"url": "assets/sound/Y3.mp3",
+			"type": "sound",
+			"name": "Y3"
+		},
+		{
+			"url": "assets/sound/Y4.mp3",
+			"type": "sound",
+			"name": "Y4"
+		},
+		{
+			"url": "assets/sound/Y5.mp3",
+			"type": "sound",
+			"name": "Y5"
+		},
+		{
+			"url": "assets/sound/Y6.mp3",
+			"type": "sound",
+			"name": "Y6"
+		},
+		{
+			"url": "assets/sound/Y7.mp3",
+			"type": "sound",
+			"name": "Y7"
+		},
+		{
+			"url": "assets/sound/Y8.mp3",
+			"type": "sound",
+			"name": "Y8"
+		},
+		{
+			"url": "assets/sound/Y9.mp3",
+			"type": "sound",
+			"name": "Y9"
 		}
 	]
 }

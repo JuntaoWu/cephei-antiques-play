@@ -12,7 +12,7 @@
 		"libs/modules/puremvc/puremvc.js"
 	],
 	"game": [
-		"bin-debug/view/MiniGameFloorSwitchMediator.js",
+		"bin-debug/view/MiniGameCubeStopMediator.js",
 		"bin-debug/ApplicationFacade.js",
 		"bin-debug/LoadingUI.js",
 		"bin-debug/Main.js",
@@ -28,6 +28,8 @@
 		"bin-debug/model/GameProxy.js",
 		"bin-debug/model/common/CommonData.js",
 		"bin-debug/model/common/Constants.js",
+		"bin-debug/utils/DragonBones.js",
+		"bin-debug/utils/SoundPool.js",
 		"bin-debug/view/ApplicationMediator.js",
 		"bin-debug/view/GameScreenMediator.js",
 		"bin-debug/view/M14.js",
@@ -35,8 +37,8 @@
 		"bin-debug/view/M3_2.js",
 		"bin-debug/view/M5.js",
 		"bin-debug/view/M6.js",
-		"bin-debug/view/MiniGameCubeStopMediator.js",
 		"bin-debug/AssetAdapter.js",
+		"bin-debug/view/MiniGameFloorSwitchMediator.js",
 		"bin-debug/view/MiniGameInputMediator.js",
 		"bin-debug/view/MiniGameJigsawM08Mediator.js",
 		"bin-debug/view/MiniGameJigsawM16Mediator.js",
