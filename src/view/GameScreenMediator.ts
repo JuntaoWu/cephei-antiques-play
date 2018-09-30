@@ -107,10 +107,13 @@ module game {
                 if (plot.sound) {
                     let timeout = +plot.playTime.replace(/[s|S]/, "") * 1000;
                     console.log(timeout)
-                    SoundPool.playSoundEffect(plot.sound);
+                    egret.setTimeout(() => {
+                        SoundPool.playSoundEffect(plot.sound);
+                    }, this, timeout);
                 }
                 if (plot.talkId) {
                     this.gameScreen.plotSelectList.visible = true;
+                    this.gameScreen.scrollGroup.height = 180;
                     let plotOption = this.plotOptions.get(plot.talkId.toString());
                     if (plotOption) {
                         this.gameScreen.question = plotOption.question || "";
@@ -126,7 +129,6 @@ module game {
                         ]
                         this.gameScreen.plotSelectList.dataProvider = new eui.ArrayCollection(options);
                         this.gameScreen.plotSelectList.itemRenderer = QuestionSelectItemRenderer;
-                        this.gameScreen.scrollGroup.height = 180;
                     }
                 }
             }
