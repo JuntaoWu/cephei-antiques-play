@@ -31,6 +31,7 @@ module game {
         public nextTest: eui.Button;
         public btnTips: eui.Button;
         public btnHelp: eui.Button;
+        public sceneImg: eui.Image;
 
         public inputGroup: MiniGameInput = new MiniGameInput();
         public selectGroup: MiniGameSelect = new MiniGameSelect();

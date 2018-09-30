@@ -11,7 +11,13 @@ module game {
             super.createChildren();
         }
 
+        public fontSize: number;
+
         protected dataChanged(): void {
+            this.fontSize = 40;
+            if (this.data.option.length > 15) {
+                this.fontSize = 32;
+            }
             if (this.data.isSelected) {
                 this.scaleX = this.scaleY = 0.9;
             }

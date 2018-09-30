@@ -116,6 +116,19 @@ module game {
                 }
                 else if (plot.type == plotType.SceneReplenish) {
                     this.gameScreen.description = this.gameScreen.description + plot.description;
+                    if (plot.effect == "头晕目眩") {
+                        let runTime = 5, isRun = false;
+                        // while (runTime > 0) {
+                        //     if (!isRun) {
+                        //         isRun = true;
+                        //         egret.Tween.get(this.gameScreen.sceneImg).to({scaleX: 0.8, scaleY: 0.9}, 300).to({scaleX: 1, scaleY: 1}, 300).call(() => {
+                        //                     --runTime;
+                        //                     isRun = false;
+                        //                     console.log(2222)
+                        //                 }); 
+                        //     }
+                        // }
+                    }
                 }
 
                 if (plot.sound) {
@@ -155,6 +168,14 @@ module game {
                         }
                         historyId--;
                     }
+                }
+                //自动跳到下一条
+                if (plot.nextOneTime) {
+                    let timeout = +plot.playTime.replace(/[s|S]/, "") * 1000;
+                    console.log(timeout)
+                    egret.setTimeout(() => {
+                        this.nextTestClick;
+                    }, this, timeout);
                 }
             }
         }
@@ -210,7 +231,8 @@ module game {
         private touchEnd(e: egret.TouchEvent): void {
             console.log("TOUCH_END", e.stageX)
             e.stopImmediatePropagation();
-            if (!this.isQuestion && e.stageX < this.beforeX && Math.abs(e.stageY - this.beforeY) < 20) {
+            let touchEndTime = new Date().getTime();
+            if (!this.isQuestion && (e.stageX < this.beforeX - 20 && Math.abs(e.stageY - this.beforeY) < 20 || touchEndTime - this.touchBeginTime < 300)) {
                 this.nextTestClick();
             }
         }
