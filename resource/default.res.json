@@ -1,7 +1,7 @@
 {
 	"groups": [
 		{
-			"keys": "checkbox_select_disabled_png,checkbox_select_down_png,checkbox_select_up_png,checkbox_unselect_png,selected_png,border_png,header_png,radiobutton_select_disabled_png,radiobutton_select_down_png,radiobutton_select_up_png,radiobutton_unselect_png,roundthumb_png,thumb_png,track_png,tracklight_png,handle_png,off_png,on_png,button_down_png,button_up_png,thumb_pb_png,track_pb_png,track_sb_png,question_json,m01,m03,m04,m06,m10,m11,m12,m15,m17,m19,m21,m18-item_json,m20-item_json,m16-item_json,m24,m02,m05,m07,m08,m09,m22,m18-bg,m20-bg,m16-bg,m20,m16,m18,m08-item_json,m08-bg,select-options_json,m42,m42-item_json,game-bg,game-btn_json,input-item,option-bg,m42-tips,input-bg,btn-finish,1_png,2_png,3_png,4_png,5_png,6_png,7_png,8_png,M14_bg_png,bg_png,ha1_png,ha2_png,ha3_png,ha4_png,ha5_png,bai_png,hei_png,hong_png,huang_png,kuang_png,lan_png,M2bg_png,bg1_png,bg2_png,shang_png,trunoff_png,turnon_png,word_guo,word_ren,word_shi,word_xin,xia_png,M5_1_png,M5_2_png,M5_3_png,M5_4_png,M5_5_png,M5_6_png,M5_7_png,M5_8_png,M5_9_png,M5_bg_png,chapter-plot_json,plot-options_json,s67,s2,s4,s5,s6,s11,s12,s13,s20,s23,s25,s26,s27,s28,s29,s31,s32,s35,s38,s43,s44,s54,s55,s59,s62,s63,s66,s33_png,huangyanyan,img-h,img-m,m-bar,bar-bg,h-bar,munai,key2_png,key1_png,m13_png,s0,s19,s56,s61,s65,s64,s68,s14,s16,s58,s9,s60,s1,s3,s10,s15,s17,s18,s21,s22,s53,s57,Y1,head-bg",
+			"keys": "checkbox_select_disabled_png,checkbox_select_down_png,checkbox_select_up_png,checkbox_unselect_png,selected_png,border_png,header_png,radiobutton_select_disabled_png,radiobutton_select_down_png,radiobutton_select_up_png,radiobutton_unselect_png,roundthumb_png,thumb_png,track_png,tracklight_png,handle_png,off_png,on_png,button_down_png,button_up_png,thumb_pb_png,track_pb_png,track_sb_png,question_json,m01,m03,m04,m06,m10,m11,m12,m15,m17,m19,m21,m18-item_json,m20-item_json,m16-item_json,m24,m02,m05,m07,m08,m09,m22,m18-bg,m20-bg,m16-bg,m20,m16,m18,m08-item_json,m08-bg,select-options_json,m42,m42-item_json,game-bg,game-btn_json,input-item,option-bg,m42-tips,input-bg,btn-finish,1_png,2_png,3_png,4_png,5_png,6_png,7_png,8_png,M14_bg_png,bg_png,ha1_png,ha2_png,ha3_png,ha4_png,ha5_png,bai_png,hei_png,hong_png,huang_png,kuang_png,lan_png,M2bg_png,bg1_png,bg2_png,shang_png,trunoff_png,turnon_png,word_guo,word_ren,word_shi,word_xin,xia_png,M5_1_png,M5_2_png,M5_3_png,M5_4_png,M5_5_png,M5_6_png,M5_7_png,M5_8_png,M5_9_png,M5_bg_png,chapter-plot_json,plot-options_json,s67,s4,s5,s6,s11,s12,s13,s20,s23,s25,s26,s27,s28,s29,s31,s32,s35,s38,s43,s44,s54,s59,s62,s66,huangyanyan,img-h,img-m,m-bar,bar-bg,h-bar,munai,key2_png,key1_png,m13_png,s0,s60,s1,s3,s10,s15,s17,s18,s21,s22,s53,s57,Y1,head-bg,m23,s65,s68,s2,s19,s33,s55,s56,s61,s63,s64",
 			"name": "preload"
 		},
 		{
@@ -576,11 +576,6 @@
 			"name": "s67"
 		},
 		{
-			"url": "assets/scene/s2.png",
-			"type": "image",
-			"name": "s2"
-		},
-		{
 			"url": "assets/scene/s4.jpg",
 			"type": "image",
 			"name": "s4"
@@ -681,11 +676,6 @@
 			"name": "s54"
 		},
 		{
-			"url": "assets/scene/s55.png",
-			"type": "image",
-			"name": "s55"
-		},
-		{
 			"url": "assets/scene/s59.jpg",
 			"type": "image",
 			"name": "s59"
@@ -696,19 +686,9 @@
 			"name": "s62"
 		},
 		{
-			"url": "assets/scene/s63.png",
-			"type": "image",
-			"name": "s63"
-		},
-		{
 			"url": "assets/scene/s66.jpg",
 			"type": "image",
 			"name": "s66"
-		},
-		{
-			"url": "assets/scene/s33.png",
-			"type": "image",
-			"name": "s33_png"
 		},
 		{
 			"url": "assets/game/huangyanyan.png",
@@ -846,56 +826,6 @@
 			"name": "s0"
 		},
 		{
-			"url": "assets/scene/s19.png",
-			"type": "image",
-			"name": "s19"
-		},
-		{
-			"url": "assets/scene/s56.png",
-			"type": "image",
-			"name": "s56"
-		},
-		{
-			"url": "assets/scene/s61.png",
-			"type": "image",
-			"name": "s61"
-		},
-		{
-			"url": "assets/scene/s65.png",
-			"type": "image",
-			"name": "s65"
-		},
-		{
-			"url": "assets/scene/s64.png",
-			"type": "image",
-			"name": "s64"
-		},
-		{
-			"url": "assets/scene/s68.png",
-			"type": "image",
-			"name": "s68"
-		},
-		{
-			"url": "assets/scene/s14.png",
-			"type": "image",
-			"name": "s14"
-		},
-		{
-			"url": "assets/scene/s16.png",
-			"type": "image",
-			"name": "s16"
-		},
-		{
-			"url": "assets/scene/s58.png",
-			"type": "image",
-			"name": "s58"
-		},
-		{
-			"url": "assets/scene/s9.png",
-			"type": "image",
-			"name": "s9"
-		},
-		{
 			"url": "assets/scene/s60.png",
 			"type": "image",
 			"name": "s60"
@@ -954,6 +884,81 @@
 			"url": "assets/game/head-bg.png",
 			"type": "image",
 			"name": "head-bg"
+		},
+		{
+			"url": "assets/questions/m23.png",
+			"type": "image",
+			"name": "m23"
+		},
+		{
+			"url": "assets/scene/s16.jpg",
+			"type": "image",
+			"name": "s16"
+		},
+		{
+			"url": "assets/scene/s14.jpg",
+			"type": "image",
+			"name": "s14"
+		},
+		{
+			"url": "assets/scene/s58.jpg",
+			"type": "image",
+			"name": "s58"
+		},
+		{
+			"url": "assets/scene/s9.jpg",
+			"type": "image",
+			"name": "s9"
+		},
+		{
+			"url": "assets/scene/s65.jpg",
+			"type": "image",
+			"name": "s65"
+		},
+		{
+			"url": "assets/scene/s68.jpg",
+			"type": "image",
+			"name": "s68"
+		},
+		{
+			"url": "assets/scene/s2.jpg",
+			"type": "image",
+			"name": "s2"
+		},
+		{
+			"url": "assets/scene/s19.jpg",
+			"type": "image",
+			"name": "s19"
+		},
+		{
+			"url": "assets/scene/s33.jpg",
+			"type": "image",
+			"name": "s33"
+		},
+		{
+			"url": "assets/scene/s55.jpg",
+			"type": "image",
+			"name": "s55"
+		},
+		{
+			"url": "assets/scene/s56.jpg",
+			"type": "image",
+			"name": "s56"
+		},
+		{
+			"url": "assets/scene/s61.jpg",
+			"type": "image",
+			"name": "s61"
+		},
+		{
+			"url": "assets/scene/s63.jpg",
+			"type": "image",
+			"name": "s63"
+		},
+		{
+			"url": "assets/scene/s64.jpg",
+			"type": "image",
+			"name": "s64"
 		}
 	]
 }

@@ -15,7 +15,7 @@ module game {
             this.gameScreen.textGroup.addEventListener(egret.TouchEvent.TOUCH_END, this.touchEnd, this);
             this.gameScreen.plotSelectList.addEventListener(eui.ItemTapEvent.ITEM_TAP, this.selectItem, this);
 
-            this.gameScreen.nextTest.addEventListener(egret.TouchEvent.TOUCH_TAP, this.nextTestClick, this);
+            this.gameScreen.nextTest.addEventListener(egret.TouchEvent.TOUCH_TAP, this.showNext, this);
             this.gameScreen.btnTips.addEventListener(egret.TouchEvent.TOUCH_TAP, this.btnTipsClick, this);
             this.gameScreen.addEventListener(egret.Event.ADDED_TO_STAGE, this.initData, this);
             this.initData();
@@ -37,6 +37,7 @@ module game {
         public rightText: string;
         public showPointsNum: number;
         public addScene: eui.Image;
+        public textIsOver: boolean;
 
         public initData() {
             this.gameScreen.bottomGroup.visible = this.gameScreen.plotSelectList.visible = false;
@@ -57,12 +58,13 @@ module game {
             plot = {
                 ...this.proxy.chapterPlot.get(this.id.toString())
             }
-            console.log(plot);
+            // console.log(plot);
             if (plot.type == plotType.Question || !plot.type) {
                 this.gameScreen.sceneGroup.visible = false;
                 this.gameScreen.questionGroup.visible = this.isQuestion = true;
 
                 this.questionId = plot.question || this.questionId + 1;
+                console.log(plot.question, this.questionId)
                 question = { ...this.proxy.questions.get(this.questionId.toString()) };
                 this.gameScreen.questionRes = question.img;
                 this.gameScreen.description = question.description;
@@ -90,8 +92,29 @@ module game {
             else {
                 this.gameScreen.sceneGroup.visible = true;
                 this.gameScreen.questionGroup.visible = false;
+                if (plot.type != plotType.SceneReplenish) {
+                    this.gameScreen.description = "";
+                }
                 if (!!plot.description) {
-                    this.gameScreen.description = plot.description;
+                    this.textIsOver = false;
+                    let wordList = plot.description.replace(/^\s+|\s+$/, "").split("") as Array<string>;
+                    let addwordToDescription = () => {
+                        if (!wordList.length) {
+                            this.textIsOver = true;
+                        }
+                        else if (this.textIsOver) {
+                            this.gameScreen.description += wordList.join("");
+                            wordList = [];
+                        }
+                        else {
+                            let str = wordList.shift();
+                            this.gameScreen.description = this.gameScreen.description + str;
+                            egret.setTimeout(() => {
+                                addwordToDescription();
+                            }, this, 100)
+                        }
+                    }
+                    addwordToDescription();
                 }
                 
                 if (plot.type == plotType.ChangeScene) {
@@ -113,24 +136,28 @@ module game {
                 }
                 else if (plot.type == plotType.DeleteScene) {
                     this.addScene && this.gameScreen.sceneGroup.removeChild(this.addScene);
+                    this.addScene = null;
                 }
-                else if (plot.type == plotType.SceneReplenish) {
-                    this.gameScreen.description = this.gameScreen.description + plot.description;
+                
+                if (!!plot.effect) {
                     if (plot.effect == "头晕目眩") {
                         let runTime = 5, isRun = false;
-                        // while (runTime > 0) {
-                        //     if (!isRun) {
-                        //         isRun = true;
-                        //         egret.Tween.get(this.gameScreen.sceneImg).to({scaleX: 0.8, scaleY: 0.9}, 300).to({scaleX: 1, scaleY: 1}, 300).call(() => {
-                        //                     --runTime;
-                        //                     isRun = false;
-                        //                     console.log(2222)
-                        //                 }); 
-                        //     }
-                        // }
+                        let img = new eui.Image();
+                        img.width = 720;
+                        img.height = 590;
+                        img.source = this.gameScreen.sceneImg.source;
+                        img.alpha = 0.3;
+                        this.gameScreen.sceneGroup.addChildAt(img, 1);
+                        egret.Tween.get(img, {"loop":true}).to({x: -10, y: -10, rotation: 1}, 500).to({x: 10, y: 10,rotation: -1}, 1000).to({x: 0, y: 0, rotation: 0}, 500);
+                        egret.setTimeout(() => {
+                            egret.Tween.removeTweens(img);
+                            this.gameScreen.sceneGroup.removeChild(img);
+                        }, this, 5000)
+                    }
+                    if (plot.effect == "放大") {
+                        egret.Tween.get(this.addScene).to({scaleX: 0.9, scaleY: 0.9}, 100);
                     }
                 }
-
                 if (plot.sound) {
                     let timeout = +plot.playTime.replace(/[s|S]/, "") * 1000;
                     console.log(timeout)
@@ -139,7 +166,7 @@ module game {
                     }, this, timeout);
                 }
                 if (plot.talkId) {
-                    this.gameScreen.plotSelectList.visible = true;
+                    this.gameScreen.plotSelectList.visible = this.isQuestion = true;
                     this.gameScreen.scrollGroup.height = 280;
                     let plotOption = this.plotOptions.get(plot.talkId.toString());
                     if (plotOption) {
@@ -174,7 +201,7 @@ module game {
                     let timeout = +plot.playTime.replace(/[s|S]/, "") * 1000;
                     console.log(timeout)
                     egret.setTimeout(() => {
-                        this.nextTestClick;
+                        this.showNext();
                     }, this, timeout);
                 }
             }
@@ -187,18 +214,22 @@ module game {
             else {
                 this.proxy.pointMu -= this.gameScreen.plotSelectList.selectedItem.result;
             }
-            this.nextTestClick();
+            this.showNext();
         }
 
         public showRightResult() {
             this.gameScreen.description = this.rightText;
             this.showResult = true;
             egret.setTimeout(() => {
-                this.nextTestClick();
+                this.showNext();
             }, this, 1500);
         }
 
-        public nextTestClick() {
+        public showNext() {
+            if (!this.textIsOver) {
+                this.textIsOver = true;
+                return;
+            }
             this.id++;
             this.initData();
         }
@@ -222,18 +253,23 @@ module game {
         private beforeY: number;
         private touchBeginTime: number;
         private touchBegin(e: egret.TouchEvent): void {
-            console.log("TOUCH_BEGIN", e.stageX)
+            // console.log("TOUCH_BEGIN", e.stageX)
             e.stopImmediatePropagation();
             this.beforeX = e.stageX;
             this.beforeY = e.stageY;
             this.touchBeginTime = new Date().getTime();
         }
         private touchEnd(e: egret.TouchEvent): void {
-            console.log("TOUCH_END", e.stageX)
+            // console.log("TOUCH_END", e.stageX)
             e.stopImmediatePropagation();
+            if (!this.textIsOver) {
+                this.textIsOver = true;
+                return;
+            }
+
             let touchEndTime = new Date().getTime();
             if (!this.isQuestion && (e.stageX < this.beforeX - 20 && Math.abs(e.stageY - this.beforeY) < 20 || touchEndTime - this.touchBeginTime < 300)) {
-                this.nextTestClick();
+                this.showNext();
             }
         }
         private touchReleaseOutside(e: egret.TouchEvent): void {
