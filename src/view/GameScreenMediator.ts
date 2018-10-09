@@ -44,11 +44,11 @@ module game {
             this.gameScreen.question = this.gameScreen.points = "";
             this.gameScreen.scrollGroup.height = 480;
             this.gameScreen.scrollGroup.viewport.scrollV = 0;
-            
+
             let barH = this.gameScreen.huangAndMubar.getChildByName("huangyanyan") as eui.Image;
             let barM = this.gameScreen.huangAndMubar.getChildByName("munai") as eui.Image;
-            barH.width = this.gameScreen.huangAndMubar.width * this.proxy.pointHunag / (this.proxy.pointHunag + this.proxy.pointMu);
-            barM.width = this.gameScreen.huangAndMubar.width * this.proxy.pointMu / (this.proxy.pointHunag + this.proxy.pointMu);
+            barH.width = this.gameScreen.huangAndMubar.width * this.proxy.pointHunag / 86;
+            barM.width = this.gameScreen.huangAndMubar.width * this.proxy.pointMu / 86;
 
             let plot, question;
             if (!this.proxy.chapterPlot.get(this.id.toString())) {
@@ -93,7 +93,7 @@ module game {
                 if (!!plot.description) {
                     this.gameScreen.description = plot.description;
                 }
-                
+
                 if (plot.type == plotType.ChangeScene) {
                     this.gameScreen.plotRes = plot.res;
                     if (this.addScene) {
