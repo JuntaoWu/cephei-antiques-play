@@ -29,8 +29,11 @@
             </e:Skin>
         </e:Button>
     </e:Group>
-    <e:Group id="sceneGroup" width="720" top="135">
-        <e:Image id="sceneImg" maxWidth="720" horizontalCenter="0" source="{plotRes}" height="590"/>
+    <e:Group visible="{showScene}" width="720" top="135">
+        <e:Group id="sceneGroup">
+            <e:Image maxWidth="720" horizontalCenter="0" source="s0" height="590"/>
+            <e:Image id="sceneImg" maxWidth="720" horizontalCenter="0" source="{plotRes}" height="590"/>
+        </e:Group>
         <e:Group width="720" y="5">
             <e:Image source="img-h" left="20"/>
             <e:Image source="img-m" right="20"/>

@@ -20,6 +20,7 @@ module game {
         public points: string;
         public description: string;
         public showMiniGame: boolean;
+        public showScene: boolean;
 
         public sceneGroup: eui.Group;
         public questionGroup: eui.Group;

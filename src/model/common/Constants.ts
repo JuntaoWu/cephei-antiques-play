@@ -46,9 +46,7 @@ module game {
         AddScene: "添加场景",
         DeleteScene: "删除场景",
         ChangeText: "切换文本",
-        AddText: "添加文本",
-        PlaySound: "播放音效",
         Question: "谜题",
-        SceneReplenish : "场景切换追加",
+        SceneAdded: "场景追加",
     }
 }
