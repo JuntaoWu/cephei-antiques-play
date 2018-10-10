@@ -9,6 +9,9 @@ module game {
                 case "放大":
                     EffectManager.beBig(target);
                     break;
+                case "消失":
+                    EffectManager.disappear(target);
+                    break;
                 case "渐变消失":
                     EffectManager.disappear(target);
                     break;

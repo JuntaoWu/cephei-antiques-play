@@ -8,10 +8,10 @@ module game {
         description: string;
         questionId?: number; //迷題id
         effect?: string;
+        effectTrigger?: string;
         sound?: string;
         playTime?: number;
         talkId?: number;
         autoNextTime?: number;
-        isReplaceWord?: boolean; //剧情文字是替换或追加
     }
 }

@@ -29,7 +29,7 @@ module game {
             return this._plotOptions;
         }
 
-        public id: number = 8;
+        public id: number = 1;
         public showResult: boolean;
         public isQuestion: boolean;
         public questionId: number;
@@ -41,11 +41,12 @@ module game {
         public wordList: Array<string>;
 
         public initData() {
-            this.gameScreen.bottomGroup.visible = this.gameScreen.plotSelectList.visible = false;
-            this.gameScreen.showMiniGame = this.showResult = this.isQuestion = false;
+            this.gameScreen.bottomGroup.visible = this.gameScreen.plotSelectList.visible = this.gameScreen.textGroup.visible = false;
+            this.gameScreen.showMiniGame = this.gameScreen.showTransition = this.showResult = this.isQuestion = false;
             this.gameScreen.question = this.gameScreen.points = "";
             this.gameScreen.scrollGroup.height = 480;
             this.gameScreen.scrollGroup.viewport.scrollV = 0;
+            this.textIsOver = true;
             
             let barH = this.gameScreen.huangAndMubar.getChildByName("huangyanyan") as eui.Image;
             let barM = this.gameScreen.huangAndMubar.getChildByName("munai") as eui.Image;
@@ -60,11 +61,11 @@ module game {
                 ...this.proxy.chapterPlot.get(this.id.toString())
             }
             // console.log(plot);
-            if (plot.type == plotType.Question || !plot.type) {
+            if (plot.type == plotType.PlotQuestion) {
                 this.gameScreen.showScene = false;
-                this.gameScreen.questionGroup.visible = this.isQuestion = true;
+                this.gameScreen.questionGroup.visible = this.isQuestion = this.gameScreen.textGroup.visible = true;
 
-                this.questionId = plot.questionId || this.questionId + 1;
+                this.questionId = plot.questionId;
                 console.log(plot.questionId, this.questionId)
                 question = { ...this.proxy.questions.get(this.questionId.toString()) };
                 this.gameScreen.questionRes = question.img;
@@ -90,49 +91,30 @@ module game {
                     this.gameScreen.showMiniGame = true;
                 }
             }
+            else if (plot.type == plotType.Transition) {
+                this.gameScreen.showTransition = true;
+                this.gameScreen.transitionText = plot.effect;
+                egret.setTimeout(() => {
+                    this.showNext();
+                }, this, 2000);
+            }
             else {
-                this.gameScreen.showScene = true;
+                this.gameScreen.showScene = this.gameScreen.textGroup.visible = true; true;
                 this.gameScreen.questionGroup.visible = false;
-
+                //搭建剧情场景
+                this.settingScene(plot.res, plot.effect, plot.effectTrigger);
                 //剧情文字变化
-                if (plot.type != plotType.SceneAdded) {
+                if (plot.type != plotType.PlotAdded) {
                     this.gameScreen.description = "";
                 }
-                if (!!plot.description) {
+                if (plot.description) {
                     this.textIsOver = false;
-                    this.wordList = plot.description.replace(/^\s+|\s+$/, "").split("");
+                    this.wordList = plot.description.split("");
                     this.addWordToDescription();
                 }
-                //场景变化
-                if (plot.type == plotType.ChangeScene) {
-                    this.gameScreen.plotRes = plot.res;
-                    if (this.addScene) {
-                        this.gameScreen.sceneGroup.removeChild(this.addScene);
-                        this.addScene = null;
-                    }
-                }
-                else if (plot.type == plotType.AddScene) {
-                    if (!this.addScene) {
-                        this.addScene = new eui.Image();
-                    }
-                    this.addScene.source = plot.res;
-                    this.addScene.scaleX = this.addScene.scaleY = 0.5;
-                    this.addScene.horizontalCenter = 0;
-                    this.addScene.y = 135;
-                    this.gameScreen.sceneGroup.addChild(this.addScene);
-                }
-                else if (plot.type == plotType.DeleteScene) {
-                    if (!plot.effect) {
-                        this.addScene && this.gameScreen.sceneGroup.removeChild(this.addScene);
-                        this.addScene = null;
-                    }
-                }
-                //场景效果
-                if (plot.res == this.gameScreen.sceneImg.source) {
-                    EffectManager.playEffect.call(this.gameScreen.sceneImg, plot.effect);
-                }
-                else {
-                    this.addScene && EffectManager.playEffect.call(this.addScene, plot.effect);
+                //选项
+                if (plot.talkId) {
+                    this.showPlotOption(plot.talkId);
                 }
                 //音效
                 if (plot.sound) {
@@ -141,42 +123,9 @@ module game {
                         SoundPool.playSoundEffect(plot.sound);
                     }, this, timeout);
                 }
-                //选项
-                if (plot.talkId) {
-                    this.gameScreen.plotSelectList.visible = this.isQuestion = true;
-                    this.gameScreen.scrollGroup.height = 280;
-                    let plotOption = this.plotOptions.get(plot.talkId.toString());
-                    if (plotOption) {
-                        this.gameScreen.question = plotOption.question || "";
-                        let options = [
-                            {
-                                option: plotOption.option1,
-                                result: plotOption.result1
-                            },
-                            {
-                                option: plotOption.option2,
-                                result: plotOption.result2
-                            }
-                        ]
-                        this.gameScreen.plotSelectList.dataProvider = new eui.ArrayCollection(options);
-                        this.gameScreen.plotSelectList.itemRenderer = QuestionSelectItemRenderer;
-                    }
-                }
-                //场景图
-                if (!this.gameScreen.plotRes) {
-                    let historyId = this.id - 1;
-                    while (!this.gameScreen.plotRes && historyId > 0) {
-                        let plotHistory = this.proxy.chapterPlot.get(historyId.toString());
-                        if (plotHistory.type == plotType.ChangeScene) {
-                            this.gameScreen.plotRes = plotHistory.res;
-                        }
-                        historyId--;
-                    }
-                }
                 //自动跳到下一条
                 if (plot.autoNextTime) {
                     let timeout = +plot.autoNextTime * 1000;
-                    console.log(timeout)
                     egret.setTimeout(() => {
                         this.showNext();
                     }, this, timeout);
@@ -184,6 +133,36 @@ module game {
             }
         }
 
+        //搭建场景
+        public settingScene(res: string, effect?: string, effectTigger?: string) {
+            this.gameScreen.sceneAddGroup.removeChildren();
+            let sceneResList = res.split("、");
+            console.log(this.id, sceneResList);
+            sceneResList.forEach((v, i) => {
+                if (!i) {
+                    this.gameScreen.sceneBg.source = v;
+                    if (v == effectTigger) {
+                        EffectManager.playEffect.call(this.gameScreen.sceneBg, effect);
+                    }
+                }
+                else {
+                    let img = new eui.Image();
+                    img.source = v;
+                    img.scaleX = img.scaleY = 0.5;
+                    img.y = 135;
+                    img.x = 230 * (i - 1);
+                    this.gameScreen.sceneAddGroup.addChild(img);
+                    if (v == effectTigger) {
+                        EffectManager.playEffect.call(img, effect);
+                    }
+                }
+            })
+            if (effectTigger == "all") {
+                EffectManager.playEffect.call(this.gameScreen.sceneGroup, effect);
+            }
+        }
+
+        //剧情文字
         public addWordToDescription() {
             if (!this.wordList.length) {
                 this.textIsOver = true;
@@ -198,6 +177,28 @@ module game {
                 egret.setTimeout(() => {
                     this.addWordToDescription();
                 }, this, 100)
+            }
+        }
+
+        //剧情选项
+        public showPlotOption(talkId) {
+            this.gameScreen.plotSelectList.visible = this.isQuestion = true;
+            this.gameScreen.scrollGroup.height = 280;
+            let plotOption = this.plotOptions.get(talkId.toString());
+            if (plotOption) {
+                this.gameScreen.question = plotOption.question || "";
+                let options = [
+                    {
+                        option: plotOption.option1,
+                        result: plotOption.result1
+                    },
+                    {
+                        option: plotOption.option2,
+                        result: plotOption.result2
+                    }
+                ]
+                this.gameScreen.plotSelectList.dataProvider = new eui.ArrayCollection(options);
+                this.gameScreen.plotSelectList.itemRenderer = QuestionSelectItemRenderer;
             }
         }
 
