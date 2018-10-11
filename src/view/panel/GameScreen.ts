@@ -14,12 +14,14 @@ module game {
             ApplicationFacade.getInstance().registerMediator(new GameScreenMediator(this));
         }
 
-        public plotRes: string; //情节图
         public questionRes: string; //谜题图
         public question: string; 
         public points: string;
-        public description: string;
+        public description: string = "";
         public showMiniGame: boolean;
+        public showScene: boolean;
+        public showTransition: boolean;
+        public transitionText: string;
 
         public sceneGroup: eui.Group;
         public questionGroup: eui.Group;
@@ -31,7 +33,8 @@ module game {
         public nextTest: eui.Button;
         public btnTips: eui.Button;
         public btnHelp: eui.Button;
-        public sceneImg: eui.Image;
+        public sceneBg: eui.Image;
+        public sceneAddGroup: eui.Group;
 
         public inputGroup: MiniGameInput = new MiniGameInput();
         public selectGroup: MiniGameSelect = new MiniGameSelect();

@@ -26,7 +26,7 @@ module game {
             tLayout.horizontalGap = 20;
             tLayout.verticalGap = 20;
             tLayout.orientation = "columns";
-            tLayout.requestedColumnCount = this.gameInput.answer.length < 7 ? this.gameInput.answer.length : 6;
+            tLayout.requestedColumnCount = this.gameInput.answer.length < 7 ? this.gameInput.answer.length : 4;
             this.gameInput.inputItemList.layout = tLayout;
             this.gameInput.inputItemList.dataProvider = new eui.ArrayCollection(this.inputTextList);
             this.gameInput.inputItemList.itemRenderer = InputItemRenderer;
