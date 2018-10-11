@@ -8,7 +8,9 @@ module game {
         //通过小游戏
         public static PASS_MINIGAME: string = "pass_minigame";
 
-        public playerInfo;
+        public playerInfo = {
+            plotId: 1,
+        };
         public pointHunag: number = 43;
         public pointMu: number = 43;
 
@@ -25,11 +27,15 @@ module game {
         }
 
         private _chapterPlot: Map<string, any>;
-        public get chapterPlot(): Map<string, any> {
-            if (!this._chapterPlot) {
-                this._chapterPlot = new Map(Object.entries(RES.getRes("chapter-plot_json")));
-            }
-            return this._chapterPlot;
+		public get chapterPlot(): Map<string, any> {
+			if (!this._chapterPlot) {
+				this._chapterPlot = new Map(Object.entries(RES.getRes("chapter-plot_json")));
+			}
+			return this._chapterPlot;
+		}
+
+        public getCurrentPlot(): Plot {
+            return this.chapterPlot.get(this.playerInfo.plotId.toString());
         }
     }
 }

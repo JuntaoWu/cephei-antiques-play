@@ -10,7 +10,7 @@ module game {
                     EffectManager.beBig(target);
                     break;
                 case "消失":
-                    EffectManager.disappear(target);
+                    EffectManager.disappear2(target);
                     break;
                 case "渐变消失":
                     EffectManager.disappear(target);
@@ -19,10 +19,16 @@ module game {
                     EffectManager.gradualShow(target);
                     break;
                 case "头晕目眩":
-                    EffectManager.vagueImage(target as eui.Image);
+                    EffectManager.vagueImage(target);
                     break;
                 case "睁眼":
-                    EffectManager.gradualShow2(target as eui.Image);
+                    EffectManager.gradualShow2(target);
+                    break;
+                case "晃动":
+                    EffectManager.shakeTarget(target);
+                    break;
+                case "剧烈抖动":
+                    EffectManager.shakeTargetSevere(target);
                     break;
             }
         }
@@ -39,11 +45,33 @@ module game {
             });
         }
 
+        //消失
+        public static disappear2(target) {
+            target.parent && target.parent.removeChild(target);
+        }
+
         //渐变出现
         public static gradualShow(target) {
             target.alpha = 0;
             egret.Tween.get(target).to({alpha: 1}, 800);
         }
+
+        //剧烈抖动
+        public static shakeTargetSevere(target) {
+            egret.Tween.get(target, {"loop": true}).to({x: -10, y: -10}, 300).to({x: 0, y: 0, rotation: 0}, 300).to({x: 10, y: 10}, 300);
+            egret.setTimeout(() => {
+                egret.Tween.removeTweens(target);
+            }, this, 4000)    
+        }
+
+        //晃动
+        public static shakeTarget(target) {
+            egret.Tween.get(target, {"loop": true}).to({x: -10, y: -10}, 500).to({x: 0, y: 0, rotation: 0}, 500).to({x: 10, y: 10}, 500);
+            egret.setTimeout(() => {
+                egret.Tween.removeTweens(target);
+            }, this, 4000)    
+        }
+
 
         //睁眼效果
         public static gradualShow2(target: egret.DisplayObject) {
@@ -66,7 +94,8 @@ module game {
         }
 
         //头晕目眩(场景图重影模糊)
-        public static vagueImage(target: eui.Image) {
+        public static vagueImage(obj) {
+            let target = obj as eui.Image;
             let img = new eui.Image();
             img.width = target.width;
             img.height = target.height;

@@ -27,5 +27,14 @@ module game {
             this.addChild(this.gameScreen);
             egret.Tween.get(this).to({ alpha: 1 }, 1500);
         }
+
+        public storeWindow: StoreWindow = new StoreWindow();
+        public showStoreWindow(): void {
+            if (!this.storeWindow) {
+                this.storeWindow = new StoreWindow();
+            }
+            this.addChild(this.storeWindow);
+            egret.Tween.get(this).to({ alpha: 1 }, 1500);
+        }
     }
 }
