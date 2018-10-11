@@ -8,7 +8,9 @@ module game {
         //通过小游戏
         public static PASS_MINIGAME: string = "pass_minigame";
 
-        public playerInfo;
+        public playerInfo = {
+            plotId: 1,
+        };
         public pointHunag: number = 1;
         public pointMu: number = 1; 
 
@@ -31,5 +33,9 @@ module game {
 			}
 			return this._chapterPlot;
 		}
+
+        public getCurrentPlot(): Plot {
+            return this.chapterPlot.get(this.playerInfo.plotId.toString());
+        }
     }
 }

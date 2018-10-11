@@ -14,6 +14,8 @@ module game {
             ApplicationFacade.getInstance().registerMediator(new GameScreenMediator(this));
         }
 
+        public btnBack: eui.Button;
+
         public questionRes: string; //谜题图
         public question: string; 
         public points: string;

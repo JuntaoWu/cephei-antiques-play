@@ -17,6 +17,9 @@ module game {
 
             this.gameScreen.nextTest.addEventListener(egret.TouchEvent.TOUCH_TAP, this.showNext, this);
             this.gameScreen.btnTips.addEventListener(egret.TouchEvent.TOUCH_TAP, this.btnTipsClick, this);
+            
+            this.gameScreen.btnBack.addEventListener(egret.TouchEvent.TOUCH_TAP, this.btnBackClick, this);
+            
             this.gameScreen.addEventListener(egret.Event.ADDED_TO_STAGE, this.initData, this);
             this.initData();
         }
@@ -29,10 +32,8 @@ module game {
             return this._plotOptions;
         }
 
-        public id: number = 1;
         public showResult: boolean;
         public isQuestion: boolean;
-        public questionId: number;
         public questionPoints: Array<string>;
         public rightText: string;
         public showPointsNum: number;
@@ -53,21 +54,15 @@ module game {
             barH.width = this.gameScreen.huangAndMubar.width * this.proxy.pointHunag / (this.proxy.pointHunag + this.proxy.pointMu);
             barM.width = this.gameScreen.huangAndMubar.width * this.proxy.pointMu / (this.proxy.pointHunag + this.proxy.pointMu);
 
-            let plot: Plot, question: QuestionGame;
-            if (!this.proxy.chapterPlot.get(this.id.toString())) {
-                // return;
+            let plot: Plot = this.proxy.getCurrentPlot();
+            if (!plot) {
+                return;
             }
-            plot = {
-                ...this.proxy.chapterPlot.get(this.id.toString())
-            }
-            // console.log(plot);
             if (plot.type == plotType.PlotQuestion) {
                 this.gameScreen.showScene = false;
                 this.gameScreen.questionGroup.visible = this.isQuestion = this.gameScreen.textGroup.visible = true;
 
-                this.questionId = plot.questionId;
-                console.log(plot.questionId, this.questionId)
-                question = { ...this.proxy.questions.get(this.questionId.toString()) };
+                let question: QuestionGame = { ...this.proxy.questions.get(plot.questionId.toString()) };
                 this.gameScreen.questionRes = question.img;
                 this.gameScreen.description = question.description;
                 this.gameScreen.question = question.question;
@@ -133,11 +128,9 @@ module game {
             }
         }
 
-        //搭建场景
         public settingScene(res: string, effect?: string, effectTigger?: string) {
             this.gameScreen.sceneAddGroup.removeChildren();
             let sceneResList = res.split("、");
-            console.log(this.id, sceneResList);
             sceneResList.forEach((v, i) => {
                 if (!i) {
                     this.gameScreen.sceneBg.source = v;
@@ -162,7 +155,6 @@ module game {
             }
         }
 
-        //剧情文字
         public addWordToDescription() {
             if (!this.wordList.length) {
                 this.textIsOver = true;
@@ -180,7 +172,6 @@ module game {
             }
         }
 
-        //剧情选项
         public showPlotOption(talkId) {
             this.gameScreen.plotSelectList.visible = this.isQuestion = true;
             this.gameScreen.scrollGroup.height = 280;
@@ -225,7 +216,7 @@ module game {
                 this.textIsOver = true;
                 return;
             }
-            this.id++;
+            this.proxy.playerInfo.plotId++;
             this.initData();
         }
 
@@ -242,6 +233,10 @@ module game {
                 this.gameScreen.points = "";
                 this.showPointsNum = 0;
             }
+        }
+
+        public btnBackClick() {
+            this.sendNotification(SceneCommand.CHANGE, Scene.Start);
         }
 
         private beforeX: number;

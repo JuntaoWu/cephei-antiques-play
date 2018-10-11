@@ -16,6 +16,8 @@ module game {
          */
         public static CHANGE: string = "scene_change";
 
+        public static SHOW_STORE: string = "show_store";
+
 
         public register(): void {
             this.initializeNotifier("ApplicationFacade");
@@ -24,6 +26,7 @@ module game {
         initializeNotifier(key: string) {
             super.initializeNotifier(key);
             this.facade().registerCommand(SceneCommand.CHANGE, SceneCommand);
+            this.facade().registerCommand(SceneCommand.SHOW_STORE, SceneCommand);
         }
 
         public async execute(notification: puremvc.INotification): Promise<any> {
@@ -40,6 +43,9 @@ module game {
                     else if (data == Scene.Game) {
                         appMediator.main.enterGameScreen();
                     }
+                    break;
+                case SceneCommand.SHOW_STORE:
+                    appMediator.main.showStoreWindow();
                     break;
             }
         }
