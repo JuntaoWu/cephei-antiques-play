@@ -59,7 +59,7 @@ module game {
                 ...this.proxy.chapterPlot.get(this.id.toString())
             }
             // console.log(plot);
-            if (plot.type == plotType.Question || !plot.type) {
+            if (plot.type == plotType.Question) {
                 this.gameScreen.sceneGroup.visible = false;
                 this.gameScreen.questionGroup.visible = this.isQuestion = true;
 
@@ -138,7 +138,7 @@ module game {
                     this.addScene && this.gameScreen.sceneGroup.removeChild(this.addScene);
                     this.addScene = null;
                 }
-                
+
                 if (!!plot.effect) {
                     if (plot.effect == "头晕目眩") {
                         let runTime = 5, isRun = false;
@@ -148,14 +148,14 @@ module game {
                         img.source = this.gameScreen.sceneImg.source;
                         img.alpha = 0.3;
                         this.gameScreen.sceneGroup.addChildAt(img, 1);
-                        egret.Tween.get(img, {"loop":true}).to({x: -10, y: -10, rotation: 1}, 500).to({x: 10, y: 10,rotation: -1}, 1000).to({x: 0, y: 0, rotation: 0}, 500);
+                        egret.Tween.get(img, { "loop": true }).to({ x: -10, y: -10, rotation: 1 }, 500).to({ x: 10, y: 10, rotation: -1 }, 1000).to({ x: 0, y: 0, rotation: 0 }, 500);
                         egret.setTimeout(() => {
                             egret.Tween.removeTweens(img);
                             this.gameScreen.sceneGroup.removeChild(img);
                         }, this, 5000)
                     }
                     if (plot.effect == "放大") {
-                        egret.Tween.get(this.addScene).to({scaleX: 0.9, scaleY: 0.9}, 100);
+                        egret.Tween.get(this.addScene).to({ scaleX: 0.9, scaleY: 0.9 }, 100);
                     }
                 }
                 if (plot.sound) {
