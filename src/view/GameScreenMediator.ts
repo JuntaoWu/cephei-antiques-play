@@ -132,6 +132,9 @@ module game {
             this.gameScreen.sceneAddGroup.removeChildren();
             let sceneResList = res.split("、");
             sceneResList.forEach((v, i) => {
+                if (!this.proxy.playerInfo.collectedScene.includes(v)) {
+                    this.proxy.playerInfo.collectedScene.push(v);
+                }
                 if (!i) {
                     this.gameScreen.sceneBg.source = v;
                     if (v == effectTigger) {
@@ -143,7 +146,7 @@ module game {
                     img.source = v;
                     img.scaleX = img.scaleY = 0.5;
                     img.y = 135;
-                    img.x = 230 * (i - 1);
+                    img.x = 180 * (i - 1);
                     this.gameScreen.sceneAddGroup.addChild(img);
                     if (v == effectTigger) {
                         EffectManager.playEffect.call(img, effect);

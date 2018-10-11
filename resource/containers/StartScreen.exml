@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <e:Skin class="StartScreen" xmlns:e="http://ns.egret.com/eui" xmlns:game="game.*">
-    
+    <e:Image source="background" height="100%"/>
     
     <e:Group y="333" horizontalCenter="0">
         <e:Button id="btnResumeGame" left="17">
@@ -28,20 +28,20 @@
             </e:Skin>
         </e:Button>
     </e:Group>
-    <e:Group id="navigationBar" y="1180" width="720" height="170">
+    <e:Group id="navigationBar" y="1180" width="640" height="170" horizontalCenter="0">
         <e:Button id="btnPicture" left="17" verticalCenter="0">
             <e:Skin>
                 <e:Image source="btn-picture"></e:Image>
                 <e:Label text="图鉴" y="120" bold="true" textColor="0x000000" horizontalCenter="0"></e:Label>
             </e:Skin>
         </e:Button>
-        <e:Button id="btnStore" x="125" verticalCenter="0">
+        <e:Button id="btnStore" x="221" verticalCenter="0">
             <e:Skin>
                 <e:Image source="btn-store"></e:Image>
                 <e:Label text="商城" y="120" bold="true" textColor="0x000000" horizontalCenter="0"></e:Label>
             </e:Skin>
         </e:Button>
-        <e:Button id="btnShare" verticalCenter="0" right="125">
+        <e:Button id="btnShare" verticalCenter="0" right="166">
             <e:Skin>
                 <e:Image source="btn-share"></e:Image>
                 <e:Label text="分享" y="120" bold="true" textColor="0x000000" horizontalCenter="0"></e:Label>
@@ -49,7 +49,7 @@
         </e:Button>
         <e:Button id="btnSetting" verticalCenter="0" right="0">
             <e:Skin>
-                <e:Image source="btn-settings"></e:Image>
+                <e:Image source="btn-setting"></e:Image>
                 <e:Label text="设置" y="120" bold="true" textColor="0x000000" horizontalCenter="0"></e:Label>
             </e:Skin>
         </e:Button>

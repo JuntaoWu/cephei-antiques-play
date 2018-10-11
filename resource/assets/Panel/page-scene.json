@@ -1,0 +1,6 @@
+{"file":"page-scene.png","frames":{
+"btn-scene-props":{"x":0,"y":464,"w":695,"h":230,"offX":0,"offY":0,"sourceW":695,"sourceH":230},
+"text1":{"x":0,"y":696,"w":368,"h":41,"offX":0,"offY":0,"sourceW":368,"sourceH":41},
+"text2":{"x":370,"y":696,"w":290,"h":41,"offX":0,"offY":0,"sourceW":290,"sourceH":41},
+"btn-scene-bg":{"x":0,"y":232,"w":695,"h":230,"offX":0,"offY":0,"sourceW":695,"sourceH":230},
+"btn-scene-person":{"x":0,"y":0,"w":695,"h":230,"offX":0,"offY":0,"sourceW":695,"sourceH":230}}}

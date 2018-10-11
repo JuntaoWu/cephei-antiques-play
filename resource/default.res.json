@@ -1,15 +1,15 @@
 {
 	"groups": [
 		{
-			"keys": "checkbox_select_disabled_png,checkbox_select_down_png,checkbox_select_up_png,checkbox_unselect_png,selected_png,border_png,header_png,radiobutton_select_disabled_png,radiobutton_select_down_png,radiobutton_select_up_png,radiobutton_unselect_png,roundthumb_png,thumb_png,track_png,tracklight_png,handle_png,off_png,on_png,button_down_png,button_up_png,thumb_pb_png,track_pb_png,track_sb_png,question_json,m01,m03,m04,m06,m10,m11,m12,m15,m17,m19,m21,m18-item_json,m20-item_json,m16-item_json,m24,m02,m05,m07,m08,m09,m22,m18-bg,m20-bg,m16-bg,m20,m16,m18,m08-item_json,m08-bg,select-options_json,m42,m42-item_json,game-bg,game-btn_json,input-item,option-bg,m42-tips,input-bg,btn-finish,1_png,2_png,3_png,4_png,5_png,6_png,7_png,8_png,M14_bg_png,bg_png,ha1_png,ha2_png,ha3_png,ha4_png,ha5_png,bai_png,hei_png,hong_png,huang_png,kuang_png,lan_png,M2bg_png,bg1_png,bg2_png,shang_png,trunoff_png,turnon_png,word_guo,word_ren,word_shi,word_xin,xia_png,M5_1_png,M5_2_png,M5_3_png,M5_4_png,M5_5_png,M5_6_png,M5_7_png,M5_8_png,M5_9_png,M5_bg_png,chapter-plot_json,plot-options_json,s67,s4,s5,s6,s11,s12,s13,s20,s23,s25,s26,s27,s28,s29,s31,s32,s35,s38,s43,s44,s54,s59,s62,s66,huangyanyan,img-h,img-m,m-bar,bar-bg,h-bar,munai,key2_png,key1_png,m13_png,s0,s60,s1,s3,s10,s15,s17,s18,s21,s22,s53,s57,Y1,head-bg,m23,s65,s68,s2,s19,s33,s55,s56,s61,s63,s64,s7",
+			"keys": "checkbox_select_disabled_png,checkbox_select_down_png,checkbox_select_up_png,checkbox_unselect_png,selected_png,border_png,header_png,radiobutton_select_disabled_png,radiobutton_select_down_png,radiobutton_select_up_png,radiobutton_unselect_png,roundthumb_png,thumb_png,track_png,tracklight_png,handle_png,off_png,on_png,button_down_png,button_up_png,thumb_pb_png,track_pb_png,track_sb_png,question_json,m01,m03,m04,m06,m10,m11,m12,m15,m17,m19,m21,m18-item_json,m20-item_json,m16-item_json,m24,m02,m05,m07,m08,m09,m22,m18-bg,m20-bg,m16-bg,m20,m16,m18,m08-item_json,m08-bg,select-options_json,m42,m42-item_json,game-bg,input-item,option-bg,m42-tips,input-bg,1_png,2_png,3_png,4_png,5_png,6_png,7_png,8_png,M14_bg_png,bg_png,ha1_png,ha2_png,ha3_png,ha4_png,ha5_png,bai_png,hei_png,hong_png,huang_png,kuang_png,lan_png,M2bg_png,bg1_png,bg2_png,shang_png,trunoff_png,turnon_png,word_guo,word_ren,word_shi,word_xin,xia_png,M5_1_png,M5_2_png,M5_3_png,M5_4_png,M5_5_png,M5_6_png,M5_7_png,M5_8_png,M5_9_png,M5_bg_png,chapter-plot_json,plot-options_json,s67,s4,s5,s6,s11,s12,s13,s20,s23,s25,s26,s27,s28,s29,s31,s32,s35,s38,s43,s44,s54,s59,s62,s66,huangyanyan,img-h,img-m,m-bar,bar-bg,h-bar,munai,key2_png,key1_png,m13_png,s0,s60,s1,s3,s10,s15,s17,s18,s21,s22,s53,s57,Y1,head-bg,m23,s65,s68,s2,s33,s55,s61,s63,s64,s7,game-btn_json,scene_json,props_json,background,page-scene_json,title-bg,not-get,title-picture",
 			"name": "preload"
 		},
 		{
-			"keys": "loading-background,progress-bg,progress",
+			"keys": "progress-bg,progress",
 			"name": "loading"
 		},
 		{
-			"keys": "Y1,Y10,Y11,Y12,Y13,Y14,Y15,Y16,Y2,Y3,Y4,Y5,Y6,Y7,Y8,Y9",
+			"keys": "Y1,Y10,Y11,Y12,Y13,Y14,Y15,Y16,Y2,Y3,Y4,Y5,Y6,Y7,Y8,Y9,Y17",
 			"name": "lazyload"
 		}
 	],
@@ -305,12 +305,6 @@
 			"name": "game-bg"
 		},
 		{
-			"url": "assets/game/game-btn.json",
-			"type": "sheet",
-			"name": "game-btn_json",
-			"subkeys": "btn-back-game,btn-help,btn-manage,btn-picture,btn-save,btn-tips,tips-bg"
-		},
-		{
 			"url": "assets/game/input-item.png",
 			"type": "image",
 			"name": "input-item"
@@ -329,11 +323,6 @@
 			"url": "assets/game/input-bg.png",
 			"type": "image",
 			"name": "input-bg"
-		},
-		{
-			"url": "assets/game/btn-finish.png",
-			"type": "image",
-			"name": "btn-finish"
 		},
 		{
 			"url": "assets/M14/1.png",
@@ -544,11 +533,6 @@
 			"url": "assets/M5/M5_bg.png",
 			"type": "image",
 			"name": "M5_bg_png"
-		},
-		{
-			"url": "assets/background/loading-background.png",
-			"type": "image",
-			"name": "loading-background"
 		},
 		{
 			"url": "assets/ProgressBar/progress-bg.png",
@@ -891,26 +875,6 @@
 			"name": "m23"
 		},
 		{
-			"url": "assets/scene/s16.jpg",
-			"type": "image",
-			"name": "s16"
-		},
-		{
-			"url": "assets/scene/s14.jpg",
-			"type": "image",
-			"name": "s14"
-		},
-		{
-			"url": "assets/scene/s58.jpg",
-			"type": "image",
-			"name": "s58"
-		},
-		{
-			"url": "assets/scene/s9.jpg",
-			"type": "image",
-			"name": "s9"
-		},
-		{
 			"url": "assets/scene/s65.jpg",
 			"type": "image",
 			"name": "s65"
@@ -926,11 +890,6 @@
 			"name": "s2"
 		},
 		{
-			"url": "assets/scene/s19.jpg",
-			"type": "image",
-			"name": "s19"
-		},
-		{
 			"url": "assets/scene/s33.jpg",
 			"type": "image",
 			"name": "s33"
@@ -939,11 +898,6 @@
 			"url": "assets/scene/s55.jpg",
 			"type": "image",
 			"name": "s55"
-		},
-		{
-			"url": "assets/scene/s56.jpg",
-			"type": "image",
-			"name": "s56"
 		},
 		{
 			"url": "assets/scene/s61.jpg",
@@ -964,6 +918,54 @@
 			"url": "assets/scene/s7.png",
 			"type": "image",
 			"name": "s7"
+		},
+		{
+			"url": "assets/game/game-btn.json",
+			"type": "sheet",
+			"name": "game-btn_json",
+			"subkeys": "btn-back-game,btn-finish,btn-help,btn-manage,btn-picture,btn-save,btn-setting,btn-share,btn-tips,tips-bg"
+		},
+		{
+			"url": "config/scene.json",
+			"type": "json",
+			"name": "scene_json"
+		},
+		{
+			"url": "assets/scene/props.json",
+			"type": "sheet",
+			"name": "props_json",
+			"subkeys": "s14,s16,s19,s56,s58,s9"
+		},
+		{
+			"url": "assets/background/background.png",
+			"type": "image",
+			"name": "background"
+		},
+		{
+			"url": "assets/Panel/page-scene.json",
+			"type": "sheet",
+			"name": "page-scene_json",
+			"subkeys": "btn-scene-bg,btn-scene-person,btn-scene-props,text1,text2"
+		},
+		{
+			"url": "assets/Panel/title-bg.png",
+			"type": "image",
+			"name": "title-bg"
+		},
+		{
+			"url": "assets/Panel/not-get.png",
+			"type": "image",
+			"name": "not-get"
+		},
+		{
+			"url": "assets/Panel/title-picture.png",
+			"type": "image",
+			"name": "title-picture"
+		},
+		{
+			"url": "assets/sound/Y17.mp3",
+			"type": "sound",
+			"name": "Y17"
 		}
 	]
 }

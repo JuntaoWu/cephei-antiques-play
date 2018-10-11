@@ -36,7 +36,7 @@ module game {
         }
 
         public pictClick() {
-
+            this.sendNotification(game.SceneCommand.SHOW_SCENE); 
         }
 
         public storeClick() {

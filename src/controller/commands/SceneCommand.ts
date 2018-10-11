@@ -17,6 +17,8 @@ module game {
         public static CHANGE: string = "scene_change";
 
         public static SHOW_STORE: string = "show_store";
+        public static SHOW_SCENE: string = "show_scene";
+        public static SHOW_SCENE_DETAILS: string = "show_scene_details";
 
 
         public register(): void {
@@ -27,6 +29,8 @@ module game {
             super.initializeNotifier(key);
             this.facade().registerCommand(SceneCommand.CHANGE, SceneCommand);
             this.facade().registerCommand(SceneCommand.SHOW_STORE, SceneCommand);
+            this.facade().registerCommand(SceneCommand.SHOW_SCENE, SceneCommand);
+            this.facade().registerCommand(SceneCommand.SHOW_SCENE_DETAILS, SceneCommand);
         }
 
         public async execute(notification: puremvc.INotification): Promise<any> {
@@ -46,6 +50,12 @@ module game {
                     break;
                 case SceneCommand.SHOW_STORE:
                     appMediator.main.showStoreWindow();
+                    break;
+                case SceneCommand.SHOW_SCENE:
+                    appMediator.main.showSceneSummaryWindow();
+                    break;
+                case SceneCommand.SHOW_SCENE_DETAILS:
+                    appMediator.main.showSceneDetailsWindow(data);
                     break;
             }
         }

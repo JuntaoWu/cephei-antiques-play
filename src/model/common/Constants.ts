@@ -41,6 +41,12 @@ module game {
         MiniGame: "小游戏",
     }
 
+    export const SceneType = {
+        SceneBg: "场景CG",
+        ScenePerson: "人物CG",
+        SceneProps: "道具CG",
+    }
+
     export const plotType = {
         PlotChange: "切换",
         PlotAdded: "追加",

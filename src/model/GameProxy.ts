@@ -8,8 +8,9 @@ module game {
         //通过小游戏
         public static PASS_MINIGAME: string = "pass_minigame";
 
-        public playerInfo = {
+        public playerInfo: PlayerInfo = {
             plotId: 1,
+            collectedScene: ["s16", "s1", "s2"],
         };
         public pointHunag: number = 43;
         public pointMu: number = 43;
@@ -37,5 +38,15 @@ module game {
         public getCurrentPlot(): Plot {
             return this.chapterPlot.get(this.playerInfo.plotId.toString());
         }
+        
+		private _sceneRes: Map<string, any>;
+		public get sceneRes(): Map<string, any> {
+			if (!this._sceneRes) {
+				let config = RES.getRes("scene_json") as Array<any>;
+				let dictionary = _(config).groupBy((a: any) => a.type).value();
+				this._sceneRes = new Map(Object.entries(dictionary));
+			}
+			return this._sceneRes;
+		}
     }
 }
