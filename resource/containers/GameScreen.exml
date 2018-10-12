@@ -52,10 +52,10 @@
     </e:Group>
     <e:Group id="textGroup" bottom="0" top="725">
         <e:Image width="720" source="game-bg" height="100%" scale9Grid="90,70,540,422"/>
-        <e:Scroller id="scrollGroup" width="640" y="40" horizontalCenter="0" height="180">
+        <e:Scroller id="scrollGroup" width="640" y="40" horizontalCenter="0" height="150">
             <e:viewport>
                 <e:Group>
-                    <e:Label text="{description}" lineSpacing="10" textColor="0x000000" y="20" horizontalCenter="0" width="640" fontFamily="Microsoft YaHei"/>
+                    <e:Label text="{description}" lineSpacing="10" textColor="0x000000" horizontalCenter="0" width="640" fontFamily="Microsoft YaHei"/>
                 </e:Group>
             </e:viewport>
         </e:Scroller>

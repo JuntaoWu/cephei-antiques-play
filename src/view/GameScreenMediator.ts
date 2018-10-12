@@ -41,12 +41,13 @@ module game {
         public addScene: eui.Image;
         public textIsOver: boolean;
         public wordList: Array<string>;
+        public next: number|string;
 
         public initData() {
             this.gameScreen.bottomGroup.visible = this.gameScreen.plotSelectList.visible = this.gameScreen.textGroup.visible = false;
             this.gameScreen.showMiniGame = this.gameScreen.showTransition = this.showResult = this.isQuestion = false;
             this.gameScreen.question = this.gameScreen.points = "";
-            this.gameScreen.scrollGroup.height = 480;
+            this.gameScreen.scrollGroup.height = 450;
             this.gameScreen.scrollGroup.viewport.scrollV = 0;
             this.textIsOver = true;
             
@@ -59,6 +60,8 @@ module game {
             if (!plot) {
                 return;
             }
+            // 选择不同对话下一条和不同结局
+            this.next = plot.next;
             if (plot.type == plotType.PlotQuestion) {
                 this.gameScreen.showScene = false;
                 this.gameScreen.questionGroup.visible = this.isQuestion = this.gameScreen.textGroup.visible = true;
@@ -72,7 +75,7 @@ module game {
                 this.questionPoints = [question.points1, question.points2];
                 this.showPointsNum = 0;
 
-                this.gameScreen.scrollGroup.height = 180;
+                this.gameScreen.scrollGroup.height = 150;
                 this.gameScreen.scrollGroup.viewport.scrollH = 0;
                 if (question.type == "填空") {
                     this.gameScreen.bottomGroup.visible = true;
@@ -98,7 +101,7 @@ module game {
                 this.gameScreen.showScene = this.gameScreen.textGroup.visible = true; true;
                 this.gameScreen.questionGroup.visible = false;
                 //搭建剧情场景
-                this.settingScene(plot.res, plot.effect, plot.effectTrigger);
+                this.settingScene(plot.res, plot.portrait, plot.effect, plot.effectTrigger);
                 //剧情文字变化
                 if (plot.type != plotType.PlotAdded) {
                     this.gameScreen.description = "";
@@ -129,7 +132,7 @@ module game {
             }
         }
 
-        public settingScene(res: string, effect?: string, effectTigger?: string) {
+        public settingScene(res: string, addType?: string, effect?: string, effectTigger?: string) {
             this.gameScreen.sceneAddGroup.removeChildren();
             let sceneResList = res.split("、");
             sceneResList.forEach((v, i) => {
@@ -145,7 +148,12 @@ module game {
                 else {
                     let img = new eui.Image();
                     img.source = v;
-                    img.scaleX = img.scaleY = 0.5;
+                    if (!addType) {
+                        img.scaleX = img.scaleY = 0.5;
+                    }
+                    else {
+                        img.scaleX = img.scaleY = 1;
+                    }
                     img.y = 135;
                     img.x = 180 * (i - 1);
                     this.gameScreen.sceneAddGroup.addChild(img);
@@ -174,6 +182,8 @@ module game {
                     this.addWordToDescription();
                 }, this, 100)
             }
+            let bottomHeight = this.gameScreen.scrollGroup.viewport.contentHeight - this.gameScreen.scrollGroup.height;
+            this.gameScreen.scrollGroup.viewport.scrollV = Math.max(0, bottomHeight);
         }
 
         public showPlotOption(talkId) {
@@ -185,25 +195,29 @@ module game {
                 let options = [
                     {
                         option: plotOption.option1,
-                        result: plotOption.result1
+                        result: plotOption.result1,
+                        next: plotOption.next1
                     },
                     {
                         option: plotOption.option2,
-                        result: plotOption.result2
+                        result: plotOption.result2,
+                        next: plotOption.next2
                     }
                 ]
                 this.gameScreen.plotSelectList.dataProvider = new eui.ArrayCollection(options);
                 this.gameScreen.plotSelectList.itemRenderer = QuestionSelectItemRenderer;
             }
+            egret.setTimeout(() => {
+                let bottomHeight = this.gameScreen.scrollGroup.viewport.contentHeight - this.gameScreen.scrollGroup.height;
+                this.gameScreen.scrollGroup.viewport.scrollV = Math.max(0, bottomHeight);
+            }, this, 100)
         }
 
         public selectItem() {
-            if (+this.gameScreen.plotSelectList.selectedItem.result > 0) {
-                this.proxy.pointHunag += this.gameScreen.plotSelectList.selectedItem.result;
-            }
-            else {
-                this.proxy.pointMu -= this.gameScreen.plotSelectList.selectedItem.result;
-            }
+            let point = +this.gameScreen.plotSelectList.selectedItem.result;
+            this.proxy.pointHunag += point;
+            this.proxy.pointMu -= point;
+            this.next = this.gameScreen.plotSelectList.selectedItem.next;
             this.showNext();
         }
 
@@ -220,7 +234,17 @@ module game {
                 this.textIsOver = true;
                 return;
             }
-            this.proxy.playerInfo.plotId++;
+            if (this.next == "over") {
+                if (this.proxy.pointMu > this.proxy.pointHunag) {
+                    this.proxy.playerInfo.plotId = this.proxy.playerInfo.plotId + 2;
+                }
+                else {
+                    this.proxy.playerInfo.plotId = this.proxy.playerInfo.plotId + 1;
+                }
+            }
+            else {
+                this.proxy.playerInfo.plotId = (this.next as number) || this.proxy.playerInfo.plotId + 1;
+            }
             this.initData();
         }
 
@@ -246,7 +270,7 @@ module game {
         public pictClick() {
             this.sendNotification(game.SceneCommand.SHOW_SCENE); 
         }
-        
+
         private beforeX: number;
         private beforeY: number;
         private touchBeginTime: number;

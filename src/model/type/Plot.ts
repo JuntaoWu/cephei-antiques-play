@@ -13,5 +13,7 @@ module game {
         playTime?: number;
         talkId?: number;
         autoNextTime?: number;
+        portrait?: string;
+        next?: any;
     }
 }
