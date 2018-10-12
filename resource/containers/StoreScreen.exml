@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <e:Skin class="StoreScreen" xmlns:e="http://ns.egret.com/eui" xmlns:game="game.*">
-    <e:Image source="loading-background" height="100%"/>
+    <e:Image source="background" height="100%"/>
     <e:Group width="720">
         <e:Image width="720" source="head-bg"/>
         <e:Button id="btnBack" verticalCenter="0" x="20">

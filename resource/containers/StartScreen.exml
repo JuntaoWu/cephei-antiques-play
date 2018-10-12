@@ -1,56 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
 <e:Skin class="StartScreen" xmlns:e="http://ns.egret.com/eui" xmlns:game="game.*">
     <e:Image source="background" height="100%"/>
-    
-    <e:Group y="333" horizontalCenter="0">
+    <e:Image source="logo"  horizontalCenter="0" y="80"/>
+    <e:Group y="440" horizontalCenter="0">
         <e:Button id="btnResumeGame" left="17">
             <e:Skin>
-                <e:Image source="option-bg"></e:Image>
-                <e:Label text="继续鉴宝" bold="true" textColor="0xffffff" verticalCenter="0" horizontalCenter="0"></e:Label>
+                <e:Image source="btn-resume"></e:Image>
             </e:Skin>
         </e:Button>
         <e:Button id="btnNewGame" left="17" y="163">
             <e:Skin>
-                <e:Image source="option-bg"></e:Image>
-                <e:Label text="新的开始" bold="true" textColor="0xffffff" verticalCenter="0" horizontalCenter="0"></e:Label>
+                <e:Image source="btn-newgame"></e:Image>
             </e:Skin>
         </e:Button>
         <e:Button id="btnManage" left="17" y="318">
             <e:Skin>
-                <e:Image source="option-bg"></e:Image>
-                <e:Label text="经营模式" bold="true" textColor="0xffffff" verticalCenter="0" horizontalCenter="0"></e:Label>
+                <e:Image source="btn-manage-start"></e:Image>
             </e:Skin>
         </e:Button>
         <e:Button id="btnDev" left="17" y="475">
             <e:Skin>
-                <e:Image source="option-bg"></e:Image>
-                <e:Label text="制作人员" bold="true" textColor="0xffffff" verticalCenter="0" horizontalCenter="0"></e:Label>
+                <e:Image source="btn-dev"></e:Image>
             </e:Skin>
         </e:Button>
     </e:Group>
-    <e:Group id="navigationBar" y="1180" width="640" height="170" horizontalCenter="0">
-        <e:Button id="btnPicture" left="17" verticalCenter="0">
+    <e:Group id="navigationBar" y="1180" width="665" height="170" horizontalCenter="0">
+        <e:Button id="btnPicture" left="17" bottom="20">
             <e:Skin>
-                <e:Image source="btn-picture"></e:Image>
-                <e:Label text="图鉴" y="120" bold="true" textColor="0x000000" horizontalCenter="0"></e:Label>
+                <e:Image source="btn-picture-start"></e:Image>
             </e:Skin>
         </e:Button>
-        <e:Button id="btnStore" x="221" verticalCenter="0">
+        <e:Button id="btnStore" x="175" bottom="20">
             <e:Skin>
                 <e:Image source="btn-store"></e:Image>
-                <e:Label text="商城" y="120" bold="true" textColor="0x000000" horizontalCenter="0"></e:Label>
             </e:Skin>
         </e:Button>
-        <e:Button id="btnShare" verticalCenter="0" right="166">
+        <e:Button id="btnShare" right="160" bottom="20">
             <e:Skin>
                 <e:Image source="btn-share"></e:Image>
-                <e:Label text="分享" y="120" bold="true" textColor="0x000000" horizontalCenter="0"></e:Label>
             </e:Skin>
         </e:Button>
-        <e:Button id="btnSetting" verticalCenter="0" right="0">
+        <e:Button id="btnSetting" right="0" bottom="20">
             <e:Skin>
                 <e:Image source="btn-setting"></e:Image>
-                <e:Label text="设置" y="120" bold="true" textColor="0x000000" horizontalCenter="0"></e:Label>
             </e:Skin>
         </e:Button>
     </e:Group>
