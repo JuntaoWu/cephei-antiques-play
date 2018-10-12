@@ -36,6 +36,8 @@ declare interface Platform {
 
     getLaunchInfo();
 
+    showPreImage(data: Array<string>);
+
     authorizeUserInfo(callback);
 
     createBannerAd(name: string, adUnitId: string, style: any);
@@ -125,6 +127,9 @@ class DebugPlatform implements Platform {
 
     public getLaunchInfo() {
 
+    }
+
+    public showPreImage(data) {
     }
 
     public authorizeUserInfo(callback) {

@@ -17,5 +17,7 @@ module game {
         public btnSceneBg: eui.Button;
         public btnScenePerson: eui.Button;
         public btnSceneProps: eui.Button;
+        public collectedText: string;
+        public finishText: string;
     }
 }

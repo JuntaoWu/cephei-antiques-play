@@ -19,6 +19,8 @@ module game {
 
         public btnResumeGame: eui.Button;
         public btnNewGame: eui.Button;
+        public btnManage: eui.Button;
+        public btnDev: eui.Button;
 
         public btnPicture: eui.Button;
         public btnStore: eui.Button;

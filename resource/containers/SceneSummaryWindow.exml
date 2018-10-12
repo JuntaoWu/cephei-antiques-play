@@ -3,17 +3,17 @@
     <e:Image source="background" height="100%"/>
     <e:Group width="720">
         <e:Image width="720" source="head-bg"/>
-        <e:Button id="btnBack" verticalCenter="0" x="30">
+        <e:Button id="btnBack" verticalCenter="0" x="35">
             <e:Skin>
-                <e:Image source="btn-back-game"></e:Image>
+                <e:Image source="btn-back-other"></e:Image>
             </e:Skin>
         </e:Button>
         <e:Group horizontalCenter="0" verticalCenter="0">
             <e:Image source="title-bg"></e:Image>
-            <e:Image source="title-picture" horizontalCenter="0" verticalCenter="0"></e:Image>
+            <e:Image source="title-scene" horizontalCenter="0" verticalCenter="0"></e:Image>
         </e:Group>
     </e:Group>
-    <e:Group y="165" horizontalCenter="0">
+    <e:Group y="200" horizontalCenter="0">
         <e:Group horizontalCenter="0">
             <e:Button id="btnSceneBg" horizontalCenter="0">
                 <e:Skin>
@@ -31,13 +31,13 @@
                 </e:Skin>
             </e:Button>
         </e:Group>
-        <e:Group horizontalCenter="0" y="770">
-            <e:Image source="text1"></e:Image>
-            <e:Label text="11/22" textColor="0x070707" x="390" size="45" bold="true"/>
+        <e:Group horizontalCenter="0" y="780" maxWidth="720">
+            <e:Image source="text1" verticalCenter="0"></e:Image>
+            <e:Label text="{collectedText}" x="390" size="50" bold="true" textColor="0x836134" fontFamily="SimSun" verticalCenter="0"/>
         </e:Group>
-        <e:Group horizontalCenter="0" y="840">
-            <e:Image source="text2"></e:Image>
-            <e:Label text="2/16" x="320" textColor="0x070707" size="45" verticalCenter="0" bold="true"/>
+        <e:Group horizontalCenter="0" y="880" maxWidth="720">
+            <e:Image source="text2" verticalCenter="0"></e:Image>
+            <e:Label text="{finishText}" x="320" size="50" verticalCenter="0" bold="true" textColor="0x560000" fontFamily="SimSun"/>
         </e:Group>
     </e:Group>
 </e:Skin>

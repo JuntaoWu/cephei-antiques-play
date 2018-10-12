@@ -26,7 +26,9 @@ module game {
         }
 
         public initData() {
-
+            let sceneRes = RES.getRes("scene_json") as Array<any>;
+            this.sceneSummaryWindow.collectedText = `${this.proxy.playerInfo.collectedScene.length}/${sceneRes.length}`;
+            this.sceneSummaryWindow.finishText = `1/10`;
         }
 
         public backClick() {

@@ -19,6 +19,7 @@ module game {
             this.gameScreen.btnTips.addEventListener(egret.TouchEvent.TOUCH_TAP, this.btnTipsClick, this);
             
             this.gameScreen.btnBack.addEventListener(egret.TouchEvent.TOUCH_TAP, this.btnBackClick, this);
+            this.gameScreen.btnPicture.addEventListener(egret.TouchEvent.TOUCH_TAP, this.pictClick, this);
             
             this.gameScreen.addEventListener(egret.Event.ADDED_TO_STAGE, this.initData, this);
             this.initData();
@@ -242,6 +243,10 @@ module game {
             this.sendNotification(SceneCommand.CHANGE, Scene.Start);
         }
 
+        public pictClick() {
+            this.sendNotification(game.SceneCommand.SHOW_SCENE); 
+        }
+        
         private beforeX: number;
         private beforeY: number;
         private touchBeginTime: number;

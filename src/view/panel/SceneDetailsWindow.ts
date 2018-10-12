@@ -16,12 +16,21 @@ module game {
         public btnBack: eui.Button;
         public sceneList: eui.List;
         public scrollGroup: eui.Scroller;
-        public sceneName: string;
-        public totalNum: number;
-        public collectedNum: number;
+        public type: string;
+        public titleRes: string;
+        public collectedText: string;
 
         public setSceneType(type: string) {
-            this.sceneName = type;
+            this.type = type;
+            if (type == SceneType.SceneBg) {
+                this.titleRes = "title-scene-cg";
+            }
+            else if (type == SceneType.ScenePerson) {
+                this.titleRes = "title-person-cg";
+            }
+            else {
+                this.titleRes = "title-props-cg";
+            }
         }
     }
 }
