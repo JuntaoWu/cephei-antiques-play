@@ -10,7 +10,7 @@ module game {
 
         public playerInfo: PlayerInfo = {
             plotId: 1,
-            collectedScene: ["s16", "s1", "s2"],
+            collectedScene: [],
         };
         public pointHunag: number = 43;
         public pointMu: number = 43;
