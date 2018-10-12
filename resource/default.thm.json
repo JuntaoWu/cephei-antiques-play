@@ -38,6 +38,7 @@
 		"resource/containers/SceneDetailsWindow.exml",
 		"resource/containers/SceneSummaryWindow.exml",
 		"resource/containers/skins_list/M3_2_List.exml",
+		"resource/containers/skins_list/shop_list.exml",
 		"resource/containers/StartScreen.exml",
 		"resource/containers/StoreScreen.exml",
 		"resource/eui_skins/ButtonSkin.exml",
