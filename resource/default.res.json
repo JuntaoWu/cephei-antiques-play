@@ -1,7 +1,7 @@
 {
 	"groups": [
 		{
-			"keys": "checkbox_select_disabled_png,checkbox_select_down_png,checkbox_select_up_png,checkbox_unselect_png,selected_png,border_png,header_png,radiobutton_select_disabled_png,radiobutton_select_down_png,radiobutton_select_up_png,radiobutton_unselect_png,roundthumb_png,thumb_png,track_png,tracklight_png,handle_png,off_png,on_png,button_down_png,button_up_png,thumb_pb_png,track_pb_png,track_sb_png,question_json,m01,m03,m04,m06,m10,m11,m12,m15,m17,m19,m21,m18-item_json,m20-item_json,m16-item_json,m24,m02,m05,m07,m08,m09,m22,m18-bg,m20-bg,m16-bg,m20,m16,m18,m08-item_json,m08-bg,select-options_json,m42,m42-item_json,game-bg,input-item,option-bg,m42-tips,input-bg,1_png,2_png,3_png,4_png,5_png,6_png,7_png,8_png,M14_bg_png,bg_png,ha1_png,ha2_png,ha3_png,ha4_png,ha5_png,bai_png,hei_png,hong_png,huang_png,kuang_png,lan_png,M2bg_png,bg1_png,bg2_png,shang_png,trunoff_png,turnon_png,word_guo,word_ren,word_shi,word_xin,xia_png,M5_1_png,M5_2_png,M5_3_png,M5_4_png,M5_5_png,M5_6_png,M5_7_png,M5_8_png,M5_9_png,M5_bg_png,chapter-plot_json,plot-options_json,s67,s4,s5,s6,s11,s12,s13,s20,s23,s25,s26,s27,s28,s29,s31,s32,s35,s38,s43,s44,s54,s59,s62,s66,bar-bg,key2_png,key1_png,m13_png,s0,s60,s1,s3,s10,s15,s17,s18,s21,s22,s53,s57,Y1,head-bg,m23,s65,s68,s2,s33,s55,s61,s63,s64,s7,scene_json,props_json,background,page-scene_json,title-bg,not-get,title-picture,logo,game-btn_json,start-btn_json,bar-icon_json",
+			"keys": "checkbox_select_disabled_png,checkbox_select_down_png,checkbox_select_up_png,checkbox_unselect_png,selected_png,border_png,header_png,radiobutton_select_disabled_png,radiobutton_select_down_png,radiobutton_select_up_png,radiobutton_unselect_png,roundthumb_png,thumb_png,track_png,tracklight_png,handle_png,off_png,on_png,button_down_png,button_up_png,thumb_pb_png,track_pb_png,track_sb_png,question_json,m01,m03,m04,m06,m10,m11,m12,m15,m17,m19,m21,m18-item_json,m20-item_json,m16-item_json,m24,m02,m05,m07,m08,m09,m22,m18-bg,m20-bg,m16-bg,m20,m16,m18,m08-item_json,m08-bg,select-options_json,m42,m42-item_json,game-bg,input-item,option-bg,m42-tips,input-bg,1_png,2_png,3_png,4_png,5_png,6_png,7_png,8_png,M14_bg_png,bg_png,ha1_png,ha2_png,ha3_png,ha4_png,ha5_png,bai_png,hei_png,hong_png,huang_png,kuang_png,lan_png,M2bg_png,bg1_png,bg2_png,shang_png,trunoff_png,turnon_png,word_guo,word_ren,word_shi,word_xin,xia_png,M5_1_png,M5_2_png,M5_3_png,M5_4_png,M5_5_png,M5_6_png,M5_7_png,M5_8_png,M5_9_png,M5_bg_png,chapter-plot_json,plot-options_json,s67,s4,s5,s6,s11,s12,s13,s20,s23,s25,s26,s27,s28,s29,s31,s32,s35,s38,s43,s44,s54,s59,s62,s66,bar-bg,key2_png,key1_png,m13_png,s0,s60,s1,s3,s10,s15,s17,s18,s21,s22,s53,s57,Y1,head-bg,m23,s65,s68,s2,s33,s55,s61,s63,s64,s7,scene_json,props_json,background,page-scene_json,title-bg,not-get,title-picture,logo,game-btn_json,start-btn_json,bar-icon_json,pay,pay_bg,power_bg,power_large,power_medium,note_bg,note_prop,shop_json,power_small",
 			"name": "preload"
 		},
 		{
@@ -937,22 +937,67 @@
 			"name": "logo"
 		},
 		{
-			"name": "game-btn_json",
-			"type": "sheet",
 			"url": "assets/game/game-btn.json",
-			"subkeys": "btn-picture,btn-save,btn-tips,btn-back-game,btn-finish,btn-help,btn-manage"
+			"type": "sheet",
+			"name": "game-btn_json",
+			"subkeys": "btn-back-game,btn-finish,btn-help,btn-manage,btn-picture,btn-save,btn-tips"
 		},
 		{
-			"name": "start-btn_json",
-			"type": "sheet",
 			"url": "assets/start/start-btn.json",
-			"subkeys": "btn-resume,btn-setting,btn-share,btn-store,btn-dev,btn-manage-start,btn-newgame,btn-picture-start"
+			"type": "sheet",
+			"name": "start-btn_json",
+			"subkeys": "btn-dev,btn-manage-start,btn-newgame,btn-picture-start,btn-resume,btn-setting,btn-share,btn-store"
 		},
 		{
-			"name": "bar-icon_json",
-			"type": "sheet",
 			"url": "assets/game/bar-icon.json",
-			"subkeys": "img-m,m-bar,munai,tips-bg,h-bar,huangyanyan,img-h"
+			"type": "sheet",
+			"name": "bar-icon_json",
+			"subkeys": "h-bar,huangyanyan,img-h,img-m,m-bar,munai,tips-bg"
+		},
+		{
+			"url": "assets/shop/pay.png",
+			"type": "image",
+			"name": "pay"
+		},
+		{
+			"url": "assets/shop/pay_bg.png",
+			"type": "image",
+			"name": "pay_bg"
+		},
+		{
+			"url": "assets/shop/power_bg.png",
+			"type": "image",
+			"name": "power_bg"
+		},
+		{
+			"url": "assets/shop/power_large.png",
+			"type": "image",
+			"name": "power_large"
+		},
+		{
+			"url": "assets/shop/power_medium.png",
+			"type": "image",
+			"name": "power_medium"
+		},
+		{
+			"url": "assets/shop/note_bg.png",
+			"type": "image",
+			"name": "note_bg"
+		},
+		{
+			"url": "assets/shop/note_prop.png",
+			"type": "image",
+			"name": "note_prop"
+		},
+		{
+			"url": "config/shop.json",
+			"type": "json",
+			"name": "shop_json"
+		},
+		{
+			"url": "assets/shop/power_small.png",
+			"type": "image",
+			"name": "power_small"
 		}
 	]
 }

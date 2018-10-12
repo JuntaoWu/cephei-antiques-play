@@ -17,8 +17,11 @@ module game {
         }
 
         public initData() {
-
-        }
+            let dataArr: any[] = RES.getRes("shop_json");
+            let euiArr: eui.ArrayCollection = new eui.ArrayCollection(dataArr);
+            this.storeWindow.shoplist.dataProvider = euiArr;
+            this.storeWindow.shoplist.itemRenderer = shop_list;
+        }       
 
         public backClick() {
             this.storeWindow.close();
