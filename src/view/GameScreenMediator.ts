@@ -97,6 +97,9 @@ module game {
                     this.showNext();
                 }, this, 2000);
             }
+            else if (plot.type == "界面切换经营") {
+                this.showNext();
+            }
             else {
                 this.gameScreen.showScene = this.gameScreen.textGroup.visible = true; true;
                 this.gameScreen.questionGroup.visible = false;
@@ -136,11 +139,12 @@ module game {
             this.gameScreen.sceneAddGroup.removeChildren();
             let sceneResList = res.split("、");
             sceneResList.forEach((v, i) => {
-                if (!this.proxy.playerInfo.collectedScene.includes(v)) {
-                    this.proxy.playerInfo.collectedScene.push(v);
+                if (!this.proxy.playerInfo.collectedScenes.includes(v)) {
+                    this.proxy.playerInfo.collectedScenes.push(v);
                 }
                 if (!i) {
                     this.gameScreen.sceneBg.source = v;
+                    this.gameScreen.sceneBg.alpha = 1;
                     if (v == effectTigger) {
                         EffectManager.playEffect.call(this.gameScreen.sceneBg, effect);
                     }
@@ -196,12 +200,12 @@ module game {
                     {
                         option: plotOption.option1,
                         result: plotOption.result1,
-                        next: plotOption.next1
+                        next: 1
                     },
                     {
                         option: plotOption.option2,
                         result: plotOption.result2,
-                        next: plotOption.next2
+                        next: 2
                     }
                 ]
                 this.gameScreen.plotSelectList.dataProvider = new eui.ArrayCollection(options);
@@ -234,7 +238,14 @@ module game {
                 this.textIsOver = true;
                 return;
             }
-            if (this.next == "over") {
+            if (this.proxy.playerInfo.fatigueValue <= 0) {
+                return;
+            }
+            this.proxy.playerInfo.fatigueValue -= 1;
+            if (!this.next) {
+                this.proxy.playerInfo.plotId = this.proxy.playerInfo.plotId + 1;
+            }
+            else if (this.next == "over") {
                 if (this.proxy.pointMu > this.proxy.pointHunag) {
                     this.proxy.playerInfo.plotId = this.proxy.playerInfo.plotId + 2;
                 }
@@ -243,7 +254,7 @@ module game {
                 }
             }
             else {
-                this.proxy.playerInfo.plotId = (this.next as number) || this.proxy.playerInfo.plotId + 1;
+                this.proxy.playerInfo.plotId = this.proxy.playerInfo.plotId + (this.next as number);
             }
             this.initData();
         }

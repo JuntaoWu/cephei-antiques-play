@@ -8,7 +8,7 @@ module game {
             super(MiniGameInputMediator.NAME, viewComponent);
             super.initializeNotifier("ApplicationFacade");
 
-            this.gameInput.answerInput.addEventListener(egret.Event.CHANGE, this.onChang, this)
+            this.gameInput.answerInput.addEventListener(egret.FocusEvent.FOCUS_OUT, this.focusOut, this)
             this.gameInput.btnConfirm.addEventListener(egret.Event.CHANGE, this.confirmClick, this)
             this.gameInput.addEventListener(egret.Event.ADDED_TO_STAGE, this.initData, this);
             this.initData();
@@ -35,7 +35,10 @@ module game {
         public inputTextList: Array<string>;
         public isSend: boolean = false;
 
-        private onChang(e: egret.Event) {
+        private focusOut(e: egret.Event) {
+            if (e.target.text.length > this.inputTextList.length) {
+                e.target.text = e.target.text.substr(0, this.inputTextList.length);
+            }
             this.inputTextList = this.inputTextList.map(i => "");
             e.target.text.split("").forEach((v, i) => {
                 if (i < this.inputTextList.length) {

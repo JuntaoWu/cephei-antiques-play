@@ -158,12 +158,12 @@ module game {
             img.width = target.width;
             img.height = target.height;
             img.source = target.source;
-            img.x = img.y = 2;
-            img.alpha = 0.8;
+            img.x = img.y = 5;
+            img.alpha = 0;
             let n = target.parent.getChildIndex(target) + 1;
             target.parent.addChildAt(img, n);
-            egret.Tween.get(img).to({alpha: 0}, 1000);
-            egret.Tween.get(target).to({alpha: 0}, 1000).call(() => {
+            egret.Tween.get(img).to({alpha: 0.6}, 2000).to({alpha: 0}, 2000);
+            egret.Tween.get(target).to({alpha: 0}, 4000).call(() => {
                 target.parent.removeChild(img);
             });
         }

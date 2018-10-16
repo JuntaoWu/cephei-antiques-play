@@ -10,7 +10,8 @@ module game {
 
         public playerInfo: PlayerInfo = {
             plotId: 1,
-            collectedScene: [],
+            collectedScenes: [],
+            fatigueValue: 1000,
         };
         public pointHunag: number = 43;
         public pointMu: number = 43;

@@ -44,7 +44,7 @@ module game {
         }
 
         public shareClick() {
-
+            platform.shareAppMessage();
         }
 
         public settingClick() {

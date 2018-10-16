@@ -102,7 +102,7 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "半身",
-    "next": 9
+    "next": 2
   },
   "8": {
     "id": 8,
@@ -117,7 +117,7 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "半身",
-    "next": 9
+    "next": 1
   },
   "9": {
     "id": 9,
@@ -297,7 +297,7 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 22
+    "next": 2
   },
   "21": {
     "id": 21,
@@ -312,7 +312,7 @@
     "talkId": 0.0,
     "autoNextTime": 6,
     "portrait": "",
-    "next": 22
+    "next": 1
   },
   "22": {
     "id": 22,
@@ -657,7 +657,7 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "半身",
-    "next": 46
+    "next": 2
   },
   "45": {
     "id": 45,
@@ -672,7 +672,7 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "半身",
-    "next": 46
+    "next": 1
   },
   "46": {
     "id": 46,
@@ -807,7 +807,7 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 56
+    "next": 2
   },
   "55": {
     "id": 55,
@@ -822,7 +822,7 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 56
+    "next": 1
   },
   "56": {
     "id": 56,
@@ -888,7 +888,7 @@
     "id": 0.0,
     "res": "s6、s7",
     "questionId": 0.0,
-    "type": "场景追加",
+    "type": "追加",
     "effect": "",
     "effectTrigger": "",
     "description": "我扭头去看，只见一个和我年纪相仿的男人背着双手站在我的面前。一股莫名的亲切感涌上心头，我开口问道：“你是……？”",
@@ -942,7 +942,7 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 64
+    "next": 2
   },
   "63": {
     "id": 63,
@@ -957,7 +957,7 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 64
+    "next": 1
   },
   "64": {
     "id": 64,
@@ -1152,7 +1152,7 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 79
+    "next": 2
   },
   "78": {
     "id": 78,
@@ -1167,7 +1167,7 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 79
+    "next": 1
   },
   "79": {
     "id": 79,
@@ -1452,7 +1452,7 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 98
+    "next": 2
   },
   "97": {
     "id": 97,
@@ -1467,7 +1467,7 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 98
+    "next": 1
   },
   "98": {
     "id": 98,
@@ -1572,7 +1572,7 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 106
+    "next": 2
   },
   "105": {
     "id": 105,
@@ -1587,7 +1587,7 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 106
+    "next": 1
   },
   "106": {
     "id": 106,
@@ -1767,7 +1767,7 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "半身",
-    "next": 119
+    "next": 2
   },
   "118": {
     "id": 118,
@@ -1782,7 +1782,7 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "半身",
-    "next": 119
+    "next": 1
   },
   "119": {
     "id": 119,
@@ -1902,7 +1902,7 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 128
+    "next": 2
   },
   "127": {
     "id": 127,
@@ -1917,7 +1917,7 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 128
+    "next": 1
   },
   "128": {
     "id": 128,
@@ -2127,7 +2127,7 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "半身",
-    "next": 143
+    "next": 2
   },
   "142": {
     "id": 142,
@@ -2142,7 +2142,7 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "半身",
-    "next": 143
+    "next": 1
   },
   "143": {
     "id": 143,
@@ -2292,7 +2292,7 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 155
+    "next": 2
   },
   "154": {
     "id": 154,
@@ -2307,7 +2307,7 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 155
+    "next": 1
   },
   "155": {
     "id": 155,
@@ -2382,7 +2382,7 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 161
+    "next": 2
   },
   "160": {
     "id": 160,
@@ -2397,7 +2397,7 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 161
+    "next": 1
   },
   "161": {
     "id": 161,
@@ -2637,7 +2637,7 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 178
+    "next": 2
   },
   "177": {
     "id": 177,
@@ -2652,7 +2652,7 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 178
+    "next": 1
   },
   "178": {
     "id": 178,
@@ -2847,7 +2847,7 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 192
+    "next": 2
   },
   "191": {
     "id": 191,
@@ -2862,7 +2862,7 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 192
+    "next": 1
   },
   "192": {
     "id": 192,
@@ -3012,7 +3012,7 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 203
+    "next": 2
   },
   "202": {
     "id": 202,
@@ -3027,7 +3027,7 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 203
+    "next": 1
   },
   "203": {
     "id": 203,
@@ -3132,7 +3132,7 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "半身",
-    "next": 211
+    "next": 2
   },
   "210": {
     "id": 210,
@@ -3147,7 +3147,7 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "半身",
-    "next": 211
+    "next": 1
   },
   "211": {
     "id": 211,
@@ -3267,7 +3267,7 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "半身",
-    "next": 220
+    "next": 2
   },
   "219": {
     "id": 219,
@@ -3282,7 +3282,7 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "半身",
-    "next": 220
+    "next": 1
   },
   "220": {
     "id": 220,
@@ -3417,7 +3417,7 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 230
+    "next": 2
   },
   "229": {
     "id": 229,
@@ -3432,7 +3432,7 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 230
+    "next": 1
   },
   "230": {
     "id": 230,
@@ -3537,7 +3537,7 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 238
+    "next": 2
   },
   "237": {
     "id": 237,
@@ -3552,7 +3552,7 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 238
+    "next": 1
   },
   "238": {
     "id": 238,
@@ -3702,7 +3702,7 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 249
+    "next": 2
   },
   "248": {
     "id": 248,
@@ -3717,7 +3717,7 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 249
+    "next": 1
   },
   "249": {
     "id": 249,
@@ -3882,7 +3882,7 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 259
+    "next": 2
   },
   "258": {
     "id": 258,
@@ -3897,7 +3897,7 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 259
+    "next": 1
   },
   "259": {
     "id": 259,
