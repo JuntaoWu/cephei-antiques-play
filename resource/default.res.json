@@ -9,27 +9,27 @@
 			"name": "loading"
 		},
 		{
-			"keys": "s0,s1,s2,s3,s4,s20,s53,s54,Y4,Y2,Y3,m03,m01,m02,s55,Y1,bai_png,hei_png,hong_png,huang_png,kuang_png,lan_png,M2bg_png,bg1_png,bg2_png,shang_png,trunoff_png,turnon_png,word_guo,word_ren,word_shi,word_xin,xia_png,key2_png,key1_png",
+			"keys": "s0,s1,s2,s3,s4,s20,s53,s54,Y4,Y2,Y3,m01,s55,Y1,bai_png,hei_png,hong_png,huang_png,kuang_png,lan_png,M2bg_png,bg1_png,bg2_png,shang_png,trunoff_png,turnon_png,word_guo,word_ren,word_shi,word_xin,xia_png,key2_png,key1_png",
 			"name": "chapter0"
 		},
 		{
-			"keys": "s7,s5,s57,s6,s1,s0,s4,s58,s56,s9,Y5,m06,m05,m04,M5_1_png,M5_2_png,M5_3_png,M5_4_png,M5_5_png,M5_6_png,M5_7_png,M5_8_png,M5_9_png,M5_bg_png,bg_png,ha1_png,ha2_png,ha3_png,ha4_png,ha5_png",
+			"keys": "s7,s5,s57,s6,s1,s0,s4,s58,s56,s9,Y5,m04,M5_1_png,M5_2_png,M5_3_png,M5_4_png,M5_5_png,M5_6_png,M5_7_png,M5_8_png,M5_9_png,M5_bg_png,bg_png,ha1_png,ha2_png,ha3_png,ha4_png,ha5_png",
 			"name": "chapter1"
 		},
 		{
-			"keys": "m11,m10,m09,m08,m08-item_json,m08-bg,m07,Y8,Y7,Y6,Y17,s62,s60,s43,s31,s21,s16,s15,s14,s13,s12,s11,s10,s1,s0,s18,s22,s3,s59,s61,bg3,ren",
+			"keys": "m11,m10,m08-item_json,m08-bg,m07,Y8,Y7,Y6,Y17,s62,s60,s43,s31,s21,s16,s15,s14,s13,s12,s11,s10,s1,s0,s18,s22,s3,s59,s61,bg3,ren",
 			"name": "chapter2"
 		},
 		{
-			"keys": "Y9,Y18,Y10,Y11,Y12,Y13,Y14,Y3,m16,m16-item_json,m16-bg,m15,m13_png,m12,s71,s66,s60,s44,s17,s21,s19,s1,s0,s10,s20,s22,s23,s55,s63,s67,1_png,2_png,3_png,4_png,5_png,6_png,7_png,8_png,M14_bg_png",
+			"keys": "Y9,Y18,Y10,Y11,Y12,Y13,Y14,Y3,m16-item_json,m16-bg,m15,m13,m12,s71,s66,s60,s44,s17,s21,s19,s1,s0,s10,s20,s22,s23,s55,s63,s67,1_png,2_png,3_png,4_png,5_png,6_png,7_png,8_png,M14_bg_png",
 			"name": "chapter3"
 		},
 		{
-			"keys": "Y15,m21,m20,m20-item_json,m20-bg,m19,m18,m18-item_json,m18-bg,m17,s0,s28,s32,s68,s26,s21,s1,s10,s18,s25,s27,s60,s38,s29",
+			"keys": "Y15,m21,m20-item_json,m20-bg,m19,m18-item_json,m18-bg,m17,s0,s28,s32,s68,s26,s21,s1,s10,s18,s25,s27,s60,s38,s29",
 			"name": "chapter4"
 		},
 		{
-			"keys": "Y16,m42,m42-tips,m42-item_json,m24,m23,m22,s0,s17,s25,s35,s4,s68,s69,s60,s38,s32,s18,s1,M24_bg,word_bai,word_he,word_hei,word_jia,word_jiao,word_ti,word_yi,word_zhu",
+			"keys": "Y16,m42-tips,m42-item_json,m23,m22,s0,s17,s25,s35,s4,s68,s69,s60,s38,s32,s18,s1,M24_bg,word_bai,word_he,word_hei,word_jia,word_jiao,word_ti,word_yi,word_zhu,m42-bg",
 			"name": "chapter5"
 		},
 		{
@@ -164,19 +164,9 @@
 			"name": "m01"
 		},
 		{
-			"url": "assets/questions/m03.png",
-			"type": "image",
-			"name": "m03"
-		},
-		{
 			"url": "assets/questions/m04.png",
 			"type": "image",
 			"name": "m04"
-		},
-		{
-			"url": "assets/questions/m06.png",
-			"type": "image",
-			"name": "m06"
 		},
 		{
 			"url": "assets/questions/m10.png",
@@ -232,34 +222,9 @@
 			"subkeys": "m16_1,m16_2,m16_3,m16_4,m16_choose,m16_move,m16_trans"
 		},
 		{
-			"url": "assets/questions/M24.png",
-			"type": "image",
-			"name": "m24"
-		},
-		{
-			"url": "assets/questions/m02.png",
-			"type": "image",
-			"name": "m02"
-		},
-		{
-			"url": "assets/questions/m05.png",
-			"type": "image",
-			"name": "m05"
-		},
-		{
 			"url": "assets/questions/M07.png",
 			"type": "image",
 			"name": "m07"
-		},
-		{
-			"url": "assets/questions/M08.png",
-			"type": "image",
-			"name": "m08"
-		},
-		{
-			"url": "assets/questions/M09.png",
-			"type": "image",
-			"name": "m09"
 		},
 		{
 			"url": "assets/questions/m22.png",
@@ -282,21 +247,6 @@
 			"name": "m16-bg"
 		},
 		{
-			"url": "assets/questions/m20.png",
-			"type": "image",
-			"name": "m20"
-		},
-		{
-			"url": "assets/questions/m16.png",
-			"type": "image",
-			"name": "m16"
-		},
-		{
-			"url": "assets/questions/m18.png",
-			"type": "image",
-			"name": "m18"
-		},
-		{
 			"url": "assets/questions/m08-item.json",
 			"type": "sheet",
 			"name": "m08-item_json",
@@ -311,11 +261,6 @@
 			"url": "config/select-options.json",
 			"type": "json",
 			"name": "select-options_json"
-		},
-		{
-			"url": "assets/questions/m42.png",
-			"type": "image",
-			"name": "m42"
 		},
 		{
 			"url": "assets/questions/m42-item.json",
@@ -796,7 +741,7 @@
 		{
 			"url": "assets/questions/m13.png",
 			"type": "image",
-			"name": "m13_png"
+			"name": "m13"
 		},
 		{
 			"url": "assets/scene/s0.png",
@@ -1117,6 +1062,11 @@
 			"url": "assets/M24/word_zhu.png",
 			"type": "image",
 			"name": "word_zhu"
+		},
+		{
+			"url": "assets/questions/m42-bg.png",
+			"type": "image",
+			"name": "m42-bg"
 		}
 	]
 }
