@@ -9,6 +9,7 @@ module game {
         }
 
         public createCompleteEvent(event: eui.UIEvent): void {
+            this.height = this.stage.stageHeight;
             this.removeEventListener(eui.UIEvent.CREATION_COMPLETE, this.createCompleteEvent, this);
             ApplicationFacade.getInstance().registerMediator(new SceneDetailsWindowMediator(this));
         }

@@ -10,6 +10,7 @@ module game {
             super(GameScreenMediator.NAME, viewComponent);
             super.initializeNotifier("ApplicationFacade");
             this.proxy = <GameProxy><any>this.facade().retrieveProxy(GameProxy.NAME);
+            this.loadResGroup();
 
             this.gameScreen.textGroup.addEventListener(egret.TouchEvent.TOUCH_BEGIN, this.touchBegin, this);
             this.gameScreen.textGroup.addEventListener(egret.TouchEvent.TOUCH_END, this.touchEnd, this);
@@ -23,6 +24,16 @@ module game {
             
             this.gameScreen.addEventListener(egret.Event.ADDED_TO_STAGE, this.initData, this);
             this.initData();
+        }
+
+        private loadResGroup() {
+            const chapterResGroup = [0, 34, 69, 134, 184, 223];
+            for (let i = 5; i >= 0; i--) {
+                if (this.proxy.playerInfo.plotId > chapterResGroup[i]) {
+                    RES.loadGroup(`chapter${i}`, 0);
+                    return;
+                }
+            }
         }
 
         private _plotOptions: Map<string, any>;
@@ -93,6 +104,7 @@ module game {
             else if (plot.type == plotType.Transition) {
                 this.gameScreen.showTransition = true;
                 this.gameScreen.transitionText = plot.effect;
+                this.loadResGroup();
                 egret.setTimeout(() => {
                     this.showNext();
                 }, this, 2000);
@@ -136,6 +148,12 @@ module game {
         }
 
         public settingScene(res: string, addType?: string, effect?: string, effectTigger?: string) {
+            let added = this.gameScreen.sceneGroup.getChildByName("added") || this.gameScreen.sceneGroup.parent.getChildByName("added");
+            if(!!added) { //移除某些效果添加的元素
+                added.parent.removeChild(added);
+            }
+            egret.Tween.removeAllTweens();  //移除所有动画效果
+            this.gameScreen.sceneBg.horizontalCenter = 0;
             this.gameScreen.sceneAddGroup.removeChildren();
             let sceneResList = res.split("、");
             sceneResList.forEach((v, i) => {

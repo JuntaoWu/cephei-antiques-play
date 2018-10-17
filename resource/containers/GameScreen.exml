@@ -30,9 +30,9 @@
         </e:Button>
     </e:Group>
     <e:Group visible="{showScene}" width="720" top="135">
-        <e:Image maxWidth="720" horizontalCenter="0" source="s0" height="590"/>
+        <e:Image width="720" horizontalCenter="0" source="s0" height="590"/>
         <e:Group id="sceneGroup">
-            <e:Image id="sceneBg" maxWidth="720" horizontalCenter="0" source="s0" height="590"/>
+            <e:Image id="sceneBg" width="720" horizontalCenter="0" source="s0" height="590"/>
             <e:Group id="sceneAddGroup" horizontalCenter="0" height="100%">
             </e:Group>
         </e:Group>

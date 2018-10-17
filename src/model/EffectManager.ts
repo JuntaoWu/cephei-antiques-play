@@ -52,9 +52,7 @@ module game {
 
         //渐变消失
         public static disappear(target: egret.DisplayObject) {
-            egret.Tween.get(target).to({alpha: 0}, 800).call(() => {
-                target.parent && target.parent.removeChild(target);
-            });
+            egret.Tween.get(target).to({alpha: 0}, 800);
         }
 
         //渐亮
@@ -70,7 +68,7 @@ module game {
 
         //消失
         public static disappear2(target: egret.DisplayObject) {
-            target.parent && target.parent.removeChild(target);
+            target.alpha = 0;
         }
 
         //渐变出现
@@ -101,6 +99,7 @@ module game {
         //睁眼效果
         public static gradualShow2(target: egret.DisplayObject) {
             var m = new egret.Shape();
+            m.name = "added";
             target.parent.addChild(m);
             m.x = target.width / 2;
             m.y = target.height / 2;
@@ -113,7 +112,7 @@ module game {
                 n -= 10;
             }, this, 40);
             egret.setTimeout(() => {
-                target.parent.removeChild(m);
+                m.parent && m.parent.removeChild(m);
                 egret.clearInterval(intervalId);
             }, this, 3000)
         }
@@ -127,11 +126,12 @@ module game {
             img.source = target.source;
             img.alpha = 0.3;
             let n = target.parent.getChildIndex(target) + 1;
+            img.name = "added";
             target.parent.addChildAt(img, n);
             egret.Tween.get(img, {"loop":true}).to({x: -10, y: -10, rotation: 1}, 500).to({x: 10, y: 10,rotation: -1}, 1000).to({x: 0, y: 0, rotation: 0}, 500);
             egret.setTimeout(() => {
                 egret.Tween.removeTweens(img);
-                target.parent.removeChild(img);
+                img.parent && img.parent.removeChild(img);
             }, this, 4000)
         }
 
@@ -145,9 +145,10 @@ module game {
             img.x = img.y = 2;
             img.alpha = 0.8;
             let n = target.parent.getChildIndex(target) + 1;
+            img.name = "added";
             target.parent.addChildAt(img, n);
             egret.Tween.get(img).to({alpha: 0, x: 0, y: 0}, 1000).call(() => {
-                target.parent.removeChild(img);
+                img.parent && img.parent.removeChild(img);
             });
         }
 
@@ -161,10 +162,11 @@ module game {
             img.x = img.y = 5;
             img.alpha = 0;
             let n = target.parent.getChildIndex(target) + 1;
+            img.name = "added";
             target.parent.addChildAt(img, n);
             egret.Tween.get(img).to({alpha: 0.6}, 2000).to({alpha: 0}, 2000);
             egret.Tween.get(target).to({alpha: 0}, 4000).call(() => {
-                target.parent.removeChild(img);
+                img.parent && img.parent.removeChild(img);
             });
         }
     }

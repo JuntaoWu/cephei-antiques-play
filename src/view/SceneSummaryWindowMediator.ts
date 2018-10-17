@@ -10,6 +10,7 @@ module game {
             super(SceneSummaryWindowMediator.NAME, viewComponent);
             super.initializeNotifier("ApplicationFacade");
             this.proxy = <GameProxy><any>this.facade().retrieveProxy(GameProxy.NAME);
+            this.loadResGroup();
 
             this.sceneSummaryWindow.btnBack.addEventListener(egret.TouchEvent.TOUCH_TAP, this.backClick, this);
             this.sceneSummaryWindow.btnSceneBg.addEventListener(egret.TouchEvent.TOUCH_TAP, () => {
@@ -23,6 +24,15 @@ module game {
             }, this);
             this.sceneSummaryWindow.addEventListener(egret.Event.ADDED_TO_STAGE, this.initData, this);
             this.initData();
+        }
+
+        private loadResGroup() {
+            const chapterResGroup = [0, 34, 69, 134, 184, 223];
+            for (let i = 0; i < 6; i++) {
+                if (this.proxy.playerInfo.plotId > chapterResGroup[i]) {
+                    RES.loadGroup(`chapter${i}`, 0);
+                }
+            }
         }
 
         public initData() {
