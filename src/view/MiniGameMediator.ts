@@ -56,6 +56,12 @@ module game {
             else if (this.gameName == "暗号6") {
                 displayObject = new M6();
             }
+            else if (this.gameName == "找到出口") {
+                displayObject = new M9();
+            }
+            else if (this.gameName == "石门机关") {
+                displayObject = new M24();
+            }
             return displayObject;
         }
 

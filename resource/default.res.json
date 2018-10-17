@@ -17,7 +17,7 @@
 			"name": "chapter1"
 		},
 		{
-			"keys": "m11,m10,m09,m08,m08-item_json,m08-bg,m07,Y8,Y7,Y6,Y17,s62,s60,s43,s31,s21,s16,s15,s14,s13,s12,s11,s10,s1,s0,s18,s22,s3,s59,s61",
+			"keys": "m11,m10,m09,m08,m08-item_json,m08-bg,m07,Y8,Y7,Y6,Y17,s62,s60,s43,s31,s21,s16,s15,s14,s13,s12,s11,s10,s1,s0,s18,s22,s3,s59,s61,bg3,ren",
 			"name": "chapter2"
 		},
 		{
@@ -29,7 +29,7 @@
 			"name": "chapter4"
 		},
 		{
-			"keys": "Y16,m42,m42-tips,m42-item_json,m24,m23,m22,s0,s17,s25,s35,s4,s68,s69,s60,s38,s32,s18,s1",
+			"keys": "Y16,m42,m42-tips,m42-item_json,m24,m23,m22,s0,s17,s25,s35,s4,s68,s69,s60,s38,s32,s18,s1,M24_bg,word_bai,word_he,word_hei,word_jia,word_jiao,word_ti,word_yi,word_zhu",
 			"name": "chapter5"
 		},
 		{
@@ -1062,6 +1062,61 @@
 			"url": "assets/shop/power_small.png",
 			"type": "image",
 			"name": "power_small"
+		},
+		{
+			"url": "assets/M9/bg.png",
+			"type": "image",
+			"name": "bg3"
+		},
+		{
+			"url": "assets/M9/ren.png",
+			"type": "image",
+			"name": "ren"
+		},
+		{
+			"url": "assets/M24/M24_bg.png",
+			"type": "image",
+			"name": "M24_bg"
+		},
+		{
+			"url": "assets/M24/word_bai.png",
+			"type": "image",
+			"name": "word_bai"
+		},
+		{
+			"url": "assets/M24/word_he.png",
+			"type": "image",
+			"name": "word_he"
+		},
+		{
+			"url": "assets/M24/word_hei.png",
+			"type": "image",
+			"name": "word_hei"
+		},
+		{
+			"url": "assets/M24/word_jia.png",
+			"type": "image",
+			"name": "word_jia"
+		},
+		{
+			"url": "assets/M24/word_jiao.png",
+			"type": "image",
+			"name": "word_jiao"
+		},
+		{
+			"url": "assets/M24/word_ti.png",
+			"type": "image",
+			"name": "word_ti"
+		},
+		{
+			"url": "assets/M24/word_yi.png",
+			"type": "image",
+			"name": "word_yi"
+		},
+		{
+			"url": "assets/M24/word_zhu.png",
+			"type": "image",
+			"name": "word_zhu"
 		}
 	]
 }
