@@ -16,10 +16,13 @@ module game {
          */
         public static CHANGE: string = "scene_change";
 
+        public static SHOW_MANAGE: string = "show_manage";
+        public static SHOW_DEVE: string = "show_developer";
+
         public static SHOW_STORE: string = "show_store";
         public static SHOW_SCENE: string = "show_scene";
         public static SHOW_SCENE_DETAILS: string = "show_scene_details";
-
+        public static SHOW_SETTING: string = "show_setting";
 
         public register(): void {
             this.initializeNotifier("ApplicationFacade");
@@ -28,9 +31,12 @@ module game {
         initializeNotifier(key: string) {
             super.initializeNotifier(key);
             this.facade().registerCommand(SceneCommand.CHANGE, SceneCommand);
+            this.facade().registerCommand(SceneCommand.SHOW_MANAGE, SceneCommand);
+            this.facade().registerCommand(SceneCommand.SHOW_DEVE, SceneCommand);
             this.facade().registerCommand(SceneCommand.SHOW_STORE, SceneCommand);
             this.facade().registerCommand(SceneCommand.SHOW_SCENE, SceneCommand);
             this.facade().registerCommand(SceneCommand.SHOW_SCENE_DETAILS, SceneCommand);
+            this.facade().registerCommand(SceneCommand.SHOW_SETTING, SceneCommand);
         }
 
         public async execute(notification: puremvc.INotification): Promise<any> {
@@ -56,6 +62,15 @@ module game {
                     break;
                 case SceneCommand.SHOW_SCENE_DETAILS:
                     appMediator.main.showSceneDetailsWindow(data);
+                    break;
+                case SceneCommand.SHOW_DEVE:
+                    appMediator.main.showDeveloperWindow();
+                    break;
+                case SceneCommand.SHOW_MANAGE:
+                    appMediator.main.showManageWindow();
+                    break;
+                case SceneCommand.SHOW_SETTING:
+                    appMediator.main.showSettingWindow();
                     break;
             }
         }

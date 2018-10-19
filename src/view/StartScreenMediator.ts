@@ -13,6 +13,8 @@ module game {
 
             this.startScreen.btnResumeGame.addEventListener(egret.TouchEvent.TOUCH_TAP, this.entryGame, this);
             this.startScreen.btnNewGame.addEventListener(egret.TouchEvent.TOUCH_TAP, this.newGame, this);
+            this.startScreen.btnManage.addEventListener(egret.TouchEvent.TOUCH_TAP, this.showManage, this);
+            this.startScreen.btnDev.addEventListener(egret.TouchEvent.TOUCH_TAP, this.showDeveloper, this);
             
             this.startScreen.btnPicture.addEventListener(egret.TouchEvent.TOUCH_TAP, this.pictClick, this);
             this.startScreen.btnStore.addEventListener(egret.TouchEvent.TOUCH_TAP, this.storeClick, this);
@@ -32,15 +34,23 @@ module game {
 
         public newGame() {
             this.proxy.playerInfo.plotId = 1;
-            this.sendNotification(game.SceneCommand.CHANGE, Scene.Game);
+            this.sendNotification(SceneCommand.CHANGE, Scene.Game);
+        }
+
+        public showManage() {
+            this.sendNotification(SceneCommand.SHOW_MANAGE); 
+        }
+
+        public showDeveloper() {
+            this.sendNotification(SceneCommand.SHOW_DEVE); 
         }
 
         public pictClick() {
-            this.sendNotification(game.SceneCommand.SHOW_SCENE); 
+            this.sendNotification(SceneCommand.SHOW_SCENE); 
         }
 
         public storeClick() {
-            this.sendNotification(game.SceneCommand.SHOW_STORE);
+            this.sendNotification(SceneCommand.SHOW_STORE);
         }
 
         public shareClick() {
@@ -48,7 +58,7 @@ module game {
         }
 
         public settingClick() {
-
+            this.sendNotification(SceneCommand.SHOW_SETTING);
         }
 
         public listNotificationInterests(): Array<any> {

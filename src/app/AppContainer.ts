@@ -55,5 +55,32 @@ module game {
             this.addChild(this.sceneDetailsWindow);
             egret.Tween.get(this).to({ alpha: 1 }, 1500);
         }
+        
+        public developerWindow: DeveloperWindow;
+        public showDeveloperWindow(): void {
+            if (!this.developerWindow) {
+                this.developerWindow = new DeveloperWindow();
+            }
+            this.addChild(this.developerWindow);
+            egret.Tween.get(this).to({ alpha: 1 }, 1500);
+        }
+        
+        public manageWindow: ManageWindow;
+        public showManageWindow(): void {
+            if (!this.manageWindow) {
+                this.manageWindow = new ManageWindow();
+            }
+            this.addChild(this.manageWindow);
+            egret.Tween.get(this).to({ alpha: 1 }, 1500);
+        }
+        
+        public settingWindow: SettingWindow;
+        public showSettingWindow(): void {
+            if (!this.settingWindow) {
+                this.settingWindow = new SettingWindow();
+            }
+            this.addChild(this.settingWindow);
+            egret.Tween.get(this).to({ alpha: 1 }, 1500);
+        }
     }
 }

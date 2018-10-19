@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <e:Skin class="StartScreen" xmlns:e="http://ns.egret.com/eui" xmlns:game="game.*">
     <e:Image source="background" height="100%"/>
-    <e:Image source="logo"  horizontalCenter="0" y="80"/>
+    <e:Image source="logo"  horizontalCenter="0" y="100"/>
     <e:Group y="440" horizontalCenter="0">
         <e:Button id="btnResumeGame" left="17">
             <e:Skin>

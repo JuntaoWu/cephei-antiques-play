@@ -2,7 +2,7 @@
 <e:Skin class="SceneDetailsWindow" xmlns:e="http://ns.egret.com/eui" xmlns:game="game.*">
     <e:Image source="background" height="100%"/>
     <e:Group width="720">
-        <e:Image width="720" source="head-bg"/>
+        <e:Image source="head-bg"/>
         <e:Button id="btnBack" verticalCenter="0" x="35">
             <e:Skin>
                 <e:Image source="btn-back-other"></e:Image>
@@ -17,7 +17,7 @@
         <e:Image source="text3" verticalCenter="0"></e:Image>
         <e:Label fontFamily="SimSun" bold="true" size="35" text="{collectedText}" x="300" verticalCenter="0" textColor="0x332d27"/>
     </e:Group>
-    <e:Scroller id="scrollGroup" width="640" y="220" horizontalCenter="0" height="1040">
+    <e:Scroller id="scrollGroup" width="640" horizontalCenter="0" top="220" bottom="20">
         <e:viewport>
             <e:List id="sceneList" width="640">
                 <e:layout>
