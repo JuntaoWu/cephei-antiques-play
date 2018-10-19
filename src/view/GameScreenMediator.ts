@@ -30,7 +30,12 @@ module game {
             const chapterResGroup = [0, 34, 69, 133, 184, 223];
             for (let i = 5; i >= 0; i--) {
                 if (this.proxy.playerInfo.plotId > chapterResGroup[i]) {
-                    RES.loadGroup(`chapter${i}`, 0);
+                    try {
+                        RES.loadGroup(`chapter${i}`, 0);
+                    }
+                    catch (err) {
+                        console.log(err);
+                    }
                     return;
                 }
             }
