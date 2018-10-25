@@ -54,4 +54,6 @@ module game {
         Transition: "转场特效",
         PageChange: "界面切换经营",
     }
+
+    export const fatigueValue = 100;
 }

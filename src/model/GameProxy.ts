@@ -11,7 +11,8 @@ module game {
         public playerInfo: PlayerInfo = {
             plotId: 1,
             collectedScenes: [],
-            fatigueValue: 1000,
+            fatigueValue: fatigueValue,
+            lastEntryTime: "",
         };
         public pointHunag: number = 43;
         public pointMu: number = 43;
@@ -37,6 +38,7 @@ module game {
 		}
 
         public getCurrentPlot(): Plot {
+            this.savePlayerInfoToStorage();
             return this.chapterPlot.get(this.playerInfo.plotId.toString());
         }
         
@@ -49,5 +51,25 @@ module game {
 			}
 			return this._sceneRes;
 		}
+
+        public async getPlayerInfoFromStorage() {
+            try {
+                let res = await platform.getStorageAsync("playerInfo");
+                console.log("mergeRemoteInfoToStorage: parse playerInfo");
+                this.playerInfo = JSON.parse(res.data);
+                console.log(this.playerInfo)
+            }
+            catch (error) {
+                console.error("localPlayerInfo is not JSON, skip.");
+            }
+            if (!this.playerInfo.lastEntryTime || this.playerInfo.lastEntryTime != new Date().toJSON().substr(0, 10)) {
+                this.playerInfo.fatigueValue = fatigueValue;
+                this.playerInfo.lastEntryTime = new Date().toJSON().substr(0, 10);
+            }
+        }
+
+        public savePlayerInfoToStorage() {
+            platform.setStorageAsync("playerInfo", JSON.stringify(this.playerInfo));
+        }
     }
 }

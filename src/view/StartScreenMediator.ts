@@ -24,7 +24,8 @@ module game {
             this.initData();
         }
 
-        public initData() {
+        public async initData() {
+            await this.proxy.getPlayerInfoFromStorage();
             this.startScreen.btnResumeGame.visible = this.proxy.playerInfo.plotId != 1 ? true : false;
         }
 

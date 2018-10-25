@@ -20,6 +20,8 @@ module game {
             this.gameScreen.btnTips.addEventListener(egret.TouchEvent.TOUCH_TAP, this.btnTipsClick, this);
             
             this.gameScreen.btnBack.addEventListener(egret.TouchEvent.TOUCH_TAP, this.btnBackClick, this);
+            this.gameScreen.btnSave.addEventListener(egret.TouchEvent.TOUCH_TAP, this.btnSaveClick, this);
+            this.gameScreen.btnManage.addEventListener(egret.TouchEvent.TOUCH_TAP, this.btnManageClick, this);
             this.gameScreen.btnPicture.addEventListener(egret.TouchEvent.TOUCH_TAP, this.pictClick, this);
             
             this.gameScreen.addEventListener(egret.Event.ADDED_TO_STAGE, this.initData, this);
@@ -159,6 +161,8 @@ module game {
             }
             egret.Tween.removeAllTweens();  //移除所有动画效果
             this.gameScreen.sceneBg.horizontalCenter = 0;
+            this.gameScreen.sceneBg.y = 0;
+            this.gameScreen.sceneBg.alpha = 1;
             this.gameScreen.sceneAddGroup.removeChildren();
             let sceneResList = res.split("、");
             sceneResList.forEach((v, i) => {
@@ -167,7 +171,6 @@ module game {
                 }
                 if (!i) {
                     this.gameScreen.sceneBg.source = v;
-                    this.gameScreen.sceneBg.alpha = 1;
                     if (v == effectTigger) {
                         EffectManager.playEffect.call(this.gameScreen.sceneBg, effect);
                     }
@@ -175,6 +178,7 @@ module game {
                 else {
                     let img = new eui.Image();
                     img.source = v;
+                    img.alpha = 1;
                     if (!addType) {
                         img.scaleX = img.scaleY = 0.5;
                     }
@@ -288,16 +292,24 @@ module game {
                 this.showPointsNum++;
             }
             else if (this.showPointsNum == 1) {
-                this.gameScreen.points = this.questionPoints[1];
-                this.showPointsNum;
+                this.gameScreen.points += `\n${this.questionPoints[1]}`;
+                this.showPointsNum++;
             }
-            else {
-                this.gameScreen.points = "";
-                this.showPointsNum = 0;
+            else if(this.showPointsNum == 2) {
+                // this.gameScreen.points = "";
+                // this.showPointsNum = 0;
             }
         }
 
         public btnBackClick() {
+            this.sendNotification(SceneCommand.CHANGE, Scene.Start);
+        }
+
+        public btnSaveClick() {
+            this.proxy.savePlayerInfoToStorage();
+        }
+
+        public btnManageClick() {
             this.sendNotification(SceneCommand.CHANGE, Scene.Start);
         }
 

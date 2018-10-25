@@ -80,8 +80,8 @@ class WxgamePlatform {
 
     shareAppMessage(message, query, callback) {
         wx.shareAppMessage({
-            title: message || "碰友，今天你碰碰三国吗？",
-            imageUrl: "https://tk2048.hzsdgames.com:8085/miniGame/resource/assets/share/share.jpg",
+            title: message || "寻墨探宝",
+            imageUrl: "http://gdjzj.hzsdgames.com:8091/miniGame/resource/assets/start/logo.png",
             query: query,
             success: (res) => {
                 console.log("shareAppMessage successfully.", res);
@@ -96,7 +96,7 @@ class WxgamePlatform {
             success: function (res) {
                 wx.onShareAppMessage(function () {
                     return {
-                        imageUrl: "https://tk2048.hzsdgames.com:8085/miniGame/resource/assets/share/share.jpg"
+                        imageUrl: "http://gdjzj.hzsdgames.com:8091/miniGame/resource/assets/start/logo.png"
                     };
                 });
             },
