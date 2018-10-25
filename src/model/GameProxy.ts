@@ -12,6 +12,7 @@ module game {
             plotId: 1,
             collectedScenes: [],
             fatigueValue: 1000,
+            gold: "500",
         };
         public pointHunag: number = 43;
         public pointMu: number = 43;
@@ -29,25 +30,25 @@ module game {
         }
 
         private _chapterPlot: Map<string, any>;
-		public get chapterPlot(): Map<string, any> {
-			if (!this._chapterPlot) {
-				this._chapterPlot = new Map(Object.entries(RES.getRes("chapter-plot_json")));
-			}
-			return this._chapterPlot;
-		}
+        public get chapterPlot(): Map<string, any> {
+            if (!this._chapterPlot) {
+                this._chapterPlot = new Map(Object.entries(RES.getRes("chapter-plot_json")));
+            }
+            return this._chapterPlot;
+        }
 
         public getCurrentPlot(): Plot {
             return this.chapterPlot.get(this.playerInfo.plotId.toString());
         }
-        
-		private _sceneRes: Map<string, any>;
-		public get sceneRes(): Map<string, any> {
-			if (!this._sceneRes) {
-				let config = RES.getRes("scene_json") as Array<any>;
-				let dictionary = _(config).groupBy((a: any) => a.type).value();
-				this._sceneRes = new Map(Object.entries(dictionary));
-			}
-			return this._sceneRes;
-		}
+
+        private _sceneRes: Map<string, any>;
+        public get sceneRes(): Map<string, any> {
+            if (!this._sceneRes) {
+                let config = RES.getRes("scene_json") as Array<any>;
+                let dictionary = _(config).groupBy((a: any) => a.type).value();
+                this._sceneRes = new Map(Object.entries(dictionary));
+            }
+            return this._sceneRes;
+        }
     }
 }

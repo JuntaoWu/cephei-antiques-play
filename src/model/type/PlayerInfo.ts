@@ -5,5 +5,6 @@ module game {
         plotId: number; //当前剧情id
         collectedScenes?: Array<string>; //收集场景
         fatigueValue?: number; //体力值
+        gold?: string; //金币
     }
 }
