@@ -18,12 +18,13 @@ module game {
 
             this.gameScreen.nextTest.addEventListener(egret.TouchEvent.TOUCH_TAP, this.showNext, this);
             this.gameScreen.btnTips.addEventListener(egret.TouchEvent.TOUCH_TAP, this.btnTipsClick, this);
-            
+
             this.gameScreen.btnBack.addEventListener(egret.TouchEvent.TOUCH_TAP, this.btnBackClick, this);
             this.gameScreen.btnSave.addEventListener(egret.TouchEvent.TOUCH_TAP, this.btnSaveClick, this);
             this.gameScreen.btnManage.addEventListener(egret.TouchEvent.TOUCH_TAP, this.btnManageClick, this);
             this.gameScreen.btnPicture.addEventListener(egret.TouchEvent.TOUCH_TAP, this.pictClick, this);
-            
+            this.gameScreen.btnHelp.addEventListener(egret.TouchEvent.TOUCH_TAP, this.share, this);
+
             this.gameScreen.addEventListener(egret.Event.ADDED_TO_STAGE, this.initData, this);
             this.initData();
         }
@@ -59,7 +60,7 @@ module game {
         public addScene: eui.Image;
         public textIsOver: boolean;
         public wordList: Array<string>;
-        public next: number|string;
+        public next: number | string;
 
         public initData() {
             this.gameScreen.bottomGroup.visible = this.gameScreen.plotSelectList.visible = this.gameScreen.textGroup.visible = false;
@@ -68,7 +69,7 @@ module game {
             this.gameScreen.scrollGroup.height = 450;
             this.gameScreen.scrollGroup.viewport.scrollV = 0;
             this.textIsOver = true;
-            
+
             let barH = this.gameScreen.huangAndMubar.getChildByName("huangyanyan") as eui.Image;
             let barM = this.gameScreen.huangAndMubar.getChildByName("munai") as eui.Image;
             barH.width = this.gameScreen.huangAndMubar.width * this.proxy.pointHunag / 86;
@@ -83,6 +84,9 @@ module game {
             if (plot.type == plotType.PlotQuestion) {
                 this.gameScreen.showScene = false;
                 this.gameScreen.questionGroup.visible = this.isQuestion = this.gameScreen.textGroup.visible = true;
+
+                this.playAnim(true);
+                egret.setTimeout(() => (this.playAnim(false)), this, 2000);
 
                 let question: QuestionGame = { ...this.proxy.questions.get(plot.questionId.toString()) };
                 this.gameScreen.questionRes = question.img;
@@ -156,7 +160,7 @@ module game {
 
         public settingScene(res: string, addType?: string, effect?: string, effectTigger?: string) {
             let added = this.gameScreen.sceneGroup.getChildByName("added") || this.gameScreen.sceneGroup.parent.getChildByName("added");
-            if(!!added) { //移除某些效果添加的元素
+            if (!!added) { //移除某些效果添加的元素
                 added.parent.removeChild(added);
             }
             egret.Tween.removeAllTweens();  //移除所有动画效果
@@ -244,20 +248,48 @@ module game {
             }, this, 100)
         }
 
+        public bb: eui.Image;
         public selectItem() {
             let point = +this.gameScreen.plotSelectList.selectedItem.result;
+            this.bb = new eui.Image();
+            this.bb.source = "heart";
+            this.bb.x = 320;
+            this.bb.y = 1000;
+            this.gameScreen.addChild(this.bb);
+            if (point > 0) {
+                egret.Tween.get(this.bb).to({ x: 20, y: 150 }, 1000);
+            } else {
+                egret.Tween.get(this.bb).to({ x: 590, y: 150 }, 1000);
+            }
+            egret.setTimeout(() => {
+                this.gameScreen.removeChild(this.bb);
+                this.showNext();
+            }, this, 1300);
             this.proxy.pointHunag += point;
             this.proxy.pointMu -= point;
             this.next = this.gameScreen.plotSelectList.selectedItem.next;
-            this.showNext();
+
+        }
+
+        public aa: eui.Image;
+        public answer_right() {
+            this.aa = new eui.Image();
+            this.aa.source = "answer_right";
+            this.aa.verticalCenter = -100;
+            this.aa.horizontalCenter = 0;
+            this.aa.scaleX = 0.01;
+            this.aa.scaleY = 0.01;
+            this.gameScreen.addChild(this.aa);
+            egret.Tween.get(this.aa).to({ scaleX: 1, scaleY: 1 }, 1500);
         }
 
         public showRightResult() {
             this.gameScreen.description = this.rightText;
             this.showResult = true;
-            egret.setTimeout(() => {
-                this.showNext();
-            }, this, 1500);
+            this.gameScreen.removeChild(this.aa);
+            // egret.setTimeout(() => {
+            //     this.showNext();
+            // }, this, 1500);
         }
 
         public showNext() {
@@ -295,7 +327,7 @@ module game {
                 this.gameScreen.points += `\n${this.questionPoints[1]}`;
                 this.showPointsNum++;
             }
-            else if(this.showPointsNum == 2) {
+            else if (this.showPointsNum == 2) {
                 // this.gameScreen.points = "";
                 // this.showPointsNum = 0;
             }
@@ -314,7 +346,7 @@ module game {
         }
 
         public pictClick() {
-            this.sendNotification(game.SceneCommand.SHOW_SCENE); 
+            this.sendNotification(game.SceneCommand.SHOW_SCENE);
         }
 
         private beforeX: number;
@@ -336,7 +368,7 @@ module game {
             }
 
             let touchEndTime = new Date().getTime();
-            if (!this.isQuestion && (e.stageX < this.beforeX - 20 && Math.abs(e.stageY - this.beforeY) < 20 || touchEndTime - this.touchBeginTime < 300)) {
+            if ((this.showResult || !this.isQuestion) && (e.stageX < this.beforeX - 20 && Math.abs(e.stageY - this.beforeY) < 20 || touchEndTime - this.touchBeginTime < 300)) {
                 this.showNext();
             }
         }
@@ -352,13 +384,48 @@ module game {
             var data: any = notification.getBody();
             switch (notification.getName()) {
                 case GameProxy.PASS_MINIGAME:
-                    this.showRightResult();
+                    this.answer_right();
+                    egret.setTimeout(this.showRightResult, this, 1800);
                     break;
             }
         }
 
         public get gameScreen(): GameScreen {
             return <GameScreen><any>(this.viewComponent);
+        }
+
+        public share() {
+            platform.shareAppMessage();
+        }
+
+        public armatureDisplay: any;
+        public heiban: eui.Image;
+        public playAnim(bool: boolean) {
+            if (bool) {
+                this.heiban = new eui.Image;
+                this.heiban.source = "heiban";
+                this.gameScreen.addChild(this.heiban);
+                var dragonbonesData = RES.getRes("jiemi_ske_json");
+                var textureData = RES.getRes("jiemi_tex_json");
+                var texture = RES.getRes("jiemi_tex_png");
+                var dragonbonesFactory: dragonBones.EgretFactory = new dragonBones.EgretFactory();
+                dragonbonesFactory.addDragonBonesData(dragonBones.DataParser.parseDragonBonesData(dragonbonesData));
+                dragonbonesFactory.addTextureAtlas(new dragonBones.EgretTextureAtlas(texture, textureData));
+                var armature: dragonBones.Armature = dragonbonesFactory.buildArmature("Armature");
+                this.armatureDisplay = armature.display;
+                this.gameScreen.addChild(this.armatureDisplay);
+                armature.animation.play("newAnimation");
+                armature.display.x = 360;
+                armature.display.y = 800;
+                dragonBones.WorldClock.clock.add(armature);
+                egret.Ticker.getInstance().register(function (advancedTime) {
+                    dragonBones.WorldClock.clock.advanceTime(advancedTime / 1000);
+                }, this);
+                dragonBones.WorldClock.clock.timeScale = 0.6;
+            } else {
+                this.gameScreen.removeChild(this.heiban);
+                this.gameScreen.removeChild(this.armatureDisplay);
+            }
         }
     }
 }

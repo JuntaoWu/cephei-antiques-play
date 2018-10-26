@@ -1,7 +1,7 @@
 {
 	"groups": [
 		{
-			"keys": "question_json,select-options_json,game-bg,input-item,option-bg,input-bg,chapter-plot_json,plot-options_json,bar-bg,head-bg,scene_json,not-get,logo,start-btn_json,bar-icon_json,scene-btn_json,scene-text_json,game-btn_json,pay,pay_bg,power_bg,power_large,power_medium,note_bg,note_prop,shop_json,power_small",
+			"keys": "question_json,select-options_json,game-bg,input-item,option-bg,input-bg,chapter-plot_json,plot-options_json,bar-bg,head-bg,scene_json,not-get,logo,start-btn_json,bar-icon_json,scene-btn_json,scene-text_json,game-btn_json,pay,pay_bg,power_bg,power_large,power_medium,note_bg,note_prop,shop_json,power_small,jiemi_ske_json,jiemi_tex_json,jiemi_tex_png,answer_right,heart,heiban",
 			"name": "preload"
 		},
 		{
@@ -1067,6 +1067,36 @@
 			"url": "assets/questions/m42-bg.png",
 			"type": "image",
 			"name": "m42-bg"
+		},
+		{
+			"url": "assets/ani/jiemi_ske.json",
+			"type": "json",
+			"name": "jiemi_ske_json"
+		},
+		{
+			"url": "assets/ani/jiemi_tex.json",
+			"type": "json",
+			"name": "jiemi_tex_json"
+		},
+		{
+			"url": "assets/ani/jiemi_tex.png",
+			"type": "image",
+			"name": "jiemi_tex_png"
+		},
+		{
+			"url": "assets/questions/answer_right.png",
+			"type": "image",
+			"name": "answer_right"
+		},
+		{
+			"url": "assets/game/heart.png",
+			"type": "image",
+			"name": "heart"
+		},
+		{
+			"url": "assets/game/heiban.png",
+			"type": "image",
+			"name": "heiban"
 		}
 	]
 }
