@@ -16,7 +16,7 @@ module game {
             this.gameScreen.textGroup.addEventListener(egret.TouchEvent.TOUCH_END, this.touchEnd, this);
             this.gameScreen.plotSelectList.addEventListener(eui.ItemTapEvent.ITEM_TAP, this.selectItem, this);
 
-            this.gameScreen.nextTest.addEventListener(egret.TouchEvent.TOUCH_TAP, this.showNext, this);
+            this.gameScreen.nextTest.addEventListener(egret.TouchEvent.TOUCH_TAP, this.nextTestClick, this);
             this.gameScreen.btnTips.addEventListener(egret.TouchEvent.TOUCH_TAP, this.btnTipsClick, this);
 
             this.gameScreen.btnBack.addEventListener(egret.TouchEvent.TOUCH_TAP, this.btnBackClick, this);
@@ -52,7 +52,6 @@ module game {
             return this._plotOptions;
         }
 
-        public showResult: boolean;
         public canGoNext: boolean;
         public questionPoints: Array<string>;
         public rightText: string;
@@ -64,11 +63,10 @@ module game {
 
         public initData() {
             this.gameScreen.bottomGroup.visible = this.gameScreen.plotSelectList.visible = this.gameScreen.textGroup.visible = false;
-            this.gameScreen.showMiniGame = this.gameScreen.showTransition = this.showResult = this.canGoNext = false;
+            this.gameScreen.showMiniGame = this.gameScreen.showTransition = this.canGoNext = false;
             this.gameScreen.question = this.gameScreen.points = "";
             this.gameScreen.scrollGroup.height = 450;
             this.gameScreen.scrollGroup.viewport.scrollV = 0;
-            this.textIsOver = true;
 
             let barH = this.gameScreen.huangAndMubar.getChildByName("huangyanyan") as eui.Image;
             let barM = this.gameScreen.huangAndMubar.getChildByName("munai") as eui.Image;
@@ -126,7 +124,7 @@ module game {
                 this.showNext();
             }
             else {
-                this.gameScreen.showScene = this.gameScreen.textGroup.visible = this.canGoNext = true;
+                this.gameScreen.showScene = this.gameScreen.textGroup.visible = true;
                 this.gameScreen.questionGroup.visible = false;
                 //搭建剧情场景
                 this.settingScene(plot.res, plot.portrait, plot.effect, plot.effectTrigger);
@@ -206,11 +204,12 @@ module game {
 
         public addWordToDescription() {
             if (!this.wordList.length) {
-                this.textIsOver = true;
+                this.canGoNext = true;
             }
             else if (this.textIsOver) {
                 this.gameScreen.description += this.wordList.join("");
                 this.wordList = [];
+                this.canGoNext = true;
             }
             else {
                 let str = this.wordList.shift();
@@ -224,7 +223,6 @@ module game {
         }
 
         public showPlotOption(talkId) {
-            this.canGoNext = false;
             this.gameScreen.plotSelectList.visible = true;
             this.gameScreen.scrollGroup.height = 280;
             let plotOption = this.plotOptions.get(talkId.toString());
@@ -288,7 +286,7 @@ module game {
 
         public showRightResult() {
             this.gameScreen.description = this.rightText;
-            this.showResult = true;
+            this.canGoNext = true;
             this.gameScreen.removeChild(this.aa);
             // egret.setTimeout(() => {
             //     this.showNext();
@@ -296,11 +294,7 @@ module game {
         }
 
         public showNext() {
-            if (!this.textIsOver) {
-                this.textIsOver = true;
-                return;
-            }
-            if (!this.canGoNext || this.proxy.playerInfo.fatigueValue <= 0) {
+            if (this.proxy.playerInfo.fatigueValue <= 0) {
                 return;
             }
             if (this.next == "over") { //最后有两个不同结局
@@ -314,7 +308,6 @@ module game {
             else {
                 this.proxy.nextPlot(this.next as number);
             }
-            this.canGoNext = false;
             this.initData();
         }
 
@@ -356,27 +349,29 @@ module game {
         private beforeY: number;
         private touchBeginTime: number;
         private touchBegin(e: egret.TouchEvent): void {
-            // console.log("TOUCH_BEGIN", e.stageX)
             e.stopImmediatePropagation();
             this.beforeX = e.stageX;
             this.beforeY = e.stageY;
             this.touchBeginTime = new Date().getTime();
         }
         private touchEnd(e: egret.TouchEvent): void {
-            // console.log("TOUCH_END", e.stageX)
             e.stopImmediatePropagation();
-            if (!this.textIsOver) {
-                this.textIsOver = true;
+            this.textIsOver = true;
+            if (!this.canGoNext) {
                 return;
             }
-
             let touchEndTime = new Date().getTime();
-            if ((this.canGoNext || this.showResult) && (e.stageX < this.beforeX - 20 && Math.abs(e.stageY - this.beforeY) < 20 || touchEndTime - this.touchBeginTime < 300)) {
+            if (e.stageX < this.beforeX - 20 && Math.abs(e.stageY - this.beforeY) < 20 || touchEndTime - this.touchBeginTime < 300) {
                 this.showNext();
             }
         }
         private touchReleaseOutside(e: egret.TouchEvent): void {
 
+        }
+
+        public nextTestClick() {
+            this.textIsOver && this.showNext();
+            this.textIsOver = true;
         }
 
         public listNotificationInterests(): Array<any> {
