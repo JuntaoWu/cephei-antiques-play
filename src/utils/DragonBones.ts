@@ -18,8 +18,8 @@ module game {
 
             let armatureDisplay: dragonBones.EgretArmatureDisplay = egretFactory.buildArmatureDisplay(armatureName);
 
-            // armatureDisplay.x = 200;
-            // armatureDisplay.y = 300;
+            armatureDisplay.x = 200;
+            armatureDisplay.y = 300;
             // armatureDisplay.scaleX = 0.5;
             // armatureDisplay.scaleY = 0.5;
 
