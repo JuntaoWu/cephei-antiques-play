@@ -17,5 +17,7 @@ module game {
         public btnBack: eui.Button;
         public scrollGroup: eui.Scroller;
         public shoplist: eui.List;
+        public gold: eui.Label;
+        public note: eui.Label;
     }
 }

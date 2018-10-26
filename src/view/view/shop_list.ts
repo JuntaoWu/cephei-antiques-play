@@ -7,11 +7,12 @@ module game {
         public constructor() {
             super();
             this.skinName = 'resource/containers/skins_list/shop_list.exml';
-            this.pay.addEventListener(egret.TouchEvent.TOUCH_TAP,this.haha,this);
+            this.addEventListener(eui.UIEvent.CREATION_COMPLETE, this.createCompleteEvent, this);
         }
 
-        public haha() {
-            console.log("你花费了" + this.pay_money.text);
-        }
+        public createCompleteEvent(event: eui.UIEvent): void {
+            this.removeEventListener(eui.UIEvent.CREATION_COMPLETE, this.createCompleteEvent, this);
+            ApplicationFacade.getInstance().registerMediator(new shop_listMediator(this));
+        }        
     }
 }
