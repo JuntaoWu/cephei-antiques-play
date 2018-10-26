@@ -7,5 +7,6 @@ module game {
         fatigueValue?: number; //体力值
         gold?: string; //金币
         lastEntryTime?: string;
+        hints?: number; //可用提示次数
     }
 }

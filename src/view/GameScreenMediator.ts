@@ -52,10 +52,10 @@ module game {
         }
 
         public showResult: boolean;
-        public isQuestion: boolean;
+        public canGoNext: boolean;
         public questionPoints: Array<string>;
         public rightText: string;
-        public showPointsNum: number;
+        public showPointsAll: boolean;
         public addScene: eui.Image;
         public textIsOver: boolean;
         public wordList: Array<string>;
@@ -63,7 +63,7 @@ module game {
 
         public initData() {
             this.gameScreen.bottomGroup.visible = this.gameScreen.plotSelectList.visible = this.gameScreen.textGroup.visible = false;
-            this.gameScreen.showMiniGame = this.gameScreen.showTransition = this.showResult = this.isQuestion = false;
+            this.gameScreen.showMiniGame = this.gameScreen.showTransition = this.showResult = this.canGoNext = false;
             this.gameScreen.question = this.gameScreen.points = "";
             this.gameScreen.scrollGroup.height = 450;
             this.gameScreen.scrollGroup.viewport.scrollV = 0;
@@ -79,10 +79,10 @@ module game {
                 return;
             }
             // 选择不同对话下一条和不同结局
-            this.next = plot.next;
+            this.next = plot.next || 1;
             if (plot.type == plotType.PlotQuestion) {
                 this.gameScreen.showScene = false;
-                this.gameScreen.questionGroup.visible = this.isQuestion = this.gameScreen.textGroup.visible = true;
+                this.gameScreen.questionGroup.visible = this.gameScreen.textGroup.visible = true;
 
                 let question: QuestionGame = { ...this.proxy.questions.get(plot.questionId.toString()) };
                 this.gameScreen.questionRes = question.img;
@@ -91,7 +91,9 @@ module game {
 
                 this.rightText = question.right;
                 this.questionPoints = [question.points1, question.points2];
-                this.showPointsNum = 0;
+                this.showPointsAll = this.gameScreen.showPoints = false;
+                let hintCardsLabel = (this.gameScreen.btnTips.getChildByName("hintGroup") as eui.Group).getChildByName("hintCards") as eui.BitmapLabel;
+                hintCardsLabel.text = this.proxy.playerInfo.hints.toString();
 
                 this.gameScreen.scrollGroup.height = 150;
                 this.gameScreen.scrollGroup.viewport.scrollH = 0;
@@ -120,7 +122,7 @@ module game {
                 this.showNext();
             }
             else {
-                this.gameScreen.showScene = this.gameScreen.textGroup.visible = true; true;
+                this.gameScreen.showScene = this.gameScreen.textGroup.visible = this.canGoNext = true;
                 this.gameScreen.questionGroup.visible = false;
                 //搭建剧情场景
                 this.settingScene(plot.res, plot.portrait, plot.effect, plot.effectTrigger);
@@ -218,7 +220,8 @@ module game {
         }
 
         public showPlotOption(talkId) {
-            this.gameScreen.plotSelectList.visible = this.isQuestion = true;
+            this.canGoNext = false;
+            this.gameScreen.plotSelectList.visible = true;
             this.gameScreen.scrollGroup.height = 280;
             let plotOption = this.plotOptions.get(talkId.toString());
             if (plotOption) {
@@ -265,39 +268,39 @@ module game {
                 this.textIsOver = true;
                 return;
             }
-            if (this.proxy.playerInfo.fatigueValue <= 0) {
+            if (!this.canGoNext || this.proxy.playerInfo.fatigueValue <= 0) {
                 return;
             }
-            this.proxy.playerInfo.fatigueValue -= 1;
-            if (!this.next) {
-                this.proxy.playerInfo.plotId = this.proxy.playerInfo.plotId + 1;
-            }
-            else if (this.next == "over") {
+            if (this.next == "over") { //最后有两个不同结局
                 if (this.proxy.pointMu > this.proxy.pointHunag) {
-                    this.proxy.playerInfo.plotId = this.proxy.playerInfo.plotId + 2;
+                    this.proxy.nextPlot(2);
                 }
                 else {
-                    this.proxy.playerInfo.plotId = this.proxy.playerInfo.plotId + 1;
+                    this.proxy.nextPlot();
                 }
             }
             else {
-                this.proxy.playerInfo.plotId = this.proxy.playerInfo.plotId + (this.next as number);
+                this.proxy.nextPlot(this.next as number);
             }
+            this.canGoNext = false;
             this.initData();
         }
 
         public btnTipsClick() {
-            if (!this.showPointsNum) {
-                this.gameScreen.points = this.questionPoints[0];
-                this.showPointsNum++;
+            this.gameScreen.showPoints = !this.gameScreen.showPoints;
+            if (!this.gameScreen.showPoints) return;
+            if (!this.proxy.playerInfo.hints) {
+                this.gameScreen.points = "没有提示卡";
+                return;
             }
-            else if (this.showPointsNum == 1) {
-                this.gameScreen.points += `\n${this.questionPoints[1]}`;
-                this.showPointsNum++;
+            if (this.gameScreen.points) {
+                this.showPointsAll = true;
             }
-            else if(this.showPointsNum == 2) {
-                // this.gameScreen.points = "";
-                // this.showPointsNum = 0;
+            this.gameScreen.points = !this.gameScreen.points ? this.questionPoints[0] : `${this.questionPoints[0]}\n${this.questionPoints[1]}`;
+            if (!this.showPointsAll) {
+                this.proxy.reduceHints();
+                let hintCardsLabel = (this.gameScreen.btnTips.getChildByName("hintGroup") as eui.Group).getChildByName("hintCards") as eui.BitmapLabel;
+                hintCardsLabel.text = this.proxy.playerInfo.hints.toString();
             }
         }
 
@@ -336,7 +339,7 @@ module game {
             }
 
             let touchEndTime = new Date().getTime();
-            if (!this.isQuestion && (e.stageX < this.beforeX - 20 && Math.abs(e.stageY - this.beforeY) < 20 || touchEndTime - this.touchBeginTime < 300)) {
+            if ((this.canGoNext || this.showResult) && (e.stageX < this.beforeX - 20 && Math.abs(e.stageY - this.beforeY) < 20 || touchEndTime - this.touchBeginTime < 300)) {
                 this.showNext();
             }
         }

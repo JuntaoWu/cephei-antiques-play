@@ -1,7 +1,7 @@
 {
 	"groups": [
 		{
-			"keys": "question_json,select-options_json,game-bg,input-item,option-bg,input-bg,chapter-plot_json,plot-options_json,bar-bg,head-bg,scene_json,not-get,logo,start-btn_json,bar-icon_json,scene-btn_json,scene-text_json,game-btn_json,pay,pay_bg,power_bg,power_large,power_medium,note_bg,note_prop,shop_json,power_small",
+			"keys": "question_json,select-options_json,game-bg,input-item,option-bg,input-bg,chapter-plot_json,plot-options_json,bar-bg,head-bg,scene_json,not-get,logo,start-btn_json,bar-icon_json,scene-btn_json,scene-text_json,game-btn_json,pay,pay_bg,power_bg,power_large,power_medium,note_bg,note_prop,shop_json,power_small,hintCardNumber_fnt",
 			"name": "preload"
 		},
 		{
@@ -33,7 +33,7 @@
 			"name": "chapter5"
 		},
 		{
-			"keys": "button_down_png,button_up_png,checkbox_select_disabled_png,checkbox_select_down_png,checkbox_select_up_png,checkbox_unselect_png,selected_png,border_png,header_png,thumb_pb_png,track_pb_png,radiobutton_select_disabled_png,radiobutton_select_down_png,radiobutton_select_up_png,radiobutton_unselect_png,roundthumb_png,track_sb_png,thumb_png,track_png,tracklight_png,handle_png,off_png,on_png",
+			"keys": "button_down_png,button_up_png,checkbox_select_disabled_png,checkbox_select_down_png,checkbox_select_up_png,checkbox_unselect_png,selected_png,border_png,header_png,thumb_pb_png,track_pb_png,radiobutton_select_disabled_png,radiobutton_select_down_png,radiobutton_select_up_png,radiobutton_unselect_png,roundthumb_png,track_sb_png,thumb_png,track_png,tracklight_png,handle_png,off_png,on_png,hintCardNumber_png,tips-ellipse",
 			"name": "lazyload"
 		}
 	],
@@ -1067,6 +1067,21 @@
 			"url": "assets/questions/m42-bg.png",
 			"type": "image",
 			"name": "m42-bg"
+		},
+		{
+			"url": "assets/game/hintCardNumber.fnt",
+			"type": "font",
+			"name": "hintCardNumber_fnt"
+		},
+		{
+			"url": "assets/game/hintCardNumber.png",
+			"type": "image",
+			"name": "hintCardNumber_png"
+		},
+		{
+			"url": "assets/game/tips-ellipse.png",
+			"type": "image",
+			"name": "tips-ellipse"
 		}
 	]
 }

@@ -14,6 +14,7 @@ module game {
             fatigueValue: fatigueValue,
             gold: "500",
             lastEntryTime: "",
+            hints: 50,
         };
         public pointHunag: number = 43;
         public pointMu: number = 43;
@@ -42,7 +43,25 @@ module game {
             this.savePlayerInfoToStorage();
             return this.chapterPlot.get(this.playerInfo.plotId.toString());
         }
-        
+
+        /**
+         * 进入故事下一个情节
+         */
+        public nextPlot(skipPlotNum: number = 1): void {
+            this.playerInfo.plotId += skipPlotNum;
+            this.reducePower();
+        }
+
+        // 减少体力值
+        public reducePower(value: number = 1): void {
+            this.playerInfo.fatigueValue -= value;
+        }
+
+        // 减少提示次数
+        public reduceHints(value: number = 1): void {
+            this.playerInfo.hints -= value;
+        }
+
 		private _sceneRes: Map<string, any>;
 		public get sceneRes(): Map<string, any> {
 			if (!this._sceneRes) {

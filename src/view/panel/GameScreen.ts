@@ -27,6 +27,7 @@ module game {
         public showScene: boolean;
         public showTransition: boolean;
         public transitionText: string;
+        public showPoints: boolean;
 
         public sceneGroup: eui.Group;
         public questionGroup: eui.Group;
