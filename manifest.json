@@ -33,6 +33,7 @@
 		"bin-debug/model/type/PlayerInfo.js",
 		"bin-debug/model/type/Plot.js",
 		"bin-debug/model/type/QuestionGame.js",
+		"bin-debug/model/type/UserInfo.js",
 		"bin-debug/utils/DragonBones.js",
 		"bin-debug/utils/SoundPool.js",
 		"bin-debug/view/ApplicationMediator.js",
