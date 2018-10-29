@@ -337,7 +337,7 @@ module game {
         }
 
         public btnManageClick() {
-            this.sendNotification(SceneCommand.CHANGE, Scene.Start);
+            this.sendNotification(SceneCommand.SHOW_MANAGE);
         }
 
         public pictClick() {
