@@ -83,8 +83,7 @@ module game {
                 this.gameScreen.showScene = false;
                 this.gameScreen.questionGroup.visible = this.gameScreen.textGroup.visible = true;
 
-                this.playAnim(true);
-                egret.setTimeout(() => (this.playAnim(false)), this, 2000);
+                this.playAnim();
 
                 let question: QuestionGame = { ...this.proxy.questions.get(plot.questionId.toString()) };
                 this.gameScreen.questionRes = question.img;
@@ -396,34 +395,23 @@ module game {
             platform.shareAppMessage();
         }
 
-        public armatureDisplay: any;
+        public armatureDisplay: dragonBones.EgretArmatureDisplay;
         public heiban: eui.Image;
-        public playAnim(bool: boolean) {
-            if (bool) {
-                this.heiban = new eui.Image;
-                this.heiban.source = "heiban";
-                this.gameScreen.addChild(this.heiban);
-                var dragonbonesData = RES.getRes("jiemi_ske_json");
-                var textureData = RES.getRes("jiemi_tex_json");
-                var texture = RES.getRes("jiemi_tex_png");
-                var dragonbonesFactory: dragonBones.EgretFactory = new dragonBones.EgretFactory();
-                dragonbonesFactory.addDragonBonesData(dragonBones.DataParser.parseDragonBonesData(dragonbonesData));
-                dragonbonesFactory.addTextureAtlas(new dragonBones.EgretTextureAtlas(texture, textureData));
-                var armature: dragonBones.Armature = dragonbonesFactory.buildArmature("Armature");
-                this.armatureDisplay = armature.display;
-                this.gameScreen.addChild(this.armatureDisplay);
-                armature.animation.play("newAnimation");
-                armature.display.x = 360;
-                armature.display.y = 800;
-                dragonBones.WorldClock.clock.add(armature);
-                egret.Ticker.getInstance().register(function (advancedTime) {
-                    dragonBones.WorldClock.clock.advanceTime(advancedTime / 1000);
+        public async playAnim() {
+            this.heiban = new eui.Image;
+            this.heiban.source = "heiban";
+            this.gameScreen.addChild(this.heiban);
+            if (!this.armatureDisplay) {
+                this.armatureDisplay = DragonBones.createDragonBone("jiemi", "Armature");
+                this.armatureDisplay.addEventListener( dragonBones.EventObject.COMPLETE, () => {
+                    this.heiban && this.gameScreen.removeChild(this.heiban);
+                    this.gameScreen.removeChild(this.armatureDisplay);
                 }, this);
-                dragonBones.WorldClock.clock.timeScale = 0.6;
-            } else {
-                this.gameScreen.removeChild(this.heiban);
-                this.gameScreen.removeChild(this.armatureDisplay);
             }
+            this.armatureDisplay.x = 360;
+            this.armatureDisplay.y = 800;
+            this.gameScreen.addChild(this.armatureDisplay);
+            this.armatureDisplay.animation.play("newAnimation", 1);
         }
     }
 }

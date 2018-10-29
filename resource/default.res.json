@@ -17,7 +17,7 @@
 			"name": "chapter1"
 		},
 		{
-			"keys": "m11,m10,m08-item_json,m08-bg,m07,Y8,Y7,Y6,Y17,s62,s60,s43,s31,s21,s16,s15,s14,s13,s12,s11,s10,s1,s0,s18,s22,s3,s59,s61,bg3,ren",
+			"keys": "m11,m10,m08-item_json,m08-bg,m07,Y8,Y7,Y6,Y17,s62,s60,s43,s31,s21,s16,s15,s14,s13,s12,s11,s10,s1,s0,s18,s22,s3,s59,s61,bg3,ren,m8.2-bg,m8.2-tips,m8.2_00,m8.2_01,m8.2_02,m8.2_03,m8.2_04,m8.2_05,m8.2_06",
 			"name": "chapter2"
 		},
 		{
@@ -1112,6 +1112,51 @@
 			"url": "assets/game/tips-ellipse.png",
 			"type": "image",
 			"name": "tips-ellipse"
+		},
+		{
+			"url": "assets/questions/m8.2/m8.2-bg.png",
+			"type": "image",
+			"name": "m8.2-bg"
+		},
+		{
+			"url": "assets/questions/m8.2/m8.2-tips.png",
+			"type": "image",
+			"name": "m8.2-tips"
+		},
+		{
+			"url": "assets/questions/m8.2/m8.2_00.png",
+			"type": "image",
+			"name": "m8.2_00"
+		},
+		{
+			"url": "assets/questions/m8.2/m8.2_01.png",
+			"type": "image",
+			"name": "m8.2_01"
+		},
+		{
+			"url": "assets/questions/m8.2/m8.2_02.png",
+			"type": "image",
+			"name": "m8.2_02"
+		},
+		{
+			"url": "assets/questions/m8.2/m8.2_03.png",
+			"type": "image",
+			"name": "m8.2_03"
+		},
+		{
+			"url": "assets/questions/m8.2/m8.2_04.png",
+			"type": "image",
+			"name": "m8.2_04"
+		},
+		{
+			"url": "assets/questions/m8.2/m8.2_05.png",
+			"type": "image",
+			"name": "m8.2_05"
+		},
+		{
+			"url": "assets/questions/m8.2/m8.2_06.png",
+			"type": "image",
+			"name": "m8.2_06"
 		}
 	]
 }

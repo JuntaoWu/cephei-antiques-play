@@ -41,6 +41,9 @@ module game {
             else if (this.gameName == "拼装分水镜") {
                 displayObject = new MiniGameM42();
             }
+            else if (this.gameName == "拼装分水镜2") {
+                displayObject = new MiniGameM8_2();
+            }
             else if (this.gameName == "古董组合1") {
                 displayObject = new M14();
             }

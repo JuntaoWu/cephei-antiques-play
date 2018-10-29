@@ -9,6 +9,7 @@ module game {
         }
 
         public createCompleteEvent(event: eui.UIEvent): void {
+            this.height = this.stage.stageHeight - 135;
             this.removeEventListener(eui.UIEvent.CREATION_COMPLETE, this.createCompleteEvent, this);
             ApplicationFacade.getInstance().registerMediator(new MiniGameM42Mediator(this));
         }

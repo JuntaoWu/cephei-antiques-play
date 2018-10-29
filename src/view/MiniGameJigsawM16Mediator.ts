@@ -117,6 +117,7 @@ module game {
             
             this.draggedObject.x = this.beforeX;
             this.draggedObject.y = this.beforeY;
+            e.currentTarget.removeEventListener(egret.TouchEvent.TOUCH_END, this.touchEnd, this);
         }
         private touchReleaseOutside(e: egret.TouchEvent): void {
             if (this.draggedObject) {
