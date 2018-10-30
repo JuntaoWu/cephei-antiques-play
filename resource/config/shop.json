@@ -4,6 +4,7 @@
     "res": "power_small",
     "name": "体力药水(小)",
     "effect": "增加10点体力",
+    "tili": 10,
     "money": "20"
   },
   {
@@ -11,6 +12,7 @@
     "res": "power_medium",
     "name": "体力药水(中)",
     "effect": "增加30点体力",
+    "tili": 30,
     "money": "50"
   },
   {
@@ -18,6 +20,7 @@
     "res": "power_large",
     "name": "体力药水(大)",
     "effect": "增加60点体力",
+    "tili": 60,
     "money": "90"
   },
   {
@@ -32,6 +35,7 @@
     "res": "power_large",
     "name": "礼物1",
     "effect": "增加木户加奈好感度",
+    "point": -4,
     "money": "100"
   },
   {
@@ -39,6 +43,7 @@
     "res": "power_large",
     "name": "礼物2",
     "effect": "增加黄烟烟好感度",
+    "point": 4,
     "money": "100"
   }
 ]

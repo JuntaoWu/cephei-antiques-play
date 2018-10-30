@@ -66,6 +66,12 @@ module game {
                 case "石门机关":
                     displayObject = new M24();
                     break;
+                case "旅社求救，剧情补充":
+                    displayObject = new M15();
+                    break;
+                case "铜人":
+                    displayObject = new M17();
+                    break;
             }
             return displayObject;
         }

@@ -15,7 +15,7 @@ module game {
         }
 
         public btnBack: eui.Button;
-        public btnSave: eui.Button;
+        // public btnSave: eui.Button;
         public btnManage: eui.Button;
         public btnPicture: eui.Button;
 

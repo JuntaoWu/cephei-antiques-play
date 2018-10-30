@@ -43,13 +43,21 @@ module game {
             }
         }
 
-        public haha(data:string) {
+        public haha(data: any) {
             let gold_number: number = Number(this.storeWindow.gold.text);
-            let spend_gold: number = Number(data);
+            let spend_gold: number = Number(data.money);
             if (gold_number >= spend_gold) {
                 gold_number -= spend_gold;
                 this.proxy.playerInfo.gold = gold_number.toString();
                 this.storeWindow.gold.text = this.proxy.playerInfo.gold;
+                if (data.tili) {
+                    this.proxy.playerInfo.fatigueValue += data.tili;
+                } else if (data.id == 4) {
+                    this.proxy.playerInfo.hints += 1;
+                } else if (data.point) {
+                    this.proxy.pointHunag += data.point;
+                    this.proxy.pointMu -= data.point;
+                }
             } else {
                 this.storeWindow.note.visible = true;
                 egret.setTimeout(this.close_note, this, 1500);
