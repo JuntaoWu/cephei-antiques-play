@@ -14,6 +14,7 @@ module game {
 		public paperList: Array<eui.Image> = [];
 		public recordList: Array<any> = [];
 		public answerList: Array<any> = [];
+		public jilu: Array<any> = [];
 
 		public constructor() {
 			super();
@@ -29,6 +30,9 @@ module game {
 			super.childrenCreated();
 
 			this.paperList = [this.no1, this.no2, this.no3, this.no4, this.no5, this.no6, this.no7, this.no8];
+			this.paperList.forEach(ele => {
+				this.jilu.push(ele.x, ele.y, ele.rotation);
+			})
 			this.answerList = [
 				{ x: 450.5, y: 250, ro: 0 },
 				{ x: 270.5, y: 100, ro: 0 },
@@ -48,11 +52,11 @@ module game {
 			});
 		}
 
-		private first_img_x: number;
-		private first_img_y: number;
-		private first_img: eui.Image;
-		private is_touch_begin: boolean = false;
-		private record(img: eui.Image) {
+		public first_img_x: number;
+		public first_img_y: number;
+		public first_img: eui.Image;
+		public is_touch_begin: boolean = false;
+		public record(img: eui.Image) {
 			if (this.is_move_end) {
 				this.first_img = img;
 				this.first_img.parent.addChild(this.first_img);
@@ -63,8 +67,8 @@ module game {
 			}
 		}
 
-		private is_touch_move: boolean = false;
-		private move(s: egret.TouchEvent) {
+		public is_touch_move: boolean = false;
+		public move(s: egret.TouchEvent) {
 			if (this.is_touch_begin) {
 				this.first_img.x = s.stageX;
 				this.first_img.y = (s.stageY - 90 - 64.5);
@@ -72,10 +76,10 @@ module game {
 			}
 		}
 
-		private second_img_x: number;
-		private second_img_y: number;
-		private ischang: boolean = false;
-		private transposition(s: egret.TouchEvent) {
+		public second_img_x: number;
+		public second_img_y: number;
+		public ischang: boolean = false;
+		public transposition(s: egret.TouchEvent) {
 			if (this.is_touch_move || this.is_touch_begin) {
 				this.is_touch_begin = false;
 				this.ischang = false;
@@ -102,18 +106,17 @@ module game {
 					egret.Tween.get(this.first_img).to({ x: this.first_img_x, y: this.first_img_y }, 300);
 				}
 				egret.setTimeout(this.move_end, this, 300);
-				this.iswin();
 				this.is_touch_move = false;
 			}
 		}
 
-		private is_move_end: boolean = true;
-		private move_end() {
+		public is_move_end: boolean = true;
+		public move_end() {
 			this.is_move_end = true;
 		}
 
-		private ww: boolean = true;
-		private iswin() {
+		public ww: boolean = true;
+		public iswin() {
 			this.ww = true;
 			this.paperList.forEach(ele => {
 				let no = this.paperList.indexOf(ele);
@@ -127,6 +130,44 @@ module game {
 				this.win.visible = true;
 				ApplicationFacade.getInstance().sendNotification(GameProxy.PASS_MINIGAME);
 			}
+		}
+	}
+
+	export class M14Mediator extends puremvc.Mediator implements puremvc.IMediator {
+		public static NAME: string = "M14Mediator";
+
+		public constructor(viewComponent: any) {
+			super(M14Mediator.NAME, viewComponent);
+			super.initializeNotifier("ApplicationFacade");
+
+		}
+
+		public setResult() {
+			this.gameM14.iswin();
+		}
+
+		public listNotificationInterests(): Array<any> {
+			return [GameProxy.RESET_MINIGAME, GameProxy.CONFIRM_MINIGAME];
+		}
+
+		public handleNotification(notification: puremvc.INotification): void {
+			var data: any = notification.getBody();
+			switch (notification.getName()) {
+				case GameProxy.RESET_MINIGAME:
+					for (let i = 0; i++; i < 7) {
+						this.gameM14.paperList[i].x = this.gameM14.paperList[i].x;
+						this.gameM14.paperList[i].y = this.gameM14.paperList[i].y;
+						this.gameM14.paperList[i].rotation = this.gameM14.paperList[i].rotation;
+					}
+					break;
+				case GameProxy.CONFIRM_MINIGAME:
+					this.setResult();
+					break;
+			}
+		}
+
+		public get gameM14(): M14 {
+			return <M14><any>(this.viewComponent);
 		}
 	}
 }

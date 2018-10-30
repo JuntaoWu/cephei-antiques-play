@@ -43,7 +43,6 @@ module game {
             })
             ele.scaleX = 0.8;
             ele.scaleY = 0.8;
-            this.iswin();
         }
 
         public iswin() {
@@ -51,6 +50,47 @@ module game {
                 this.win.visible = true;
                 ApplicationFacade.getInstance().sendNotification(GameProxy.PASS_MINIGAME);
             }
+        }
+    }
+
+    export class M24Mediator extends puremvc.Mediator implements puremvc.IMediator {
+        public static NAME: string = "M24Mediator";
+
+        public constructor(viewComponent: any) {
+            super(M24Mediator.NAME, viewComponent);
+            super.initializeNotifier("ApplicationFacade");
+
+        }
+
+        public setResult() {
+            this.gameM24.iswin();
+        }
+
+        public listNotificationInterests(): Array<any> {
+            return [GameProxy.RESET_MINIGAME, GameProxy.CONFIRM_MINIGAME];
+        }
+
+        public handleNotification(notification: puremvc.INotification): void {
+            var data: any = notification.getBody();
+            switch (notification.getName()) {
+                case GameProxy.RESET_MINIGAME:
+                    this.gameM24.arr1.forEach(e => {
+                        e.scaleX = 1;
+                        e.scaleY = 1;
+                    });
+                    this.gameM24.arr2.forEach(e => {
+                        e.scaleX = 1;
+                        e.scaleY = 1;
+                    });
+                    break;
+                case GameProxy.CONFIRM_MINIGAME:
+                    this.setResult();
+                    break;
+            }
+        }
+
+        public get gameM24(): M24 {
+            return <M24><any>(this.viewComponent);
         }
     }
 }

@@ -8,7 +8,6 @@ module game {
 		public button5: eui.Button;
 		public win: eui.Label;
 		public lose: eui.Group;
-		public again: eui.Button;
 
 		public allButton: Array<eui.Button> = [];
 
@@ -34,24 +33,27 @@ module game {
 			this.button5.addEventListener(egret.TouchEvent.TOUCH_TAP, (() => { this.key(this.button5, "5") }), this);
 		}
 
-		private password: string = "0";
-		private key(but: eui.Button, i: string) {
+		public password: string = "0";
+		public key(but: eui.Button, i: string) {
 			but.enabled = false;
 			but.scaleX = 0.8;
 			but.scaleY = 0.8;
 			this.password += i;
+
+		}
+
+		public queren() {
 			if (this.password.length == 5) {
 				if (this.password == "05421") {
 					this.win.visible = true;
 					ApplicationFacade.getInstance().sendNotification(GameProxy.PASS_MINIGAME);
 				} else {
 					this.lose.visible = true;
-					this.again.addEventListener(egret.TouchEvent.TOUCH_TAP, this.tryAgain, this);
 				}
 			}
 		}
 
-		private tryAgain() {
+		public tryAgain() {
 			this.lose.visible = false;
 			this.password = "0";
 			this.allButton.forEach(but => {
@@ -59,6 +61,40 @@ module game {
 				but.scaleX = 1;
 				but.scaleY = 1;
 			})
+		}
+	}
+
+	export class M6Mediator extends puremvc.Mediator implements puremvc.IMediator {
+		public static NAME: string = "M6Mediator";
+
+		public constructor(viewComponent: any) {
+			super(M6Mediator.NAME, viewComponent);
+			super.initializeNotifier("ApplicationFacade");
+
+		}
+
+		public setResult() {
+			this.gameM6.queren();
+		}
+
+		public listNotificationInterests(): Array<any> {
+			return [GameProxy.RESET_MINIGAME, GameProxy.CONFIRM_MINIGAME];
+		}
+
+		public handleNotification(notification: puremvc.INotification): void {
+			var data: any = notification.getBody();
+			switch (notification.getName()) {
+				case GameProxy.RESET_MINIGAME:
+					this.gameM6.tryAgain();
+					break;
+				case GameProxy.CONFIRM_MINIGAME:
+					this.setResult();
+					break;
+			}
+		}
+
+		public get gameM6(): M6 {
+			return <M6><any>(this.viewComponent);
 		}
 	}
 }
