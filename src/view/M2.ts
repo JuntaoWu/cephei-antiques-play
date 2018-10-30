@@ -62,6 +62,7 @@ module game {
 		public win: eui.Label;
 
 		public allCube: Array<any> = [];
+		public record: Array<any> = [];
 		public whiteCube: Array<any> = [];
 		public rowList: Array<any> = [2, 58, 114, 173, 229, 285, 344, 400, 456];
 		public columnList: Array<any> = [2, 58, 114, 175, 231, 287, 348, 403, 458];
@@ -86,6 +87,9 @@ module game {
 				this.black1, this.black2, this.black3, this.black4, this.black5, this.black6, this.black7, this.black8, this.black9,
 				this.yellow1, this.yellow2, this.yellow3, this.yellow4, this.yellow5, this.yellow6, this.yellow7, this.yellow8, this.yellow9
 			];
+			this.allCube.forEach(ele => {
+				this.record.push(ele.x, ele.y);
+			})
 			this.whiteCube = [this.white1, this.white2, this.white3, this.white4, this.white5, this.white6, this.white7, this.white8, this.white9];
 
 			this.row1_1.addEventListener(egret.TouchEvent.TOUCH_TAP, (() => { this.moveCube(3, -1, "row") }), this);
@@ -102,7 +106,7 @@ module game {
 			this.column3_2.addEventListener(egret.TouchEvent.TOUCH_TAP, (() => { this.moveCube(5, 1, "column") }), this);
 		}
 
-		private moveCube(i: number, n: number, direction: string) {
+		public moveCube(i: number, n: number, direction: string) {
 			this.allCube.forEach(cube => {
 				if (cube.y == this.columnList[i] && direction == "row") {
 					let no = this.rowList.indexOf(cube.x);
@@ -115,20 +119,56 @@ module game {
 					cube.y = this.columnList[no2];
 				}
 			});
-			this.isWin();
 		}
 
-		private isWin() {
+		public isWin() {
 			let iwin: boolean = true;
 			this.whiteCube.forEach(cube => {
 				if (this.rowList[6] > cube.x) {
-					iwin = false;					
+					iwin = false;
 				}
 			});
 			if (iwin) {
 				this.win.visible = true;
 				ApplicationFacade.getInstance().sendNotification(GameProxy.PASS_MINIGAME);
 			}
+		}
+	}
+
+	export class M2Mediator extends puremvc.Mediator implements puremvc.IMediator {
+		public static NAME: string = "M2Mediator";
+
+		public constructor(viewComponent: any) {
+			super(M2Mediator.NAME, viewComponent);
+			super.initializeNotifier("ApplicationFacade");
+
+		}
+
+		public setResult() {
+			this.gameM2.isWin();
+		}
+
+		public listNotificationInterests(): Array<any> {
+			return [GameProxy.RESET_MINIGAME, GameProxy.CONFIRM_MINIGAME];
+		}
+
+		public handleNotification(notification: puremvc.INotification): void {
+			var data: any = notification.getBody();
+			switch (notification.getName()) {
+				case GameProxy.RESET_MINIGAME:
+					for (let i = 0; i++; i < 44) {
+						this.gameM2.allCube[i].x = this.gameM2.record[i].x;
+						this.gameM2.allCube[i].y = this.gameM2.record[i].y;
+					}
+					break;
+				case GameProxy.CONFIRM_MINIGAME:
+					this.setResult();
+					break;
+			}
+		}
+
+		public get gameM2(): M2 {
+			return <M2><any>(this.viewComponent);
 		}
 	}
 }

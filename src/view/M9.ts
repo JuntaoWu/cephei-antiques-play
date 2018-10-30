@@ -41,7 +41,7 @@ module game {
             this.bg.addEventListener(egret.TouchEvent.TOUCH_BEGIN, this.start, this);
             this.bg.addEventListener(egret.TouchEvent.TOUCH_END, this.end, this);
         }
-        
+
         public start_x: number;
         public start_y: number;
         public start(e: egret.TouchEvent) {
@@ -74,88 +74,88 @@ module game {
             }
         }
 
+        public can_move: boolean;
         public you() {
-            let can_move: boolean = true;
+            this.can_move = true;
             if (this.ren.x != 603) {
                 this.ren.x += 44;
+                this.haha();
                 this.zhangai.forEach(ele => {
                     if (ele.x == this.ren.x && ele.y == this.ren.y) {
                         this.ren.x -= 44;
-                        can_move = false;
+                        this.can_move = false;
                     }
                 });
-                if (can_move) {
+                if (this.can_move) {
                     this.you();
                 }
             } else {
-                can_move = false;
+                this.can_move = false;
             }
-            this.iswin(can_move);
         }
 
         public zuo() {
-            let can_move: boolean = true;
+            this.can_move = true;
             if (this.ren.x != 119) {
                 this.ren.x -= 44;
+                this.haha();
                 this.zhangai.forEach(ele => {
                     if (ele.x == this.ren.x && ele.y == this.ren.y) {
                         this.ren.x += 44;
-                        can_move = false;
+                        this.can_move = false;
                     }
                 });
-                if (can_move) {
+                if (this.can_move) {
                     this.zuo();
                 }
             } else {
-                can_move = false;
+                this.can_move = false;
             }
-            this.iswin(can_move);
         }
 
         public xia() {
-            let can_move: boolean = true;
+            this.can_move = true;
             if (this.ren.y != 477) {
                 this.ren.y += 44;
+                this.haha();
                 this.zhangai.forEach(ele => {
                     if (ele.x == this.ren.x && ele.y == this.ren.y) {
                         this.ren.y -= 44;
-                        can_move = false;
+                        this.can_move = false;
                     }
                 });
-                if (can_move) {
+                if (this.can_move) {
                     this.xia();
                 }
             } else {
-                can_move = false;
+                this.can_move = false;
             }
-            this.iswin(can_move);
         }
 
         public shang() {
-            let can_move: boolean = true;
+            this.can_move = true;
             if (this.ren.y != 81) {
                 this.ren.y -= 44;
+                this.haha();
                 this.zhangai.forEach(ele => {
                     if (ele.x == this.ren.x && ele.y == this.ren.y) {
                         this.ren.y += 44;
-                        can_move = false;
+                        this.can_move = false;
                     }
                 });
-                if (can_move) {
+                if (this.can_move) {
                     this.shang();
                 }
             } else {
-                can_move = false;
+                this.can_move = false;
             }
-            this.iswin(can_move);
         }
 
-        public iswin(aa: boolean) {
+        public haha() {
             if (this.ren.x == 515 && this.ren.y == 257) {
-                this.ren.visible = false;
-                ApplicationFacade.getInstance().sendNotification(GameProxy.PASS_MINIGAME);
-            } else if (this.bushu.text == "0" && !aa) {
-                this.f5();
+                this.ren.x == 515;
+                this.ren.y == 257;
+                this.can_move = false;
             }
         }
 
@@ -174,9 +174,14 @@ module game {
             super.initializeNotifier("ApplicationFacade");
 
         }
-        
+
         public setResult() {
-            
+            if (this.gameM9.ren.x == 515 && this.gameM9.ren.y == 257) {
+                this.gameM9.ren.visible = false;
+                ApplicationFacade.getInstance().sendNotification(GameProxy.PASS_MINIGAME);
+            } else if (this.gameM9.bushu.text == "0" && !this.gameM9.can_move) {
+                this.gameM9.f5();
+            }
         }
 
         public listNotificationInterests(): Array<any> {

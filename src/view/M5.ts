@@ -19,6 +19,7 @@ module game {
 
 		public moveCube: Array<eui.Image> = [];
 		public allCube: Array<eui.Image> = [];
+		public record: Array<any> = [];
 
 		public constructor() {
 			super();
@@ -33,6 +34,9 @@ module game {
 			super.childrenCreated();
 
 			this.moveCube = [this.cube1, this.cube2, this.cube3, this.cube4, this.cube5, this.cube6, this.cube7, this.cube8, this.cube9, this.cube10, this.cube11];
+			this.moveCube.forEach(element => {
+				this.record.push(element.x, element.y);
+			});
 			this.allCube = [this.cube1, this.cube2, this.cube3, this.cube4, this.cube5, this.cube6, this.cube7, this.cube8, this.cube9, this.cube10, this.cube11, this.Start, this.End];
 			this.moveCube.forEach(cube => {
 				cube.addEventListener(egret.TouchEvent.TOUCH_BEGIN, ((e) => { this.touchBegin(cube, e) }), this);
@@ -40,20 +44,20 @@ module game {
 			});
 		}
 
-		private touchPointBegin_x: number;
-		private touchPointBegin_y: number;
-		private nowCube: eui.Image;
-		private touchBegin(cube: eui.Image, e: egret.TouchEvent) {
+		public touchPointBegin_x: number;
+		public touchPointBegin_y: number;
+		public nowCube: eui.Image;
+		public touchBegin(cube: eui.Image, e: egret.TouchEvent) {
 			this.nowCube = cube;
 			this.touchPointBegin_x = e.stageX;
 			this.touchPointBegin_y = e.stageY;
 		}
 
-		private touchPointEnd_x: number;
-		private touchPointEnd_y: number;
-		private X: number;
-		private Y: number;
-		private touchEnd(e: egret.TouchEvent) {
+		public touchPointEnd_x: number;
+		public touchPointEnd_y: number;
+		public X: number;
+		public Y: number;
+		public touchEnd(e: egret.TouchEvent) {
 			this.X = e.stageX - this.touchPointBegin_x;
 			this.Y = e.stageY - this.touchPointBegin_y;
 			if (Math.abs(this.X) > Math.abs(this.Y)) {
@@ -81,10 +85,9 @@ module game {
 					}
 				}
 			}
-			this.isWin();
 		}
 
-		private isWin() {
+		public isWin() {
 			if (this.cube7.x == 0 && this.cube7.y == 120 && this.cube3.x == 120 && this.cube3.y == 240 && this.cube2.x == 240 && this.cube2.y == 240 && this.cube10.x == 360 && this.cube10.y == 240) {
 				if (this.cube8.x == 120 && this.cube8.y == 120 && this.cube9.x == 360 && this.cube9.y == 120) {
 					this.win.visible = true;
@@ -94,6 +97,43 @@ module game {
 					ApplicationFacade.getInstance().sendNotification(GameProxy.PASS_MINIGAME);
 				}
 			}
+		}
+	}
+
+	export class M5Mediator extends puremvc.Mediator implements puremvc.IMediator {
+		public static NAME: string = "M5Mediator";
+
+		public constructor(viewComponent: any) {
+			super(M5Mediator.NAME, viewComponent);
+			super.initializeNotifier("ApplicationFacade");
+
+		}
+
+		public setResult() {
+			this.gameM5.isWin();
+		}
+
+		public listNotificationInterests(): Array<any> {
+			return [GameProxy.RESET_MINIGAME, GameProxy.CONFIRM_MINIGAME];
+		}
+
+		public handleNotification(notification: puremvc.INotification): void {
+			var data: any = notification.getBody();
+			switch (notification.getName()) {
+				case GameProxy.RESET_MINIGAME:
+					for (let i = 0; i++; i < 10) {
+						this.gameM5.moveCube[i].x = this.gameM5.record[i].x;
+						this.gameM5.moveCube[i].y = this.gameM5.record[i].y;
+					}
+					break;
+				case GameProxy.CONFIRM_MINIGAME:
+					this.setResult();
+					break;
+			}
+		}
+
+		public get gameM5(): M5 {
+			return <M5><any>(this.viewComponent);
 		}
 	}
 }
