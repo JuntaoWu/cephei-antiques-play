@@ -5,8 +5,14 @@ module game {
 
         //小游戏
         public static SHOW_MINIGAME: string = "show_minigame";
+        //重置小游戏
+        public static RESET_MINIGAME: string = "reset_minigame";
+        //小游戏确认提交结果
+        public static CONFIRM_MINIGAME: string = "confirm_minigame";
         //通过小游戏
         public static PASS_MINIGAME: string = "pass_minigame";
+        //小游戏减体力值
+        public static REDUCE_POWER: string = "reduce_power";
 
         public playerInfo: PlayerInfo = {
             plotId: 1,
@@ -55,6 +61,7 @@ module game {
         // 减少体力值
         public reducePower(value: number = 1): void {
             this.playerInfo.fatigueValue -= value;
+            console.log(this.playerInfo.fatigueValue);
         }
 
         // 减少提示次数

@@ -17,13 +17,17 @@ module game {
             this.gameScreen.plotSelectList.addEventListener(eui.ItemTapEvent.ITEM_TAP, this.selectItem, this);
 
             this.gameScreen.nextTest.addEventListener(egret.TouchEvent.TOUCH_TAP, this.nextTestClick, this);
-            this.gameScreen.btnTips.addEventListener(egret.TouchEvent.TOUCH_TAP, this.btnTipsClick, this);
-
+            
             this.gameScreen.btnBack.addEventListener(egret.TouchEvent.TOUCH_TAP, this.btnBackClick, this);
             this.gameScreen.btnSave.addEventListener(egret.TouchEvent.TOUCH_TAP, this.btnSaveClick, this);
             this.gameScreen.btnManage.addEventListener(egret.TouchEvent.TOUCH_TAP, this.btnManageClick, this);
             this.gameScreen.btnPicture.addEventListener(egret.TouchEvent.TOUCH_TAP, this.pictClick, this);
+            
+            this.gameScreen.btnTips.addEventListener(egret.TouchEvent.TOUCH_TAP, this.btnTipsClick, this);
             this.gameScreen.btnHelp.addEventListener(egret.TouchEvent.TOUCH_TAP, this.share, this);
+
+            this.gameScreen.btnReset.addEventListener(egret.TouchEvent.TOUCH_TAP, this.btnResetClick, this);
+            this.gameScreen.btnConfirm.addEventListener(egret.TouchEvent.TOUCH_TAP, this.btnConfirmClick, this);
 
             this.gameScreen.addEventListener(egret.Event.ADDED_TO_STAGE, this.initData, this);
             this.initData();
@@ -62,8 +66,8 @@ module game {
         public next: number | string;
 
         public initData() {
-            this.gameScreen.bottomGroup.visible = this.gameScreen.plotSelectList.visible = this.gameScreen.textGroup.visible = false;
-            this.gameScreen.showMiniGame = this.gameScreen.showTransition = this.canGoNext = false;
+            this.gameScreen.bottomGroup.visible = this.gameScreen.plotSelectList.visible = this.gameScreen.questionGroup.visible = false;
+            this.gameScreen.showReset = this.gameScreen.showMiniGame = this.gameScreen.showTransition = this.canGoNext = false;
             this.gameScreen.question = this.gameScreen.points = "";
             this.gameScreen.scrollGroup.height = 450;
             this.gameScreen.scrollGroup.viewport.scrollV = 0;
@@ -81,7 +85,7 @@ module game {
             this.next = plot.next || 1;
             if (plot.type == plotType.PlotQuestion) {
                 this.gameScreen.showScene = false;
-                this.gameScreen.questionGroup.visible = this.gameScreen.textGroup.visible = true;
+                this.gameScreen.questionGroup.visible = true;
 
                 this.playAnim();
 
@@ -99,7 +103,7 @@ module game {
                 this.gameScreen.scrollGroup.height = 150;
                 this.gameScreen.scrollGroup.viewport.scrollH = 0;
                 if (question.type == "填空") {
-                    this.gameScreen.bottomGroup.visible = true;
+                    this.gameScreen.bottomGroup.visible = this.gameScreen.showReset = true;
                     this.gameScreen.showInput(question.answer);
                 }
                 else if (question.type == "选择") {
@@ -108,7 +112,7 @@ module game {
                 }
                 else if (question.type == "小游戏") {
                     this.sendNotification(GameProxy.SHOW_MINIGAME, question.keyword);
-                    this.gameScreen.showMiniGame = true;
+                    this.gameScreen.showMiniGame = this.gameScreen.showReset = true;
                 }
             }
             else if (plot.type == plotType.Transition) {
@@ -123,8 +127,7 @@ module game {
                 this.showNext();
             }
             else {
-                this.gameScreen.showScene = this.gameScreen.textGroup.visible = true;
-                this.gameScreen.questionGroup.visible = false;
+                this.gameScreen.showScene = true;
                 //搭建剧情场景
                 this.settingScene(plot.res, plot.portrait, plot.effect, plot.effectTrigger);
                 //剧情文字变化
@@ -272,24 +275,23 @@ module game {
         }
 
         public aa: eui.Image;
-        public answer_right() {
-            this.aa = new eui.Image();
-            this.aa.source = "answer_right";
-            this.aa.verticalCenter = -100;
-            this.aa.horizontalCenter = 0;
-            this.aa.scaleX = 0.01;
-            this.aa.scaleY = 0.01;
-            this.gameScreen.addChild(this.aa);
-            egret.Tween.get(this.aa).to({ scaleX: 1, scaleY: 1 }, 1500);
-        }
 
         public showRightResult() {
             this.gameScreen.description = this.rightText;
             this.canGoNext = true;
-            this.gameScreen.removeChild(this.aa);
-            // egret.setTimeout(() => {
-            //     this.showNext();
-            // }, this, 1500);
+            
+            if (!this.aa) {
+                this.aa = new eui.Image();
+                this.aa.source = "answer_right";
+                this.aa.verticalCenter = -100;
+                this.aa.horizontalCenter = 0;
+            }
+            this.aa.scaleX = 0.01;
+            this.aa.scaleY = 0.01;
+            this.gameScreen.addChild(this.aa);
+            egret.Tween.get(this.aa).to({ scaleX: 1, scaleY: 1 }, 1500).call(() => {
+                this.gameScreen.removeChild(this.aa);
+            });
         }
 
         public showNext() {
@@ -317,7 +319,7 @@ module game {
                 this.gameScreen.points = "没有提示卡";
                 return;
             }
-            if (this.gameScreen.points) {
+            if (this.gameScreen.points || (!this.questionPoints[0] && !this.questionPoints[1])) {
                 this.showPointsAll = true;
             }
             this.gameScreen.points = !this.gameScreen.points ? this.questionPoints[0] : `${this.questionPoints[0]}\n${this.questionPoints[1]}`;
@@ -373,16 +375,26 @@ module game {
             this.textIsOver = true;
         }
 
+        public btnResetClick() {
+            this.sendNotification(GameProxy.RESET_MINIGAME);
+        }
+
+        public btnConfirmClick() {
+            this.sendNotification(GameProxy.CONFIRM_MINIGAME);
+        }
+
         public listNotificationInterests(): Array<any> {
-            return [GameProxy.PASS_MINIGAME];
+            return [GameProxy.PASS_MINIGAME, GameProxy.REDUCE_POWER];
         }
 
         public handleNotification(notification: puremvc.INotification): void {
             var data: any = notification.getBody();
             switch (notification.getName()) {
                 case GameProxy.PASS_MINIGAME:
-                    this.answer_right();
-                    egret.setTimeout(this.showRightResult, this, 1800);
+                    this.showRightResult();
+                    break;
+                case GameProxy.REDUCE_POWER:
+                    this.proxy.reducePower();
                     break;
             }
         }

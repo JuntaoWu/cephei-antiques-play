@@ -52,14 +52,36 @@ module game {
             if (selectedIndex % 3 != 0) {
                 this.dataList[selectedIndex - 1].isSelected = !this.dataList[selectedIndex - 1].isSelected;
             }
+            this.cubeStop.buttonList.dataProvider = new eui.ArrayCollection(this.dataList);
+            this.cubeStop.buttonList.itemRenderer = CubeStopItemRenderer;
+        }
 
+        public setResult() {
             if (!this.dataList.find(i => !i.isSelected)) {
                 this.cubeStop.buttonList.touchEnabled = false;
                 this.cubeStop.buttonList.touchChildren = false;
                 this.sendNotification(GameProxy.PASS_MINIGAME);
             }
-            this.cubeStop.buttonList.dataProvider = new eui.ArrayCollection(this.dataList);
-            this.cubeStop.buttonList.itemRenderer = CubeStopItemRenderer;
+            else {
+                this.sendNotification(GameProxy.REDUCE_POWER);
+                this.initData();
+            }
+        }
+
+        public listNotificationInterests(): Array<any> {
+            return [GameProxy.RESET_MINIGAME, GameProxy.CONFIRM_MINIGAME];
+        }
+
+        public handleNotification(notification: puremvc.INotification): void {
+            var data: any = notification.getBody();
+            switch (notification.getName()) {
+                case GameProxy.RESET_MINIGAME:
+                    this.initData();
+                    break;
+                case GameProxy.CONFIRM_MINIGAME:
+                    this.setResult();
+                    break;
+            }
         }
 
         public get cubeStop(): MiniGameCubeStop {

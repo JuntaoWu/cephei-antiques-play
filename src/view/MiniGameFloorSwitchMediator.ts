@@ -59,14 +59,6 @@ module game {
                 let index = this.selectedList.findIndex(i => i.img == selectedItem.img);
                 this.selectedList.splice(index, 1);
             }
-            if (this.selectedList.length == 3) {
-                let isRight = !this.selectedList.find(i => i.name != "虎");
-                if (isRight) {
-                    this.floorSwitch.buttonList.touchEnabled = false;
-                    this.floorSwitch.buttonList.touchChildren = false;
-                    this.sendNotification(GameProxy.PASS_MINIGAME);
-                }
-            }
             this.dataList.forEach(i => {
                 i.isSelected = false;
                 if (this.selectedList.find(v => v.img == i.img)) {
@@ -76,6 +68,37 @@ module game {
 
             this.floorSwitch.buttonList.dataProvider = new eui.ArrayCollection(this.dataList);
             this.floorSwitch.buttonList.itemRenderer = SwitchItemRenderer;
+        }
+
+        public setResult() {
+            if (this.selectedList.length == 3) {
+                let isRight = !this.selectedList.find(i => i.name != "虎");
+                if (isRight) {
+                    this.floorSwitch.buttonList.touchEnabled = false;
+                    this.floorSwitch.buttonList.touchChildren = false;
+                    this.sendNotification(GameProxy.PASS_MINIGAME);
+                }
+            }
+            else {
+                this.sendNotification(GameProxy.REDUCE_POWER);
+                this.initData();
+            }
+        }
+
+        public listNotificationInterests(): Array<any> {
+            return [GameProxy.RESET_MINIGAME, GameProxy.CONFIRM_MINIGAME];
+        }
+
+        public handleNotification(notification: puremvc.INotification): void {
+            var data: any = notification.getBody();
+            switch (notification.getName()) {
+                case GameProxy.RESET_MINIGAME:
+                    this.initData();
+                    break;
+                case GameProxy.CONFIRM_MINIGAME:
+                    this.setResult();
+                    break;
+            }
         }
 
         public get floorSwitch(): MiniGameFloorSwitch {

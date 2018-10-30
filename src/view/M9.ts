@@ -16,6 +16,7 @@ module game {
 
         protected partAdded(partName: string, instance: any): void {
             super.partAdded(partName, instance);
+            ApplicationFacade.getInstance().registerMediator(new M9Mediator(this));
         }
 
         protected childrenCreated(): void {
@@ -40,7 +41,7 @@ module game {
             this.bg.addEventListener(egret.TouchEvent.TOUCH_BEGIN, this.start, this);
             this.bg.addEventListener(egret.TouchEvent.TOUCH_END, this.end, this);
         }
-
+        
         public start_x: number;
         public start_y: number;
         public start(e: egret.TouchEvent) {
@@ -162,6 +163,40 @@ module game {
             this.bushu.text = "8";
             this.ren.x = 427;
             this.ren.y = 169;
+        }
+    }
+
+    export class M9Mediator extends puremvc.Mediator implements puremvc.IMediator {
+        public static NAME: string = "M9Mediator";
+
+        public constructor(viewComponent: any) {
+            super(M9Mediator.NAME, viewComponent);
+            super.initializeNotifier("ApplicationFacade");
+
+        }
+        
+        public setResult() {
+            
+        }
+
+        public listNotificationInterests(): Array<any> {
+            return [GameProxy.RESET_MINIGAME, GameProxy.CONFIRM_MINIGAME];
+        }
+
+        public handleNotification(notification: puremvc.INotification): void {
+            var data: any = notification.getBody();
+            switch (notification.getName()) {
+                case GameProxy.RESET_MINIGAME:
+                    this.gameM9.f5();
+                    break;
+                case GameProxy.CONFIRM_MINIGAME:
+                    this.setResult();
+                    break;
+            }
+        }
+
+        public get gameM9(): M9 {
+            return <M9><any>(this.viewComponent);
         }
     }
 }
