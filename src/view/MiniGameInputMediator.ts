@@ -9,7 +9,6 @@ module game {
             super.initializeNotifier("ApplicationFacade");
 
             this.gameInput.answerInput.addEventListener(egret.FocusEvent.FOCUS_OUT, this.focusOut, this)
-            // this.gameInput.btnConfirm.addEventListener(egret.TouchEvent.TOUCH_TAP, this.confirmClick, this)
             this.gameInput.addEventListener(egret.Event.ADDED_TO_STAGE, this.initData, this);
             this.initData();
         }
@@ -45,30 +44,38 @@ module game {
                     this.inputTextList[i] = v;
                 }
             })
-            if (e.target.text == this.gameInput.answer && !this.isSend) {
-                e.target.text = "";
-                this.sendNotification(GameProxy.PASS_MINIGAME);
-                this.isSend = true;
-            }
             this.gameInput.inputItemList.dataProvider = new eui.ArrayCollection(this.inputTextList);
             this.gameInput.inputItemList.itemRenderer = InputItemRenderer;
         }
 
-        private confirmClick() {
-            if (this.gameInput.answerInput.text.length > this.inputTextList.length) {
-                this.gameInput.answerInput.text = this.gameInput.answerInput.text.substr(0, this.inputTextList.length);
-            }
-            this.inputTextList = this.inputTextList.map(i => "");
-            this.gameInput.answerInput.text.split("").forEach((v, i) => {
-                this.inputTextList[i] = v;
-            })
-            this.gameInput.inputItemList.dataProvider = new eui.ArrayCollection(this.inputTextList);
-            this.gameInput.inputItemList.itemRenderer = InputItemRenderer;
-
-            if (this.gameInput.answerInput.text == this.gameInput.answer && !this.isSend) {
-                this.gameInput.answerInput.text = "";
+        private setResult() {
+            let textInput = this.inputTextList.join("");
+            if (textInput == this.gameInput.answer && !this.isSend) {
                 this.sendNotification(GameProxy.PASS_MINIGAME);
                 this.isSend = true;
+            }
+            else {
+                this.sendNotification(GameProxy.REDUCE_POWER);
+                this.gameInput.answerInput.text = "";
+            }
+        }
+
+        public listNotificationInterests(): Array<any> {
+            return [GameProxy.RESET_MINIGAME, GameProxy.CONFIRM_MINIGAME];
+        }
+
+        public handleNotification(notification: puremvc.INotification): void {
+            var data: any = notification.getBody();
+            switch (notification.getName()) {
+                case GameProxy.RESET_MINIGAME:
+                    this.gameInput.answerInput.text = null;
+                    this.inputTextList = this.inputTextList.map(i => "");
+                    this.gameInput.inputItemList.dataProvider = new eui.ArrayCollection(this.inputTextList);
+                    this.gameInput.inputItemList.itemRenderer = InputItemRenderer;
+                    break;
+                case GameProxy.CONFIRM_MINIGAME:
+                    this.setResult();
+                    break;
             }
         }
 

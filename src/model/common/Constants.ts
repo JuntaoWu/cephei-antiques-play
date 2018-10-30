@@ -50,5 +50,5 @@ module game {
         PageChange: "界面切换经营",
     }
 
-    export const fatigueValue = 100000;
+    export const fatigueValue = 100;
 }

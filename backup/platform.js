@@ -7,7 +7,7 @@ import * as fileutil from 'library/file-util';
 class WxgamePlatform {
 
     env = 'prod';
-    name = 'wxgame';
+  name = 'DebugPlatform';
     appVersion = '0.1.1';
 
     login() {
@@ -152,12 +152,13 @@ class WxgamePlatform {
         });
     }
 
-    showModal(message, confirmText, cancelText) {
+    showModal(message, showCancel, confirmText, cancelText) {
+        showCancel = showCancel === "undefined" ? true : showCancel;
         return new Promise((resolve, reject) => {
             wx.showModal({
                 title: '提示',
                 content: message,
-                showCancel: true,
+                showCancel: showCancel,
                 cancelText: cancelText || '取消',
                 confirmText: confirmText || '确定',
                 success: function (res) {

@@ -55,7 +55,10 @@ module game {
          */
         public nextPlot(skipPlotNum: number = 1): void {
             this.playerInfo.plotId += skipPlotNum;
-            this.reducePower();
+        }
+
+        public canReduecePower(value: number = 1): boolean {
+            return this.playerInfo.fatigueValue >= value;
         }
 
         // 减少体力值
