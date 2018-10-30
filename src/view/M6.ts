@@ -6,8 +6,6 @@ module game {
 		public button3: eui.Button;
 		public button4: eui.Button;
 		public button5: eui.Button;
-		public win: eui.Label;
-		public lose: eui.Group;
 
 		public allButton: Array<eui.Button> = [];
 
@@ -45,16 +43,14 @@ module game {
 		public queren() {
 			if (this.password.length == 5) {
 				if (this.password == "05421") {
-					this.win.visible = true;
 					ApplicationFacade.getInstance().sendNotification(GameProxy.PASS_MINIGAME);
 				} else {
-					this.lose.visible = true;
+					ApplicationFacade.getInstance().sendNotification(GameProxy.REDUCE_POWER);
 				}
 			}
 		}
 
 		public tryAgain() {
-			this.lose.visible = false;
 			this.password = "0";
 			this.allButton.forEach(but => {
 				but.enabled = true;

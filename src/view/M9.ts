@@ -7,7 +7,6 @@ module game {
         public shu: Array<any> = [];
         public zhangai: Array<any> = [];
         public bushu: eui.Label;
-        public resh: eui.Button;
 
         public constructor() {
             super();
@@ -22,7 +21,6 @@ module game {
         protected childrenCreated(): void {
             super.childrenCreated();
             this.bushu.text = "8";
-            this.resh.addEventListener(egret.TouchEvent.TOUCH_TAP, this.f5, this);
 
             this.heng = [119, 163, 207, 251, 295, 339, 383, 427, 471, 515, 559, 603];
             this.shu = [81, 125, 169, 213, 257, 301, 345, 389, 433, 477];
@@ -181,6 +179,7 @@ module game {
                 ApplicationFacade.getInstance().sendNotification(GameProxy.PASS_MINIGAME);
             } else if (this.gameM9.bushu.text == "0" && !this.gameM9.can_move) {
                 this.gameM9.f5();
+                ApplicationFacade.getInstance().sendNotification(GameProxy.PASS_MINIGAME);
             }
         }
 

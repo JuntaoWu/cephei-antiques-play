@@ -4,7 +4,6 @@ module game {
 		public bright: eui.Group;
 		public turnOffLight: eui.Button;
 		public turnOnLight: eui.Button;
-		public win: eui.Label;
 		public word1: eui.Scroller;
 		public word2: eui.Scroller;
 		public word3: eui.Scroller;
@@ -55,7 +54,6 @@ module game {
 			this.word4.addEventListener(eui.UIEvent.CHANGE_END, (() => this.stoptouch(this.word4)), this);
 			this.turnOffLight.addEventListener(egret.TouchEvent.TOUCH_TAP, this.turn, this);
 			this.turnOnLight.addEventListener(egret.TouchEvent.TOUCH_TAP, this.turn, this);
-			console.log("布局成功");
 		}
 
 		public stoptouch(word: eui.Scroller) {
@@ -72,7 +70,8 @@ module game {
 
 		public isWin() {
 			if (this.word1.viewport.scrollV == 0 && this.word2.viewport.scrollV == 420 && this.word3.viewport.scrollV == 280 && this.word4.viewport.scrollV == 140) {
-				this.win.visible = true;
+				ApplicationFacade.getInstance().sendNotification(GameProxy.PASS_MINIGAME);
+			}else{
 				ApplicationFacade.getInstance().sendNotification(GameProxy.PASS_MINIGAME);
 			}
 		}

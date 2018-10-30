@@ -12,7 +12,6 @@ module game {
 
         public arr1: Array<eui.Image> = [];
         public arr2: Array<eui.Image> = [];
-        public win: eui.Label;
 
         public constructor() {
             super();
@@ -47,7 +46,8 @@ module game {
 
         public iswin() {
             if (this.bai.scaleX == 0.8 && this.jiao.scaleX == 0.8) {
-                this.win.visible = true;
+                ApplicationFacade.getInstance().sendNotification(GameProxy.PASS_MINIGAME);
+            }else{
                 ApplicationFacade.getInstance().sendNotification(GameProxy.PASS_MINIGAME);
             }
         }

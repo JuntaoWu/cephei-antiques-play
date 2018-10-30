@@ -5,7 +5,6 @@ module game {
         public button2: eui.Button;
         public button3: eui.Button;
         public button4: eui.Button;
-        public win: eui.Label;
 
 
         public constructor() {
@@ -34,22 +33,18 @@ module game {
         }
 
         public iswin() {
-            this.win.visible = true;
             if (this.xx != 1) {
                 //失败
-                this.win.text = "解锁失败";
+                ApplicationFacade.getInstance().sendNotification(GameProxy.PASS_MINIGAME);
 
             } else {
-                this.win.text = "解锁成功";
                 this.button1.enabled = false;
                 this.button2.enabled = false;
                 this.button3.enabled = false;
                 this.button4.enabled = false;
                 ApplicationFacade.getInstance().sendNotification(GameProxy.PASS_MINIGAME);
             }
-            egret.setTimeout(() => {
-                this.win.visible = false;
-            }, this, 1000);
+            
         }
 
 

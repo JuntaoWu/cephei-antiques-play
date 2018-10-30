@@ -14,7 +14,6 @@ module game {
 		public cube9: eui.Image;
 		public cube10: eui.Image;
 		public cube11: eui.Image;
-		public win: eui.Label;
 		public Group: eui.Group;
 
 		public moveCube: Array<eui.Image> = [];
@@ -90,12 +89,12 @@ module game {
 		public isWin() {
 			if (this.cube7.x == 0 && this.cube7.y == 120 && this.cube3.x == 120 && this.cube3.y == 240 && this.cube2.x == 240 && this.cube2.y == 240 && this.cube10.x == 360 && this.cube10.y == 240) {
 				if (this.cube8.x == 120 && this.cube8.y == 120 && this.cube9.x == 360 && this.cube9.y == 120) {
-					this.win.visible = true;
 					ApplicationFacade.getInstance().sendNotification(GameProxy.PASS_MINIGAME);
 				} else if (this.cube9.x == 120 && this.cube9.y == 120 && this.cube8.x == 360 && this.cube8.y == 120) {
-					this.win.visible = true;
 					ApplicationFacade.getInstance().sendNotification(GameProxy.PASS_MINIGAME);
 				}
+			}else{
+				ApplicationFacade.getInstance().sendNotification(GameProxy.PASS_MINIGAME);
 			}
 		}
 	}
