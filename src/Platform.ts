@@ -53,6 +53,8 @@ declare interface Platform {
     isVideoAdDisabled(name: string);
 
     disableVideoAd(name: string);
+
+    showModal(msg: string, showCancel: boolean);
 }
 
 class DebugPlatform implements Platform {
@@ -161,6 +163,10 @@ class DebugPlatform implements Platform {
     }
 
     public async disableVideoAd(name: string) {
+
+    }
+
+    public showModal(msg: string, showCancel: boolean) {
 
     }
 }

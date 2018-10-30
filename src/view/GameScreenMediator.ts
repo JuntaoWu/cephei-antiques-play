@@ -116,6 +116,14 @@ module game {
                 }
             }
             else if (plot.type == plotType.Transition) {
+                if (plot.effect != "序章") {
+                    if (this.proxy.canReduecePower(30)) {
+                        this.proxy.reducePower(30);
+                    }
+                    else {
+                        return;
+                    }
+                }
                 this.gameScreen.showTransition = true;
                 this.gameScreen.transitionText = plot.effect;
                 this.loadResGroup();
@@ -401,7 +409,13 @@ module game {
                     this.showRightResult();
                     break;
                 case GameProxy.REDUCE_POWER:
-                    this.proxy.reducePower();
+                    if (this.proxy.canReduecePower(10)) {
+                        this.proxy.reducePower(10);
+                        platform.showModal("答案错误，扣除10点体力！", false);
+                    }
+                    if (this.proxy.playerInfo.fatigueValue <= 0) {
+                        //TODO
+                    }
                     break;
             }
         }
