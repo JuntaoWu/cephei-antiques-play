@@ -30,11 +30,6 @@ module game {
         Game = 2,
     }
 
-    export const gameKey = {
-        FloorSwitch: "地板开关",
-        CubeStop: "魔方停止",
-    }
-
     export const gameType = {
         Input: "填空",
         Select: "选择",
@@ -55,5 +50,5 @@ module game {
         PageChange: "界面切换经营",
     }
 
-    export const fatigueValue = 100;
+    export const fatigueValue = 100000;
 }

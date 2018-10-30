@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <e:Skin class="MiniGameM42" currentState="up" xmlns:e="http://ns.egret.com/eui" xmlns:game="game.*" xmlns:w="http://ns.egret.com/wing" states="down,up" >
-    <e:Group width="720" height="900">
+    <e:Group width="720" height="100%">
         <e:Image source="m42-bg" left="0" top="0" bottom="0" right="0"/>
         <e:Image visible="{showTipsImg}" source="m42-tips" left="0" top="0" right="0"/>
         <e:Button id="btnBack" y="20" right="50">

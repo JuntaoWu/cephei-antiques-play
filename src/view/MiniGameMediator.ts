@@ -26,41 +26,46 @@ module game {
 
         private getGameDisplayObject(gameName): egret.DisplayObject {
             let displayObject: egret.DisplayObject = null;
-            if (this.gameName == gameKey.FloorSwitch) {
-                displayObject = new MiniGameFloorSwitch();
-            }
-            else if (this.gameName == gameKey.CubeStop) {
-                displayObject = new MiniGameCubeStop();
-            }
-            else if (this.gameName == "迷宫") {
-                displayObject = new MiniGameJigsawM16();
-            }
-            else if (this.gameName == "古董组合") {
-                displayObject = new MiniGameJigsawM08();
-            }
-            else if (this.gameName == "拼装分水镜") {
-                displayObject = new MiniGameM42();
-            }
-            else if (this.gameName == "古董组合1") {
-                displayObject = new M14();
-            }
-            else if (this.gameName == "密码锁2") {
-                displayObject = new M2();
-            }
-            else if (this.gameName == "M3aaa") {
-                displayObject = new M3_2();
-            }
-            else if (this.gameName == "拼图迷宫5") {
-                displayObject = new M5();
-            }
-            else if (this.gameName == "暗号6") {
-                displayObject = new M6();
-            }
-            else if (this.gameName == "找到出口") {
-                displayObject = new M9();
-            }
-            else if (this.gameName == "石门机关") {
-                displayObject = new M24();
+            switch (gameName) {
+                case "地板开关":
+                    displayObject = new MiniGameFloorSwitch();
+                    break;
+                case "魔方停止":
+                    displayObject = new MiniGameCubeStop();
+                    break;
+                case "迷宫":
+                    displayObject = new MiniGameJigsawM16();
+                    break;
+                case "古董组合":
+                    displayObject = new MiniGameJigsawM08();
+                    break;
+                case "拼装分水镜":
+                    displayObject = new MiniGameM42();
+                    break;
+                case "拼装分水镜2":
+                    displayObject = new MiniGameM8_2();
+                    break;
+                case "古董组合1":
+                    displayObject = new M14();
+                    break;
+                case "密码锁2":
+                    displayObject = new M2();
+                    break;
+                case "M3aaa":
+                    displayObject = new M3_2();
+                    break;
+                case "拼图迷宫5":
+                    displayObject = new M5();
+                    break;
+                case "暗号6":
+                    displayObject = new M6();
+                    break;
+                case "找到出口":
+                    displayObject = new M9();
+                    break;
+                case "石门机关":
+                    displayObject = new M24();
+                    break;
             }
             return displayObject;
         }
