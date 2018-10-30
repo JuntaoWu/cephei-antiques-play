@@ -78,7 +78,9 @@ module game {
                 return;
             }
             e.currentTarget.removeEventListener(egret.TouchEvent.TOUCH_END, this.touchEnd, this);
-            let isRight = true;
+        }
+        
+        public setResult() {let isRight = true;
             this.jigsawNameList.forEach((value, index) => {
                 if (this.miniGame.jigsawGroup.getChildByName(value).rotation != this.rightRotationList[index]) {
                     isRight = false;
@@ -92,7 +94,28 @@ module game {
                     jigsawImg.removeEventListener(egret.TouchEvent.TOUCH_MOVE, this.onMove, this);
                 })
             }
+            else {
+                this.sendNotification(GameProxy.REDUCE_POWER);
+                this.initData();
+            }
         }
+
+        public listNotificationInterests(): Array<any> {
+            return [GameProxy.RESET_MINIGAME, GameProxy.CONFIRM_MINIGAME];
+        }
+
+        public handleNotification(notification: puremvc.INotification): void {
+            var data: any = notification.getBody();
+            switch (notification.getName()) {
+                case GameProxy.RESET_MINIGAME:
+                    this.initData();
+                    break;
+                case GameProxy.CONFIRM_MINIGAME:
+                    this.setResult();
+                    break;
+            }
+        }
+
         private touchReleaseOutside(e: egret.TouchEvent): void {
             if (this.draggedObject) {
                 this.draggedObject = null;

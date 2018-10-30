@@ -114,7 +114,28 @@ module game {
                 this.miniGame.touchChildren = false;
                 this.sendNotification(GameProxy.PASS_MINIGAME);
             }
+            else {
+                this.sendNotification(GameProxy.REDUCE_POWER);
+                this.initData();
+            }
         }
+
+        public listNotificationInterests(): Array<any> {
+            return [GameProxy.RESET_MINIGAME, GameProxy.CONFIRM_MINIGAME];
+        }
+
+        public handleNotification(notification: puremvc.INotification): void {
+            var data: any = notification.getBody();
+            switch (notification.getName()) {
+                case GameProxy.RESET_MINIGAME:
+                    this.initData();
+                    break;
+                case GameProxy.CONFIRM_MINIGAME:
+                    this.setResult();
+                    break;
+            }
+        }
+
 
         public btnEDClick() {
             this.miniGame.showTipsImg = this.miniGame.btnBack.visible = true;

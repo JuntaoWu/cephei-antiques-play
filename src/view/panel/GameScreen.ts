@@ -41,6 +41,9 @@ module game {
         public btnHelp: eui.Button;
         public sceneBg: eui.Image;
         public sceneAddGroup: eui.Group;
+        public btnReset: eui.Button;
+        public btnConfirm: eui.Button;
+        public showReset: boolean;
 
         public inputGroup: MiniGameInput = new MiniGameInput();
         public selectGroup: MiniGameSelect = new MiniGameSelect();
