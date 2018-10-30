@@ -7,23 +7,19 @@
                 <e:Image source="btn-back-game"></e:Image>
             </e:Skin>
         </e:Button>
-        <e:Button id="btnSave" x="130" verticalCenter="0">
-            <e:Skin>
-                <e:Image source="btn-save"></e:Image>
-            </e:Skin>
-        </e:Button>
-        <e:Button id="btnManage" x="240" verticalCenter="0">
+
+        <e:Button id="btnManage" x="160" verticalCenter="0">
             <e:Skin>
                 <e:Image source="btn-manage"></e:Image>
             </e:Skin>
         </e:Button>
-        <e:Button id="btnPicture" verticalCenter="0" x="350">
+        <e:Button id="btnPicture" verticalCenter="0.5" x="320">
             <e:Skin>
                 <e:Image source="btn-picture"></e:Image>
             </e:Skin>
         </e:Button>
 
-        <e:Button id="nextTest" x="442" anchorOffsetX="0" width="265" anchorOffsetY="0" height="144" verticalCenter="0">
+        <e:Button id="nextTest" anchorOffsetX="0" width="309" anchorOffsetY="0" height="144" verticalCenter="0" right="0">
             <e:Skin>
                 <e:Label text="下一步" verticalCenter="0" bold="true" textColor="0x000000" horizontalCenter="0" size="80"></e:Label>
             </e:Skin>

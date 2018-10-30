@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="M15" width="720" height="591" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
+	<e:Image source="m15" verticalCenter="0" horizontalCenter="0"/>
+	<e:Button id="button1" label="110" x="100" y="150" width="200" height="100"/>
+	<e:Button id="button2" label="SOS" x="400" y="150" width="200" height="100"/>
+	<e:Button id="button3" label="救命" x="100" y="300" width="200" height="100"/>
+	<e:Button id="button4" label="995" x="400" y="300" width="200" height="100"/>
+	<e:Label id="win" text="Label" width="720" height="591" verticalCenter="0" horizontalCenter="0" verticalAlign="middle" textAlign="center" textColor="0xff0000" size="100" visible="false"/>
+</e:Skin>

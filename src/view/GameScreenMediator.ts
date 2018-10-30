@@ -20,7 +20,7 @@ module game {
             this.gameScreen.btnTips.addEventListener(egret.TouchEvent.TOUCH_TAP, this.btnTipsClick, this);
 
             this.gameScreen.btnBack.addEventListener(egret.TouchEvent.TOUCH_TAP, this.btnBackClick, this);
-            this.gameScreen.btnSave.addEventListener(egret.TouchEvent.TOUCH_TAP, this.btnSaveClick, this);
+            // this.gameScreen.btnSave.addEventListener(egret.TouchEvent.TOUCH_TAP, this.btnSaveClick, this);
             this.gameScreen.btnManage.addEventListener(egret.TouchEvent.TOUCH_TAP, this.btnManageClick, this);
             this.gameScreen.btnPicture.addEventListener(egret.TouchEvent.TOUCH_TAP, this.pictClick, this);
             this.gameScreen.btnHelp.addEventListener(egret.TouchEvent.TOUCH_TAP, this.share, this);
@@ -267,6 +267,13 @@ module game {
             }, this, 1300);
             this.proxy.pointHunag += point;
             this.proxy.pointMu -= point;
+            if (this.proxy.pointHunag > 86 || this.proxy.pointMu < 0) {
+                this.proxy.pointHunag = 86;
+                this.proxy.pointMu = 0;
+            } else if (this.proxy.pointHunag < 0 || this.proxy.pointMu > 86) {
+                this.proxy.pointHunag = 0;
+                this.proxy.pointMu = 86;
+            }
             this.next = this.gameScreen.plotSelectList.selectedItem.next;
 
         }
@@ -332,9 +339,9 @@ module game {
             this.sendNotification(SceneCommand.CHANGE, Scene.Start);
         }
 
-        public btnSaveClick() {
-            this.proxy.savePlayerInfoToStorage();
-        }
+        // public btnSaveClick() {
+        //     this.proxy.savePlayerInfoToStorage();
+        // }
 
         public btnManageClick() {
             this.sendNotification(SceneCommand.SHOW_MANAGE);
@@ -403,7 +410,7 @@ module game {
             this.gameScreen.addChild(this.heiban);
             if (!this.armatureDisplay) {
                 this.armatureDisplay = DragonBones.createDragonBone("jiemi", "Armature");
-                this.armatureDisplay.addEventListener( dragonBones.EventObject.COMPLETE, () => {
+                this.armatureDisplay.addEventListener(dragonBones.EventObject.COMPLETE, () => {
                     this.heiban && this.gameScreen.removeChild(this.heiban);
                     this.gameScreen.removeChild(this.armatureDisplay);
                 }, this);

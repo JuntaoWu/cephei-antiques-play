@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="M17" width="720" height="591" xmlns:e="http://ns.egret.com/eui">
+	<e:Image source="m17" verticalCenter="0" horizontalCenter="0"/>
+</e:Skin>
