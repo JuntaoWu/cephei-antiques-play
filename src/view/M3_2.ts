@@ -72,7 +72,7 @@ module game {
 		public isWin() {
 			if (this.word1.viewport.scrollV == 0 && this.word2.viewport.scrollV == 420 && this.word3.viewport.scrollV == 280 && this.word4.viewport.scrollV == 140) {
 				ApplicationFacade.getInstance().sendNotification(GameProxy.PASS_MINIGAME);
-			}else{
+			} else {
 				ApplicationFacade.getInstance().sendNotification(GameProxy.REDUCE_POWER);
 			}
 		}
@@ -132,7 +132,7 @@ module game {
 					this.gameM3_2.word2.viewport.scrollV = 0;
 					this.gameM3_2.word3.viewport.scrollV = 0;
 					this.gameM3_2.word4.viewport.scrollV = 0;
-					this.gameM3_2.bright.visible = false;
+					this.gameM3_2.bright.visible = true;
 					break;
 				case GameProxy.CONFIRM_MINIGAME:
 					this.setResult();

@@ -8,13 +8,33 @@
                 <e:Image source="btn-back-other"></e:Image>
             </e:Skin>
         </e:Button>
-        <e:Group horizontalCenter="0" verticalCenter="0">
+        <e:Group horizontalCenter="0" verticalCenter="0" visible="false">
             <e:Image source="title-bg"></e:Image>
             <e:Image source="{titleRes}" horizontalCenter="0" verticalCenter="0"></e:Image>
             <e:Label text="经营" textColor="0x020202" bold="true" size="50" horizontalCenter="0" verticalCenter="0" fontFamily="SimSun"/>
         </e:Group>
+			<e:Group x="150" y="5" width="77" height="123">
+				<e:Image source="start-btn_json.btn-picture-start" anchorOffsetY="0" height="77" horizontalCenter="0" top="0"/>
+				<e:Label text="{data.gu1}" horizontalCenter="0" bottom="0"/>
+			</e:Group>
+			<e:Group x="250" y="5" width="77" height="123">
+				<e:Image source="start-btn_json.btn-picture-start" anchorOffsetY="0" height="77" horizontalCenter="0" top="0"/>
+				<e:Label text="{data.gu2}" horizontalCenter="0" bottom="0"/>
+			</e:Group>
+			<e:Group x="350" y="5" width="77" height="123">
+				<e:Image source="start-btn_json.btn-picture-start" anchorOffsetY="0" height="77" horizontalCenter="0" top="0"/>
+				<e:Label text="{data.gu3}" horizontalCenter="0" bottom="0"/>
+			</e:Group>
+			<e:Group x="450" y="5" width="77" height="123">
+				<e:Image source="start-btn_json.btn-picture-start" anchorOffsetY="0" height="77" horizontalCenter="0" top="0"/>
+				<e:Label text="{data.gu4}" horizontalCenter="0" bottom="0"/>
+			</e:Group>
+			<e:Group x="600" y="5" width="77" height="123">
+				<e:Image source="game-btn_json.btn-picture" height="77" horizontalCenter="0" top="0"/>
+				<e:Label text="{data.gold}" horizontalCenter="0" bottom="0"/>
+			</e:Group>
     </e:Group>
-    <e:Scroller id="scrollGroup" width="640" horizontalCenter="0" top="150" bottom="30">
+    <e:Scroller id="scrollGroup" width="640" horizontalCenter="0" top="150" bottom="30" visible="false">
         <e:viewport>
             <e:Group>
             </e:Group>
