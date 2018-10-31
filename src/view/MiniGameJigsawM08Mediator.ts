@@ -46,7 +46,6 @@ module game {
                 this.jigsawImgGroupList[index].addChild(emptyImg);
                 this.jigsawImgGroupList[this.emptyIndex].addChild(clickImg);
                 this.emptyIndex = index;
-                this.setResult();
             }
         }
 

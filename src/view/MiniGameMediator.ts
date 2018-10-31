@@ -42,22 +42,22 @@ module game {
                 case "拼装分水镜":
                     displayObject = new MiniGameM42();
                     break;
-                case "拼装分水镜2":
+                case "药不然拼古董":
                     displayObject = new MiniGameM8_2();
                     break;
                 case "古董组合1":
                     displayObject = new M14();
                     break;
-                case "密码锁2":
+                case "平面魔方":
                     displayObject = new M2();
                     break;
-                case "M3aaa":
+                case "密码锁":
                     displayObject = new M3_2();
                     break;
-                case "拼图迷宫5":
+                case "拼图迷宫":
                     displayObject = new M5();
                     break;
-                case "暗号6":
+                case "暗号":
                     displayObject = new M6();
                     break;
                 case "找到出口":
@@ -66,7 +66,7 @@ module game {
                 case "石门机关":
                     displayObject = new M24();
                     break;
-                case "旅社求救，剧情补充":
+                case "旅社求救":
                     displayObject = new M15();
                     break;
                 case "铜人":

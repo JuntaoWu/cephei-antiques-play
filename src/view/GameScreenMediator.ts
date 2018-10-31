@@ -14,7 +14,6 @@ module game {
 
             this.gameScreen.textGroup.addEventListener(egret.TouchEvent.TOUCH_BEGIN, this.touchBegin, this);
             this.gameScreen.textGroup.addEventListener(egret.TouchEvent.TOUCH_END, this.touchEnd, this);
-            this.gameScreen.plotSelectList.addEventListener(eui.ItemTapEvent.ITEM_TAP, this.selectItem, this);
 
             this.gameScreen.nextTest.addEventListener(egret.TouchEvent.TOUCH_TAP, this.nextTestClick, this);
             
@@ -178,7 +177,7 @@ module game {
             egret.Tween.removeAllTweens();  //移除所有动画效果
             this.gameScreen.sceneBg.horizontalCenter = 0;
             this.gameScreen.sceneBg.y = 0;
-            this.gameScreen.sceneBg.alpha = 1;
+            this.gameScreen.sceneBg.alpha = this.gameScreen.sceneGroup.alpha = 1;
             this.gameScreen.sceneAddGroup.removeChildren();
             let sceneResList = res.split("、");
             sceneResList.forEach((v, i) => {
@@ -254,6 +253,7 @@ module game {
                 ]
                 this.gameScreen.plotSelectList.dataProvider = new eui.ArrayCollection(options);
                 this.gameScreen.plotSelectList.itemRenderer = QuestionSelectItemRenderer;
+                this.gameScreen.plotSelectList.addEventListener(eui.ItemTapEvent.ITEM_TAP, this.selectItem, this);
             }
             egret.setTimeout(() => {
                 let bottomHeight = this.gameScreen.scrollGroup.viewport.contentHeight - this.gameScreen.scrollGroup.height;
@@ -288,7 +288,7 @@ module game {
                 this.proxy.pointMu = 86;
             }
             this.next = this.gameScreen.plotSelectList.selectedItem.next;
-
+            this.gameScreen.plotSelectList.removeEventListener(eui.ItemTapEvent.ITEM_TAP, this.selectItem, this);
         }
 
         public aa: eui.Image;
@@ -311,9 +311,9 @@ module game {
         }
 
         public showNext() {
-            if (this.proxy.playerInfo.fatigueValue <= 0) {
-                return;
-            }
+            // if (this.proxy.playerInfo.fatigueValue <= 0) {
+            //     return;
+            // }
             if (this.next == "over") { //最后有两个不同结局
                 if (this.proxy.pointMu > this.proxy.pointHunag) {
                     this.proxy.nextPlot(2);
@@ -413,7 +413,14 @@ module game {
                 case GameProxy.REDUCE_POWER:
                     if (this.proxy.canReduecePower(10)) {
                         this.proxy.reducePower(10);
-                        platform.showModal("答案错误，扣除10点体力！", false);
+                        try {
+                            platform.showModal("答案错误，扣除10点体力！", false).then(() => {
+                                this.btnResetClick();
+                            });
+                        }
+                        catch (err) {
+                            console.log(err);
+                        }
                     }
                     if (this.proxy.playerInfo.fatigueValue <= 0) {
                         //TODO

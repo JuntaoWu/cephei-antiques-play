@@ -33,7 +33,6 @@ module game {
                     = i.getChildByName("jigsawTrans").visible = false;
                     let jigsawImg = i.getChildByName("jigsawImg") as eui.Image;
                     jigsawImg.rotation = !jigsawImg.rotation ? 180 : 0;
-                    this.setResult();
                 }, this);
 
                 i.getChildByName("jigsawMove").addEventListener(egret.TouchEvent.TOUCH_BEGIN, this.touchBegin, this);
@@ -110,7 +109,6 @@ module game {
                         let temp2 = item.getChildByName("jigsawImg");
                         this.draggedObject.addChildAt(temp2, 0);
                         item.addChildAt(temp1, 0);
-                        this.setResult();
                     }
                 }
             })
