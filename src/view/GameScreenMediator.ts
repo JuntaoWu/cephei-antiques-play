@@ -64,6 +64,7 @@ module game {
         public textIsOver: boolean;
         public wordList: Array<string>;
         public next: number | string;
+        public questionId: number;
 
         public initData() {
             this.gameScreen.bottomGroup.visible = this.gameScreen.plotSelectList.visible = this.gameScreen.questionGroup.visible = false;
@@ -86,6 +87,7 @@ module game {
             if (plot.type == plotType.PlotQuestion) {
                 this.gameScreen.showScene = false;
                 this.gameScreen.questionGroup.visible = true;
+                this.questionId = plot.questionId;
 
                 this.playAnim();
 
@@ -104,14 +106,14 @@ module game {
                 this.gameScreen.scrollGroup.viewport.scrollH = 0;
                 if (question.type == "填空") {
                     this.gameScreen.bottomGroup.visible = this.gameScreen.showReset = true;
-                    this.gameScreen.showInput(question.answer);
+                    this.gameScreen.showInput(question.id, question.answer);
                 }
                 else if (question.type == "选择") {
                     this.gameScreen.bottomGroup.visible = true;
                     this.gameScreen.showSelect(question.optionsId);
                 }
                 else if (question.type == "小游戏") {
-                    this.sendNotification(GameProxy.SHOW_MINIGAME, question.keyword);
+                    this.sendNotification(GameProxy.SHOW_MINIGAME, question);
                     this.gameScreen.showMiniGame = this.gameScreen.showReset = true;
                 }
             }
@@ -129,7 +131,7 @@ module game {
                 this.loadResGroup();
                 egret.setTimeout(() => {
                     this.showNext();
-                }, this, 2000);
+                }, this, 1500);
             }
             else if (plot.type == "界面切换经营") {
                 this.showNext();
@@ -294,6 +296,7 @@ module game {
         public showRightResult() {
             this.gameScreen.description = this.rightText;
             this.canGoNext = true;
+            this.gameScreen.showReset = false;
             
             if (!this.aa) {
                 this.aa = new eui.Image();
@@ -304,9 +307,7 @@ module game {
             this.aa.scaleX = 0.01;
             this.aa.scaleY = 0.01;
             this.gameScreen.addChild(this.aa);
-            egret.Tween.get(this.aa).to({ scaleX: 1, scaleY: 1 }, 1500).call(() => {
-                this.gameScreen.removeChild(this.aa);
-            });
+            egret.Tween.get(this.aa).to({ scaleX: 1, scaleY: 1 }, 1500);
         }
 
         public showNext() {
@@ -325,6 +326,7 @@ module game {
                 this.proxy.nextPlot(this.next as number);
             }
             this.initData();
+            this.aa && this.aa.parent && this.aa.parent.removeChild(this.aa);
         }
 
         public btnTipsClick() {
@@ -391,11 +393,11 @@ module game {
         }
 
         public btnResetClick() {
-            this.sendNotification(GameProxy.RESET_MINIGAME);
+            this.sendNotification(GameProxy.RESET_MINIGAME, this.questionId);
         }
 
         public btnConfirmClick() {
-            this.sendNotification(GameProxy.CONFIRM_MINIGAME);
+            this.sendNotification(GameProxy.CONFIRM_MINIGAME, this.questionId);
         }
 
         public listNotificationInterests(): Array<any> {

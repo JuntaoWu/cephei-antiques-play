@@ -105,6 +105,11 @@ module game {
 				word.viewport.scrollV = -70;
 			}
 		}
+		
+		public questionId: number;
+		public setQuestionId(id: number): void {
+			this.questionId = id;
+		}
 	}
 
 	export class M3_2Mediator extends puremvc.Mediator implements puremvc.IMediator {
@@ -126,6 +131,9 @@ module game {
 
 		public handleNotification(notification: puremvc.INotification): void {
 			var data: any = notification.getBody();
+            if (this.gameM3_2.questionId != data) {
+                return;
+            }
 			switch (notification.getName()) {
 				case GameProxy.RESET_MINIGAME:
 					this.gameM3_2.word1.viewport.scrollV = 0;

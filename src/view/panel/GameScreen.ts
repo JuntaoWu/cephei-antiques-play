@@ -48,9 +48,9 @@ module game {
         public inputGroup: MiniGameInput = new MiniGameInput();
         public selectGroup: MiniGameSelect = new MiniGameSelect();
 
-        public showInput(answer: string) {
+        public showInput(questionId: number, answer) {
             this.bottomGroup.removeChildren();
-            this.inputGroup.setAnswer(answer);
+            this.inputGroup.setQuestion(questionId, answer);
             this.bottomGroup.addChild(this.inputGroup);
         }
 

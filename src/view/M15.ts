@@ -48,6 +48,10 @@ module game {
             
         }
 
+		public questionId: number;
+		public setQuestionId(id: number): void {
+			this.questionId = id;
+		}
 
     }
 
@@ -70,6 +74,9 @@ module game {
 
         public handleNotification(notification: puremvc.INotification): void {
             var data: any = notification.getBody();
+            if (this.gameM15.questionId != data) {
+                return;
+            }
             switch (notification.getName()) {
                 case GameProxy.RESET_MINIGAME:
                     this.gameM15.xx = 0;

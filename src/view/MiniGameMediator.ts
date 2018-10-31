@@ -10,21 +10,21 @@ module game {
             super(MiniGameMediator.NAME, viewComponent);
             super.initializeNotifier("ApplicationFacade");
             this.proxy = <GameProxy><any>this.facade().retrieveProxy(GameProxy.NAME);
-            this.initData();
         }
 
-        public gameName: any;
-
-        public initData() {
-            // if (this.gameName) {
-            //     this.miniGame.addMiniGame(this.gameName);
+        public addMiniGameToStage(questionId: number, gameName: string) {
+            // if (gameName) {
+            //     this.miniGame.addMiniGame(gameName);
             // }
             this.miniGame.clearStage();
-            let displayObject = this.getGameDisplayObject(this.gameName);
-            displayObject && this.miniGame.addMiniGameObject(displayObject);
+            let displayObject = this.getGameDisplayObject(gameName);
+            if (displayObject) {
+                displayObject.setQuestionId && displayObject.setQuestionId(questionId);
+                this.miniGame.addMiniGameObject(displayObject);
+            }
         }
 
-        private getGameDisplayObject(gameName): egret.DisplayObject {
+        private getGameDisplayObject(gameName: string): any {
             let displayObject: egret.DisplayObject = null;
             switch (gameName) {
                 case "地板开关":
@@ -84,8 +84,7 @@ module game {
             var data: any = notification.getBody();
             switch (notification.getName()) {
                 case GameProxy.SHOW_MINIGAME:
-                    this.gameName = data;
-                    this.initData();
+                    this.addMiniGameToStage(data.id, data.keyword);
                     break;
             }
         }

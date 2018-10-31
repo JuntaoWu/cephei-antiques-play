@@ -171,7 +171,6 @@ module game {
 					}
 					break;
 				case GameProxy.CONFIRM_MINIGAME:
-					console.log("confirm")
 					this.setResult();
 					break;
 			}
