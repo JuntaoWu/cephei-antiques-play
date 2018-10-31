@@ -59,7 +59,6 @@ module game {
 		public column2_2: eui.Image;
 		public column3_1: eui.Image;
 		public column3_2: eui.Image;
-		public win: eui.Label;
 
 		public allCube: Array<any> = [];
 		public record: Array<any> = [];
@@ -129,7 +128,8 @@ module game {
 				}
 			});
 			if (iwin) {
-				this.win.visible = true;
+				ApplicationFacade.getInstance().sendNotification(GameProxy.PASS_MINIGAME);
+			}else{
 				ApplicationFacade.getInstance().sendNotification(GameProxy.PASS_MINIGAME);
 			}
 		}

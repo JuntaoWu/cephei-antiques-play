@@ -6,8 +6,8 @@ module game {
 		public mao: eui.Image;
 		public ji: eui.Image;
 
-		public wuqi:Array<eui.Image>=[];
-		public record:Array<any>=[];
+		public wuqi: Array<eui.Image> = [];
+		public record: Array<any> = [];
 
 		public constructor() {
 			super();
@@ -21,18 +21,28 @@ module game {
 
 		protected childrenCreated(): void {
 			super.childrenCreated();
-			
-			this.wuqi=[this.di,this.jian,this.mao,this.ji];
-			this.wuqi.forEach(ele=>{
-				this.record.push(ele.x,ele.y);
-				ele.addEventListener(egret.TouchEvent.TOUCH_BEGIN,this.move,this);
-			})
 
-
+			this.wuqi = [this.di, this.jian, this.mao, this.ji];
+			this.wuqi.forEach(ele => {
+				this.record.push(ele.x, ele.y);
+				ele.addEventListener(egret.TouchEvent.TOUCH_BEGIN, (() => { this.begin(ele) }), this);
+				ele.addEventListener(egret.TouchEvent.TOUCH_MOVE, this.move, this);
+				ele.addEventListener(egret.TouchEvent.TOUCH_END,this.end,this);
+			});
 		}
 
-		public move(){
+		public this_wuqi: eui.Image;
+		public begin(ele: eui.Image) {
+			this.this_wuqi = ele;
+		}
 
+		public move(e: egret.TouchEvent) {
+			this.this_wuqi.x = e.stageX;
+			this.this_wuqi.y = e.stageY;
+		}
+
+		public end(e:egret.TouchEvent){
+			
 		}
 
 	}

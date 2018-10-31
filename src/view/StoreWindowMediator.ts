@@ -58,6 +58,7 @@ module game {
                     this.proxy.pointHunag += data.point;
                     this.proxy.pointMu -= data.point;
                 }
+                platform.showModal(data.effect,false);
             } else {
                 this.storeWindow.note.visible = true;
                 egret.setTimeout(this.close_note, this, 1500);

@@ -9,7 +9,6 @@ module game {
 		public no6: eui.Image;
 		public no7: eui.Image;
 		public no8: eui.Image;
-		public win: eui.Label;
 
 		public paperList: Array<eui.Image> = [];
 		public recordList: Array<any> = [];
@@ -126,8 +125,8 @@ module game {
 			});
 
 			if (this.ww) {
-				this.win.parent.addChild(this.win);
-				this.win.visible = true;
+				ApplicationFacade.getInstance().sendNotification(GameProxy.PASS_MINIGAME);
+			}else{
 				ApplicationFacade.getInstance().sendNotification(GameProxy.PASS_MINIGAME);
 			}
 		}
