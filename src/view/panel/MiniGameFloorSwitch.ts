@@ -14,5 +14,10 @@ module game {
         }
 
         public buttonList: eui.List;
+        
+		public questionId: number;
+		public setQuestionId(id: number): void {
+			this.questionId = id;
+		}
     }
 }

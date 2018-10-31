@@ -74,6 +74,9 @@ module game {
 
         public handleNotification(notification: puremvc.INotification): void {
             var data: any = notification.getBody();
+            if (this.gameJigsaw.questionId != data) {
+                return;
+            }
             switch (notification.getName()) {
                 case GameProxy.RESET_MINIGAME:
                     this.initData();

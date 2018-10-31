@@ -15,11 +15,13 @@ module game {
 
         public answerInput: eui.TextInput;
         public inputItemList: eui.List;
-        public answer: string;
         public btnConfirm: eui.Button;
+        public answer: string;
+        public questionId: number;
 
-        public setAnswer(str: string): void {
-            this.answer = str;
+        public setQuestion(id: number, answer: string): void {
+            this.questionId = id;
+            this.answer = answer;
         }
     }
 }

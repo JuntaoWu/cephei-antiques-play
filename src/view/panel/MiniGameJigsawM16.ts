@@ -17,5 +17,10 @@ module game {
         public jigsawImgGroup2: eui.Group;
         public jigsawImgGroup3: eui.Group;
         public jigsawImgGroup4: eui.Group;
+        
+		public questionId: number;
+		public setQuestionId(id: number): void {
+			this.questionId = id;
+		}
     }
 }

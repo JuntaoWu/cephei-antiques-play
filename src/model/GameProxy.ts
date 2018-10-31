@@ -15,7 +15,7 @@ module game {
         public static REDUCE_POWER: string = "reduce_power";
 
         public playerInfo: PlayerInfo = {
-            plotId: 1,
+            plotId: 9,
             collectedScenes: [],
             fatigueValue: fatigueValue,
             gold: "40",
@@ -64,7 +64,7 @@ module game {
         // 减少体力值
         public reducePower(value: number = 1): void {
             this.playerInfo.fatigueValue -= value;
-            console.log(this.playerInfo.fatigueValue);
+            console.log("减", value, "体力，剩余体力值：", this.playerInfo.fatigueValue);
         }
 
         // 减少提示次数

@@ -57,6 +57,10 @@ module game {
 			}
 		}
 
+		public questionId: number;
+		public setQuestionId(id: number): void {
+			this.questionId = id;
+		}
 	}
 
 	export class M17Mediator extends puremvc.Mediator implements puremvc.IMediator {
@@ -82,6 +86,9 @@ module game {
 
 		public handleNotification(notification: puremvc.INotification): void {
 			var data: any = notification.getBody();
+            if (this.gameM17.questionId != data) {
+                return;
+            }
 			switch (notification.getName()) {
 				case GameProxy.RESET_MINIGAME:
 					for (let i = 0; i < 3; i++) {

@@ -98,6 +98,11 @@ module game {
 				ApplicationFacade.getInstance().sendNotification(GameProxy.REDUCE_POWER);
 			}
 		}
+		
+		public questionId: number;
+		public setQuestionId(id: number): void {
+			this.questionId = id;
+		}
 	}
 
 	export class M5Mediator extends puremvc.Mediator implements puremvc.IMediator {
@@ -119,6 +124,9 @@ module game {
 
 		public handleNotification(notification: puremvc.INotification): void {
 			var data: any = notification.getBody();
+            if (this.gameM5.questionId != data) {
+                return;
+            }
 			switch (notification.getName()) {
 				case GameProxy.RESET_MINIGAME:
 					for (let i = 0; i < 10; i++) {
