@@ -179,7 +179,7 @@ module game {
                 ApplicationFacade.getInstance().sendNotification(GameProxy.PASS_MINIGAME);
             } else if (this.gameM9.bushu.text == "0" && !this.gameM9.can_move) {
                 this.gameM9.f5();
-                ApplicationFacade.getInstance().sendNotification(GameProxy.PASS_MINIGAME);
+                ApplicationFacade.getInstance().sendNotification(GameProxy.REDUCE_POWER);
             }
         }
 

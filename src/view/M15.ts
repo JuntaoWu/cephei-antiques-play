@@ -42,7 +42,7 @@ module game {
                 this.button2.enabled = false;
                 this.button3.enabled = false;
                 this.button4.enabled = false;
-                ApplicationFacade.getInstance().sendNotification(GameProxy.PASS_MINIGAME);
+                ApplicationFacade.getInstance().sendNotification(GameProxy.REDUCE_POWER);
             }
             
         }

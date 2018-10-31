@@ -72,7 +72,7 @@ module game {
 			if (this.word1.viewport.scrollV == 0 && this.word2.viewport.scrollV == 420 && this.word3.viewport.scrollV == 280 && this.word4.viewport.scrollV == 140) {
 				ApplicationFacade.getInstance().sendNotification(GameProxy.PASS_MINIGAME);
 			}else{
-				ApplicationFacade.getInstance().sendNotification(GameProxy.PASS_MINIGAME);
+				ApplicationFacade.getInstance().sendNotification(GameProxy.REDUCE_POWER);
 			}
 		}
 

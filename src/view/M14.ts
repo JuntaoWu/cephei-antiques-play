@@ -127,7 +127,7 @@ module game {
 			if (this.ww) {
 				ApplicationFacade.getInstance().sendNotification(GameProxy.PASS_MINIGAME);
 			}else{
-				ApplicationFacade.getInstance().sendNotification(GameProxy.PASS_MINIGAME);
+				ApplicationFacade.getInstance().sendNotification(GameProxy.REDUCE_POWER);
 			}
 		}
 	}
