@@ -94,9 +94,6 @@ module game {
                 jigsaw.filters = [this._colorFlilter];
                 jigsawResult.filters = [this._colorFlilter];
             }
-            if (this.nowIndex == 5) {
-                this.setResult();
-            }
         }
 
         public setResult() {

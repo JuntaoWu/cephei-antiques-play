@@ -16,23 +16,23 @@ module game {
         public async initData() {
             this.gameInput.answerInput.textDisplay.size = 45;
             this.gameInput.answerInput.text = null;
-            this.isSend = false;
             this.inputTextList = [];
-            for (let i = 0; i < this.gameInput.answer.length; i++) {
+            let answerLength = this.gameInput.answer.split("|")[0].length;
+
+            for (let i = 0; i < answerLength; i++) {
                 this.inputTextList.push("");
             }
             let tLayout: eui.TileLayout = new eui.TileLayout();
             tLayout.horizontalGap = 20;
             tLayout.verticalGap = 20;
             tLayout.orientation = "columns";
-            tLayout.requestedColumnCount = this.gameInput.answer.length < 7 ? this.gameInput.answer.length : 4;
+            tLayout.requestedColumnCount = answerLength < 7 ? answerLength : 4;
             this.gameInput.inputItemList.layout = tLayout;
             this.gameInput.inputItemList.dataProvider = new eui.ArrayCollection(this.inputTextList);
             this.gameInput.inputItemList.itemRenderer = InputItemRenderer;
         }
 
         public inputTextList: Array<string>;
-        public isSend: boolean = false;
 
         private focusOut(e: egret.Event) {
             if (e.target.text.length > this.inputTextList.length) {
@@ -50,13 +50,15 @@ module game {
 
         private setResult() {
             let textInput = this.inputTextList.join("");
-            if (textInput == this.gameInput.answer && !this.isSend) {
-                this.sendNotification(GameProxy.PASS_MINIGAME);
-                this.isSend = true;
-            }
-            else {
+            let answerList = this.gameInput.answer.split("|");
+
+            let isErr = !answerList.find(i => i == textInput);
+            if (isErr) {
                 this.sendNotification(GameProxy.REDUCE_POWER);
                 this.gameInput.answerInput.text = "";
+            }
+            else {
+                this.sendNotification(GameProxy.PASS_MINIGAME);
             }
         }
 
