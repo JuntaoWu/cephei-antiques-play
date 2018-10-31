@@ -21,6 +21,9 @@ module game {
             gold: "40",
             lastEntryTime: "",
             hints: 50,
+            time: 24,
+            guPrice: [100, 100, 100, 100],
+            guColl: [0, 0, 0, 0],
         };
         public pointHunag: number = 43;
         public pointMu: number = 43;
@@ -72,15 +75,15 @@ module game {
             this.playerInfo.hints -= value;
         }
 
-		private _sceneRes: Map<string, any>;
-		public get sceneRes(): Map<string, any> {
-			if (!this._sceneRes) {
-				let config = RES.getRes("scene_json") as Array<any>;
-				let dictionary = _(config).groupBy((a: any) => a.type).value();
-				this._sceneRes = new Map(Object.entries(dictionary));
-			}
-			return this._sceneRes;
-		}
+        private _sceneRes: Map<string, any>;
+        public get sceneRes(): Map<string, any> {
+            if (!this._sceneRes) {
+                let config = RES.getRes("scene_json") as Array<any>;
+                let dictionary = _(config).groupBy((a: any) => a.type).value();
+                this._sceneRes = new Map(Object.entries(dictionary));
+            }
+            return this._sceneRes;
+        }
 
         public async getPlayerInfoFromStorage() {
             try {

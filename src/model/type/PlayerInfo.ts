@@ -8,5 +8,8 @@ module game {
         gold?: string; //金币
         lastEntryTime?: string;
         hints?: number; //可用提示次数
+        time?: number;  //经营模式剩余回合
+        guPrice?: Array<number>; //经营模式古董价格
+        guColl?: Array<number>;  //经营模式获得古董数量
     }
 }
