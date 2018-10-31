@@ -27,6 +27,7 @@ module game {
 
 		protected partAdded(partName: string, instance: any): void {
 			super.partAdded(partName, instance);
+			ApplicationFacade.getInstance().registerMediator(new M5Mediator(this));
 		}
 
 		protected childrenCreated(): void {
@@ -34,7 +35,7 @@ module game {
 
 			this.moveCube = [this.cube1, this.cube2, this.cube3, this.cube4, this.cube5, this.cube6, this.cube7, this.cube8, this.cube9, this.cube10, this.cube11];
 			this.moveCube.forEach(element => {
-				this.record.push(element.x, element.y);
+				this.record.push({ x: element.x, y: element.y });
 			});
 			this.allCube = [this.cube1, this.cube2, this.cube3, this.cube4, this.cube5, this.cube6, this.cube7, this.cube8, this.cube9, this.cube10, this.cube11, this.Start, this.End];
 			this.moveCube.forEach(cube => {
@@ -93,8 +94,8 @@ module game {
 				} else if (this.cube9.x == 120 && this.cube9.y == 120 && this.cube8.x == 360 && this.cube8.y == 120) {
 					ApplicationFacade.getInstance().sendNotification(GameProxy.PASS_MINIGAME);
 				}
-			}else{
-				ApplicationFacade.getInstance().sendNotification(GameProxy.PASS_MINIGAME);
+			} else {
+				ApplicationFacade.getInstance().sendNotification(GameProxy.REDUCE_POWER);
 			}
 		}
 	}
@@ -120,7 +121,7 @@ module game {
 			var data: any = notification.getBody();
 			switch (notification.getName()) {
 				case GameProxy.RESET_MINIGAME:
-					for (let i = 0; i++; i < 10) {
+					for (let i = 0; i < 10; i++) {
 						this.gameM5.moveCube[i].x = this.gameM5.record[i].x;
 						this.gameM5.moveCube[i].y = this.gameM5.record[i].y;
 					}

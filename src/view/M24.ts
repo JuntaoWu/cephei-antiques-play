@@ -20,6 +20,7 @@ module game {
 
         protected partAdded(partName: string, instance: any): void {
             super.partAdded(partName, instance);
+            ApplicationFacade.getInstance().registerMediator(new M24Mediator(this));
         }
 
         protected childrenCreated(): void {
@@ -48,7 +49,7 @@ module game {
             if (this.bai.scaleX == 0.8 && this.jiao.scaleX == 0.8) {
                 ApplicationFacade.getInstance().sendNotification(GameProxy.PASS_MINIGAME);
             }else{
-                ApplicationFacade.getInstance().sendNotification(GameProxy.PASS_MINIGAME);
+                ApplicationFacade.getInstance().sendNotification(GameProxy.REDUCE_POWER);
             }
         }
     }
