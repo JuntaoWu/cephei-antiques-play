@@ -14,6 +14,7 @@ module game {
         }
 
         public buttonList: eui.List;
+        public leftTime: number; // 剩余尝试次数
         
 		public questionId: number;
 		public setQuestionId(id: number): void {
