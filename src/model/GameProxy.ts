@@ -15,7 +15,7 @@ module game {
         public static REDUCE_POWER: string = "reduce_power";
 
         public playerInfo: PlayerInfo = {
-            plotId: 89,
+            plotId: 1,
             collectedScenes: [],
             fatigueValue: fatigueValue,
             gold: "40",
