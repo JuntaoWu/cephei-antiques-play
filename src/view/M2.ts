@@ -73,6 +73,7 @@ module game {
 
 		protected partAdded(partName: string, instance: any): void {
 			super.partAdded(partName, instance);
+            ApplicationFacade.getInstance().registerMediator(new M2Mediator(this));
 		}
 
 
@@ -133,6 +134,11 @@ module game {
 				ApplicationFacade.getInstance().sendNotification(GameProxy.PASS_MINIGAME);
 			}
 		}
+
+		public questionId: number;
+		public setQuestionId(id: number): void {
+			this.questionId = id;
+		}
 	}
 
 	export class M2Mediator extends puremvc.Mediator implements puremvc.IMediator {
@@ -154,14 +160,19 @@ module game {
 
 		public handleNotification(notification: puremvc.INotification): void {
 			var data: any = notification.getBody();
+            if (this.gameM2.questionId != data) {
+                return;
+            }
 			switch (notification.getName()) {
 				case GameProxy.RESET_MINIGAME:
+					console.log("reset")
 					for (let i = 0; i++; i < 44) {
 						this.gameM2.allCube[i].x = this.gameM2.record[i].x;
 						this.gameM2.allCube[i].y = this.gameM2.record[i].y;
 					}
 					break;
 				case GameProxy.CONFIRM_MINIGAME:
+					console.log("confirm")
 					this.setResult();
 					break;
 			}
