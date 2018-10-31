@@ -73,6 +73,7 @@ module game {
 
 		protected partAdded(partName: string, instance: any): void {
 			super.partAdded(partName, instance);
+			ApplicationFacade.getInstance().registerMediator(new M2Mediator(this));
 		}
 
 
@@ -87,7 +88,7 @@ module game {
 				this.yellow1, this.yellow2, this.yellow3, this.yellow4, this.yellow5, this.yellow6, this.yellow7, this.yellow8, this.yellow9
 			];
 			this.allCube.forEach(ele => {
-				this.record.push(ele.x, ele.y);
+				this.record.push({ x: ele.x, y: ele.y });
 			})
 			this.whiteCube = [this.white1, this.white2, this.white3, this.white4, this.white5, this.white6, this.white7, this.white8, this.white9];
 
@@ -129,7 +130,7 @@ module game {
 			});
 			if (iwin) {
 				ApplicationFacade.getInstance().sendNotification(GameProxy.PASS_MINIGAME);
-			}else{
+			} else {
 				ApplicationFacade.getInstance().sendNotification(GameProxy.REDUCE_POWER);
 			}
 		}
@@ -156,7 +157,7 @@ module game {
 			var data: any = notification.getBody();
 			switch (notification.getName()) {
 				case GameProxy.RESET_MINIGAME:
-					for (let i = 0; i++; i < 44) {
+					for (let i = 0; i < 44; i++) {
 						this.gameM2.allCube[i].x = this.gameM2.record[i].x;
 						this.gameM2.allCube[i].y = this.gameM2.record[i].y;
 					}

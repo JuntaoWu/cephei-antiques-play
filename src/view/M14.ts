@@ -22,6 +22,7 @@ module game {
 
 		protected partAdded(partName: string, instance: any): void {
 			super.partAdded(partName, instance);
+			ApplicationFacade.getInstance().registerMediator(new M14Mediator(this));
 		}
 
 
@@ -30,7 +31,7 @@ module game {
 
 			this.paperList = [this.no1, this.no2, this.no3, this.no4, this.no5, this.no6, this.no7, this.no8];
 			this.paperList.forEach(ele => {
-				this.jilu.push(ele.x, ele.y, ele.rotation);
+				this.jilu.push({ x: ele.x, y: ele.y, rotation: ele.rotation });
 			})
 			this.answerList = [
 				{ x: 450.5, y: 250, ro: 0 },
@@ -126,7 +127,7 @@ module game {
 
 			if (this.ww) {
 				ApplicationFacade.getInstance().sendNotification(GameProxy.PASS_MINIGAME);
-			}else{
+			} else {
 				ApplicationFacade.getInstance().sendNotification(GameProxy.REDUCE_POWER);
 			}
 		}
@@ -153,7 +154,7 @@ module game {
 			var data: any = notification.getBody();
 			switch (notification.getName()) {
 				case GameProxy.RESET_MINIGAME:
-					for (let i = 0; i++; i < 7) {
+					for (let i = 0; i < 7; i++) {
 						this.gameM14.paperList[i].x = this.gameM14.paperList[i].x;
 						this.gameM14.paperList[i].y = this.gameM14.paperList[i].y;
 						this.gameM14.paperList[i].rotation = this.gameM14.paperList[i].rotation;

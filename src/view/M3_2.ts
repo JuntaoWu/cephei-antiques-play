@@ -21,6 +21,7 @@ module game {
 
 		protected partAdded(partName: string, instance: any): void {
 			super.partAdded(partName, instance);
+			ApplicationFacade.getInstance().registerMediator(new M3_2Mediator(this));
 		}
 
 
