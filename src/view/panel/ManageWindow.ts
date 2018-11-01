@@ -18,13 +18,15 @@ module game {
         public gu2: eui.Label;
         public gu3: eui.Label;
         public gu4: eui.Label;
-        public time: eui.Label;
-        public help: eui.Image;
+        public clock: eui.Label;
         public text1: eui.Label;
         public gold: eui.Label;
         public yes: eui.Button;
         public no: eui.Button;
-        public picture: eui.Image;
         public option: eui.Group;
+        public coll1: eui.Label;
+        public coll2: eui.Label;
+        public coll3: eui.Label;
+        public coll4: eui.Label;
     }
 }

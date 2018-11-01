@@ -29,18 +29,22 @@
 			<e:Group x="16" left="0">
 				<e:Image source="antiq1" anchorOffsetY="0" height="77" horizontalCenter="0" top="0"/>
 				<e:BitmapLabel id="gu1" text="6" textAlign="center" verticalAlign="middle" font="hintCardNumber_fnt" scaleX="1.5" scaleY="1.5" bottom="5" right="10"/>
+				<e:BitmapLabel id="coll1" text="0" textAlign="center" verticalAlign="middle" font="hintCardNumber_fnt" scaleX="1.5" scaleY="1.5" bottom="-35" right="10"/>
 			</e:Group>
 			<e:Group x="82">
 				<e:Image source="antiq2" anchorOffsetY="0" horizontalCenter="0" top="0"/>
 				<e:BitmapLabel id="gu2" text="2" textAlign="center" verticalAlign="middle" font="hintCardNumber_fnt" scaleX="1.5" scaleY="1.5" bottom="5" right="10"/>
+				<e:BitmapLabel id="coll2" text="2" textAlign="center" verticalAlign="middle" font="hintCardNumber_fnt" scaleX="1.5" scaleY="1.5" bottom="-35" right="10"/>
 			</e:Group>
 			<e:Group x="176">
 				<e:Image source="antiq3" anchorOffsetY="0" horizontalCenter="0" top="0"/>
 				<e:BitmapLabel id="gu3" text="1" textAlign="center" verticalAlign="middle" font="hintCardNumber_fnt" scaleX="1.5" scaleY="1.5" bottom="5" right="10"/>
+				<e:BitmapLabel id="coll3" text="1" textAlign="center" verticalAlign="middle" font="hintCardNumber_fnt" scaleX="1.5" scaleY="1.5" bottom="-37" right="10"/>
 			</e:Group>
 			<e:Group right="0">
 				<e:Image source="antiq4" anchorOffsetY="0" horizontalCenter="0" top="0"/>
 				<e:BitmapLabel id="gu4" text="3" textAlign="center" verticalAlign="middle" font="hintCardNumber_fnt" scaleX="1.5" scaleY="1.5" bottom="5" right="10"/>
+				<e:BitmapLabel id="coll4" text="3" textAlign="center" verticalAlign="middle" font="hintCardNumber_fnt" scaleX="1.5" scaleY="1.5" bottom="-39" right="10"/>
 			</e:Group>
 		</e:Group>
 
@@ -48,33 +52,35 @@
 			<e:Group x="0" y="0">
 				<e:Image source="icon-bg" horizontalCenter="0" top="0"/>
 				<e:Image source="icon-money" verticalCenter="0" x="5"/>
-				<e:Label id="gold" text="" textColor="0x000000" verticalCenter="0" x="85"/>
+				<e:Label id="gold" text="" textColor="0x000000" verticalCenter="0" x="85" height="40" width="80" verticalAlign="middle" textAlign="center"/>
 			</e:Group>
 			<e:Group y="72" x="0">
 				<e:Image source="icon-bg" horizontalCenter="0" top="0"/>
 				<e:Image source="icon-clock" verticalCenter="0" x="5"/>
-				<e:Label id="clock" text="" textColor="0x000000" verticalCenter="0" x="85"/>
+				<e:Label id="clock" text="" textColor="0x000000" verticalCenter="0" x="85" width="80" height="40" verticalAlign="middle" textAlign="center"/>
 			</e:Group>
 		</e:Group>
 
 
-		<e:Label id="text1" text="" width="720" height="244" verticalCenter="214" horizontalCenter="0" textColor="0x000000" size="40" anchorOffsetY="0"/>
-		<e:Group id="option" width="720" height="162" horizontalCenter="0" bottom="0" anchorOffsetY="0">
-			<e:Button id="yes" label="是" width="500" height="80" horizontalCenter="0" top="0">
+		<e:Label id="text1" text="" width="720" height="350" verticalCenter="267" horizontalCenter="0" textColor="0x000000" size="40" anchorOffsetY="0"/>
+		<e:Group id="option" width="720" height="129" horizontalCenter="0" bottom="0" anchorOffsetY="0">
+			<e:Button id="yes" label=""  bottom="0" left="0">
 				<e:skinName>
 					<e:Skin states="up,down,disabled">
-					<e:Image width="100%" height="100%" source="option-bg"/>
+					<e:Image width="100%" height="100%" source="yes"/>
 					<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
 					</e:Skin>
 				</e:skinName>
+
 			</e:Button>
-			<e:Button id="no" label="否" width="500" height="80" horizontalCenter="0" bottom="0">
+			<e:Button id="no" label="" bottom="0" right="0">
 				<e:skinName>
 					<e:Skin states="up,down,disabled">
-					<e:Image width="100%" height="100%" source="option-bg"/>
+					<e:Image width="100%" height="100%" source="no"/>
 					<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
 					</e:Skin>
 				</e:skinName>
+
 			</e:Button>
 		</e:Group>
 	</e:Group>

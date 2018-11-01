@@ -24,8 +24,12 @@ module game {
             this.manageWindow.gu2.text = this.proxy.playerInfo.guPrice[1].toString();
             this.manageWindow.gu3.text = this.proxy.playerInfo.guPrice[2].toString();
             this.manageWindow.gu4.text = this.proxy.playerInfo.guPrice[3].toString();
-            this.manageWindow.time.text = this.proxy.playerInfo.time.toString();
-            this.manageWindow.gold.text = this.proxy.playerInfo.gold.toString();
+            this.manageWindow.coll1.text = this.proxy.playerInfo.guColl[0].toString();
+            this.manageWindow.coll2.text = this.proxy.playerInfo.guColl[1].toString();
+            this.manageWindow.coll3.text = this.proxy.playerInfo.guColl[2].toString();
+            this.manageWindow.coll4.text = this.proxy.playerInfo.guColl[3].toString();
+            this.manageWindow.clock.text = this.proxy.playerInfo.time.toString();
+            this.manageWindow.gold.text = this.proxy.playerInfo.gold;
         }
 
         public yes() {
