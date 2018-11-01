@@ -91,7 +91,7 @@ module game {
             }
 			switch (notification.getName()) {
 				case GameProxy.RESET_MINIGAME:
-					for (let i = 0; i < 3; i++) {
+					for (let i = 0; i < 4; i++) {
 						this.gameM17.wuqi[i].x = this.gameM17.record[i].x;
 						this.gameM17.wuqi[i].y = this.gameM17.record[i].y;
 					}

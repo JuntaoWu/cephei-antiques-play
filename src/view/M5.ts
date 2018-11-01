@@ -129,7 +129,7 @@ module game {
             }
 			switch (notification.getName()) {
 				case GameProxy.RESET_MINIGAME:
-					for (let i = 0; i < 10; i++) {
+					for (let i = 0; i < 11; i++) {
 						this.gameM5.moveCube[i].x = this.gameM5.record[i].x;
 						this.gameM5.moveCube[i].y = this.gameM5.record[i].y;
 					}

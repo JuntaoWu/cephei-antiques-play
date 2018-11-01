@@ -162,7 +162,7 @@ module game {
             }
 			switch (notification.getName()) {
 				case GameProxy.RESET_MINIGAME:
-					for (let i = 0; i < 7; i++) {
+					for (let i = 0; i < 8; i++) {
 						this.gameM14.paperList[i].x = this.gameM14.paperList[i].x;
 						this.gameM14.paperList[i].y = this.gameM14.paperList[i].y;
 						this.gameM14.paperList[i].rotation = this.gameM14.paperList[i].rotation;
