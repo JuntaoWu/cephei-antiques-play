@@ -134,7 +134,8 @@ module game {
             }
             else if (plot.type == "界面切换经营") {
                 this.btnManageClick();
-                this.proxy.nextPlot();
+                // this.proxy.nextPlot();
+                this.canGoNext = true;
             }
             else {
                 this.gameScreen.showScene = true;

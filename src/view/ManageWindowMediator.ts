@@ -17,6 +17,7 @@ module game {
             this.initData();
         }
 
+        private manageEvent: any;
         public initData() {
             this.chushishezhi();
             this.manageWindow.gu1.text = this.proxy.playerInfo.guPrice[0].toString();
@@ -28,11 +29,13 @@ module game {
         }
 
         public yes() {
-
+            this.proxy.playerInfo.time--;
+            this.manageEvent = this.proxy.getRandomManageEvent();
         }
 
         public no() {
-
+            this.proxy.playerInfo.time--;
+            this.manageEvent = this.proxy.getRandomManageEvent();
         }
 
         public shuzu: Array<number> = [0, 0, 0, 0];
@@ -70,14 +73,21 @@ module game {
                     this.proxy.playerInfo.guColl[i] = this.shuzu[i];
                 }
             }
-            let aa = this.suiji(0, 100);
-            if (0 <= aa && aa <= 20) {
-                this.proxy.playerInfo.guEvent = this.suiji(1, 16);
-            } else if (20 < aa && aa <= 50) {
-                this.proxy.playerInfo.guEvent = this.suiji(17, 32);
-            } else if (50 < aa && aa <= 100) {
-                this.proxy.playerInfo.guEvent = this.suiji(33, 48);
+            // let aa = this.suiji(0, 100);
+            // if (0 <= aa && aa <= 20) {
+            //     this.proxy.playerInfo.guEvent = this.suiji(1, 16);
+            // } else if (20 < aa && aa <= 50) {
+            //     this.proxy.playerInfo.guEvent = this.suiji(17, 32);
+            // } else if (50 < aa && aa <= 100) {
+            //     this.proxy.playerInfo.guEvent = this.suiji(33, 48);
+            // }
+            if (!this.proxy.playerInfo.guEventList.length) {
+                this.manageEvent = this.proxy.getRandomManageEvent();
             }
+            else {
+                this.manageEvent = this.proxy.manageEventArr.find(i => i.id == this.proxy.playerInfo.guEventList[this.proxy.playerInfo.guEventList.length - 1]);
+            }
+            console.log(this.manageEvent);
         }
 
         public get manageWindow(): ManageWindow {

@@ -24,7 +24,7 @@ module game {
             time: 24,
             guPrice: [0, 0, 0, 0],
             guColl: [0, 0, 0, 0],
-            guEvent: 1,
+            guEventList: [],
         };
         public pointHunag: number = 43;
         public pointMu: number = 43;
@@ -84,6 +84,42 @@ module game {
                 this._sceneRes = new Map(Object.entries(dictionary));
             }
             return this._sceneRes;
+        }
+
+        // 经营模式事件列表
+        private _manageEventArr: Array<any>;
+        public get manageEventArr(): Array<any> {
+            if (!this._manageEventArr) {
+                this._manageEventArr = RES.getRes("manage-event_json") as Array<any>;
+            }
+            return this._manageEventArr;
+        }
+        private _manageEvent: Map<string, any>;
+        public get manageEventMap(): Map<string, any> {
+            if (!this._manageEvent) {
+                let dictionary = _(this.manageEventArr).groupBy((a: any) => a.type).value();
+                this._manageEvent = new Map(Object.entries(dictionary));
+            }
+            return this._manageEvent;
+        }
+
+        public getRandomManageEvent(): any {
+            let eventList: Array<any> = Math.random() < 0.3 ? this.manageEventMap.get("小游戏") : 
+                                        ( Math.random() < 0.5 ? this.manageEventMap.get("随机事件") 
+                                        : this.manageEventMap.get("角色") );
+            let notMeetEvent = eventList.filter(i => !this.playerInfo.guEventList.includes(i.id));
+            if (this.playerInfo.time <= 0) {
+                return null;
+            }
+            else if (!notMeetEvent.length) {
+                return this.getRandomManageEvent();
+            }
+            else {
+                let finalRoundRandomIndex = _.random(0, notMeetEvent.length - 1);
+                this.playerInfo.guEventList.push(notMeetEvent[finalRoundRandomIndex].id);
+                console.log(this.playerInfo.guEventList);
+                return notMeetEvent[finalRoundRandomIndex];
+            }
         }
 
         public async getPlayerInfoFromStorage() {

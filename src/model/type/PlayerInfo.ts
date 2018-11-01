@@ -11,6 +11,6 @@ module game {
         time?: number;  //经营模式剩余回合
         guPrice?: Array<number>; //经营模式古董价格
         guColl?: Array<number>;  //经营模式获得古董数量
-        guEvent?: number; //经营模式事件存档
+        guEventList?: Array<number>; //经营模式事件存档
     }
 }
