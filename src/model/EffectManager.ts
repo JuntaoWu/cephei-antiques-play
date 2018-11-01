@@ -109,8 +109,12 @@ module game {
                 m.graphics.drawCircle(0, 0, target.width - n);
                 m.graphics.endFill();
                 target.mask = m;
-                n -= 10;
+                n -= 8;
             }, this, 40);
+            target.alpha = 0;
+            egret.setTimeout(() => {
+                egret.Tween.get(target).to({alpha: 1}, 2500);
+            }, this, 500)
             egret.setTimeout(() => {
                 m.parent && m.parent.removeChild(m);
                 egret.clearInterval(intervalId);
