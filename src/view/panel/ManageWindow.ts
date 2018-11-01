@@ -22,5 +22,9 @@ module game {
         public help: eui.Image;
         public text1: eui.Label;
         public gold: eui.Label;
+        public yes: eui.Button;
+        public no: eui.Button;
+        public picture: eui.Image;
+        public option: eui.Group;
     }
 }

@@ -22,8 +22,9 @@ module game {
             lastEntryTime: "",
             hints: 50,
             time: 24,
-            guPrice: [100, 100, 100, 100],
+            guPrice: [0, 0, 0, 0],
             guColl: [0, 0, 0, 0],
+            guEvent: 1,
         };
         public pointHunag: number = 43;
         public pointMu: number = 43;

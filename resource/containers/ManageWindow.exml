@@ -8,11 +8,7 @@
                 <e:Image source="btn-back-other"></e:Image>
             </e:Skin>
         </e:Button>
-        <e:Group horizontalCenter="0" verticalCenter="0" visible="false">
-            <e:Image source="title-bg"></e:Image>
-            <e:Image source="{titleRes}" horizontalCenter="0" verticalCenter="0"></e:Image>
-            <e:Label text="经营" textColor="0x020202" bold="true" size="50" horizontalCenter="0" verticalCenter="0" fontFamily="SimSun"/>
-        </e:Group>
+
 			<e:Group x="150" y="5" width="77" height="123">
 				<e:Image source="start-btn_json.btn-picture-start" anchorOffsetY="0" height="77" horizontalCenter="0" top="0"/>
 				<e:Label id="gu1" horizontalCenter="0" bottom="0" text="" textColor="0x000000"/>
@@ -34,14 +30,28 @@
 				<e:Label id="gold" horizontalCenter="0" bottom="0" text="" textColor="0x000000"/>
 			</e:Group>
     </e:Group>
-    <e:Scroller id="scrollGroup" width="640" horizontalCenter="0" top="150" bottom="30" visible="false">
-        <e:viewport>
-            <e:Group>
-            </e:Group>
-        </e:viewport>
-    </e:Scroller>
+
 	<e:Group width="720" height="1000" anchorOffsetY="0" horizontalCenter="0" verticalCenter="24">
-		<e:Label id="text1" text="" width="600" height="500" verticalCenter="0" horizontalCenter="0" textColor="0x000000" size="40"/>
+		<e:Image id="picture" width="720" height="591" anchorOffsetY="0" horizontalCenter="0" top="0"/>
+		<e:Label id="text1" text="" width="720" height="244" verticalCenter="214" horizontalCenter="0" textColor="0x000000" size="40" anchorOffsetY="0"/>
+		<e:Group id="option" width="720" height="162" horizontalCenter="0" bottom="0" anchorOffsetY="0">
+			<e:Button id="yes" label="是" width="500" height="80" horizontalCenter="0" top="0">
+				<e:skinName>
+					<e:Skin states="up,down,disabled">
+					<e:Image width="100%" height="100%" source="option-bg"/>
+					<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+					</e:Skin>
+				</e:skinName>
+			</e:Button>
+			<e:Button id="no" label="否" width="500" height="80" horizontalCenter="0" bottom="0">
+				<e:skinName>
+					<e:Skin states="up,down,disabled">
+					<e:Image width="100%" height="100%" source="option-bg"/>
+					<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+					</e:Skin>
+				</e:skinName>
+			</e:Button>
+		</e:Group>
 	</e:Group>
 	<e:Group width="720" height="100" anchorOffsetY="0" horizontalCenter="0" bottom="0">
 		<e:Label id="time" text="" x="37" y="14" anchorOffsetX="0" width="360" anchorOffsetY="0" height="56" textColor="0x000000" size="45"/>
