@@ -140,6 +140,21 @@ module game {
                     i.isSelected = !i.isSelected;
                 }
             })
+            let selectedImg = this.gameImgList.filter(i => i.isSelected);
+            let isRight = true;
+            if (selectedImg.length != this.answerImgList.length) {
+                isRight = false;
+            } else {
+                selectedImg.forEach(i => {
+                    if (!this.answerImgList.includes(i.res)) {
+                        isRight = false;
+                    }
+                })
+            }
+            console.log(isRight, selectedImg, this.answerImgList);
+            if (isRight) {
+                this.nextManageEvent();
+            }
         }
 
         public gameImgList: Array<any>;
@@ -156,36 +171,95 @@ module game {
                     this.manageWindow.gameTrueFalse.visible = true;
                 }
                 else {
+                    this.gameImgList = [];
+                    this.answerImgList = [];
                     this.manageWindow.gameList.visible = true;
-                    let imgList = this.manageEvent.res.split(",");
                     let resTypeList = ["qingtong", "shuhua", "muqi", "ciqi", "yu"];
-                    let randomIndex = _.random(0, imgList.length - 1);
-                    let randomTypeIndex = _.random(0, resTypeList.length - 1);
+                    let randomTypeIndex = _.random(0, 4);
+                    let yitong = [4, 5, 6];
+                    let randomIndex = _.random(0, 2);
+                    let randomNum = _.random(1, 8);
                     switch (this.manageEvent.subType) {
                         case "找不同": 
-                            this.answerImgList = [imgList[1 - randomIndex]];
-                            imgList.push(imgList[randomIndex], imgList[randomIndex]);
-                            this.gameImgList = imgList.map(i => {
-                                return { res: i, isSelected: false }
-                            })
+                            for (let i = 0; i < 4; i++) {
+                                if (i == randomIndex) {
+                                    this.gameImgList.push({ 
+                                        res: `${resTypeList[randomTypeIndex]}(${yitong[i]})`, 
+                                        isSelected: false 
+                                    })
+                                    this.answerImgList.push(`${resTypeList[randomTypeIndex]}(${yitong[i]})`);
+                                } 
+                                else {
+                                    let i = (1 + randomIndex) % 3;
+                                    this.gameImgList.push({ 
+                                        res: `${resTypeList[randomTypeIndex]}(${yitong[i]})`, 
+                                        isSelected: false 
+                                    })
+                                }
+                            }
                             break;
                         case "找相同": 
-                            this.answerImgList = [imgList[randomIndex]];
-                            imgList.push(imgList[randomIndex]);
-                            this.gameImgList = imgList.map(i => {
-                                return { res: i, isSelected: false }
+                            this.gameImgList = yitong.map(i => {
+                                return { 
+                                    res: `${resTypeList[randomTypeIndex]}(${i})`, 
+                                    isSelected: false 
+                                }
                             })
+                            this.gameImgList.push({ 
+                                res: `${resTypeList[randomTypeIndex]}(${yitong[randomIndex]})`, 
+                                isSelected: false 
+                            })
+                            this.answerImgList.push(`${resTypeList[randomTypeIndex]}(${yitong[randomIndex]})`, `${resTypeList[randomTypeIndex]}(${yitong[randomIndex]})`);
                             break;
                         case "找同类":
-                            this.answerImgList = this.manageEvent.answer.split(",");
-                            this.gameImgList = [1,2,3].map(i => {
-                                return { res: `i`, isSelected: false }
+                            // 同类
+                            this.gameImgList.push({ 
+                                res: `${resTypeList[randomTypeIndex]}(${randomNum})`, 
+                                isSelected: false 
+                            }, {
+                                res: `${resTypeList[randomTypeIndex]}(${(randomTypeIndex + randomNum) % 8 + 1})`, 
+                                isSelected: false 
+                            })
+                            this.answerImgList.push(`${resTypeList[randomTypeIndex]}(${randomNum})`, `${resTypeList[randomTypeIndex]}(${(randomTypeIndex + randomNum) % 8 + 1})`);
+                            // 异类
+                            let otherTypeIndex = _.random(0, 4);
+                            while (otherTypeIndex == randomTypeIndex) {
+                                otherTypeIndex = _.random(0, 4);
+                            }
+                            let otherTypeIndex2 = _.random(0, 4);
+                            while (otherTypeIndex2 == randomTypeIndex || otherTypeIndex2 == otherTypeIndex) {
+                                otherTypeIndex2 = _.random(0, 4);
+                            }
+                            this.gameImgList.push({ 
+                                res: `${resTypeList[otherTypeIndex]}(${(otherTypeIndex2 + randomNum) % 8 + 1})`, 
+                                isSelected: false 
+                            }, {
+                                res: `${resTypeList[otherTypeIndex2]}(${(otherTypeIndex + randomNum) % 8 + 1})`, 
+                                isSelected: false 
                             })
                             break;
                         case "找异类": 
-                            this.answerImgList = this.manageEvent.answer.split(",");
-                            this.gameImgList = imgList.map(i => {
-                                return { res: i, isSelected: false }
+                            let index = _.random(0, 3);
+                            this.gameImgList = [0,1,2,3].map(i => {
+                                let obj = null;
+                                if (i == index) {
+                                    let otherTypeIndex = _.random(0, 4);
+                                    while (otherTypeIndex == randomTypeIndex) {
+                                        otherTypeIndex = _.random(0, 4);
+                                    }
+                                    obj = {
+                                        res: `${resTypeList[otherTypeIndex]}(${randomNum})`, 
+                                        isSelected: false 
+                                    }
+                                    this.answerImgList.push(`${resTypeList[otherTypeIndex]}(${randomNum})`);
+                                }
+                                else {
+                                    obj = { 
+                                        res: `${resTypeList[randomTypeIndex]}(${(randomTypeIndex + randomNum + i) % 8 + 1})`, 
+                                        isSelected: false 
+                                    }
+                                }
+                                return obj;
                             })
                             break;
                     }
