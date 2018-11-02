@@ -22,8 +22,10 @@ module game {
 
         private manageEvent: any;
         public initData() {
-            this.chushishezhi();
-            this.haha();
+            if (this.proxy.playerInfo.time > 0) {
+                this.chushishezhi();
+                this.haha();
+            }
         }
 
         public haha() {
@@ -41,6 +43,7 @@ module game {
                     }
                     gold_haha += (this.proxy.playerInfo.guPrice[i] * this.proxy.playerInfo.guColl[i]);
                 }
+                this.proxy.playerInfo.gold = (parseFloat(this.proxy.playerInfo.gold) + gold_haha).toString();
                 platform.showModal("你获得了" + gold_haha + "金币", false);
             } else {
                 if (this.manageEvent.subType == "有选项" || this.manageEvent.type == "角色") {
@@ -80,7 +83,7 @@ module game {
         public eachGu: number = 0;
         public gogog() {
             console.log(this.change);
-            let aa: Array<string> = ["木器", "书画", "青铜", "金玉"];          
+            let aa: Array<string> = ["木器", "书画", "青铜", "金玉"];
 
             if (this.change.leixing1 == "古董数量变化") {
                 if (this.change.mubiao1 == "随机") {
