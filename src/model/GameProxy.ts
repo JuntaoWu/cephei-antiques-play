@@ -23,7 +23,7 @@ module game {
             hints: 50,
             time: 24,
             guPrice: [0, 0, 0, 0],
-            guColl: [0, 0, 0, 0],
+            guColl: [5, 5, 5, 5],
             guEventList: [],
         };
         public pointHunag: number = 43;

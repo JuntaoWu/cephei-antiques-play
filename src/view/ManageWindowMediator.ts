@@ -17,6 +17,7 @@ module game {
             this.manageWindow.addEventListener(egret.Event.ADDED_TO_STAGE, this.initData, this);
             this.manageWindow.gameList.addEventListener(eui.ItemTapEvent.ITEM_TAP, this.selectItem, this);
             this.manageWindow.text1.addEventListener(egret.TouchEvent.TOUCH_TAP, this.nextManageEvent, this);
+
             this.initData();
         }
 
@@ -27,6 +28,34 @@ module game {
         }
 
         public haha() {
+            if (!this.manageEvent) {
+                let gold_haha: number = 0;
+                this.manageWindow.option.visible = false;
+                this.manageWindow.text1.removeEventListener(egret.TouchEvent.TOUCH_TAP, this.nextManageEvent, this);
+                this.manageWindow.text1.text = "OVER";
+                this.proxy.playerInfo.guPrice[this.suiji(0, 3)] *= 4;
+                for (let i = 0; i < 4; i++) {
+                    this.proxy.playerInfo.guPrice[i] *= 0.5;
+                    this.proxy.playerInfo.guPrice[i] = Math.floor(this.proxy.playerInfo.guPrice[i] + 0.5);
+                    if (this.proxy.playerInfo.guPrice[i] <= 0) {
+                        this.proxy.playerInfo.guPrice[i] = 1;
+                    }
+                    gold_haha += (this.proxy.playerInfo.guPrice[i] * this.proxy.playerInfo.guColl[i]);
+                }
+                platform.showModal("你获得了" + gold_haha + "金币", false);
+            } else {
+                if (this.manageEvent.subType == "有选项" || this.manageEvent.type == "角色") {
+                    this.manageWindow.option.visible = true;
+                    this.manageWindow.text1.removeEventListener(egret.TouchEvent.TOUCH_TAP, this.nextManageEvent, this);
+                } else if (this.manageEvent.type == "小游戏") {
+                    this.manageWindow.option.visible = false;
+                    this.change = { ...this.proxy.changeArr.get("53") };
+                } else {
+                    this.manageWindow.option.visible = false;
+                    this.manageWindow.text1.addEventListener(egret.TouchEvent.TOUCH_TAP, this.nextManageEvent, this);
+                    this.change = { ...this.proxy.changeArr.get(this.manageEvent.Column9.toString()) };
+                }
+            }
             this.manageWindow.gu1.text = this.proxy.playerInfo.guPrice[0].toString();
             this.manageWindow.gu2.text = this.proxy.playerInfo.guPrice[1].toString();
             this.manageWindow.gu3.text = this.proxy.playerInfo.guPrice[2].toString();
@@ -37,17 +66,6 @@ module game {
             this.manageWindow.coll4.text = this.proxy.playerInfo.guColl[3].toString();
             this.manageWindow.clock.text = this.proxy.playerInfo.time.toString();
             this.manageWindow.gold.text = this.proxy.playerInfo.gold;
-            if (this.manageEvent.subType == "有选项") {
-                this.manageWindow.option.visible = true;
-                this.manageWindow.text1.removeEventListener(egret.TouchEvent.TOUCH_TAP, this.nextManageEvent, this);
-            } else if (this.manageEvent.type == "小游戏") {
-                this.manageWindow.option.visible = false;
-                this.manageWindow.text1.removeEventListener(egret.TouchEvent.TOUCH_TAP, this.nextManageEvent, this);
-            } else {
-                this.manageWindow.option.visible = false;
-                this.manageWindow.text1.addEventListener(egret.TouchEvent.TOUCH_TAP, this.nextManageEvent, this);
-                this.change = { ...this.proxy.changeArr.get(this.manageEvent.Column9.toString()) };
-            }
         }
 
         public yes() {
@@ -60,10 +78,18 @@ module game {
             this.nextManageEvent();
         }
 
+        public eachGu: number = 0;
         public gogog() {
             console.log(this.change);
+            let aa: Array<string> = ["木器", "书画", "青铜", "金玉"];
+            if (this.change.id == 53) {
+                let bb: Array<any> = this.manageEvent.reward.split(",");
+                for (let i = 0; i < 4; i++) {
+                    this.proxy.playerInfo.guColl[i] += parseInt(bb[i]);
+                }
+            }
+
             if (this.change.leixing1 == "古董数量变化") {
-                let aa: Array<string> = ["木器", "书画", "青铜", "金玉"];
                 if (this.change.mubiao1 == "随机") {
                     this.proxy.playerInfo.guColl[this.suiji(0, 3)] += parseInt(this.change.shuzhi1);
                 } else if (this.change.mubiao1 == "价值最低") {
@@ -75,12 +101,78 @@ module game {
                     for (let i = 0; i < 4; i++) {
                         this.proxy.playerInfo.guColl[i] += parseInt(this.change.shuzhi1);
                     }
+                } else if (this.change.mubiao1 == "随机两种古董") {
+                    let no1: number = this.suiji(0, 3);
+                    let no2: number = this.suiji(0, 2);
+                    no2 = (no1 + no2) % 4;
+                    this.proxy.playerInfo.guColl[no1] += 2;
+                    this.proxy.playerInfo.guColl[no2] += 2;
+                } else if (this.change.mubiao1 == "每回合") {
+                    this.eachGu += parseInt(this.change.shuzhi1);
+                } else if (this.change.mubiao1 == "特殊1") {
+                    this.shuliangpaixu();
+                    if (this.ary2[0] != this.ary2[1]) {
+                        let less: number = this.proxy.playerInfo.guColl.indexOf(this.ary2[0]);
+                        let hh: number = 0;
+                        for (let i = 0; i < 4; i++) {
+                            this.proxy.playerInfo.guColl[i] *= 0.5;
+                            hh += this.proxy.playerInfo.guColl[i];
+                        }
+                        this.proxy.playerInfo.guColl[less] += hh;
+                    }
+                } else if (this.change.mubiao1 == "特殊2") {
+                    this.shuliangpaixu();
+                    if (this.ary2[3] > this.ary2[2]) {
+                        let more: number = this.proxy.playerInfo.guColl.indexOf(this.ary2[3]);
+                        let a: number = this.proxy.playerInfo.guColl[more] / 4;
+                        this.proxy.playerInfo.guColl[more] = 0;
+                        for (let i = 0; i < 4; i++) {
+                            this.proxy.playerInfo.guColl[i] += a;
+                        }
+                    }
                 } else {
-                    this.proxy.playerInfo.guColl[aa.indexOf(this.change.mubiao1)] += parseInt(this.change.shuzhi1);
+                    if (this.change.tiaojian1 == "青铜价格最高") {
+                        this.mmpriceMax(2);
+                    } else if (this.change.tiaojian1 == "青铜数量最多") {
+                        this.mmNumMax(2);
+                    } else if (this.change.tiaojian1 == "木器价格最高") {
+                        this.mmpriceMax(0);
+                    } else if (this.change.tiaojian1 == "木器数量最多") {
+                        this.mmNumMax(0);
+                    } else if (this.change.tiaojian1 == "书画价格最高") {
+                        this.mmpriceMax(1);
+                    } else if (this.change.tiaojian1 == "书画数量最多") {
+                        this.mmNumMax(1);
+                    } else if (this.change.tiaojian1 == "金玉价格最高") {
+                        this.mmpriceMax(3);
+                    } else if (this.change.tiaojian1 == "金玉数量最多") {
+                        this.mmNumMax(3);
+                    } else if (this.change.tiaojian1 == "随机") {
+                        let xx: Array<any> = [0, 0, 0, 0];
+                        let Range = parseInt(this.change.shuzhi1);
+                        let Rand;
+                        for (let i = 0; i < 3; i++) {
+                            Rand = Math.random();
+                            xx[i] += Math.round(Rand * Range);
+                            Range -= xx[i];
+                        };
+                        xx[3] += Range;
+                        console.log(xx);
+                        for (let i = 0; i < 4; i++) {
+                            this.proxy.playerInfo.guColl[i] += xx[i];
+                        }
+                    } else {
+                        this.proxy.playerInfo.guColl[aa.indexOf(this.change.mubiao1)] += parseInt(this.change.shuzhi1);
+                    }
                 }
+            } else if (this.change.leixing1 == "价格变化") {
+                for (let i = 0; i < 4; i++) {
+                    this.proxy.playerInfo.guPrice[i] *= parseFloat(this.change.shuzhi1);
+                }
+                this.proxy.playerInfo.guPrice[aa.indexOf(this.change.tiaojian1)] /= parseFloat(this.change.shuzhi1);
             }
+
             if (this.change.leixing2 == "价格变化") {
-                let aa: Array<string> = ["木器", "书画", "青铜", "金玉"];
                 if (this.change.mubiao2 == "随机") {
                     if (this.change.chengyi) {
                         this.proxy.playerInfo.guPrice[this.suiji(0, 3)] *= parseFloat(this.change.shuzhi2);
@@ -100,6 +192,28 @@ module game {
                             this.proxy.playerInfo.guPrice[i] += parseInt(this.change.shuzhi2);
                         }
                     }
+                } else if (this.change.mubiao2 == "第一二古董价格") {
+                    this.jiazhipaixu();
+                    if (this.ary[1] != this.ary[2]) {
+                        if (this.change.chengyi) {
+                            this.proxy.playerInfo.guPrice[this.proxy.playerInfo.guPrice.indexOf(this.ary[1])] *= parseFloat(this.change.shuzhi2);
+                            this.proxy.playerInfo.guPrice[this.proxy.playerInfo.guPrice.indexOf(this.ary[0])] *= parseFloat(this.change.shuzhi2);
+                        } else {
+                            this.proxy.playerInfo.guPrice[this.proxy.playerInfo.guPrice.indexOf(this.ary[1])] += parseInt(this.change.shuzhi2);
+                            this.proxy.playerInfo.guPrice[this.proxy.playerInfo.guPrice.indexOf(this.ary[0])] += parseInt(this.change.shuzhi2);
+                        }
+                    }
+                } else if (this.change.mubiao2 == "第三四古董价格") {
+                    this.jiazhipaixu();
+                    if (this.ary[1] != this.ary[2]) {
+                        if (this.change.chengyi) {
+                            this.proxy.playerInfo.guPrice[this.proxy.playerInfo.guPrice.indexOf(this.ary[2])] *= parseFloat(this.change.shuzhi2);
+                            this.proxy.playerInfo.guPrice[this.proxy.playerInfo.guPrice.indexOf(this.ary[3])] *= parseFloat(this.change.shuzhi2);
+                        } else {
+                            this.proxy.playerInfo.guPrice[this.proxy.playerInfo.guPrice.indexOf(this.ary[2])] += parseInt(this.change.shuzhi2);
+                            this.proxy.playerInfo.guPrice[this.proxy.playerInfo.guPrice.indexOf(this.ary[3])] += parseInt(this.change.shuzhi2);
+                        }
+                    }
                 } else {
                     if (this.change.chengyi) {
                         this.proxy.playerInfo.guPrice[aa.indexOf(this.change.mubiao2)] *= parseFloat(this.change.shuzhi2);
@@ -107,28 +221,75 @@ module game {
                         this.proxy.playerInfo.guPrice[aa.indexOf(this.change.mubiao2)] += parseInt(this.change.shuzhi2);
                     }
                 }
+            } else if (this.change.leixing2 == "回合变化") {
+                this.proxy.playerInfo.time -= parseInt(this.change.shuzhi2);
+            } else if (this.change.leixing2 == "古董数量变化") {
+                if (this.change.tiaojian2 == "五回合") {
+                    this.five[aa.indexOf(this.change.mubiao2)] = 5;
+                } else {
+                    for (let i = 0; i < 4; i++) {
+                        this.proxy.playerInfo.guColl[i] += parseInt(this.change.shuzhi2);
+                    }
+                    this.proxy.playerInfo.guColl[aa.indexOf(this.change.tiaojian2)] -= parseInt(this.change.shuzhi2);
+                }
             }
+            this.shuzhijiance();
+        }
+
+        public shuzhijiance() {
             for (let i = 0; i < 4; i++) {
                 this.proxy.playerInfo.guPrice[i] = Math.floor(this.proxy.playerInfo.guPrice[i] + 0.5);
+                this.proxy.playerInfo.guColl[i] = Math.floor(this.proxy.playerInfo.guColl[i] + 0.5);
+                if (this.proxy.playerInfo.guPrice[i] <= 0) {
+                    this.proxy.playerInfo.guPrice[i] = 1;
+                }
+                if (this.proxy.playerInfo.guColl[i] < 0) {
+                    this.proxy.playerInfo.guColl[i] = 0;
+                }
             }
         }
 
-        public ary: Array<any>;
+        public mmpriceMax(data: number) {
+            this.jiazhipaixu();
+            if (this.ary[3] != this.ary[2] && this.proxy.playerInfo.guPrice[data] == this.ary[3]) {
+                this.proxy.playerInfo.guColl[data] += 5;
+            }
+        }
+
+        public mmNumMax(data: number) {
+            this.shuliangpaixu();
+            if (this.ary2[3] != this.ary2[2] && this.proxy.playerInfo.guColl[data] == this.ary2[3]) {
+                this.proxy.playerInfo.guColl[data] *= 1.5;
+            }
+        }
+
+        public ary: Array<any> = [0, 0, 0, 0];
         public jiazhipaixu() {
-            this.ary = this.proxy.playerInfo.guPrice;
+            for (let i = 0; i < 4; i++) {
+                this.ary[i] = this.proxy.playerInfo.guPrice[i];
+            }
             this.ary.sort(function (a, b) { return a - b; });
         }
 
-        public shuzu: Array<number> = [0, 0, 0, 0];
+        public ary2: Array<any> = [0, 0, 0, 0];
+        public shuliangpaixu() {
+            for (let i = 0; i < 4; i++) {
+                this.ary2[i] = this.proxy.playerInfo.guColl[i];
+            }
+            this.ary2.sort(function (a, b) { return a - b; });
+        }
+
+        public shuzu: Array<number> = [1, 1, 1, 1];
         public chushi(data: number) {
             let Range = data;
             let Rand;
             for (let i = 0; i < 3; i++) {
                 Rand = Math.random();
-                this.shuzu[i] = Math.round(Rand * Range);
+                this.shuzu[i] += Math.round(Rand * Range);
                 Range -= this.shuzu[i];
+                Range++;
             };
-            this.shuzu[3] = Range;
+            this.shuzu[3] += Range;
         }
 
         public suiji(min: number, max: number) {
@@ -145,14 +306,14 @@ module game {
                 haha += this.proxy.playerInfo.guPrice[i];
             }
             if (haha == 0 && this.proxy.playerInfo.time == 24) {
-                this.chushi(this.zongjiazhi);
+                this.chushi(this.zongjiazhi - 4);
                 for (let i = 0; i < 4; i++) {
                     this.proxy.playerInfo.guPrice[i] = this.shuzu[i];
                 }
-                this.chushi(this.zongbaowushu);
-                for (let i = 0; i < 4; i++) {
-                    this.proxy.playerInfo.guColl[i] = this.shuzu[i];
-                }
+                // this.chushi(this.zongbaowushu);
+                // for (let i = 0; i < 4; i++) {
+                //     this.proxy.playerInfo.guColl[i] = this.shuzu[i];
+                // }
             }
             if (!this.proxy.playerInfo.guEventList.length) {
                 this.manageEvent = this.proxy.getRandomManageEvent();
@@ -211,46 +372,46 @@ module game {
                     let randomIndex = _.random(0, 2);
                     let randomNum = _.random(1, 8);
                     switch (this.manageEvent.subType) {
-                        case "找不同": 
+                        case "找不同":
                             for (let i = 0; i < 4; i++) {
                                 if (i == randomIndex) {
-                                    this.gameImgList.push({ 
-                                        res: `${resTypeList[randomTypeIndex]}(${yitong[i]})`, 
-                                        isSelected: false 
+                                    this.gameImgList.push({
+                                        res: `${resTypeList[randomTypeIndex]}(${yitong[i]})`,
+                                        isSelected: false
                                     })
                                     this.answerImgList.push(`${resTypeList[randomTypeIndex]}(${yitong[i]})`);
-                                } 
+                                }
                                 else {
                                     let i = (1 + randomIndex) % 3;
-                                    this.gameImgList.push({ 
-                                        res: `${resTypeList[randomTypeIndex]}(${yitong[i]})`, 
-                                        isSelected: false 
+                                    this.gameImgList.push({
+                                        res: `${resTypeList[randomTypeIndex]}(${yitong[i]})`,
+                                        isSelected: false
                                     })
                                 }
                             }
                             break;
-                        case "找相同": 
+                        case "找相同":
                             this.gameImgList = yitong.map(i => {
-                                return { 
-                                    res: `${resTypeList[randomTypeIndex]}(${i})`, 
-                                    isSelected: false 
+                                return {
+                                    res: `${resTypeList[randomTypeIndex]}(${i})`,
+                                    isSelected: false
                                 }
                             })
-                            this.gameImgList.push({ 
-                                res: `${resTypeList[randomTypeIndex]}(${yitong[randomIndex]})`, 
-                                isSelected: false 
+                            this.gameImgList.push({
+                                res: `${resTypeList[randomTypeIndex]}(${yitong[randomIndex]})`,
+                                isSelected: false
                             })
                             this.answerImgList.push(`${resTypeList[randomTypeIndex]}(${yitong[randomIndex]})`, `${resTypeList[randomTypeIndex]}(${yitong[randomIndex]})`);
                             break;
                         case "找同类":
                             // 同类
-                            this.gameImgList.push({ 
-                                res: `${resTypeList[randomTypeIndex]}(${randomNum})`, 
-                                isSelected: false 
+                            this.gameImgList.push({
+                                res: `${resTypeList[randomTypeIndex]}(${randomNum})`,
+                                isSelected: false
                             }, {
-                                res: `${resTypeList[randomTypeIndex]}(${(randomTypeIndex + randomNum) % 8 + 1})`, 
-                                isSelected: false 
-                            })
+                                    res: `${resTypeList[randomTypeIndex]}(${(randomTypeIndex + randomNum) % 8 + 1})`,
+                                    isSelected: false
+                                })
                             this.answerImgList.push(`${resTypeList[randomTypeIndex]}(${randomNum})`, `${resTypeList[randomTypeIndex]}(${(randomTypeIndex + randomNum) % 8 + 1})`);
                             // 异类
                             let otherTypeIndex = _.random(0, 4);
@@ -261,17 +422,17 @@ module game {
                             while (otherTypeIndex2 == randomTypeIndex || otherTypeIndex2 == otherTypeIndex) {
                                 otherTypeIndex2 = _.random(0, 4);
                             }
-                            this.gameImgList.push({ 
-                                res: `${resTypeList[otherTypeIndex]}(${(otherTypeIndex2 + randomNum) % 8 + 1})`, 
-                                isSelected: false 
+                            this.gameImgList.push({
+                                res: `${resTypeList[otherTypeIndex]}(${(otherTypeIndex2 + randomNum) % 8 + 1})`,
+                                isSelected: false
                             }, {
-                                res: `${resTypeList[otherTypeIndex2]}(${(otherTypeIndex + randomNum) % 8 + 1})`, 
-                                isSelected: false 
-                            })
+                                    res: `${resTypeList[otherTypeIndex2]}(${(otherTypeIndex + randomNum) % 8 + 1})`,
+                                    isSelected: false
+                                })
                             break;
-                        case "找异类": 
+                        case "找异类":
                             let index = _.random(0, 3);
-                            this.gameImgList = [0,1,2,3].map(i => {
+                            this.gameImgList = [0, 1, 2, 3].map(i => {
                                 let obj = null;
                                 if (i == index) {
                                     let otherTypeIndex = _.random(0, 4);
@@ -279,15 +440,15 @@ module game {
                                         otherTypeIndex = _.random(0, 4);
                                     }
                                     obj = {
-                                        res: `${resTypeList[otherTypeIndex]}(${randomNum})`, 
-                                        isSelected: false 
+                                        res: `${resTypeList[otherTypeIndex]}(${randomNum})`,
+                                        isSelected: false
                                     }
                                     this.answerImgList.push(`${resTypeList[otherTypeIndex]}(${randomNum})`);
                                 }
                                 else {
-                                    obj = { 
-                                        res: `${resTypeList[randomTypeIndex]}(${(randomTypeIndex + randomNum + i) % 8 + 1})`, 
-                                        isSelected: false 
+                                    obj = {
+                                        res: `${resTypeList[randomTypeIndex]}(${(randomTypeIndex + randomNum + i) % 8 + 1})`,
+                                        isSelected: false
                                     }
                                 }
                                 return obj;
@@ -303,12 +464,25 @@ module game {
             }
         }
 
+        public five: Array<any> = [-1, -1, -1, -1];
         public nextManageEvent() {
             this.gogog();
+            this.fivehaha();
             this.proxy.playerInfo.time--;
+            this.proxy.playerInfo.guColl[this.suiji(0, 3)] += this.eachGu;
             this.manageEvent = this.proxy.getRandomManageEvent();
             this.setManageEvent();
             this.haha();
+        }
+
+        public fivehaha() {
+            for (let i = 0; i < 4; i++) {
+                this.five[i]--;
+                if (this.five[i] == 0) {
+                    this.proxy.playerInfo.guColl[i] -= 10;
+                }
+            }
+            this.shuzhijiance();
         }
 
         public get manageWindow(): ManageWindow {
