@@ -1,0 +1,4 @@
+<?xml version='1.0' encoding='utf-8'?>
+<e:Skin class="ManageGameItemSkin" xmlns:e="http://ns.egret.com/eui">
+    <e:Image source="{data.res}" anchorOffsetX="0" anchorOffsetY="0" width="100%" />
+</e:Skin>

@@ -18,6 +18,7 @@
 	"exmls": [
 		"resource/components/CubeStopItemSkin.exml",
 		"resource/components/InputItemSkin.exml",
+		"resource/components/ManageGameItemSkin.exml",
 		"resource/components/QuestionSelectItemSkin.exml",
 		"resource/components/SceneDetailsItemSkin.exml",
 		"resource/components/SwitchItemSkin.exml",

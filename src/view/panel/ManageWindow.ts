@@ -28,5 +28,10 @@ module game {
         public coll2: eui.Label;
         public coll3: eui.Label;
         public coll4: eui.Label;
+
+        public description: string;
+        public showGameGroup: boolean;
+        public gameTrueFalse: eui.Group;
+        public gameList: eui.List;
     }
 }

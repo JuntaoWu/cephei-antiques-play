@@ -125,7 +125,6 @@ module game {
             else {
                 let finalRoundRandomIndex = _.random(0, notMeetEvent.length - 1);
                 this.playerInfo.guEventList.push(notMeetEvent[finalRoundRandomIndex].id);
-                console.log(this.playerInfo.guEventList);
                 return notMeetEvent[finalRoundRandomIndex];
             }
         }
