@@ -9,6 +9,6 @@ module game {
         leixing2?: string;
         shuzhi2?: string;
         mubiao2?: string;
-        Column?: string;
+        chengyi?: boolean;
     }
 }

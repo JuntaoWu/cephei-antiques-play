@@ -36,14 +36,13 @@ module game {
             this.manageWindow.coll3.text = this.proxy.playerInfo.guColl[2].toString();
             this.manageWindow.coll4.text = this.proxy.playerInfo.guColl[3].toString();
             this.manageWindow.clock.text = this.proxy.playerInfo.time.toString();
-            this.manageWindow.text1.text = this.manageEvent.description;
             this.manageWindow.gold.text = this.proxy.playerInfo.gold;
             if (this.manageEvent.subType == "有选项") {
                 this.manageWindow.option.visible = true;
                 this.manageWindow.text1.removeEventListener(egret.TouchEvent.TOUCH_TAP, this.nextManageEvent, this);
             } else if (this.manageEvent.type == "小游戏") {
                 this.manageWindow.option.visible = false;
-                console.log("小游戏");
+                this.manageWindow.text1.removeEventListener(egret.TouchEvent.TOUCH_TAP, this.nextManageEvent, this);
             } else {
                 this.manageWindow.option.visible = false;
                 this.manageWindow.text1.addEventListener(egret.TouchEvent.TOUCH_TAP, this.nextManageEvent, this);
@@ -51,33 +50,73 @@ module game {
             }
         }
 
-        public next() {
-            this.gogog();
-            this.proxy.playerInfo.time--;
-            this.manageEvent = this.proxy.getRandomManageEvent();
-            console.log(this.change);
-            this.haha();
-        }
-
         public yes() {
             this.change = { ...this.proxy.changeArr.get(this.manageEvent.selectedYes.toString()) };
-            this.next();
+            this.nextManageEvent();
         }
 
         public no() {
             this.change = { ...this.proxy.changeArr.get(this.manageEvent.selectedNo.toString()) };
-            this.next();
+            this.nextManageEvent();
         }
 
         public gogog() {
+            console.log(this.change);
             if (this.change.leixing1 == "古董数量变化") {
                 let aa: Array<string> = ["木器", "书画", "青铜", "金玉"];
                 if (this.change.mubiao1 == "随机") {
                     this.proxy.playerInfo.guColl[this.suiji(0, 3)] += parseInt(this.change.shuzhi1);
+                } else if (this.change.mubiao1 == "价值最低") {
+                    this.jiazhipaixu();
+                    if (this.ary[0] != this.ary[1]) {
+                        this.proxy.playerInfo.guColl[this.proxy.playerInfo.guPrice.indexOf(this.ary[0])] += parseInt(this.change.shuzhi1);
+                    }
+                } else if (this.change.mubiao1 == "所有") {
+                    for (let i = 0; i < 4; i++) {
+                        this.proxy.playerInfo.guColl[i] += parseInt(this.change.shuzhi1);
+                    }
                 } else {
                     this.proxy.playerInfo.guColl[aa.indexOf(this.change.mubiao1)] += parseInt(this.change.shuzhi1);
                 }
             }
+            if (this.change.leixing2 == "价格变化") {
+                let aa: Array<string> = ["木器", "书画", "青铜", "金玉"];
+                if (this.change.mubiao2 == "随机") {
+                    if (this.change.chengyi) {
+                        this.proxy.playerInfo.guPrice[this.suiji(0, 3)] *= parseFloat(this.change.shuzhi2);
+                    } else {
+                        this.proxy.playerInfo.guPrice[this.suiji(0, 3)] += parseInt(this.change.shuzhi2);
+                    }
+                } else if (this.change.mubiao2 == "价值最低") {
+                    this.jiazhipaixu();
+                    if (this.ary[0] != this.ary[1]) {
+                        this.proxy.playerInfo.guPrice[this.proxy.playerInfo.guPrice.indexOf(this.ary[0])] += parseInt(this.change.shuzhi2);
+                    }
+                } else if (this.change.mubiao2 == "所有") {
+                    for (let i = 0; i < 4; i++) {
+                        if (this.change.chengyi) {
+                            this.proxy.playerInfo.guPrice[i] *= parseFloat(this.change.shuzhi2);
+                        } else {
+                            this.proxy.playerInfo.guPrice[i] += parseInt(this.change.shuzhi2);
+                        }
+                    }
+                } else {
+                    if (this.change.chengyi) {
+                        this.proxy.playerInfo.guPrice[aa.indexOf(this.change.mubiao2)] *= parseFloat(this.change.shuzhi2);
+                    } else {
+                        this.proxy.playerInfo.guPrice[aa.indexOf(this.change.mubiao2)] += parseInt(this.change.shuzhi2);
+                    }
+                }
+            }
+            for (let i = 0; i < 4; i++) {
+                this.proxy.playerInfo.guPrice[i] = Math.floor(this.proxy.playerInfo.guPrice[i] + 0.5);
+            }
+        }
+
+        public ary: Array<any>;
+        public jiazhipaixu() {
+            this.ary = this.proxy.playerInfo.guPrice;
+            this.ary.sort(function (a, b) { return a - b; });
         }
 
         public shuzu: Array<number> = [0, 0, 0, 0];
@@ -115,14 +154,6 @@ module game {
                     this.proxy.playerInfo.guColl[i] = this.shuzu[i];
                 }
             }
-            // let aa = this.suiji(0, 100);
-            // if (0 <= aa && aa <= 20) {
-            //     this.proxy.playerInfo.guEvent = this.suiji(1, 16);
-            // } else if (20 < aa && aa <= 50) {
-            //     this.proxy.playerInfo.guEvent = this.suiji(17, 32);
-            // } else if (50 < aa && aa <= 100) {
-            //     this.proxy.playerInfo.guEvent = this.suiji(33, 48);
-            // }
             if (!this.proxy.playerInfo.guEventList.length) {
                 this.manageEvent = this.proxy.getRandomManageEvent();
             }
@@ -133,7 +164,7 @@ module game {
             this.setManageEvent();
         }
 
-        
+
         public selectItem() {
             this.gameImgList.forEach(i => {
                 if (i.res == this.manageWindow.gameList.selectedItem.res) {
@@ -273,10 +304,11 @@ module game {
         }
 
         public nextManageEvent() {
-
+            this.gogog();
             this.proxy.playerInfo.time--;
             this.manageEvent = this.proxy.getRandomManageEvent();
             this.setManageEvent();
+            this.haha();
         }
 
         public get manageWindow(): ManageWindow {
