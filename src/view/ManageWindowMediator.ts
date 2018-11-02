@@ -80,13 +80,7 @@ module game {
         public eachGu: number = 0;
         public gogog() {
             console.log(this.change);
-            let aa: Array<string> = ["木器", "书画", "青铜", "金玉"];
-            if (this.change.id == 53) {
-                let bb: Array<any> = this.manageEvent.reward.split(",");
-                for (let i = 0; i < 4; i++) {
-                    this.proxy.playerInfo.guColl[i] += parseInt(bb[i]);
-                }
-            }
+            let aa: Array<string> = ["木器", "书画", "青铜", "金玉"];          
 
             if (this.change.leixing1 == "古董数量变化") {
                 if (this.change.mubiao1 == "随机") {
@@ -532,26 +526,26 @@ module game {
             img.horizontalCenter = 0;
             img.alpha = 0;
             this.manageWindow.miniGameGroup.addChild(img);
-            egret.Tween.get(img).to({alpha: 1}, 1000).call(() => {
+            egret.Tween.get(img).to({ alpha: 1 }, 1000).call(() => {
                 this.manageWindow.miniGameGroup.removeChild(img);
                 this.nextManageEvent();
             })
             if (!isRight) return;
             let rewardList = [];
             if (this.manageEvent.subType == "找不同") {
-                rewardList = [2,1,1,1];
+                rewardList = [2, 1, 1, 1];
             }
             else if (this.manageEvent.subType == "找相同") {
-                rewardList = [1,2,1,1];
+                rewardList = [1, 2, 1, 1];
             }
             else if (this.manageEvent.subType == "找同类") {
-                rewardList = [1,1,2,1];
+                rewardList = [1, 1, 2, 1];
             }
             else if (this.manageEvent.subType == "找异类") {
-                rewardList = [2,1,1,2];
+                rewardList = [2, 1, 1, 2];
             }
             else if (this.manageEvent.subType == "猜真假") {
-                rewardList = [3,3,3,3];
+                rewardList = [3, 3, 3, 3];
             }
             rewardList.forEach((v, i) => {
                 this.proxy.playerInfo.guColl[i] += v;
@@ -562,9 +556,9 @@ module game {
             this.trueAndFalseUIList.forEach(i => {
                 let img = i.getChildByName("img") as eui.Image;
                 i.addChild(img);
-                egret.Tween.get(img).to({scaleX: 0.5}, 500).call(() => {
+                egret.Tween.get(img).to({ scaleX: 0.5 }, 500).call(() => {
                     img.source = "manage-card1";
-                    egret.Tween.get(img).to({scaleX: 1}, 500);
+                    egret.Tween.get(img).to({ scaleX: 1 }, 500);
                 });
             })
             egret.setTimeout(() => {
@@ -577,8 +571,8 @@ module game {
                 let swapY = this.trueAndFalseUIList[swapIndex].y;
                 this.manageWindow.gameTrueFalse.addChild(this.trueAndFalseUIList[randomIndex]);
                 this.manageWindow.gameTrueFalse.addChild(this.trueAndFalseUIList[swapIndex]);
-                egret.Tween.get(this.trueAndFalseUIList[randomIndex]).to({x: swapX, y: swapY}, 1000);
-                egret.Tween.get(this.trueAndFalseUIList[swapIndex]).to({x: randomX, y: randomY}, 1000).call(() => {
+                egret.Tween.get(this.trueAndFalseUIList[randomIndex]).to({ x: swapX, y: swapY }, 1000);
+                egret.Tween.get(this.trueAndFalseUIList[swapIndex]).to({ x: randomX, y: randomY }, 1000).call(() => {
                     let randomIndex = _.random(3, 5);
                     let swapIndex = _.random(0, 8);
                     swapIndex = randomIndex == swapIndex ? swapIndex + 1 : swapIndex;
@@ -588,8 +582,8 @@ module game {
                     let swapY = this.trueAndFalseUIList[swapIndex].y;
                     this.manageWindow.gameTrueFalse.addChild(this.trueAndFalseUIList[randomIndex]);
                     this.manageWindow.gameTrueFalse.addChild(this.trueAndFalseUIList[swapIndex]);
-                    egret.Tween.get(this.trueAndFalseUIList[randomIndex]).to({x: swapX, y: swapY}, 1000);
-                    egret.Tween.get(this.trueAndFalseUIList[swapIndex]).to({x: randomX, y: randomY}, 1000).call(() => {
+                    egret.Tween.get(this.trueAndFalseUIList[randomIndex]).to({ x: swapX, y: swapY }, 1000);
+                    egret.Tween.get(this.trueAndFalseUIList[swapIndex]).to({ x: randomX, y: randomY }, 1000).call(() => {
                         let randomIndex = _.random(6, 8);
                         let swapIndex = _.random(0, 8);
                         swapIndex = randomIndex == swapIndex ? swapIndex - 1 : swapIndex;
@@ -599,8 +593,8 @@ module game {
                         let swapY = this.trueAndFalseUIList[swapIndex].y;
                         this.manageWindow.gameTrueFalse.addChild(this.trueAndFalseUIList[randomIndex]);
                         this.manageWindow.gameTrueFalse.addChild(this.trueAndFalseUIList[swapIndex]);
-                        egret.Tween.get(this.trueAndFalseUIList[randomIndex]).to({x: swapX, y: swapY}, 1000);
-                        egret.Tween.get(this.trueAndFalseUIList[swapIndex]).to({x: randomX, y: randomY}, 1000);
+                        egret.Tween.get(this.trueAndFalseUIList[randomIndex]).to({ x: swapX, y: swapY }, 1000);
+                        egret.Tween.get(this.trueAndFalseUIList[swapIndex]).to({ x: randomX, y: randomY }, 1000);
                         this.canSelectedCard = true;
                     });
                 });
