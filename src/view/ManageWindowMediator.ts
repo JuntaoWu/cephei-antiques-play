@@ -20,7 +20,6 @@ module game {
             this.manageWindow.addEventListener(egret.Event.ADDED_TO_STAGE, this.initData, this);
             this.manageWindow.gameList.addEventListener(eui.ItemTapEvent.ITEM_TAP, this.selectItem, this);
             this.manageWindow.text1.addEventListener(egret.TouchEvent.TOUCH_TAP, this.nextManageEvent, this);
-            // this.initData();
         }
 
         private manageEvent: any;
