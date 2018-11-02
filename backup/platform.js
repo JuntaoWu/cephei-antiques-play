@@ -7,7 +7,7 @@ import * as fileutil from 'library/file-util';
 class WxgamePlatform {
 
     env = 'prod';
-  name = 'DebugPlatform';
+    name = 'wxgame';
     appVersion = '0.1.1';
 
     login() {

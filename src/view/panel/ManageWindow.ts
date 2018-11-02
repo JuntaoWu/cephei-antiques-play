@@ -33,5 +33,8 @@ module game {
         public miniGameGroup: eui.Group;
         public gameTrueFalse: eui.Group;
         public gameList: eui.List;
+
+        public btnPlot: eui.Button;
+        public btnPicture: eui.Button;
     }
 }
