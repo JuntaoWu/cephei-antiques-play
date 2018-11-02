@@ -16,6 +16,7 @@ module game {
             this.manageWindow.no.addEventListener(egret.TouchEvent.TOUCH_TAP, this.no, this);
             this.manageWindow.addEventListener(egret.Event.ADDED_TO_STAGE, this.initData, this);
             this.manageWindow.gameList.addEventListener(eui.ItemTapEvent.ITEM_TAP, this.selectItem, this);
+            this.manageWindow.text1.addEventListener(egret.TouchEvent.TOUCH_TAP, this.nextManageEvent, this);
             this.initData();
         }
 
@@ -39,13 +40,13 @@ module game {
             this.manageWindow.gold.text = this.proxy.playerInfo.gold;
             if (this.manageEvent.subType == "有选项") {
                 this.manageWindow.option.visible = true;
-                this.manageWindow.text1.removeEventListener(egret.TouchEvent.TOUCH_TAP, this.next, this);
+                this.manageWindow.text1.removeEventListener(egret.TouchEvent.TOUCH_TAP, this.nextManageEvent, this);
             } else if (this.manageEvent.type == "小游戏") {
                 this.manageWindow.option.visible = false;
                 console.log("小游戏");
             } else {
                 this.manageWindow.option.visible = false;
-                this.manageWindow.text1.addEventListener(egret.TouchEvent.TOUCH_TAP, this.next, this);
+                this.manageWindow.text1.addEventListener(egret.TouchEvent.TOUCH_TAP, this.nextManageEvent, this);
                 this.change = { ...this.proxy.changeArr.get(this.manageEvent.Column9.toString()) };
             }
         }
