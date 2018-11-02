@@ -12,6 +12,9 @@ module game {
             super.initializeNotifier("ApplicationFacade");
             this.proxy = <GameProxy><any>this.facade().retrieveProxy(GameProxy.NAME);
 
+            this.manageWindow.btnPlot.addEventListener(egret.TouchEvent.TOUCH_TAP, this.btnPlotClick, this);
+            this.manageWindow.btnPicture.addEventListener(egret.TouchEvent.TOUCH_TAP, this.pictClick, this);
+            
             this.manageWindow.yes.addEventListener(egret.TouchEvent.TOUCH_TAP, this.yes, this);
             this.manageWindow.no.addEventListener(egret.TouchEvent.TOUCH_TAP, this.no, this);
             this.manageWindow.addEventListener(egret.Event.ADDED_TO_STAGE, this.initData, this);
@@ -620,6 +623,14 @@ module game {
                 }
             }
             this.shuzhijiance();
+        }
+
+        public btnPlotClick() {
+            this.sendNotification(game.SceneCommand.CHANGE, Scene.Game);
+        }
+
+        public pictClick() {
+            this.sendNotification(game.SceneCommand.SHOW_SCENE);
         }
 
         public get manageWindow(): ManageWindow {
