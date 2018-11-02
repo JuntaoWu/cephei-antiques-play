@@ -5,6 +5,7 @@ module game {
         public static NAME: string = "ManageWindowMediator";
 
         private proxy: GameProxy;
+        public change: Change;
 
         public constructor(viewComponent: any) {
             super(ManageWindowMediator.NAME, viewComponent);
@@ -14,12 +15,17 @@ module game {
             this.manageWindow.yes.addEventListener(egret.TouchEvent.TOUCH_TAP, this.yes, this);
             this.manageWindow.no.addEventListener(egret.TouchEvent.TOUCH_TAP, this.no, this);
             this.manageWindow.addEventListener(egret.Event.ADDED_TO_STAGE, this.initData, this);
+            this.manageWindow.text1.addEventListener(egret.TouchEvent.TOUCH_TAP, this.next, this);
             this.initData();
         }
 
         private manageEvent: any;
         public initData() {
             this.chushishezhi();
+            this.haha();
+        }
+
+        public haha() {
             this.manageWindow.gu1.text = this.proxy.playerInfo.guPrice[0].toString();
             this.manageWindow.gu2.text = this.proxy.playerInfo.guPrice[1].toString();
             this.manageWindow.gu3.text = this.proxy.playerInfo.guPrice[2].toString();
@@ -29,17 +35,48 @@ module game {
             this.manageWindow.coll3.text = this.proxy.playerInfo.guColl[2].toString();
             this.manageWindow.coll4.text = this.proxy.playerInfo.guColl[3].toString();
             this.manageWindow.clock.text = this.proxy.playerInfo.time.toString();
+            this.manageWindow.text1.text = this.manageEvent.description;
             this.manageWindow.gold.text = this.proxy.playerInfo.gold;
+            if (this.manageEvent.subType == "有选项") {
+                this.manageWindow.option.visible = true;
+                this.manageWindow.text1.removeEventListener(egret.TouchEvent.TOUCH_TAP, this.next, this);
+            } else if (this.manageEvent.type == "小游戏") {
+                this.manageWindow.option.visible = false;
+                console.log("小游戏");
+            } else {
+                this.manageWindow.option.visible = false;
+                this.manageWindow.text1.addEventListener(egret.TouchEvent.TOUCH_TAP, this.next, this);
+                this.change = { ...this.proxy.changeArr.get(this.manageEvent.Column9.toString()) };
+            }
+        }
+
+        public next() {
+            this.gogog();
+            this.proxy.playerInfo.time--;
+            this.manageEvent = this.proxy.getRandomManageEvent();
+            console.log(this.change);
+            this.haha();
         }
 
         public yes() {
-            this.proxy.playerInfo.time--;
-            this.manageEvent = this.proxy.getRandomManageEvent();
+            this.change = { ...this.proxy.changeArr.get(this.manageEvent.selectedYes.toString()) };
+            this.next();
         }
 
         public no() {
-            this.proxy.playerInfo.time--;
-            this.manageEvent = this.proxy.getRandomManageEvent();
+            this.change = { ...this.proxy.changeArr.get(this.manageEvent.selectedNo.toString()) };
+            this.next();
+        }
+
+        public gogog() {
+            if (this.change.leixing1 == "古董数量变化") {
+                let aa: Array<string> = ["木器", "书画", "青铜", "金玉"];
+                if (this.change.mubiao1 == "随机") {
+                    this.proxy.playerInfo.guColl[this.suiji(0, 3)] += parseInt(this.change.shuzhi1);
+                } else {
+                    this.proxy.playerInfo.guColl[aa.indexOf(this.change.mubiao1)] += parseInt(this.change.shuzhi1);
+                }
+            }
         }
 
         public shuzu: Array<number> = [0, 0, 0, 0];

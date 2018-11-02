@@ -54,6 +54,14 @@ module game {
             return this.chapterPlot.get(this.playerInfo.plotId.toString());
         }
 
+        private _changeArr: Map<string, any>;
+        public get changeArr(): Map<string, any> {
+            if (!this._changeArr) {
+                this._changeArr = new Map(Object.entries(RES.getRes("manage-change_json")));
+            }
+            return this._changeArr;
+        }
+
         /**
          * 进入故事下一个情节
          */
@@ -104,9 +112,9 @@ module game {
         }
 
         public getRandomManageEvent(): any {
-            let eventList: Array<any> = Math.random() < 0.3 ? this.manageEventMap.get("小游戏") : 
-                                        ( Math.random() < 0.5 ? this.manageEventMap.get("随机事件") 
-                                        : this.manageEventMap.get("角色") );
+            let eventList: Array<any> = Math.random() < 0.3 ? this.manageEventMap.get("小游戏") :
+                (Math.random() < 0.5 ? this.manageEventMap.get("随机事件")
+                    : this.manageEventMap.get("角色"));
             let notMeetEvent = eventList.filter(i => !this.playerInfo.guEventList.includes(i.id));
             if (this.playerInfo.time <= 0) {
                 return null;

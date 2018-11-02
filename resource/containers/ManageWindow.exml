@@ -24,6 +24,7 @@
 
 	<e:Group width="720" anchorOffsetY="0" horizontalCenter="0" top="135" bottom="1">
 		<e:Image source="game-bg" top="0" bottom="0" left="0" right="0" scale9Grid="90,70,540,422"/>
+		<e:Image source="s20" y="32" horizontalCenter="0"/>
 
 		<e:Group y="30" right="20" width="333">
 			<e:Group x="16" left="0">
@@ -63,7 +64,7 @@
 
 
 		<e:Label id="text1" text="" width="720" height="350" verticalCenter="267" horizontalCenter="0" textColor="0x000000" size="40" anchorOffsetY="0"/>
-		<e:Group id="option" width="720" height="129" horizontalCenter="0" bottom="0" anchorOffsetY="0">
+		<e:Group id="option" width="720" height="129" horizontalCenter="0" bottom="0" anchorOffsetY="0" visible="false">
 			<e:Button id="yes" label=""  bottom="0" left="0">
 				<e:skinName>
 					<e:Skin states="up,down,disabled">
