@@ -66,6 +66,7 @@
 		"bin-debug/view/panel/DeveloperWindow.js",
 		"bin-debug/view/panel/GameScreen.js",
 		"bin-debug/view/panel/InputItemRenderer.js",
+		"bin-debug/view/panel/ManageGameItemRenderer.js",
 		"bin-debug/view/panel/ManageWindow.js",
 		"bin-debug/view/panel/MiniGame.js",
 		"bin-debug/view/panel/MiniGameCubeStop.js",

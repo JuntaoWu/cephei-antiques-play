@@ -51,4 +51,6 @@ module game {
     }
 
     export const fatigueValue = 100;
+    
+    export const Antiques = ["木器", "书画", "青铜", "金玉"];
 }

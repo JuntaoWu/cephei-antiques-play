@@ -60,9 +60,18 @@
 				<e:Label id="clock" text="" textColor="0x000000" verticalCenter="0" x="85" width="80" height="40" verticalAlign="middle" textAlign="center"/>
 			</e:Group>
 		</e:Group>
+		<e:Group visible="{showGameGroup}" y="180" horizontalCenter="0">
+			<e:Group id="gameTrueFalse">
 
+			</e:Group>
+			<e:List id="gameList" visible="false" bottom="20" horizontalCenter="0" width="640">
+				<e:layout>
+					<e:TileLayout orientation="columns" requestedColumnCount="2" verticalGap="40" columnWidth="300" />
+				</e:layout>
+			</e:List>
+		</e:Group>
 
-		<e:Label id="text1" text="" width="720" height="350" verticalCenter="267" horizontalCenter="0" textColor="0x000000" size="40" anchorOffsetY="0"/>
+		<e:Label id="text1" text="{description}" width="640" horizontalCenter="0" textColor="0x000000" size="40" anchorOffsetY="0" verticalAlign="middle" textAlign="center" y="800"/>
 		<e:Group id="option" width="720" height="129" horizontalCenter="0" bottom="0" anchorOffsetY="0">
 			<e:Button id="yes" label=""  bottom="0" left="0">
 				<e:skinName>

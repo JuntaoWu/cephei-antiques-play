@@ -14,6 +14,7 @@ module game {
             this.manageWindow.yes.addEventListener(egret.TouchEvent.TOUCH_TAP, this.yes, this);
             this.manageWindow.no.addEventListener(egret.TouchEvent.TOUCH_TAP, this.no, this);
             this.manageWindow.addEventListener(egret.Event.ADDED_TO_STAGE, this.initData, this);
+            this.manageWindow.gameList.addEventListener(eui.ItemTapEvent.ITEM_TAP, this.selectItem, this);
             this.initData();
         }
 
@@ -33,13 +34,33 @@ module game {
         }
 
         public yes() {
-            this.proxy.playerInfo.time--;
-            this.manageEvent = this.proxy.getRandomManageEvent();
+            if (this.manageEvent.type == "小游戏") {
+                if (this.manageEvent.subType == "猜真假") {
+
+                }
+                else {
+                    let isRight = true;
+                    let selectedImg = this.gameImgList.filter(i => i.isSelected);
+                    if (selectedImg.length < this.answerImgList.length) {
+                        isRight = false;
+                    }
+                    selectedImg.forEach(i => {
+                        if (!this.answerImgList.includes(i.res)) {
+                            isRight = false;
+                        }
+                    })
+                    if (isRight) {
+                        this.nextManageEvent();
+                    }
+                }
+            }
+            else {
+                this.nextManageEvent();
+            }
         }
 
         public no() {
-            this.proxy.playerInfo.time--;
-            this.manageEvent = this.proxy.getRandomManageEvent();
+            this.nextManageEvent();
         }
 
         public shuzu: Array<number> = [0, 0, 0, 0];
@@ -92,6 +113,79 @@ module game {
                 this.manageEvent = this.proxy.manageEventArr.find(i => i.id == this.proxy.playerInfo.guEventList[this.proxy.playerInfo.guEventList.length - 1]);
             }
             console.log(this.manageEvent);
+            this.setManageEvent();
+        }
+
+        
+        public selectItem() {
+            this.gameImgList.forEach(i => {
+                if (i.res == this.manageWindow.gameList.selectedItem.res) {
+                    i.isSelected = !i.isSelected;
+                }
+            })
+        }
+
+        public gameImgList: Array<any>;
+        public answerImgList: Array<any>;
+        public setManageEvent() {
+            this.manageWindow.showGameGroup = false;
+            if (!this.manageEvent) return;
+            console.log(this.manageEvent.type, this.manageEvent.subType);
+            this.manageWindow.description = this.manageEvent.description;
+            if (this.manageEvent.type == "小游戏") {
+                this.manageWindow.showGameGroup = true;
+                this.manageWindow.gameTrueFalse.visible = this.manageWindow.gameList.visible = false;
+                if (this.manageEvent.subType == "猜真假") {
+                    this.manageWindow.gameTrueFalse.visible = true;
+                }
+                else {
+                    this.manageWindow.gameList.visible = true;
+                    let imgList = this.manageEvent.res.split(",");
+                    let resTypeList = ["qingtong", "shuhua", "muqi", "ciqi", "yu"];
+                    let randomIndex = _.random(0, imgList.length - 1);
+                    let randomTypeIndex = _.random(0, resTypeList.length - 1);
+                    switch (this.manageEvent.subType) {
+                        case "找不同": 
+                            this.answerImgList = [imgList[1 - randomIndex]];
+                            imgList.push(imgList[randomIndex], imgList[randomIndex]);
+                            this.gameImgList = imgList.map(i => {
+                                return { res: i, isSelected: false }
+                            })
+                            break;
+                        case "找相同": 
+                            this.answerImgList = [imgList[randomIndex]];
+                            imgList.push(imgList[randomIndex]);
+                            this.gameImgList = imgList.map(i => {
+                                return { res: i, isSelected: false }
+                            })
+                            break;
+                        case "找同类":
+                            this.answerImgList = this.manageEvent.answer.split(",");
+                            this.gameImgList = [1,2,3].map(i => {
+                                return { res: `i`, isSelected: false }
+                            })
+                            break;
+                        case "找异类": 
+                            this.answerImgList = this.manageEvent.answer.split(",");
+                            this.gameImgList = imgList.map(i => {
+                                return { res: i, isSelected: false }
+                            })
+                            break;
+                    }
+                    this.manageWindow.gameList.dataProvider = new eui.ArrayCollection(this.gameImgList);
+                    this.manageWindow.gameList.itemRenderer = ManageGameItemRenderer;
+                }
+            }
+            else {
+
+            }
+        }
+
+        public nextManageEvent() {
+
+            this.proxy.playerInfo.time--;
+            this.manageEvent = this.proxy.getRandomManageEvent();
+            this.setManageEvent();
         }
 
         public get manageWindow(): ManageWindow {
