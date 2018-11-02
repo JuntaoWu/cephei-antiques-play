@@ -17,8 +17,7 @@ module game {
             this.manageWindow.addEventListener(egret.Event.ADDED_TO_STAGE, this.initData, this);
             this.manageWindow.gameList.addEventListener(eui.ItemTapEvent.ITEM_TAP, this.selectItem, this);
             this.manageWindow.text1.addEventListener(egret.TouchEvent.TOUCH_TAP, this.nextManageEvent, this);
-
-            this.initData();
+            // this.initData();
         }
 
         private manageEvent: any;
@@ -325,42 +324,55 @@ module game {
             this.setManageEvent();
         }
 
-
-        public selectItem() {
-            this.gameImgList.forEach(i => {
-                if (i.res == this.manageWindow.gameList.selectedItem.res) {
-                    i.isSelected = !i.isSelected;
-                }
-            })
-            let selectedImg = this.gameImgList.filter(i => i.isSelected);
-            let isRight = true;
-            if (selectedImg.length != this.answerImgList.length) {
-                isRight = false;
-            } else {
-                selectedImg.forEach(i => {
-                    if (!this.answerImgList.includes(i.res)) {
-                        isRight = false;
-                    }
-                })
-            }
-            console.log(isRight, selectedImg, this.answerImgList);
-            if (isRight) {
-                this.nextManageEvent();
-            }
-        }
-
         public gameImgList: Array<any>;
         public answerImgList: Array<any>;
+        public trueFalseList: Array<boolean>;
+        public trueAndFalseUIList: Array<eui.Group>;
         public setManageEvent() {
-            this.manageWindow.showGameGroup = false;
+            this.manageWindow.miniGameGroup.visible = false;
             if (!this.manageEvent) return;
             console.log(this.manageEvent.type, this.manageEvent.subType);
             this.manageWindow.description = this.manageEvent.description;
             if (this.manageEvent.type == "小游戏") {
-                this.manageWindow.showGameGroup = true;
+                this.canSelectedCard = false;
+                this.manageWindow.miniGameGroup.visible = true;
+                this.selectedImg = [];
                 this.manageWindow.gameTrueFalse.visible = this.manageWindow.gameList.visible = false;
+                this.manageWindow.gameTrueFalse.removeChildren();
                 if (this.manageEvent.subType == "猜真假") {
                     this.manageWindow.gameTrueFalse.visible = true;
+                    this.trueAndFalseUIList = [];
+                    this.trueFalseList = [
+                        true, true, true
+                        , true, true, true
+                        , true, true, true
+                    ]
+                    for (let i = 0; i < 3; i++) {
+                        let randomIndex = _.random(i * 3, i * 3 + 2);
+                        this.trueFalseList[randomIndex] = false;
+                    }
+                    this.trueFalseList.forEach((v, i) => {
+                        let img = new eui.Image();
+                        img.source = "manage-card2";
+                        img.name = "img";
+                        let textLabel = new eui.Label();
+                        textLabel.text = v ? "真" : "假";
+                        textLabel.size = 60;
+                        textLabel.horizontalCenter = 0;
+                        textLabel.verticalCenter = 0;
+                        let group = new eui.Group();
+                        group.addChild(img);
+                        group.addChild(textLabel);
+                        group.name = i.toString();
+                        group.x = i % 3 ? 215 * (i % 3) : 0;
+                        group.y = (i - i % 3) / 3 ? 280 * ((i - i % 3) / 3) : 0;
+                        this.manageWindow.gameTrueFalse.addChild(group);
+                        group.addEventListener(egret.TouchEvent.TOUCH_TAP, this.trueFalseSelect, this);
+                        this.trueAndFalseUIList.push(group);
+                    })
+                    egret.setTimeout(() => {
+                        this.transferCards();
+                    }, this, 3000);
                 }
                 else {
                     this.gameImgList = [];
@@ -455,13 +467,144 @@ module game {
                             })
                             break;
                     }
+                    this.gameImgList.forEach((i, index) => {
+                        i.index = index;
+                    })
                     this.manageWindow.gameList.dataProvider = new eui.ArrayCollection(this.gameImgList);
                     this.manageWindow.gameList.itemRenderer = ManageGameItemRenderer;
+                    this.canSelectedCard = true;
                 }
             }
             else {
 
             }
+        }
+
+        public selectedImg: Array<any>;
+        public selectItem() {
+            if (!this.canSelectedCard) return;
+            this.gameImgList.forEach(i => {
+                if (i.index == this.manageWindow.gameList.selectedItem.index) {
+                    i.isSelected = !i.isSelected;
+                    this.selectedImg.push(i);
+                }
+            })
+            if (this.selectedImg.length > this.answerImgList.length) {
+                let shiftItem = this.selectedImg.shift();
+                this.gameImgList.find(i => i.index == shiftItem.index).isSelected = false;
+            }
+            let isRight = true;
+            if (this.selectedImg.length == this.answerImgList.length) {
+                this.selectedImg.forEach(i => {
+                    if (!this.answerImgList.includes(i.res)) {
+                        isRight = false;
+                    }
+                })
+                this.setGameReward(isRight);
+            }
+            console.log(isRight, this.selectedImg, this.answerImgList);
+        }
+
+        private canSelectedCard: boolean;
+        public trueFalseSelect(e: egret.TouchEvent) {
+            if (!this.canSelectedCard) return;
+            let currentImg = e.currentTarget.getChildByName("img") as eui.Image;
+            e.currentTarget.removeEventListener(egret.TouchEvent.TOUCH_TAP, this.trueFalseSelect, this);
+            console.log(currentImg.name);
+            currentImg.source = "manage-card2";
+            e.currentTarget.addChildAt(currentImg, 0);
+            this.selectedImg.push(this.trueFalseList[e.currentTarget.name]);
+            if (this.selectedImg.length == 2) {
+                if (!this.selectedImg.includes(true)) {
+                    this.setGameReward(true);
+                }
+                else {
+                    this.setGameReward(false);
+                }
+            }
+        }
+
+        public setGameReward(isRight: boolean) {
+            this.canSelectedCard = false;
+            let img = new eui.Image();
+            img.source = isRight ? "manage-right" : "manage-errer";
+            img.top = 50;
+            img.horizontalCenter = 0;
+            img.alpha = 0;
+            this.manageWindow.miniGameGroup.addChild(img);
+            egret.Tween.get(img).to({alpha: 1}, 1000).call(() => {
+                this.manageWindow.miniGameGroup.removeChild(img);
+                this.nextManageEvent();
+            })
+            if (!isRight) return;
+            let rewardList = [];
+            if (this.manageEvent.subType == "找不同") {
+                rewardList = [2,1,1,1];
+            }
+            else if (this.manageEvent.subType == "找相同") {
+                rewardList = [1,2,1,1];
+            }
+            else if (this.manageEvent.subType == "找同类") {
+                rewardList = [1,1,2,1];
+            }
+            else if (this.manageEvent.subType == "找异类") {
+                rewardList = [2,1,1,2];
+            }
+            else if (this.manageEvent.subType == "猜真假") {
+                rewardList = [3,3,3,3];
+            }
+            rewardList.forEach((v, i) => {
+                this.proxy.playerInfo.guColl[i] += v;
+            })
+        }
+
+        public transferCards() {
+            this.trueAndFalseUIList.forEach(i => {
+                let img = i.getChildByName("img") as eui.Image;
+                i.addChild(img);
+                egret.Tween.get(img).to({scaleX: 0.5}, 500).call(() => {
+                    img.source = "manage-card1";
+                    egret.Tween.get(img).to({scaleX: 1}, 500);
+                });
+            })
+            egret.setTimeout(() => {
+                let randomIndex = _.random(0, 2);
+                let swapIndex = _.random(0, 8);
+                swapIndex = randomIndex == swapIndex ? swapIndex + 1 : swapIndex;
+                let randomX = this.trueAndFalseUIList[randomIndex].x;
+                let randomY = this.trueAndFalseUIList[randomIndex].y;
+                let swapX = this.trueAndFalseUIList[swapIndex].x;
+                let swapY = this.trueAndFalseUIList[swapIndex].y;
+                this.manageWindow.gameTrueFalse.addChild(this.trueAndFalseUIList[randomIndex]);
+                this.manageWindow.gameTrueFalse.addChild(this.trueAndFalseUIList[swapIndex]);
+                egret.Tween.get(this.trueAndFalseUIList[randomIndex]).to({x: swapX, y: swapY}, 1000);
+                egret.Tween.get(this.trueAndFalseUIList[swapIndex]).to({x: randomX, y: randomY}, 1000).call(() => {
+                    let randomIndex = _.random(3, 5);
+                    let swapIndex = _.random(0, 8);
+                    swapIndex = randomIndex == swapIndex ? swapIndex + 1 : swapIndex;
+                    let randomX = this.trueAndFalseUIList[randomIndex].x;
+                    let randomY = this.trueAndFalseUIList[randomIndex].y;
+                    let swapX = this.trueAndFalseUIList[swapIndex].x;
+                    let swapY = this.trueAndFalseUIList[swapIndex].y;
+                    this.manageWindow.gameTrueFalse.addChild(this.trueAndFalseUIList[randomIndex]);
+                    this.manageWindow.gameTrueFalse.addChild(this.trueAndFalseUIList[swapIndex]);
+                    egret.Tween.get(this.trueAndFalseUIList[randomIndex]).to({x: swapX, y: swapY}, 1000);
+                    egret.Tween.get(this.trueAndFalseUIList[swapIndex]).to({x: randomX, y: randomY}, 1000).call(() => {
+                        let randomIndex = _.random(6, 8);
+                        let swapIndex = _.random(0, 8);
+                        swapIndex = randomIndex == swapIndex ? swapIndex - 1 : swapIndex;
+                        let randomX = this.trueAndFalseUIList[randomIndex].x;
+                        let randomY = this.trueAndFalseUIList[randomIndex].y;
+                        let swapX = this.trueAndFalseUIList[swapIndex].x;
+                        let swapY = this.trueAndFalseUIList[swapIndex].y;
+                        this.manageWindow.gameTrueFalse.addChild(this.trueAndFalseUIList[randomIndex]);
+                        this.manageWindow.gameTrueFalse.addChild(this.trueAndFalseUIList[swapIndex]);
+                        egret.Tween.get(this.trueAndFalseUIList[randomIndex]).to({x: swapX, y: swapY}, 1000);
+                        egret.Tween.get(this.trueAndFalseUIList[swapIndex]).to({x: randomX, y: randomY}, 1000);
+                        this.canSelectedCard = true;
+                    });
+                });
+            }, this, 1000)
         }
 
         public five: Array<any> = [-1, -1, -1, -1];
