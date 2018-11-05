@@ -73,7 +73,7 @@ module game {
             this.manageWindow.coll3.text = this.proxy.playerInfo.guColl[2].toString();
             this.manageWindow.coll4.text = this.proxy.playerInfo.guColl[3].toString();
             this.manageWindow.clock.text = this.proxy.playerInfo.time.toString();
-            this.manageWindow.gold.text = this.proxy.playerInfo.gold;
+            this.manageWindow.gold.text = this.proxy.playerInfo.gold || "0";
         }
 
         public yes() {
@@ -377,7 +377,7 @@ module game {
                         this.trueAndFalseUIList.push(group);
                     })
                     egret.setTimeout(() => {
-                        this.transferCards();
+                        this.moveCards();
                     }, this, 3000);
                 }
                 else {
@@ -564,7 +564,7 @@ module game {
             })
         }
 
-        public transferCards() {
+        public moveCards() {
             this.trueAndFalseUIList.forEach(i => {
                 let img = i.getChildByName("img") as eui.Image;
                 i.addChild(img);
@@ -574,43 +574,28 @@ module game {
                 });
             })
             egret.setTimeout(() => {
-                let randomIndex = _.random(0, 2);
-                let swapIndex = _.random(0, 8);
-                swapIndex = randomIndex == swapIndex ? swapIndex + 1 : swapIndex;
-                let randomX = this.trueAndFalseUIList[randomIndex].x;
-                let randomY = this.trueAndFalseUIList[randomIndex].y;
-                let swapX = this.trueAndFalseUIList[swapIndex].x;
-                let swapY = this.trueAndFalseUIList[swapIndex].y;
-                this.manageWindow.gameTrueFalse.addChild(this.trueAndFalseUIList[randomIndex]);
-                this.manageWindow.gameTrueFalse.addChild(this.trueAndFalseUIList[swapIndex]);
-                egret.Tween.get(this.trueAndFalseUIList[randomIndex]).to({ x: swapX, y: swapY }, 1000);
-                egret.Tween.get(this.trueAndFalseUIList[swapIndex]).to({ x: randomX, y: randomY }, 1000).call(() => {
-                    let randomIndex = _.random(3, 5);
-                    let swapIndex = _.random(0, 8);
-                    swapIndex = randomIndex == swapIndex ? swapIndex + 1 : swapIndex;
-                    let randomX = this.trueAndFalseUIList[randomIndex].x;
-                    let randomY = this.trueAndFalseUIList[randomIndex].y;
-                    let swapX = this.trueAndFalseUIList[swapIndex].x;
-                    let swapY = this.trueAndFalseUIList[swapIndex].y;
-                    this.manageWindow.gameTrueFalse.addChild(this.trueAndFalseUIList[randomIndex]);
-                    this.manageWindow.gameTrueFalse.addChild(this.trueAndFalseUIList[swapIndex]);
-                    egret.Tween.get(this.trueAndFalseUIList[randomIndex]).to({ x: swapX, y: swapY }, 1000);
-                    egret.Tween.get(this.trueAndFalseUIList[swapIndex]).to({ x: randomX, y: randomY }, 1000).call(() => {
-                        let randomIndex = _.random(6, 8);
-                        let swapIndex = _.random(0, 8);
-                        swapIndex = randomIndex == swapIndex ? swapIndex - 1 : swapIndex;
-                        let randomX = this.trueAndFalseUIList[randomIndex].x;
-                        let randomY = this.trueAndFalseUIList[randomIndex].y;
-                        let swapX = this.trueAndFalseUIList[swapIndex].x;
-                        let swapY = this.trueAndFalseUIList[swapIndex].y;
-                        this.manageWindow.gameTrueFalse.addChild(this.trueAndFalseUIList[randomIndex]);
-                        this.manageWindow.gameTrueFalse.addChild(this.trueAndFalseUIList[swapIndex]);
-                        egret.Tween.get(this.trueAndFalseUIList[randomIndex]).to({ x: swapX, y: swapY }, 1000);
-                        egret.Tween.get(this.trueAndFalseUIList[swapIndex]).to({ x: randomX, y: randomY }, 1000);
-                        this.canSelectedCard = true;
-                    });
-                });
+                this.transferCards(5);
             }, this, 1000)
+        }
+
+        public transferCards(num: number) {
+            if (num < 1) return;
+            let leftTime = num - 1;
+            let randomIndex = _.random(0, 8);
+            let swapIndex = _.random(0, 8);
+            while (randomIndex == swapIndex) {
+                swapIndex = _.random(0, 8);
+            }
+            let randomX = this.trueAndFalseUIList[randomIndex].x;
+            let randomY = this.trueAndFalseUIList[randomIndex].y;
+            let swapX = this.trueAndFalseUIList[swapIndex].x;
+            let swapY = this.trueAndFalseUIList[swapIndex].y;
+            this.manageWindow.gameTrueFalse.addChild(this.trueAndFalseUIList[randomIndex]);
+            this.manageWindow.gameTrueFalse.addChild(this.trueAndFalseUIList[swapIndex]);
+            egret.Tween.get(this.trueAndFalseUIList[randomIndex]).to({ x: swapX, y: swapY }, 800);
+            egret.Tween.get(this.trueAndFalseUIList[swapIndex]).to({ x: randomX, y: randomY }, 800).call(() => {
+                this.transferCards(leftTime);
+            });
         }
 
         public five: Array<any> = [-1, -1, -1, -1];

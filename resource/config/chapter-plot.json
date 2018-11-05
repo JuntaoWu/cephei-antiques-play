@@ -3331,7 +3331,7 @@
   },
   "223": {
     "id": 223,
-    "res": "s60、s66",
+    "res": "s66、s60",
     "questionId": 0.0,
     "type": "追加",
     "effect": "渐变消失",
@@ -3445,7 +3445,7 @@
     "sound": "Y18",
     "playTime": 1,
     "talkId": 0.0,
-    "autoNextTime": 0,
+    "autoNextTime": 0.05,
     "portrait": "",
     "next": 0.0
   },
@@ -4816,7 +4816,7 @@
   },
   "322": {
     "id": 322,
-    "res": "s69、s17、38",
+    "res": "s38、s69、s17",
     "questionId": 0.0,
     "type": "切换",
     "effect": "",
@@ -4831,7 +4831,7 @@
   },
   "323": {
     "id": 323,
-    "res": "s69、s17、38",
+    "res": "s38、s69、s17",
     "questionId": 0.0,
     "type": "切换",
     "effect": "",
@@ -4846,7 +4846,7 @@
   },
   "324": {
     "id": 324,
-    "res": "s69、s17、38",
+    "res": "s38、s69、s17",
     "questionId": 0.0,
     "type": "切换",
     "effect": "",
@@ -4861,7 +4861,7 @@
   },
   "325": {
     "id": 325,
-    "res": "s69、s25",
+    "res": "s25、s69",
     "questionId": 0.0,
     "type": "切换",
     "effect": "",
@@ -4876,7 +4876,7 @@
   },
   "326": {
     "id": 326,
-    "res": "s69、s25",
+    "res": "s25、s69",
     "questionId": 0.0,
     "type": "切换",
     "effect": "",

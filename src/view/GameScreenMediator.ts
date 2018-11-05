@@ -64,13 +64,12 @@ module game {
         public wordList: Array<string>;
         public next: number | string;
         public questionId: number;
+        private timeoutId: number;
 
         public initData() {
             this.gameScreen.bottomGroup.visible = this.gameScreen.plotSelectList.visible = this.gameScreen.questionGroup.visible = false;
             this.gameScreen.showReset = this.gameScreen.showMiniGame = this.gameScreen.showTransition = this.canGoNext = false;
             this.gameScreen.question = this.gameScreen.points = "";
-            this.gameScreen.scrollGroup.bottom = 20;
-            this.gameScreen.scrollGroup.viewport.scrollV = 0;
 
             let barH = this.gameScreen.huangAndMubar.getChildByName("huangyanyan") as eui.Image;
             let barM = this.gameScreen.huangAndMubar.getChildByName("munai") as eui.Image;
@@ -83,6 +82,10 @@ module game {
             }
             // 选择不同对话下一条和不同结局
             this.next = plot.next || 1;
+            if (this.timeoutId) {
+                egret.clearTimeout(this.timeoutId);
+                this.timeoutId = null;
+            }
             if (plot.type == plotType.PlotQuestion) {
                 this.gameScreen.showScene = false;
                 this.gameScreen.questionGroup.visible = true;
@@ -101,12 +104,8 @@ module game {
                 let hintCardsLabel = (this.gameScreen.btnTips.getChildByName("hintGroup") as eui.Group).getChildByName("hintCards") as eui.BitmapLabel;
                 hintCardsLabel.text = this.proxy.playerInfo.hints.toString();
 
-                this.gameScreen.scrollGroup.bottom = this.gameScreen.bottomGroup.height + 70;
-                if (!question.question) {
-                    this.gameScreen.scrollGroup.bottom -= 70;
-                }
-                this.gameScreen.scrollGroup.viewport.scrollH = 0;
                 if (question.type == "填空") {
+                    this.gameScreen.bottomGroup.top = 80;
                     this.gameScreen.bottomGroup.visible = this.gameScreen.showReset = true;
                     this.gameScreen.showInput(question.id, question.answer);
                 }
@@ -115,9 +114,12 @@ module game {
                     this.gameScreen.showSelect(question.optionsId);
                 }
                 else if (question.type == "小游戏") {
+                    this.gameScreen.bottomGroup.top = 0;
                     this.sendNotification(GameProxy.SHOW_MINIGAME, question);
                     this.gameScreen.showMiniGame = this.gameScreen.showReset = true;
                 }
+                this.gameScreen.scrollGroup.bottom = this.gameScreen.footGroup.height;
+                this.gameScreen.scrollGroup.viewport.scrollH = 0;
             }
             else if (plot.type == plotType.Transition) {
                 if (plot.effect != "序章") {
@@ -131,7 +133,7 @@ module game {
                 this.gameScreen.showTransition = true;
                 this.gameScreen.transitionText = plot.effect;
                 this.loadResGroup();
-                egret.setTimeout(() => {
+                this.timeoutId = egret.setTimeout(() => {
                     this.showNext();
                 }, this, 1500);
             }
@@ -141,6 +143,8 @@ module game {
                 this.canGoNext = true;
             }
             else {
+                this.gameScreen.scrollGroup.bottom = 20;
+                this.gameScreen.scrollGroup.viewport.scrollV = 0;
                 this.gameScreen.showScene = true;
                 //搭建剧情场景
                 this.settingScene(plot.res, plot.portrait, plot.effect, plot.effectTrigger);
@@ -165,9 +169,9 @@ module game {
                     }, this, timeout);
                 }
                 //自动跳到下一条
-                if (plot.autoNextTime) {
+                if (isNaN(plot.autoNextTime)) {
                     let timeout = +plot.autoNextTime * 1000;
-                    egret.setTimeout(() => {
+                    this.timeoutId = egret.setTimeout(() => {
                         this.showNext();
                     }, this, timeout);
                 }
@@ -260,10 +264,10 @@ module game {
                 this.gameScreen.plotSelectList.addEventListener(eui.ItemTapEvent.ITEM_TAP, this.selectItem, this);
             }
             egret.setTimeout(() => {
-                this.gameScreen.scrollGroup.bottom = this.gameScreen.plotSelectList.height + 30;
+                this.gameScreen.scrollGroup.bottom = this.gameScreen.footGroup.height;
                 let bottomHeight = this.gameScreen.scrollGroup.viewport.contentHeight - this.gameScreen.scrollGroup.height;
                 this.gameScreen.scrollGroup.viewport.scrollV = Math.max(0, bottomHeight);
-            }, this, 100)
+            }, this, 50)
         }
 
         public bb: eui.Image;

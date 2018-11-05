@@ -184,6 +184,14 @@ class WxgamePlatform {
         wx.hideLoading();
     }
 
+    showPreImage(imgList) {
+        wx.previewImage({
+            urls: imgList.map(m => {
+                return `${m}?v=${this.getVersion()}`;
+            }),
+        });
+    }
+
     playVideo(src) {
         return wx.createVideo({
             src: src

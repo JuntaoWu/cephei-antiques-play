@@ -35,12 +35,18 @@ module game {
 
         public newGame() {
             if (this.proxy.playerInfo.plotId != 1) {
-                 platform.showModal("是否确认新的开始？", true).then((res) => {
-                     if (res.confirm) {
+                try {
+                    platform.showModal("是否确认新的开始？", true).then((res) => {
+                        if (res.confirm) {
                         this.proxy.playerInfo.plotId = 1;
                         this.sendNotification(SceneCommand.CHANGE, Scene.Game);
-                     }
-                 });
+                        }
+                    });
+                }
+                catch (err) {
+                    this.proxy.playerInfo.plotId = 1;
+                    this.sendNotification(SceneCommand.CHANGE, Scene.Game);
+                }
             }
             else {
                 this.sendNotification(SceneCommand.CHANGE, Scene.Game);

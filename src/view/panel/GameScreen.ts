@@ -34,6 +34,7 @@ module game {
         public textGroup: eui.Group;
         public huangAndMubar: eui.Group;
         public scrollGroup: eui.Scroller;
+        public footGroup: eui.Group;
         public bottomGroup: eui.Group;
         public plotSelectList: eui.List;
         public nextTest: eui.Button;

@@ -55,28 +55,30 @@
                 </e:Group>
             </e:viewport>
         </e:Scroller>
-        <e:Label text="{question}" y="240" lineSpacing="10" textColor="0x000000" horizontalCenter="0" width="640" textAlign="center" fontFamily="Microsoft YaHei"/>
-        <e:Group id="bottomGroup" bottom="150" horizontalCenter="0">
-        </e:Group>
-        <e:List id="plotSelectList" visible="false" bottom="20" horizontalCenter="0" width="640">
-            <e:layout>
-                <e:TileLayout orientation="columns" requestedColumnCount="1" verticalGap="20" columnWidth="640" />
-            </e:layout>
-        </e:List>
-        <e:Group visible="{showReset}" bottom="20" horizontalCenter="0" width="640">
-            <e:Button id="btnReset" left="10" width="45%">
-                <e:Skin>
-                    <e:Image anchorOffsetX="0" width="100%" anchorOffsetY="0" source="option-bg" scale9Grid="45,43,224,37"/>
-                    <e:Label text="重置" horizontalCenter="0" verticalAlign="middle" anchorOffsetX="0" size="45" textColor="0xFFFFFF" bold="true" fontFamily="FangSong" verticalCenter="0" textAlign="center"></e:Label>
-                </e:Skin>
-            </e:Button>
-            <e:Button id="btnConfirm" right="10" width="45%">
-                <e:Skin>    
-                    <e:Image anchorOffsetX="0" width="100%" anchorOffsetY="0" source="option-bg" scale9Grid="45,43,224,37"/>
-                    <e:Label text="确认" horizontalCenter="0" verticalAlign="middle" anchorOffsetX="0" size="45" textColor="0xFFFFFF" bold="true" fontFamily="FangSong" verticalCenter="0" textAlign="center"></e:Label>
-                </e:Skin>
-            </e:Button>
+        <e:Group id="footGroup" horizontalCenter="0" bottom="0">
+            <e:Label text="{question}" y="20" lineSpacing="10" textColor="0x000000" horizontalCenter="0" width="640" textAlign="center" fontFamily="Microsoft YaHei"/>
+            <e:Group id="bottomGroup" top="80" bottom="130" horizontalCenter="0">
+            </e:Group>
+            <e:List id="plotSelectList" visible="false" bottom="20" horizontalCenter="0" width="640">
+                <e:layout>
+                    <e:TileLayout orientation="columns" requestedColumnCount="1" verticalGap="20" columnWidth="640" />
+                </e:layout>
+            </e:List>
+            <e:Group visible="{showReset}" bottom="20" horizontalCenter="0" width="640">
+                <e:Button id="btnReset" left="10" width="45%">
+                    <e:Skin>
+                        <e:Image anchorOffsetX="0" width="100%" anchorOffsetY="0" source="option-bg" scale9Grid="45,43,224,37"/>
+                        <e:Label text="重置" horizontalCenter="0" verticalAlign="middle" anchorOffsetX="0" size="45" textColor="0xFFFFFF" bold="true" fontFamily="FangSong" verticalCenter="0" textAlign="center"></e:Label>
+                    </e:Skin>
+                </e:Button>
+                <e:Button id="btnConfirm" right="10" width="45%">
+                    <e:Skin>    
+                        <e:Image anchorOffsetX="0" width="100%" anchorOffsetY="0" source="option-bg" scale9Grid="45,43,224,37"/>
+                        <e:Label text="确认" horizontalCenter="0" verticalAlign="middle" anchorOffsetX="0" size="45" textColor="0xFFFFFF" bold="true" fontFamily="FangSong" verticalCenter="0" textAlign="center"></e:Label>
+                    </e:Skin>
+                </e:Button>
 
+            </e:Group>
         </e:Group>
     </e:Group>
     <e:Group id="questionGroup" visible="true" width="720" top="135">
@@ -99,7 +101,7 @@
                 </e:Skin>
             </e:Button>
             <e:Group visible="{showPoints}" horizontalCenter="0" bottom="50">
-                <e:Image source="tips-bg" width="450" height="100%"/>
+                <e:Image source="tips-bg" width="480" height="100%"/>
                 <e:Label text="{points}" textColor="0x000000" horizontalCenter="0" maxWidth="450" verticalAlign="middle" textAlign="center" top="10" bottom="10"/>       
             </e:Group>
         </e:Group>
