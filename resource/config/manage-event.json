@@ -9,7 +9,9 @@
     "reward": "2,1,1,1",
     "selectedYes": 0.0,
     "selectedNo": 0.0,
-    "Column9": 0.0
+    "Column9": 0.0,
+    "yes":"",
+    "no":""
   },
   {
     "id": 5,
@@ -21,7 +23,9 @@
     "reward": "1,2,1,1",
     "selectedYes": 0.0,
     "selectedNo": 0.0,
-    "Column9": 0.0
+    "Column9": 0.0,
+    "yes":"",
+    "no":""
   },
   {
     "id": 9,
@@ -33,7 +37,9 @@
     "reward": "1,1,2,1",
     "selectedYes": 0.0,
     "selectedNo": 0.0,
-    "Column9": 0.0
+    "Column9": 0.0,
+    "yes":"",
+    "no":""
   },
   {
     "id": 13,
@@ -45,7 +51,9 @@
     "reward": "1,1,1,2",
     "selectedYes": 0.0,
     "selectedNo": 0.0,
-    "Column9": 0.0
+    "Column9": 0.0,
+    "yes":"",
+    "no":""
   },
   {
     "id": 17,
@@ -57,7 +65,9 @@
     "reward": "3,3,3,3",
     "selectedYes": 0.0,
     "selectedNo": 0.0,
-    "Column9": 0.0
+    "Column9": 0.0,
+    "yes":"",
+    "no":""
   },
   {
     "id": 18,
@@ -65,11 +75,13 @@
     "subType": "药不然",
     "res": "",
     "answer": "",
-    "description": "我最近发现一批商朝的古董，这发财的机会许大兄弟感不感兴趣？——说来听听/信了你的邪！",
+    "description": "我最近发现一批商朝的古董，这发财的机会许大兄弟感不感兴趣？",
     "reward": "",
     "selectedYes": 1,
     "selectedNo": 2,
-    "Column9": 0.0
+    "Column9": 0.0,
+    "yes":"说来听听",
+    "no":"信了你的邪！"
   },
   {
     "id": 19,
@@ -77,11 +89,13 @@
     "subType": "药不然",
     "res": "",
     "answer": "",
-    "description": "2我觉得你对青铜器蛮感兴趣的嘛。——也许吧/不感兴趣",
+    "description": "2我觉得你对青铜器蛮感兴趣的嘛。",
     "reward": "",
     "selectedYes": 3,
     "selectedNo": 4,
-    "Column9": 0.0
+    "Column9": 0.0,
+    "yes":"也许吧",
+    "no":"不感兴趣"
   },
   {
     "id": 20,
@@ -89,11 +103,13 @@
     "subType": "药不然",
     "res": "",
     "answer": "",
-    "description": "有几件古董我不想要了，放在你店里保管吧。——好的/我比较忙",
+    "description": "有几件古董我不想要了，放在你店里保管吧。",
     "reward": "",
     "selectedYes": 5,
     "selectedNo": 6,
-    "Column9": 0.0
+    "Column9": 0.0,
+    "yes":"好的",
+    "no":"我比较忙"
   },
   {
     "id": 21,
@@ -101,11 +117,13 @@
     "subType": "药不然",
     "res": "",
     "answer": "",
-    "description": "没时间解释了，快跟我来看件珍宝！——等等我！/你先走一步。",
+    "description": "没时间解释了，快跟我来看件珍宝！",
     "reward": "",
     "selectedYes": 7,
     "selectedNo": 8,
-    "Column9": 0.0
+    "Column9": 0.0,
+    "yes":"等等我！",
+    "no":"你先走一步。"
   },
   {
     "id": 22,
@@ -113,11 +131,13 @@
     "subType": "木户加奈",
     "res": "",
     "answer": "",
-    "description": "许桑！我从支那风土会那带来了几件本属于你们国家的古董。——感激不尽/辛苦你了",
+    "description": "许桑！我从支那风土会那带来了几件本属于你们国家的古董。",
     "reward": "",
     "selectedYes": 9,
     "selectedNo": 10,
-    "Column9": 0.0
+    "Column9": 0.0,
+    "yes":"感激不尽",
+    "no":"辛苦你了"
   },
   {
     "id": 23,
@@ -125,11 +145,13 @@
     "subType": "木户加奈",
     "res": "",
     "answer": "",
-    "description": "许桑，你喜欢木质的古董吗，我觉得它们很有魅力。——所见略同/一般般吧",
+    "description": "许桑，你喜欢木质的古董吗，我觉得它们很有魅力。",
     "reward": "",
     "selectedYes": 11,
     "selectedNo": 12,
-    "Column9": 0.0
+    "Column9": 0.0,
+    "yes":"所见略同",
+    "no":"一般般吧"
   },
   {
     "id": 24,
@@ -137,11 +159,13 @@
     "subType": "木户加奈",
     "res": "",
     "answer": "",
-    "description": "桑，我要回国了，这几件古董你可以帮我保管吗？——好的/没时间",
+    "description": "桑，我要回国了，这几件古董你可以帮我保管吗？",
     "reward": "",
     "selectedYes": 13,
     "selectedNo": 14,
-    "Column9": 0.0
+    "Column9": 0.0,
+    "yes":"好的",
+    "no":"没时间"
   },
   {
     "id": 25,
@@ -149,11 +173,13 @@
     "subType": "木户加奈",
     "res": "",
     "answer": "",
-    "description": "我一直想送给许桑一件礼物，你过来看看喜不喜欢。——太感动了/好意心领了",
+    "description": "我一直想送给许桑一件礼物，你过来看看喜不喜欢。",
     "reward": "",
     "selectedYes": 15,
     "selectedNo": 16,
-    "Column9": 0.0
+    "Column9": 0.0,
+    "yes":"太感动了",
+    "no":"好意心领了"
   },
   {
     "id": 26,
@@ -161,11 +187,13 @@
     "subType": "黄烟烟",
     "res": "",
     "answer": "",
-    "description": "快跟我过来，方震又给我们新的任务了！——马上就来/与我何干",
+    "description": "快跟我过来，方震又给我们新的任务了！",
     "reward": "",
     "selectedYes": 17,
     "selectedNo": 18,
-    "Column9": 0.0
+    "Column9": 0.0,
+    "yes":"马上就来",
+    "no":"与我何干"
   },
   {
     "id": 27,
@@ -173,11 +201,13 @@
     "subType": "黄烟烟",
     "res": "",
     "answer": "",
-    "description": "我们家里有几幅字画我一直不知道出自哪个朝代，你帮我看一下吧。——拿来吧/担当不起",
+    "description": "我们家里有几幅字画我一直不知道出自哪个朝代，你帮我看一下吧。",
     "reward": "",
     "selectedYes": 19,
     "selectedNo": 20,
-    "Column9": 0.0
+    "Column9": 0.0,
+    "yes":"拿来吧",
+    "no":"担当不起"
   },
   {
     "id": 28,
@@ -185,11 +215,13 @@
     "subType": "黄烟烟",
     "res": "",
     "answer": "",
-    "description": "这些古董你先拿到店里用着，毕竟是中华鉴宝协会的不能太磕碜。——多谢了/何德何能",
+    "description": "这些古董你先拿到店里用着，毕竟是中华鉴宝协会的不能太磕碜。",
     "reward": "",
     "selectedYes": 21,
     "selectedNo": 22,
-    "Column9": 0.0
+    "Column9": 0.0,
+    "yes":"多谢了",
+    "no":"何德何能"
   },
   {
     "id": 29,
@@ -197,11 +229,13 @@
     "subType": "黄烟烟",
     "res": "",
     "answer": "",
-    "description": "快跟我过来，刚从古墓出土了几件文物，一起来鉴定一下。——快带我过去/等我一会",
+    "description": "快跟我过来，刚从古墓出土了几件文物，一起来鉴定一下。",
     "reward": "",
     "selectedYes": 23,
     "selectedNo": 24,
-    "Column9": 0.0
+    "Column9": 0.0,
+    "yes":"快带我过去",
+    "no":"等我一会"
   },
   {
     "id": 30,
@@ -209,11 +243,13 @@
     "subType": "山水",
     "res": "",
     "answer": "",
-    "description": "我在青勒胡同看中几件老物，许兄帮我鉴定一下吧。——一言为定/找别人去",
+    "description": "我在青勒胡同看中几件老物，许兄帮我鉴定一下吧。",
     "reward": "",
     "selectedYes": 25,
     "selectedNo": 26,
-    "Column9": 0.0
+    "Column9": 0.0,
+    "yes":"一言为定",
+    "no":"找别人去"
   },
   {
     "id": 31,
@@ -221,11 +257,13 @@
     "subType": "山水",
     "res": "",
     "answer": "",
-    "description": "许兄，其实人生的道理就是福兮祸所伏，你认为呢？——有些道理/不予苟同",
+    "description": "许兄，其实人生的道理就是福兮祸所伏，你认为呢？",
     "reward": "",
     "selectedYes": 27,
     "selectedNo": 28,
-    "Column9": 0.0
+    "Column9": 0.0,
+    "yes":"有些道理",
+    "no":"不予苟同"
   },
   {
     "id": 32,
@@ -233,11 +271,13 @@
     "subType": "山水",
     "res": "",
     "answer": "",
-    "description": "我从万货全老巢那偷来了几件古董，许兄可否帮我处理一下？——拿来看看/找别家吧",
+    "description": "我从万货全老巢那偷来了几件古董，许兄可否帮我处理一下？",
     "reward": "",
     "selectedYes": 29,
     "selectedNo": 30,
-    "Column9": 0.0
+    "Column9": 0.0,
+    "yes":"拿来看看",
+    "no":"找别家吧"
   },
   {
     "id": 33,
@@ -245,11 +285,13 @@
     "subType": "山水",
     "res": "",
     "answer": "",
-    "description": "许兄对我一直太见外了，其实我一直蛮崇拜你的。——不敢当/我是谁啊~",
+    "description": "许兄对我一直太见外了，其实我一直蛮崇拜你的。",
     "reward": "",
     "selectedYes": 31,
     "selectedNo": 32,
-    "Column9": 0.0
+    "Column9": 0.0,
+    "yes":"不敢当",
+    "no":"我是谁啊~"
   },
   {
     "id": 34,
@@ -257,11 +299,13 @@
     "subType": "有选项",
     "res": "",
     "answer": "",
-    "description": "是：没收青铜数量5   否：随机古董价值下跌20%",
+    "description": "",
     "reward": "",
     "selectedYes": 45,
     "selectedNo": 46,
-    "Column9": 0.0
+    "Column9": 0.0,
+    "yes":"没收青铜数量5",
+    "no":"随机古董价值下跌20%"
   },
   {
     "id": 35,
@@ -269,11 +313,13 @@
     "subType": "有选项",
     "res": "",
     "answer": "",
-    "description": "是：没收青铜数量5否：随机古董价值下跌20%",
+    "description": "",
     "reward": "",
     "selectedYes": 47,
     "selectedNo": 48,
-    "Column9": 0.0
+    "Column9": 0.0,
+    "yes":"没收青铜数量5",
+    "no":"随机古董价值下跌20%"
   },
   {
     "id": 36,
@@ -281,11 +327,13 @@
     "subType": "有选项",
     "res": "",
     "answer": "",
-    "description": "是：没收书画数量5否：随机古董价值下跌20%",
+    "description": "",
     "reward": "",
     "selectedYes": 49,
     "selectedNo": 50,
-    "Column9": 0.0
+    "Column9": 0.0,
+    "yes":"没收书画数量5",
+    "no":"随机古董价值下跌20%"
   },
   {
     "id": 37,
@@ -293,11 +341,13 @@
     "subType": "有选项",
     "res": "",
     "answer": "",
-    "description": "是：没收金玉数量5否：随机古董价值下跌20%",
+    "description": "",
     "reward": "",
     "selectedYes": 51,
     "selectedNo": 52,
-    "Column9": 0.0
+    "Column9": 0.0,
+    "yes":"没收金玉数量5",
+    "no":"随机古董价值下跌20%"
   },
   {
     "id": 38,
@@ -309,7 +359,9 @@
     "reward": "",
     "selectedYes": 0.0,
     "selectedNo": 0.0,
-    "Column9": 33
+    "Column9": 33,
+    "yes":"",
+    "no":""
   },
   {
     "id": 39,
@@ -321,7 +373,9 @@
     "reward": "",
     "selectedYes": 0.0,
     "selectedNo": 0.0,
-    "Column9": 34
+    "Column9": 34,
+    "yes":"",
+    "no":""
   },
   {
     "id": 40,
@@ -333,7 +387,9 @@
     "reward": "",
     "selectedYes": 0.0,
     "selectedNo": 0.0,
-    "Column9": 35
+    "Column9": 35,
+    "yes":"",
+    "no":""
   },
   {
     "id": 41,
@@ -345,7 +401,9 @@
     "reward": "",
     "selectedYes": 0.0,
     "selectedNo": 0.0,
-    "Column9": 36
+    "Column9": 36,
+    "yes":"",
+    "no":""
   },
   {
     "id": 42,
@@ -357,7 +415,9 @@
     "reward": "",
     "selectedYes": 0.0,
     "selectedNo": 0.0,
-    "Column9": 37
+    "Column9": 37,
+    "yes":"",
+    "no":""
   },
   {
     "id": 43,
@@ -369,7 +429,9 @@
     "reward": "",
     "selectedYes": 0.0,
     "selectedNo": 0.0,
-    "Column9": 38
+    "Column9": 38,
+    "yes":"",
+    "no":""
   },
   {
     "id": 44,
@@ -381,7 +443,9 @@
     "reward": "",
     "selectedYes": 0.0,
     "selectedNo": 0.0,
-    "Column9": 39
+    "Column9": 39,
+    "yes":"",
+    "no":""
   },
   {
     "id": 45,
@@ -393,7 +457,9 @@
     "reward": "",
     "selectedYes": 0.0,
     "selectedNo": 0.0,
-    "Column9": 40
+    "Column9": 40,
+    "yes":"",
+    "no":""
   },
   {
     "id": 46,
@@ -405,7 +471,9 @@
     "reward": "",
     "selectedYes": 0.0,
     "selectedNo": 0.0,
-    "Column9": 41
+    "Column9": 41,
+    "yes":"",
+    "no":""
   },
   {
     "id": 47,
@@ -417,7 +485,9 @@
     "reward": "",
     "selectedYes": 0.0,
     "selectedNo": 0.0,
-    "Column9": 42
+    "Column9": 42,
+    "yes":"",
+    "no":""
   },
   {
     "id": 48,
@@ -429,7 +499,9 @@
     "reward": "",
     "selectedYes": 0.0,
     "selectedNo": 0.0,
-    "Column9": 43
+    "Column9": 43,
+    "yes":"",
+    "no":""
   },
   {
     "id": 49,
@@ -441,6 +513,8 @@
     "reward": "",
     "selectedYes": 0.0,
     "selectedNo": 0.0,
-    "Column9": 44
+    "Column9": 44,
+    "yes":"",
+    "no":""
   }
 ]

@@ -14,7 +14,7 @@ module game {
 
             this.manageWindow.btnPlot.addEventListener(egret.TouchEvent.TOUCH_TAP, this.btnPlotClick, this);
             this.manageWindow.btnPicture.addEventListener(egret.TouchEvent.TOUCH_TAP, this.pictClick, this);
-            
+
             this.manageWindow.yes.addEventListener(egret.TouchEvent.TOUCH_TAP, this.yes, this);
             this.manageWindow.no.addEventListener(egret.TouchEvent.TOUCH_TAP, this.no, this);
             this.manageWindow.addEventListener(egret.Event.ADDED_TO_STAGE, this.initData, this);
@@ -336,6 +336,8 @@ module game {
             if (!this.manageEvent) return;
             console.log(this.manageEvent.type, this.manageEvent.subType);
             this.manageWindow.description = this.manageEvent.description;
+            this.manageWindow.yes_text = this.manageEvent.yes;
+            this.manageWindow.no_text = this.manageEvent.no;
             this.manageWindow.text1.y = 800;
             if (this.manageEvent.type == "小游戏") {
                 this.canSelectedCard = false;
