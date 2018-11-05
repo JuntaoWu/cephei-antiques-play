@@ -47,6 +47,10 @@ module game {
                 }
                 this.proxy.playerInfo.gold = (parseFloat(this.proxy.playerInfo.gold) + gold_haha).toString();
                 platform.showModal("你获得了" + gold_haha + "金币", false);
+                this.proxy.playerInfo.time = 24;
+                this.proxy.playerInfo.guPrice = [0, 0, 0, 0];
+                this.proxy.playerInfo.guColl = [5, 5, 5, 5];
+                this.proxy.playerInfo.guEventList = [];
             } else {
                 if (this.manageEvent.subType == "有选项" || this.manageEvent.type == "角色") {
                     this.manageWindow.option.visible = true;
@@ -328,10 +332,11 @@ module game {
         public trueFalseList: Array<boolean>;
         public trueAndFalseUIList: Array<eui.Group>;
         public setManageEvent() {
-            this.manageWindow.miniGameGroup.visible = false;
+            this.manageWindow.miniGameGroup.visible = this.manageWindow.eventGroup.visible = false;
             if (!this.manageEvent) return;
             console.log(this.manageEvent.type, this.manageEvent.subType);
             this.manageWindow.description = this.manageEvent.description;
+            this.manageWindow.text1.y = 800;
             if (this.manageEvent.type == "小游戏") {
                 this.canSelectedCard = false;
                 this.manageWindow.miniGameGroup.visible = true;
@@ -340,6 +345,8 @@ module game {
                 this.manageWindow.gameTrueFalse.removeChildren();
                 if (this.manageEvent.subType == "猜真假") {
                     this.manageWindow.gameTrueFalse.visible = true;
+                    this.manageWindow.eventGroup.visible = false;
+                    this.manageWindow.text1.y = 1020;
                     this.trueAndFalseUIList = [];
                     this.trueFalseList = [
                         true, true, true
@@ -475,7 +482,7 @@ module game {
                 }
             }
             else {
-
+                this.manageWindow.eventGroup.visible = true;
             }
         }
 

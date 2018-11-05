@@ -69,7 +69,7 @@ module game {
             this.gameScreen.bottomGroup.visible = this.gameScreen.plotSelectList.visible = this.gameScreen.questionGroup.visible = false;
             this.gameScreen.showReset = this.gameScreen.showMiniGame = this.gameScreen.showTransition = this.canGoNext = false;
             this.gameScreen.question = this.gameScreen.points = "";
-            this.gameScreen.scrollGroup.height = 450;
+            this.gameScreen.scrollGroup.bottom = 20;
             this.gameScreen.scrollGroup.viewport.scrollV = 0;
 
             let barH = this.gameScreen.huangAndMubar.getChildByName("huangyanyan") as eui.Image;
@@ -101,7 +101,10 @@ module game {
                 let hintCardsLabel = (this.gameScreen.btnTips.getChildByName("hintGroup") as eui.Group).getChildByName("hintCards") as eui.BitmapLabel;
                 hintCardsLabel.text = this.proxy.playerInfo.hints.toString();
 
-                this.gameScreen.scrollGroup.height = 150;
+                this.gameScreen.scrollGroup.bottom = this.gameScreen.bottomGroup.height + 70;
+                if (!question.question) {
+                    this.gameScreen.scrollGroup.bottom -= 70;
+                }
                 this.gameScreen.scrollGroup.viewport.scrollH = 0;
                 if (question.type == "填空") {
                     this.gameScreen.bottomGroup.visible = this.gameScreen.showReset = true;
@@ -134,7 +137,7 @@ module game {
             }
             else if (plot.type == "界面切换经营") {
                 this.btnManageClick();
-                // this.proxy.nextPlot();
+                this.proxy.nextPlot();
                 this.canGoNext = true;
             }
             else {
@@ -237,7 +240,6 @@ module game {
 
         public showPlotOption(talkId) {
             this.gameScreen.plotSelectList.visible = true;
-            this.gameScreen.scrollGroup.height = 280;
             let plotOption = this.plotOptions.get(talkId.toString());
             if (plotOption) {
                 this.gameScreen.question = plotOption.question || "";
@@ -258,6 +260,7 @@ module game {
                 this.gameScreen.plotSelectList.addEventListener(eui.ItemTapEvent.ITEM_TAP, this.selectItem, this);
             }
             egret.setTimeout(() => {
+                this.gameScreen.scrollGroup.bottom = this.gameScreen.plotSelectList.height + 30;
                 let bottomHeight = this.gameScreen.scrollGroup.viewport.contentHeight - this.gameScreen.scrollGroup.height;
                 this.gameScreen.scrollGroup.viewport.scrollV = Math.max(0, bottomHeight);
             }, this, 100)

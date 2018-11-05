@@ -48,7 +48,7 @@
     </e:Group>
     <e:Group id="textGroup" bottom="0" top="725">
         <e:Image width="720" source="game-bg" height="100%" scale9Grid="90,70,540,422"/>
-        <e:Scroller id="scrollGroup" width="640" y="40" horizontalCenter="0" height="150">
+        <e:Scroller id="scrollGroup" width="640" horizontalCenter="0" top="35" bottom="372">
             <e:viewport>
                 <e:Group>
                     <e:Label text="{description}" lineSpacing="10" textColor="0x000000" horizontalCenter="0" width="640" fontFamily="Microsoft YaHei"/>
@@ -99,8 +99,8 @@
                 </e:Skin>
             </e:Button>
             <e:Group visible="{showPoints}" horizontalCenter="0" bottom="50">
-                <e:Image source="tips-bg" width="460" height="100%"/>
-                <e:Label text="{points}" textColor="0x000000" horizontalCenter="0" maxWidth="450" verticalAlign="middle" textAlign="center" verticalCenter="0"/>       
+                <e:Image source="tips-bg" width="450" height="100%"/>
+                <e:Label text="{points}" textColor="0x000000" horizontalCenter="0" maxWidth="450" verticalAlign="middle" textAlign="center" top="10" bottom="10"/>       
             </e:Group>
         </e:Group>
     </e:Group>

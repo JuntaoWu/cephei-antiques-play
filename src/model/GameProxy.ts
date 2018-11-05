@@ -112,10 +112,15 @@ module game {
         }
 
         public getRandomManageEvent(): any {
-            let eventList: Array<any> = Math.random() < 0.3 ? this.manageEventMap.get("小游戏") :
-                (Math.random() < 0.5 ? this.manageEventMap.get("随机事件")
-                    : this.manageEventMap.get("角色"));
+            let getType = Math.random() < 0.3 ? "小游戏" : (Math.random() < 0.5 ? "随机事件" : "角色");
+            let eventList: Array<any> = this.manageEventMap.get(getType);
             let notMeetEvent = eventList.filter(i => !this.playerInfo.guEventList.includes(i.id));
+            if (getType == "小游戏") {
+                notMeetEvent = eventList.filter(i => !this.playerInfo.guEventList.includes(i.subType));
+                if (!notMeetEvent.length) {
+                    notMeetEvent = eventList;
+                }
+            }
             if (this.playerInfo.time <= 0) {
                 return null;
             }
@@ -124,7 +129,12 @@ module game {
             }
             else {
                 let finalRoundRandomIndex = _.random(0, notMeetEvent.length - 1);
-                this.playerInfo.guEventList.push(notMeetEvent[finalRoundRandomIndex].id);
+                if (notMeetEvent[finalRoundRandomIndex].type != "小游戏") {
+                    this.playerInfo.guEventList.push(notMeetEvent[finalRoundRandomIndex].id);
+                }
+                else {
+                    this.playerInfo.guEventList.push(notMeetEvent[finalRoundRandomIndex].subType);
+                }
                 return notMeetEvent[finalRoundRandomIndex];
             }
         }
@@ -135,6 +145,12 @@ module game {
                 console.log("mergeRemoteInfoToStorage: parse playerInfo");
                 this.playerInfo = JSON.parse(res.data);
                 console.log(this.playerInfo)
+                if (!this.playerInfo.time) {
+                    this.playerInfo.time = 24;
+                    this.playerInfo.guPrice = [0, 0, 0, 0];
+                    this.playerInfo.guColl = [5, 5, 5, 5];
+                    this.playerInfo.guEventList = [];
+                }
             }
             catch (error) {
                 console.error("localPlayerInfo is not JSON, skip.");
