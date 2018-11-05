@@ -34,8 +34,18 @@ module game {
         }
 
         public newGame() {
-            this.proxy.playerInfo.plotId = 1;
-            this.sendNotification(SceneCommand.CHANGE, Scene.Game);
+            if (this.proxy.playerInfo.plotId != 1) {
+                 platform.showModal("是否确认新的开始？", true).then((res) => {
+                     if (res.confirm) {
+                        this.proxy.playerInfo.plotId = 1;
+                        this.sendNotification(SceneCommand.CHANGE, Scene.Game);
+                     }
+                 });
+            }
+            else {
+                this.sendNotification(SceneCommand.CHANGE, Scene.Game);
+            }
+            
         }
 
         public showManage() {
