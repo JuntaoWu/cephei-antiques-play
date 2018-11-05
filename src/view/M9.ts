@@ -50,24 +50,30 @@ module game {
         public end(e: egret.TouchEvent) {
             let aa = Number(this.bushu.text);
             aa -= 1;
-            this.bushu.text = aa.toString();
-            let xx: number = Math.abs(e.stageX - this.start_x);
-            let yy: number = Math.abs(e.stageY - this.start_y);
-            if (xx > yy) {
-                if ((e.stageX - this.start_x) > 0) {
-                    //右
-                    this.you();
-                } else {
-                    //左
-                    this.zuo();
-                }
+            if (aa < 0) {
+                console.log("失败");
+                this.f5();
+                ApplicationFacade.getInstance().sendNotification(GameProxy.REDUCE_POWER);
             } else {
-                if ((e.stageY - this.start_y) > 0) {
-                    //下
-                    this.xia();
+                this.bushu.text = aa.toString();
+                let xx: number = Math.abs(e.stageX - this.start_x);
+                let yy: number = Math.abs(e.stageY - this.start_y);
+                if (xx > yy) {
+                    if ((e.stageX - this.start_x) > 0) {
+                        //右
+                        this.you();
+                    } else {
+                        //左
+                        this.zuo();
+                    }
                 } else {
-                    //上
-                    this.shang();
+                    if ((e.stageY - this.start_y) > 0) {
+                        //下
+                        this.xia();
+                    } else {
+                        //上
+                        this.shang();
+                    }
                 }
             }
         }
@@ -162,11 +168,11 @@ module game {
             this.ren.x = 427;
             this.ren.y = 169;
         }
-        
-		public questionId: number;
-		public setQuestionId(id: number): void {
-			this.questionId = id;
-		}
+
+        public questionId: number;
+        public setQuestionId(id: number): void {
+            this.questionId = id;
+        }
     }
 
     export class M9Mediator extends puremvc.Mediator implements puremvc.IMediator {

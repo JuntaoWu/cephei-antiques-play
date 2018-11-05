@@ -65,7 +65,7 @@
 		</e:Group>
 		<e:Label id="text1" text="{description}" width="670" horizontalCenter="0" textColor="0x000000" size="35" anchorOffsetY="0" verticalAlign="middle" textAlign="center" y="800" fontFamily="Microsoft YaHei"/>
 		<e:Group id="option" width="720" height="129" horizontalCenter="0" bottom="0" anchorOffsetY="0">
-			<e:Button id="yes" label=""  bottom="0" left="0">
+			<e:Button id="yes"  bottom="0" left="0" label="{yes_text}">
 				<e:skinName>
 					<e:Skin states="up,down,disabled">
 					<e:Image width="100%" height="100%" source="yes"/>
@@ -74,7 +74,7 @@
 				</e:skinName>
 
 			</e:Button>
-			<e:Button id="no" label="" bottom="0" right="0">
+			<e:Button id="no" bottom="0" right="0" label="{no_text}">
 				<e:skinName>
 					<e:Skin states="up,down,disabled">
 					<e:Image width="100%" height="100%" source="no"/>

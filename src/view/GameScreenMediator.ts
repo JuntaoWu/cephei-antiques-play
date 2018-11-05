@@ -16,12 +16,12 @@ module game {
             this.gameScreen.textGroup.addEventListener(egret.TouchEvent.TOUCH_END, this.touchEnd, this);
 
             this.gameScreen.nextTest.addEventListener(egret.TouchEvent.TOUCH_TAP, this.nextTestClick, this);
-            
+
             this.gameScreen.btnBack.addEventListener(egret.TouchEvent.TOUCH_TAP, this.btnBackClick, this);
             // this.gameScreen.btnSave.addEventListener(egret.TouchEvent.TOUCH_TAP, this.btnSaveClick, this);
             this.gameScreen.btnManage.addEventListener(egret.TouchEvent.TOUCH_TAP, this.btnManageClick, this);
             this.gameScreen.btnPicture.addEventListener(egret.TouchEvent.TOUCH_TAP, this.pictClick, this);
-            
+
             this.gameScreen.btnTips.addEventListener(egret.TouchEvent.TOUCH_TAP, this.btnTipsClick, this);
             this.gameScreen.btnHelp.addEventListener(egret.TouchEvent.TOUCH_TAP, this.share, this);
 
@@ -71,6 +71,7 @@ module game {
             this.gameScreen.question = this.gameScreen.points = "";
             this.gameScreen.scrollGroup.bottom = 20;
             this.gameScreen.scrollGroup.viewport.scrollV = 0;
+            this.gameScreen.fatigueValue.text = this.proxy.playerInfo.fatigueValue.toString();
 
             let barH = this.gameScreen.huangAndMubar.getChildByName("huangyanyan") as eui.Image;
             let barM = this.gameScreen.huangAndMubar.getChildByName("munai") as eui.Image;
@@ -123,6 +124,7 @@ module game {
                 if (plot.effect != "序章") {
                     if (this.proxy.canReduecePower(30)) {
                         this.proxy.reducePower(30);
+                        this.gameScreen.fatigueValue.text = this.proxy.playerInfo.fatigueValue.toString();
                     }
                     else {
                         return;
@@ -302,7 +304,7 @@ module game {
             this.gameScreen.description = this.rightText;
             this.canGoNext = true;
             this.gameScreen.showReset = false;
-            
+
             if (!this.aa) {
                 this.aa = new eui.Image();
                 this.aa.source = "answer_right";
@@ -418,6 +420,7 @@ module game {
                 case GameProxy.REDUCE_POWER:
                     if (this.proxy.canReduecePower(10)) {
                         this.proxy.reducePower(10);
+                        this.gameScreen.fatigueValue.text = this.proxy.playerInfo.fatigueValue.toString();
                         try {
                             platform.showModal("答案错误，扣除10点体力！", false).then(() => {
                                 this.btnResetClick();

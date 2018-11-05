@@ -18,9 +18,10 @@ module game {
         // public btnSave: eui.Button;
         public btnManage: eui.Button;
         public btnPicture: eui.Button;
+        public fatigueValue: eui.Label;
 
         public questionRes: string; //谜题图
-        public question: string; 
+        public question: string;
         public points: string;
         public description: string = "";
         public showMiniGame: boolean;

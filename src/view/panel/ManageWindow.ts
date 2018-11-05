@@ -30,6 +30,8 @@ module game {
         public coll4: eui.Label;
 
         public description: string;
+        public yes_text: string;
+        public no_text: string;
         public miniGameGroup: eui.Group;
         public gameTrueFalse: eui.Group;
         public gameList: eui.List;
