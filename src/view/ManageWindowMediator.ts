@@ -329,6 +329,7 @@ module game {
 
         public gameImgList: Array<any>;
         public answerImgList: Array<any>;
+        public falseIndexList: Array<number>;
         public trueFalseList: Array<boolean>;
         public trueAndFalseUIList: Array<eui.Group>;
         public setManageEvent() {
@@ -355,9 +356,11 @@ module game {
                         , true, true, true
                         , true, true, true
                     ]
+                    this.falseIndexList = [];
                     for (let i = 0; i < 3; i++) {
                         let randomIndex = _.random(i * 3, i * 3 + 2);
                         this.trueFalseList[randomIndex] = false;
+                        this.falseIndexList.push(randomIndex);
                     }
                     this.trueFalseList.forEach((v, i) => {
                         let img = new eui.Image();
@@ -586,7 +589,7 @@ module game {
                 return;
             }
             let leftTime = num - 1;
-            let randomIndex = _.random(0, 8);
+            let randomIndex = this.falseIndexList[_.random(0, 2)];
             let swapIndex = _.random(0, 8);
             while (randomIndex == swapIndex) {
                 swapIndex = _.random(0, 8);
