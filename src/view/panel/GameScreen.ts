@@ -19,6 +19,7 @@ module game {
         public btnManage: eui.Button;
         public btnPicture: eui.Button;
         public fatigueValue: eui.Label;
+        public no_btnmanage: eui.Image;
 
         public questionRes: string; //谜题图
         public question: string;

@@ -15,7 +15,7 @@ module game {
             this.startScreen.btnNewGame.addEventListener(egret.TouchEvent.TOUCH_TAP, this.newGame, this);
             this.startScreen.btnManage.addEventListener(egret.TouchEvent.TOUCH_TAP, this.showManage, this);
             this.startScreen.btnDev.addEventListener(egret.TouchEvent.TOUCH_TAP, this.showDeveloper, this);
-            
+
             this.startScreen.btnPicture.addEventListener(egret.TouchEvent.TOUCH_TAP, this.pictClick, this);
             this.startScreen.btnStore.addEventListener(egret.TouchEvent.TOUCH_TAP, this.storeClick, this);
             this.startScreen.btnShare.addEventListener(egret.TouchEvent.TOUCH_TAP, this.shareClick, this);
@@ -27,6 +27,8 @@ module game {
         public async initData() {
             await this.proxy.getPlayerInfoFromStorage();
             this.startScreen.btnResumeGame.visible = this.proxy.playerInfo.plotId != 1 ? true : false;
+            this.startScreen.btnManage.visible = this.proxy.playerInfo.isManage;
+            this.startScreen.no_manage.visible = !this.proxy.playerInfo.isManage;
         }
 
         public entryGame() {
@@ -51,19 +53,19 @@ module game {
             else {
                 this.sendNotification(SceneCommand.CHANGE, Scene.Game);
             }
-            
+
         }
 
         public showManage() {
-            this.sendNotification(SceneCommand.SHOW_MANAGE); 
+            this.sendNotification(SceneCommand.SHOW_MANAGE);
         }
 
         public showDeveloper() {
-            this.sendNotification(SceneCommand.SHOW_DEVE); 
+            this.sendNotification(SceneCommand.SHOW_DEVE);
         }
 
         public pictClick() {
-            this.sendNotification(SceneCommand.SHOW_SCENE); 
+            this.sendNotification(SceneCommand.SHOW_SCENE);
         }
 
         public storeClick() {

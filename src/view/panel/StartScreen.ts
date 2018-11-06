@@ -26,5 +26,6 @@ module game {
         public btnStore: eui.Button;
         public btnShare: eui.Button;
         public btnSetting: eui.Button;
+        public no_manage: eui.Image;
     }
 }

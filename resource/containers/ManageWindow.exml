@@ -9,16 +9,24 @@
             </e:Skin>
         </e:Button>
 		
-        <e:Button id="btnPlot" x="160" verticalCenter="0">
+        <e:Button id="btnPlot" x="152" verticalCenter="0">
             <e:Skin>
                 <e:Image source="btn-plot"></e:Image>
             </e:Skin>
         </e:Button>
-        <e:Button id="btnPicture" verticalCenter="0.5" x="320">
+        <e:Button id="btnPicture" verticalCenter="1" x="252">
             <e:Skin>
                 <e:Image source="btn-picture"></e:Image>
             </e:Skin>
         </e:Button>
+			<e:Button id="btnTutorial" verticalCenter="1" x="358">
+				<e:skinName>
+					<e:Skin states="up,down,disabled">
+					<e:Image width="100%" height="100%" source="tutorial"/>
+					<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+					</e:Skin>
+				</e:skinName>
+			</e:Button>
 
     </e:Group>
 
