@@ -65,6 +65,9 @@ module game {
             this.gameScreen.bottomGroup.visible = this.gameScreen.plotSelectList.visible = this.gameScreen.questionGroup.visible = false;
             this.gameScreen.showReset = this.gameScreen.showMiniGame = this.gameScreen.showTransition = this.canGoNext = false;
             this.gameScreen.question = this.gameScreen.points = "";
+            this.gameScreen.scrollGroup.bottom = 20;
+            this.gameScreen.scrollGroup.viewport.scrollV = 0;
+            this.gameScreen.fatigueValue.text = this.proxy.playerInfo.fatigueValue.toString();
 
             let barH = this.gameScreen.huangAndMubar.getChildByName("huangyanyan") as eui.Image;
             let barM = this.gameScreen.huangAndMubar.getChildByName("munai") as eui.Image;
