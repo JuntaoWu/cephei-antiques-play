@@ -18,7 +18,7 @@ module game {
             plotId: 1,
             collectedScenes: [],
             fatigueValue: fatigueValue,
-            gold: "40",
+            gold: "0",
             lastEntryTime: "",
             hints: 50,
             time: 24,
