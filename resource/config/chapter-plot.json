@@ -12,7 +12,8 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 0
   },
   "2": {
     "id": 2,
@@ -25,9 +26,10 @@
     "sound": "",
     "playTime": 0.0,
     "talkId": 0.0,
-    "autoNextTime": 1.5,
+    "autoNextTime": 2,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 0
   },
   "3": {
     "id": 3,
@@ -42,7 +44,8 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 0
   },
   "4": {
     "id": 4,
@@ -57,7 +60,8 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "半身",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 0
   },
   "5": {
     "id": 5,
@@ -72,7 +76,8 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "半身",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 0
   },
   "6": {
     "id": 6,
@@ -87,7 +92,8 @@
     "talkId": 1,
     "autoNextTime": 0.0,
     "portrait": "半身",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 0
   },
   "7": {
     "id": 7,
@@ -102,7 +108,8 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "半身",
-    "next": 2
+    "next": 2,
+    "chapter": 0
   },
   "8": {
     "id": 8,
@@ -117,7 +124,8 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "半身",
-    "next": 1
+    "next": 1,
+    "chapter": 0
   },
   "9": {
     "id": 9,
@@ -132,7 +140,8 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 0
   },
   "10": {
     "id": 10,
@@ -147,7 +156,8 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 0
   },
   "11": {
     "id": 11,
@@ -162,7 +172,8 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 0
   },
   "12": {
     "id": 12,
@@ -177,7 +188,8 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 0
   },
   "13": {
     "id": 13,
@@ -192,25 +204,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 0
   },
   "14": {
     "id": 14,
-    "res": "s2、s3",
-    "questionId": 0.0,
-    "type": "切换",
-    "effect": "",
-    "effectTrigger": "",
-    "description": "许愿：西方对应白虎，属金……你这是五行缺金的意思？",
-    "sound": "",
-    "playTime": 0.0,
-    "talkId": 0.0,
-    "autoNextTime": 0.0,
-    "portrait": "",
-    "next": 0.0
-  },
-  "15": {
-    "id": 15,
     "res": "s2、s3",
     "questionId": 0.0,
     "type": "切换",
@@ -222,10 +220,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 0
   },
-  "16": {
-    "id": 16,
+  "15": {
+    "id": 15,
     "res": "s2、s3",
     "questionId": 0.0,
     "type": "切换",
@@ -237,10 +236,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 0
   },
-  "17": {
-    "id": 17,
+  "16": {
+    "id": 16,
     "res": "s2、s3",
     "questionId": 0.0,
     "type": "追加",
@@ -252,10 +252,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 0
   },
-  "18": {
-    "id": 18,
+  "17": {
+    "id": 17,
     "res": "s2、s3",
     "questionId": 0.0,
     "type": "追加",
@@ -267,10 +268,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 0
   },
-  "19": {
-    "id": 19,
+  "18": {
+    "id": 18,
     "res": "s2、s3",
     "questionId": 0.0,
     "type": "切换",
@@ -282,10 +284,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 0
   },
-  "20": {
-    "id": 20,
+  "19": {
+    "id": 19,
     "res": "s2、s3",
     "questionId": 0.0,
     "type": "追加",
@@ -297,10 +300,11 @@
     "talkId": 2,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 0
   },
-  "21": {
-    "id": 21,
+  "20": {
+    "id": 20,
     "res": "s2、s3",
     "questionId": 0.0,
     "type": "切换",
@@ -312,10 +316,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 2
+    "next": 2,
+    "chapter": 0
   },
-  "22": {
-    "id": 22,
+  "21": {
+    "id": 21,
     "res": "s2、s3",
     "questionId": 0.0,
     "type": "切换",
@@ -327,10 +332,11 @@
     "talkId": 0.0,
     "autoNextTime": 6,
     "portrait": "",
-    "next": 1
+    "next": 1,
+    "chapter": 0
   },
-  "23": {
-    "id": 23,
+  "22": {
+    "id": 22,
     "res": "s2、s3",
     "questionId": 0.0,
     "type": "切换",
@@ -342,10 +348,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 0
   },
-  "24": {
-    "id": 24,
+  "23": {
+    "id": 23,
     "res": "s2",
     "questionId": 0.0,
     "type": "切换",
@@ -357,10 +364,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 0
   },
-  "25": {
-    "id": 25,
+  "24": {
+    "id": 24,
     "res": "s2",
     "questionId": 0.0,
     "type": "追加",
@@ -372,10 +380,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 0
   },
-  "26": {
-    "id": 26,
+  "25": {
+    "id": 25,
     "res": "s2",
     "questionId": 0.0,
     "type": "切换",
@@ -387,10 +396,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 0
   },
-  "27": {
-    "id": 27,
+  "26": {
+    "id": 26,
     "res": "",
     "questionId": 2,
     "type": "谜题",
@@ -402,25 +412,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 0
   },
-  "28": {
-    "id": 28,
-    "res": "s2",
-    "questionId": 0.0,
-    "type": "切换",
-    "effect": "",
-    "effectTrigger": "",
-    "description": "许愿：这五种颜色分别是青红黄玄白，对应着五脉，而我作为许家的后人也就是白字门，做好我自己就是要拼好我对应的白色这一部分。这机关还真有点魔方的意思，不过也幸好不是要我拼所有面，不然我可能就得在这密室里玩一天了……",
-    "sound": "",
-    "playTime": 0.0,
-    "talkId": 0.0,
-    "autoNextTime": 0.0,
-    "portrait": "",
-    "next": 0.0
-  },
-  "29": {
-    "id": 29,
+  "27": {
+    "id": 27,
     "res": "s2",
     "questionId": 0.0,
     "type": "切换",
@@ -432,10 +428,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 0
   },
-  "30": {
-    "id": 30,
+  "28": {
+    "id": 28,
     "res": "s54",
     "questionId": 0.0,
     "type": "追加",
@@ -447,10 +444,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 0
   },
-  "31": {
-    "id": 31,
+  "29": {
+    "id": 29,
     "res": "s54",
     "questionId": 0.0,
     "type": "切换",
@@ -462,10 +460,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 0
   },
-  "32": {
-    "id": 32,
+  "30": {
+    "id": 30,
     "res": "s54、s1",
     "questionId": 0.0,
     "type": "切换",
@@ -477,10 +476,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "半身",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 0
   },
-  "33": {
-    "id": 33,
+  "31": {
+    "id": 31,
     "res": "s54、s1",
     "questionId": 0.0,
     "type": "切换",
@@ -492,10 +492,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "半身",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 0
   },
-  "34": {
-    "id": 34,
+  "32": {
+    "id": 32,
     "res": "",
     "questionId": 3,
     "type": "谜题",
@@ -507,25 +508,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 0
   },
-  "35": {
-    "id": 35,
-    "res": "s54、s1",
-    "questionId": 0.0,
-    "type": "切换",
-    "effect": "",
-    "effectTrigger": "",
-    "description": "许愿：原来这些数字是对应不同字的笔画数啊！2854就对应着人事过心这四个字，按顺序把滑轮转到对应位置就能解开这密码",
-    "sound": "",
-    "playTime": 0.0,
-    "talkId": 0.0,
-    "autoNextTime": 0.0,
-    "portrait": "半身",
-    "next": 0.0
-  },
-  "36": {
-    "id": 36,
+  "33": {
+    "id": 33,
     "res": "s55",
     "questionId": 0.0,
     "type": "切换",
@@ -537,10 +524,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 0
   },
-  "37": {
-    "id": 37,
+  "34": {
+    "id": 34,
     "res": "s20",
     "questionId": 0.0,
     "type": "切换",
@@ -552,10 +540,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 0
   },
-  "38": {
-    "id": 38,
+  "35": {
+    "id": 35,
     "res": "",
     "questionId": 0.0,
     "type": "界面切换经营",
@@ -567,10 +556,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 0
   },
-  "39": {
-    "id": 39,
+  "36": {
+    "id": 36,
     "res": "",
     "questionId": 0.0,
     "type": "转场特效",
@@ -582,10 +572,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 1
   },
-  "40": {
-    "id": 40,
+  "37": {
+    "id": 37,
     "res": "s4、s1",
     "questionId": 0.0,
     "type": "切换",
@@ -597,10 +588,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "半身",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 1
   },
-  "41": {
-    "id": 41,
+  "38": {
+    "id": 38,
     "res": "s4、s1",
     "questionId": 0.0,
     "type": "切换",
@@ -612,10 +604,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "半身",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 1
   },
-  "42": {
-    "id": 42,
+  "39": {
+    "id": 39,
     "res": "s4、s1",
     "questionId": 0.0,
     "type": "切换",
@@ -627,10 +620,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "半身",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 1
   },
-  "43": {
-    "id": 43,
+  "40": {
+    "id": 40,
     "res": "s4、s56",
     "questionId": 0.0,
     "type": "切换",
@@ -642,10 +636,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 1
   },
-  "44": {
-    "id": 44,
+  "41": {
+    "id": 41,
     "res": "s4、s56",
     "questionId": 0.0,
     "type": "切换",
@@ -657,10 +652,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 1
   },
-  "45": {
-    "id": 45,
+  "42": {
+    "id": 42,
     "res": "s4、s57",
     "questionId": 0.0,
     "type": "切换",
@@ -672,10 +668,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "半身",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 1
   },
-  "46": {
-    "id": 46,
+  "43": {
+    "id": 43,
     "res": "s4、s57",
     "questionId": 0.0,
     "type": "切换",
@@ -687,10 +684,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "半身",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 1
   },
-  "47": {
-    "id": 47,
+  "44": {
+    "id": 44,
     "res": "s4、s57",
     "questionId": 0.0,
     "type": "切换",
@@ -702,10 +700,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "半身",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 1
   },
-  "48": {
-    "id": 48,
+  "45": {
+    "id": 45,
     "res": "s4、s57",
     "questionId": 0.0,
     "type": "追加",
@@ -717,10 +716,11 @@
     "talkId": 3,
     "autoNextTime": 0.0,
     "portrait": "半身",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 1
   },
-  "49": {
-    "id": 49,
+  "46": {
+    "id": 46,
     "res": "s4、s57",
     "questionId": 0.0,
     "type": "切换",
@@ -732,10 +732,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "半身",
-    "next": 2
+    "next": 2,
+    "chapter": 1
   },
-  "50": {
-    "id": 50,
+  "47": {
+    "id": 47,
     "res": "s4、s57",
     "questionId": 0.0,
     "type": "切换",
@@ -747,10 +748,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "半身",
-    "next": 1
+    "next": 1,
+    "chapter": 1
   },
-  "51": {
-    "id": 51,
+  "48": {
+    "id": 48,
     "res": "s4、s57",
     "questionId": 0.0,
     "type": "切换",
@@ -762,10 +764,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "半身",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 1
   },
-  "52": {
-    "id": 52,
+  "49": {
+    "id": 49,
     "res": "s4、s56",
     "questionId": 0.0,
     "type": "切换",
@@ -777,10 +780,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 1
   },
-  "53": {
-    "id": 53,
+  "50": {
+    "id": 50,
     "res": "s4、s9",
     "questionId": 0.0,
     "type": "切换",
@@ -792,10 +796,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 1
   },
-  "54": {
-    "id": 54,
+  "51": {
+    "id": 51,
     "res": "s4、s9",
     "questionId": 0.0,
     "type": "切换",
@@ -807,10 +812,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 1
   },
-  "55": {
-    "id": 55,
+  "52": {
+    "id": 52,
     "res": "",
     "questionId": 4,
     "type": "谜题",
@@ -822,25 +828,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 1
   },
-  "56": {
-    "id": 56,
-    "res": "s4、s9",
-    "questionId": 0.0,
-    "type": "切换",
-    "effect": "",
-    "effectTrigger": "",
-    "description": "许愿：费了一会儿功夫，我总算是把手中的碎片拼出了个大概的样子。",
-    "sound": "",
-    "playTime": 0.0,
-    "talkId": 0.0,
-    "autoNextTime": 0.0,
-    "portrait": "",
-    "next": 0.0
-  },
-  "57": {
-    "id": 57,
+  "53": {
+    "id": 53,
     "res": "s0、s58",
     "questionId": 0.0,
     "type": "切换",
@@ -852,11 +844,12 @@
     "talkId": 0.0,
     "autoNextTime": 2,
     "portrait": "半身",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 1
   },
-  "58": {
-    "id": 58,
-    "res": "s0、s58",
+  "54": {
+    "id": 54,
+    "res": "s4、s58",
     "questionId": 0.0,
     "type": "切换",
     "effect": "晃动",
@@ -867,10 +860,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "半身",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 1
   },
-  "59": {
-    "id": 59,
+  "55": {
+    "id": 55,
     "res": "s5",
     "questionId": 0.0,
     "type": "切换",
@@ -882,10 +876,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 1
   },
-  "60": {
-    "id": 60,
+  "56": {
+    "id": 56,
     "res": "s5",
     "questionId": 0.0,
     "type": "追加",
@@ -897,10 +892,11 @@
     "talkId": 4,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 1
   },
-  "61": {
-    "id": 61,
+  "57": {
+    "id": 57,
     "res": "s5",
     "questionId": 0.0,
     "type": "切换",
@@ -912,10 +908,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 2
+    "next": 2,
+    "chapter": 1
   },
-  "62": {
-    "id": 62,
+  "58": {
+    "id": 58,
     "res": "s5",
     "questionId": 0.0,
     "type": "切换",
@@ -927,10 +924,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 1
+    "next": 1,
+    "chapter": 1
   },
-  "63": {
-    "id": 63,
+  "59": {
+    "id": 59,
     "res": "s5",
     "questionId": 0.0,
     "type": "切换",
@@ -942,10 +940,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 1
   },
-  "64": {
-    "id": 64,
+  "60": {
+    "id": 60,
     "res": "s4",
     "questionId": 0.0,
     "type": "追加",
@@ -957,10 +956,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 1
   },
-  "65": {
-    "id": 65,
+  "61": {
+    "id": 61,
     "res": "",
     "questionId": 5,
     "type": "谜题",
@@ -972,25 +972,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 1
   },
-  "66": {
-    "id": 66,
-    "res": "s4",
-    "questionId": 0.0,
-    "type": "切换",
-    "effect": "",
-    "effectTrigger": "",
-    "description": "许愿：这是要我去城外走一遭？",
-    "sound": "",
-    "playTime": 0.0,
-    "talkId": 0.0,
-    "autoNextTime": 0.0,
-    "portrait": "",
-    "next": 0.0
-  },
-  "67": {
-    "id": 67,
+  "62": {
+    "id": 62,
     "res": "s6",
     "questionId": 0.0,
     "type": "切换",
@@ -1002,10 +988,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 1
   },
-  "68": {
-    "id": 68,
+  "63": {
+    "id": 63,
     "res": "s6、s7",
     "questionId": 0.0,
     "type": "追加",
@@ -1017,10 +1004,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 1
   },
-  "69": {
-    "id": 69,
+  "64": {
+    "id": 64,
     "res": "s6、s7",
     "questionId": 0.0,
     "type": "切换",
@@ -1032,10 +1020,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 1
   },
-  "70": {
-    "id": 70,
+  "65": {
+    "id": 65,
     "res": "s6、s7",
     "questionId": 0.0,
     "type": "切换",
@@ -1047,10 +1036,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 1
   },
-  "71": {
-    "id": 71,
+  "66": {
+    "id": 66,
     "res": "s6、s7",
     "questionId": 0.0,
     "type": "追加",
@@ -1062,10 +1052,11 @@
     "talkId": 5,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 1
   },
-  "72": {
-    "id": 72,
+  "67": {
+    "id": 67,
     "res": "s6、s7",
     "questionId": 0.0,
     "type": "切换",
@@ -1077,10 +1068,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 2
+    "next": 2,
+    "chapter": 1
   },
-  "73": {
-    "id": 73,
+  "68": {
+    "id": 68,
     "res": "s6、s7",
     "questionId": 0.0,
     "type": "切换",
@@ -1092,10 +1084,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 1
+    "next": 1,
+    "chapter": 1
   },
-  "74": {
-    "id": 74,
+  "69": {
+    "id": 69,
     "res": "s6",
     "questionId": 0.0,
     "type": "切换",
@@ -1107,10 +1100,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 1
   },
-  "75": {
-    "id": 75,
+  "70": {
+    "id": 70,
     "res": "",
     "questionId": 6,
     "type": "谜题",
@@ -1122,25 +1116,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 1
   },
-  "76": {
-    "id": 76,
-    "res": "s6",
-    "questionId": 0.0,
-    "type": "切换",
-    "effect": "",
-    "effectTrigger": "",
-    "description": "许愿：随着周遭环境的变化，我知道，我终于快要走出去了",
-    "sound": "",
-    "playTime": 0.0,
-    "talkId": 0.0,
-    "autoNextTime": 0.0,
-    "portrait": "",
-    "next": 0.0
-  },
-  "77": {
-    "id": 77,
+  "71": {
+    "id": 71,
     "res": "s6",
     "questionId": 0.0,
     "type": "切换",
@@ -1152,10 +1132,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 1
   },
-  "78": {
-    "id": 78,
+  "72": {
+    "id": 72,
     "res": "s4",
     "questionId": 0.0,
     "type": "切换",
@@ -1167,10 +1148,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 1
   },
-  "79": {
-    "id": 79,
+  "73": {
+    "id": 73,
     "res": "s4",
     "questionId": 0.0,
     "type": "切换",
@@ -1182,10 +1164,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 1
   },
-  "80": {
-    "id": 80,
+  "74": {
+    "id": 74,
     "res": "",
     "questionId": 0.0,
     "type": "转场特效",
@@ -1197,10 +1180,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 2
   },
-  "81": {
-    "id": 81,
+  "75": {
+    "id": 75,
     "res": "s59、s60",
     "questionId": 0.0,
     "type": "切换",
@@ -1212,10 +1196,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 2
   },
-  "82": {
-    "id": 82,
+  "76": {
+    "id": 76,
     "res": "s31、s21、s10、s22",
     "questionId": 0.0,
     "type": "切换",
@@ -1227,10 +1212,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 2
   },
-  "83": {
-    "id": 83,
+  "77": {
+    "id": 77,
     "res": "s31、s21、s10、s22",
     "questionId": 0.0,
     "type": "切换",
@@ -1242,10 +1228,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 2
   },
-  "84": {
-    "id": 84,
+  "78": {
+    "id": 78,
     "res": "s31、s21、s10、s22",
     "questionId": 0.0,
     "type": "切换",
@@ -1257,10 +1244,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 2
   },
-  "85": {
-    "id": 85,
+  "79": {
+    "id": 79,
     "res": "s31、s21、s10、s22",
     "questionId": 0.0,
     "type": "切换",
@@ -1272,10 +1260,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 2
   },
-  "86": {
-    "id": 86,
+  "80": {
+    "id": 80,
     "res": "s31、s21、s10、s22",
     "questionId": 0.0,
     "type": "切换",
@@ -1287,10 +1276,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 2
   },
-  "87": {
-    "id": 87,
+  "81": {
+    "id": 81,
     "res": "s31、s21、s10、s22",
     "questionId": 0.0,
     "type": "切换",
@@ -1302,10 +1292,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 2
   },
-  "88": {
-    "id": 88,
+  "82": {
+    "id": 82,
     "res": "s31、s21、s10、s22",
     "questionId": 0.0,
     "type": "切换",
@@ -1317,10 +1308,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 2
   },
-  "89": {
-    "id": 89,
+  "83": {
+    "id": 83,
     "res": "s31、s21、s10、s22",
     "questionId": 0.0,
     "type": "追加",
@@ -1332,10 +1324,11 @@
     "talkId": 6,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 2
   },
-  "90": {
-    "id": 90,
+  "84": {
+    "id": 84,
     "res": "s31、s21、s10、s22",
     "questionId": 0.0,
     "type": "切换",
@@ -1347,10 +1340,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 2
+    "next": 2,
+    "chapter": 2
   },
-  "91": {
-    "id": 91,
+  "85": {
+    "id": 85,
     "res": "s31、s21、s10、s22",
     "questionId": 0.0,
     "type": "切换",
@@ -1362,10 +1356,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 1
+    "next": 1,
+    "chapter": 2
   },
-  "92": {
-    "id": 92,
+  "86": {
+    "id": 86,
     "res": "s31、s21、s10、s22",
     "questionId": 0.0,
     "type": "切换",
@@ -1377,10 +1372,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 2
   },
-  "93": {
-    "id": 93,
+  "87": {
+    "id": 87,
     "res": "s31、s21、s10、s22",
     "questionId": 0.0,
     "type": "追加",
@@ -1392,10 +1388,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 2
   },
-  "94": {
-    "id": 94,
+  "88": {
+    "id": 88,
     "res": "s31、s60",
     "questionId": 0.0,
     "type": "切换",
@@ -1407,10 +1404,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 2
   },
-  "95": {
-    "id": 95,
+  "89": {
+    "id": 89,
     "res": "s31",
     "questionId": 0.0,
     "type": "切换",
@@ -1422,10 +1420,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 2
   },
-  "96": {
-    "id": 96,
+  "90": {
+    "id": 90,
     "res": "s61",
     "questionId": 0.0,
     "type": "追加",
@@ -1437,10 +1436,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 2
   },
-  "97": {
-    "id": 97,
+  "91": {
+    "id": 91,
     "res": "",
     "questionId": 7,
     "type": "谜题",
@@ -1452,25 +1452,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 2
   },
-  "98": {
-    "id": 98,
-    "res": "s61",
-    "questionId": 0.0,
-    "type": "切换",
-    "effect": "",
-    "effectTrigger": "",
-    "description": "药不然：果然，这里面有四个符号分别对应着青勒胡同四个字的特征，按顺序按下去以后门才会打开。不知道青勒胡同的人光看这几个符号肯定猜不出来，但光知道青勒胡同发现不了这符号的对应关系的也还是进不去，这拍卖会还真是谨慎啊，拍卖前还要筛选一下人，难怪能开到现在。",
-    "sound": "",
-    "playTime": 0.0,
-    "talkId": 0.0,
-    "autoNextTime": 0.0,
-    "portrait": "",
-    "next": 0.0
-  },
-  "99": {
-    "id": 99,
+  "92": {
+    "id": 92,
     "res": "s61",
     "questionId": 0.0,
     "type": "切换",
@@ -1482,10 +1468,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 2
   },
-  "100": {
-    "id": 100,
+  "93": {
+    "id": 93,
     "res": "s12",
     "questionId": 0.0,
     "type": "追加",
@@ -1497,10 +1484,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 2
   },
-  "101": {
-    "id": 101,
+  "94": {
+    "id": 94,
     "res": "s12",
     "questionId": 0.0,
     "type": "切换",
@@ -1512,10 +1500,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 2
   },
-  "102": {
-    "id": 102,
+  "95": {
+    "id": 95,
     "res": "s11",
     "questionId": 0.0,
     "type": "追加",
@@ -1527,10 +1516,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 2
   },
-  "103": {
-    "id": 103,
+  "96": {
+    "id": 96,
     "res": "s11",
     "questionId": 0.0,
     "type": "切换",
@@ -1542,10 +1532,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 2
   },
-  "104": {
-    "id": 104,
+  "97": {
+    "id": 97,
     "res": "s11",
     "questionId": 0.0,
     "type": "切换",
@@ -1557,10 +1548,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 2
   },
-  "105": {
-    "id": 105,
+  "98": {
+    "id": 98,
     "res": "",
     "questionId": 8,
     "type": "谜题",
@@ -1572,25 +1564,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 2
   },
-  "106": {
-    "id": 106,
-    "res": "s11",
-    "questionId": 0.0,
-    "type": "切换",
-    "effect": "",
-    "effectTrigger": "",
-    "description": "药不然：要换了一般人听了他们的对话估计还都算不出来，但哥们儿我可是堂堂北大高材生，做这种数学问题简直跟玩儿似的。于是我在心里默默地把信息推算了一遍，不到半分钟，就把他们每次出价的豆子数都给算出来了。",
-    "sound": "",
-    "playTime": 0.0,
-    "talkId": 0.0,
-    "autoNextTime": 0.0,
-    "portrait": "",
-    "next": 0.0
-  },
-  "107": {
-    "id": 107,
+  "99": {
+    "id": 99,
     "res": "s11",
     "questionId": 0.0,
     "type": "切换",
@@ -1602,10 +1580,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 2
   },
-  "108": {
-    "id": 108,
+  "100": {
+    "id": 100,
     "res": "s11",
     "questionId": 0.0,
     "type": "切换",
@@ -1617,10 +1596,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 2
   },
-  "109": {
-    "id": 109,
+  "101": {
+    "id": 101,
     "res": "s11、s10",
     "questionId": 0.0,
     "type": "切换",
@@ -1632,10 +1612,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 2
   },
-  "110": {
-    "id": 110,
+  "102": {
+    "id": 102,
     "res": "s11、s10",
     "questionId": 0.0,
     "type": "切换",
@@ -1647,10 +1628,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 2
   },
-  "111": {
-    "id": 111,
+  "103": {
+    "id": 103,
     "res": "s11、s10",
     "questionId": 0.0,
     "type": "切换",
@@ -1662,10 +1644,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 2
   },
-  "112": {
-    "id": 112,
+  "104": {
+    "id": 104,
     "res": "s11、s10",
     "questionId": 0.0,
     "type": "追加",
@@ -1677,10 +1660,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 2
   },
-  "113": {
-    "id": 113,
+  "105": {
+    "id": 105,
     "res": "s12、s3",
     "questionId": 0.0,
     "type": "切换",
@@ -1692,10 +1676,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 2
   },
-  "114": {
-    "id": 114,
+  "106": {
+    "id": 106,
     "res": "s12、s3",
     "questionId": 0.0,
     "type": "追加",
@@ -1707,10 +1692,11 @@
     "talkId": 7,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 2
   },
-  "115": {
-    "id": 115,
+  "107": {
+    "id": 107,
     "res": "s12、s3",
     "questionId": 0.0,
     "type": "切换",
@@ -1722,10 +1708,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 2
+    "next": 2,
+    "chapter": 2
   },
-  "116": {
-    "id": 116,
+  "108": {
+    "id": 108,
     "res": "s12、s3",
     "questionId": 0.0,
     "type": "切换",
@@ -1737,10 +1724,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 1
+    "next": 1,
+    "chapter": 2
   },
-  "117": {
-    "id": 117,
+  "109": {
+    "id": 109,
     "res": "s12、s3",
     "questionId": 0.0,
     "type": "切换",
@@ -1752,10 +1740,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 2
   },
-  "118": {
-    "id": 118,
+  "110": {
+    "id": 110,
     "res": "",
     "questionId": 9,
     "type": "谜题",
@@ -1767,10 +1756,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 2
   },
-  "119": {
-    "id": 119,
+  "111": {
+    "id": 111,
     "res": "s12、s16",
     "questionId": 0.0,
     "type": "切换",
@@ -1782,10 +1772,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "半身",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 2
   },
-  "120": {
-    "id": 120,
+  "112": {
+    "id": 112,
     "res": "s12、s3",
     "questionId": 0.0,
     "type": "切换",
@@ -1797,10 +1788,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 2
   },
-  "121": {
-    "id": 121,
+  "113": {
+    "id": 113,
     "res": "s12、s1",
     "questionId": 0.0,
     "type": "切换",
@@ -1812,10 +1804,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 2
   },
-  "122": {
-    "id": 122,
+  "114": {
+    "id": 114,
     "res": "s12、s1",
     "questionId": 0.0,
     "type": "追加",
@@ -1827,10 +1820,11 @@
     "talkId": 8,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 2
   },
-  "123": {
-    "id": 123,
+  "115": {
+    "id": 115,
     "res": "s12、s1",
     "questionId": 0.0,
     "type": "切换",
@@ -1842,10 +1836,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 2
+    "next": 2,
+    "chapter": 2
   },
-  "124": {
-    "id": 124,
+  "116": {
+    "id": 116,
     "res": "s12、s1",
     "questionId": 0.0,
     "type": "切换",
@@ -1857,10 +1852,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 1
+    "next": 1,
+    "chapter": 2
   },
-  "125": {
-    "id": 125,
+  "117": {
+    "id": 117,
     "res": "s12、s1",
     "questionId": 0.0,
     "type": "切换",
@@ -1872,10 +1868,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 2
   },
-  "126": {
-    "id": 126,
+  "118": {
+    "id": 118,
     "res": "s12、s1",
     "questionId": 0.0,
     "type": "切换",
@@ -1887,10 +1884,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 2
   },
-  "127": {
-    "id": 127,
+  "119": {
+    "id": 119,
     "res": "s12、s1",
     "questionId": 0.0,
     "type": "切换",
@@ -1902,10 +1900,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 2
   },
-  "128": {
-    "id": 128,
+  "120": {
+    "id": 120,
     "res": "s12、s1",
     "questionId": 0.0,
     "type": "切换",
@@ -1917,10 +1916,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 2
   },
-  "129": {
-    "id": 129,
+  "121": {
+    "id": 121,
     "res": "s12、s1",
     "questionId": 0.0,
     "type": "切换",
@@ -1932,10 +1932,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 2
   },
-  "130": {
-    "id": 130,
+  "122": {
+    "id": 122,
     "res": "s12、s1",
     "questionId": 0.0,
     "type": "切换",
@@ -1947,10 +1948,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 2
   },
-  "131": {
-    "id": 131,
+  "123": {
+    "id": 123,
     "res": "s12、s1",
     "questionId": 0.0,
     "type": "切换",
@@ -1962,10 +1964,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 2
   },
-  "132": {
-    "id": 132,
+  "124": {
+    "id": 124,
     "res": "s13",
     "questionId": 0.0,
     "type": "追加",
@@ -1977,10 +1980,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 2
   },
-  "133": {
-    "id": 133,
+  "125": {
+    "id": 125,
     "res": "",
     "questionId": 10,
     "type": "谜题",
@@ -1992,25 +1996,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 2
   },
-  "134": {
-    "id": 134,
-    "res": "s13",
-    "questionId": 0.0,
-    "type": "切换",
-    "effect": "",
-    "effectTrigger": "",
-    "description": "药不然：我们绕了个七荤八素总算是进入了村庄内部。",
-    "sound": "",
-    "playTime": 0.0,
-    "talkId": 0.0,
-    "autoNextTime": 0.0,
-    "portrait": "",
-    "next": 0.0
-  },
-  "135": {
-    "id": 135,
+  "126": {
+    "id": 126,
     "res": "s13",
     "questionId": 0.0,
     "type": "切换",
@@ -2022,10 +2012,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 2
   },
-  "136": {
-    "id": 136,
+  "127": {
+    "id": 127,
     "res": "s13、s18",
     "questionId": 0.0,
     "type": "追加",
@@ -2037,10 +2028,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 2
   },
-  "137": {
-    "id": 137,
+  "128": {
+    "id": 128,
     "res": "s13、s18",
     "questionId": 0.0,
     "type": "切换",
@@ -2052,10 +2044,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 2
   },
-  "138": {
-    "id": 138,
+  "129": {
+    "id": 129,
     "res": "s13、s18",
     "questionId": 0.0,
     "type": "切换",
@@ -2067,10 +2060,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 2
   },
-  "139": {
-    "id": 139,
+  "130": {
+    "id": 130,
     "res": "s13、s18",
     "questionId": 0.0,
     "type": "切换",
@@ -2082,10 +2076,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 2
   },
-  "140": {
-    "id": 140,
+  "131": {
+    "id": 131,
     "res": "s13、s14",
     "questionId": 0.0,
     "type": "追加",
@@ -2097,10 +2092,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "半身",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 2
   },
-  "141": {
-    "id": 141,
+  "132": {
+    "id": 132,
     "res": "s13、s14",
     "questionId": 0.0,
     "type": "追加",
@@ -2112,10 +2108,11 @@
     "talkId": 9,
     "autoNextTime": 0.0,
     "portrait": "半身",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 2
   },
-  "142": {
-    "id": 142,
+  "133": {
+    "id": 133,
     "res": "s13、s14",
     "questionId": 0.0,
     "type": "切换",
@@ -2127,10 +2124,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "半身",
-    "next": 2
+    "next": 2,
+    "chapter": 2
   },
-  "143": {
-    "id": 143,
+  "134": {
+    "id": 134,
     "res": "s13、s14",
     "questionId": 0.0,
     "type": "切换",
@@ -2142,10 +2140,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "半身",
-    "next": 1
+    "next": 1,
+    "chapter": 2
   },
-  "144": {
-    "id": 144,
+  "135": {
+    "id": 135,
     "res": "s13、s18",
     "questionId": 0.0,
     "type": "切换",
@@ -2157,10 +2156,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 2
   },
-  "145": {
-    "id": 145,
+  "136": {
+    "id": 136,
     "res": "s13、s18",
     "questionId": 0.0,
     "type": "切换",
@@ -2172,10 +2172,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 2
   },
-  "146": {
-    "id": 146,
+  "137": {
+    "id": 137,
     "res": "s13、s18",
     "questionId": 0.0,
     "type": "切换",
@@ -2187,10 +2188,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 2
   },
-  "147": {
-    "id": 147,
+  "138": {
+    "id": 138,
     "res": "s13、s18",
     "questionId": 0.0,
     "type": "切换",
@@ -2202,10 +2204,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 2
   },
-  "148": {
-    "id": 148,
+  "139": {
+    "id": 139,
     "res": "s62",
     "questionId": 0.0,
     "type": "追加",
@@ -2217,10 +2220,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 2
   },
-  "149": {
-    "id": 149,
+  "140": {
+    "id": 140,
     "res": "",
     "questionId": 11,
     "type": "谜题",
@@ -2232,25 +2236,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 2
   },
-  "150": {
-    "id": 150,
-    "res": "s62",
-    "questionId": 0.0,
-    "type": "切换",
-    "effect": "",
-    "effectTrigger": "",
-    "description": "药不然：一连两断，这是艮的卦象，从后天八卦的方位上看是指东北，看来是要去东北方位的县城找他了。",
-    "sound": "",
-    "playTime": 0.0,
-    "talkId": 0.0,
-    "autoNextTime": 0.0,
-    "portrait": "",
-    "next": 0.0
-  },
-  "151": {
-    "id": 151,
+  "141": {
+    "id": 141,
     "res": "s43",
     "questionId": 0.0,
     "type": "切换",
@@ -2262,10 +2252,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 2
   },
-  "152": {
-    "id": 152,
+  "142": {
+    "id": 142,
     "res": "s43、s15",
     "questionId": 0.0,
     "type": "追加",
@@ -2277,10 +2268,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 2
   },
-  "153": {
-    "id": 153,
+  "143": {
+    "id": 143,
     "res": "s43、s15",
     "questionId": 0.0,
     "type": "切换",
@@ -2292,10 +2284,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 2
   },
-  "154": {
-    "id": 154,
+  "144": {
+    "id": 144,
     "res": "s43、s15",
     "questionId": 0.0,
     "type": "追加",
@@ -2307,10 +2300,11 @@
     "talkId": 10,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 2
   },
-  "155": {
-    "id": 155,
+  "145": {
+    "id": 145,
     "res": "s43、s15",
     "questionId": 0.0,
     "type": "切换",
@@ -2322,10 +2316,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 2
+    "next": 2,
+    "chapter": 2
   },
-  "156": {
-    "id": 156,
+  "146": {
+    "id": 146,
     "res": "s43、s15",
     "questionId": 0.0,
     "type": "切换",
@@ -2337,10 +2332,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 1
+    "next": 1,
+    "chapter": 2
   },
-  "157": {
-    "id": 157,
+  "147": {
+    "id": 147,
     "res": "s43、s15",
     "questionId": 0.0,
     "type": "切换",
@@ -2352,10 +2348,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 2
   },
-  "158": {
-    "id": 158,
+  "148": {
+    "id": 148,
     "res": "s43、s15",
     "questionId": 0.0,
     "type": "切换",
@@ -2367,10 +2364,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 2
   },
-  "159": {
-    "id": 159,
+  "149": {
+    "id": 149,
     "res": "s43",
     "questionId": 0.0,
     "type": "切换",
@@ -2382,10 +2380,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 2
   },
-  "160": {
-    "id": 160,
+  "150": {
+    "id": 150,
     "res": "s43",
     "questionId": 0.0,
     "type": "切换",
@@ -2397,10 +2396,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 2
   },
-  "161": {
-    "id": 161,
+  "151": {
+    "id": 151,
     "res": "s43",
     "questionId": 0.0,
     "type": "切换",
@@ -2412,10 +2412,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 2
   },
-  "162": {
-    "id": 162,
+  "152": {
+    "id": 152,
     "res": "s43",
     "questionId": 0.0,
     "type": "切换",
@@ -2427,10 +2428,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 2
   },
-  "163": {
-    "id": 163,
+  "153": {
+    "id": 153,
     "res": "",
     "questionId": 12,
     "type": "谜题",
@@ -2442,25 +2444,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 2
   },
-  "164": {
-    "id": 164,
-    "res": "s43",
-    "questionId": 0.0,
-    "type": "切换",
-    "effect": "",
-    "effectTrigger": "",
-    "description": "药不然：这些字对应了不同卦象，而这口诀说明了同一卦象的两个位置，陆仁贾画的图是其中一种位置排列，根据口诀找到卦象的另一个位置就能排列成另外一种方式，也就是另一种拼法（后来我才知道这两种拼法分别是后天八卦和先天八卦的卦图）。这陆仁贾研究八卦恐怕是走火入魔了吧，话也不能好好讲，非得藏在八卦里面，也是哥们我够聪明，才能看破这口诀的玄机，要是换了许愿那大笨蛋，指定解不出来。",
-    "sound": "",
-    "playTime": 0.0,
-    "talkId": 0.0,
-    "autoNextTime": 0.0,
-    "portrait": "",
-    "next": 0.0
-  },
-  "165": {
-    "id": 165,
+  "154": {
+    "id": 154,
     "res": "s43",
     "questionId": 0.0,
     "type": "切换",
@@ -2472,10 +2460,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 2
   },
-  "166": {
-    "id": 166,
+  "155": {
+    "id": 155,
     "res": "s43、s16",
     "questionId": 0.0,
     "type": "切换",
@@ -2487,10 +2476,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 2
   },
-  "167": {
-    "id": 167,
+  "156": {
+    "id": 156,
     "res": "",
     "questionId": 0.0,
     "type": "转场特效",
@@ -2502,10 +2492,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 3
   },
-  "168": {
-    "id": 168,
+  "157": {
+    "id": 157,
     "res": "s63、s1",
     "questionId": 0.0,
     "type": "切换",
@@ -2517,10 +2508,11 @@
     "talkId": 0.0,
     "autoNextTime": 6,
     "portrait": "半身",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 3
   },
-  "169": {
-    "id": 169,
+  "158": {
+    "id": 158,
     "res": "s63、s1",
     "questionId": 0.0,
     "type": "切换",
@@ -2532,10 +2524,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "半身",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 3
   },
-  "170": {
-    "id": 170,
+  "159": {
+    "id": 159,
     "res": "s63、s1",
     "questionId": 0.0,
     "type": "切换",
@@ -2547,10 +2540,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "半身",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 3
   },
-  "171": {
-    "id": 171,
+  "160": {
+    "id": 160,
     "res": "s63、s1",
     "questionId": 0.0,
     "type": "切换",
@@ -2562,10 +2556,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "半身",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 3
   },
-  "172": {
-    "id": 172,
+  "161": {
+    "id": 161,
     "res": "s63、s1",
     "questionId": 0.0,
     "type": "切换",
@@ -2577,10 +2572,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "半身",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 3
   },
-  "173": {
-    "id": 173,
+  "162": {
+    "id": 162,
     "res": "s63、s1",
     "questionId": 0.0,
     "type": "追加",
@@ -2592,10 +2588,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "半身",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 3
   },
-  "174": {
-    "id": 174,
+  "163": {
+    "id": 163,
     "res": "s63、s1",
     "questionId": 0.0,
     "type": "追加",
@@ -2607,10 +2604,11 @@
     "talkId": 11,
     "autoNextTime": 0.0,
     "portrait": "半身",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 3
   },
-  "175": {
-    "id": 175,
+  "164": {
+    "id": 164,
     "res": "s63、s1",
     "questionId": 0.0,
     "type": "切换",
@@ -2622,10 +2620,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "半身",
-    "next": 2
+    "next": 2,
+    "chapter": 3
   },
-  "176": {
-    "id": 176,
+  "165": {
+    "id": 165,
     "res": "s63、s1",
     "questionId": 0.0,
     "type": "切换",
@@ -2637,10 +2636,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "半身",
-    "next": 1
+    "next": 1,
+    "chapter": 3
   },
-  "177": {
-    "id": 177,
+  "166": {
+    "id": 166,
     "res": "s63、s1",
     "questionId": 0.0,
     "type": "切换",
@@ -2652,10 +2652,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "半身",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 3
   },
-  "178": {
-    "id": 178,
+  "167": {
+    "id": 167,
     "res": "s63、s1",
     "questionId": 0.0,
     "type": "追加",
@@ -2667,10 +2668,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "半身",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 3
   },
-  "179": {
-    "id": 179,
+  "168": {
+    "id": 168,
     "res": "s63、s1",
     "questionId": 0.0,
     "type": "切换",
@@ -2682,10 +2684,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "半身",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 3
   },
-  "180": {
-    "id": 180,
+  "169": {
+    "id": 169,
     "res": "s63、s1",
     "questionId": 0.0,
     "type": "切换",
@@ -2697,10 +2700,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "半身",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 3
   },
-  "181": {
-    "id": 181,
+  "170": {
+    "id": 170,
     "res": "s63、s1",
     "questionId": 0.0,
     "type": "切换",
@@ -2712,10 +2716,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "半身",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 3
   },
-  "182": {
-    "id": 182,
+  "171": {
+    "id": 171,
     "res": "",
     "questionId": 13,
     "type": "谜题",
@@ -2727,25 +2732,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 3
   },
-  "183": {
-    "id": 183,
-    "res": "s63、s1",
-    "questionId": 0.0,
-    "type": "切换",
-    "effect": "",
-    "effectTrigger": "",
-    "description": "许愿：这轮盘组合代表着五脉和他们擅长的鉴定领域的对应关系，而这间密室则关着我这唯一的白门后人，看来绑架我的人对于五脉是有所了解的啊，并且用五脉来设置密码还真是一种赤裸裸的挑衅。",
-    "sound": "",
-    "playTime": 0.0,
-    "talkId": 0.0,
-    "autoNextTime": 0.0,
-    "portrait": "半身",
-    "next": 0.0
-  },
-  "184": {
-    "id": 184,
+  "172": {
+    "id": 172,
     "res": "s55、s17",
     "questionId": 0.0,
     "type": "切换",
@@ -2757,10 +2748,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 3
   },
-  "185": {
-    "id": 185,
+  "173": {
+    "id": 173,
     "res": "s71",
     "questionId": 0.0,
     "type": "切换",
@@ -2772,10 +2764,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 3
   },
-  "186": {
-    "id": 186,
+  "174": {
+    "id": 174,
     "res": "s71、s17",
     "questionId": 0.0,
     "type": "切换",
@@ -2787,10 +2780,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 3
   },
-  "187": {
-    "id": 187,
+  "175": {
+    "id": 175,
     "res": "s71、s17",
     "questionId": 0.0,
     "type": "切换",
@@ -2802,10 +2796,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 3
   },
-  "188": {
-    "id": 188,
+  "176": {
+    "id": 176,
     "res": "s71、s17",
     "questionId": 0.0,
     "type": "切换",
@@ -2817,10 +2812,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 3
   },
-  "189": {
-    "id": 189,
+  "177": {
+    "id": 177,
     "res": "s71、s17",
     "questionId": 0.0,
     "type": "追加",
@@ -2832,10 +2828,11 @@
     "talkId": 12,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 3
   },
-  "190": {
-    "id": 190,
+  "178": {
+    "id": 178,
     "res": "s71、s17",
     "questionId": 0.0,
     "type": "切换",
@@ -2847,10 +2844,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 2
+    "next": 2,
+    "chapter": 3
   },
-  "191": {
-    "id": 191,
+  "179": {
+    "id": 179,
     "res": "s71、s17",
     "questionId": 0.0,
     "type": "切换",
@@ -2862,10 +2860,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 1
+    "next": 1,
+    "chapter": 3
   },
-  "192": {
-    "id": 192,
+  "180": {
+    "id": 180,
     "res": "s71、s19",
     "questionId": 0.0,
     "type": "切换",
@@ -2877,10 +2876,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 3
   },
-  "193": {
-    "id": 193,
+  "181": {
+    "id": 181,
     "res": "s71、s19",
     "questionId": 0.0,
     "type": "切换",
@@ -2892,10 +2892,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 3
   },
-  "194": {
-    "id": 194,
+  "182": {
+    "id": 182,
     "res": "",
     "questionId": 14,
     "type": "谜题",
@@ -2907,25 +2908,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 3
   },
-  "195": {
-    "id": 195,
-    "res": "s71、s19",
-    "questionId": 0.0,
-    "type": "切换",
-    "effect": "",
-    "effectTrigger": "",
-    "description": "许愿：我想起来了！这是山海经里对长白山的描写，那时把它叫做不咸山。看来这些古董涉及到长白山的一些秘密。这么多人关注，一定是藏着什么有价值的东西。这两件古董就是线索，我得先想办法拿到手才行，不能让他们落到不法之徒手中。",
-    "sound": "",
-    "playTime": 0.0,
-    "talkId": 0.0,
-    "autoNextTime": 0.0,
-    "portrait": "",
-    "next": 0.0
-  },
-  "196": {
-    "id": 196,
+  "183": {
+    "id": 183,
     "res": "s71、s17",
     "questionId": 0.0,
     "type": "切换",
@@ -2937,10 +2924,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 3
   },
-  "197": {
-    "id": 197,
+  "184": {
+    "id": 184,
     "res": "s71、s17",
     "questionId": 0.0,
     "type": "切换",
@@ -2952,10 +2940,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 3
   },
-  "198": {
-    "id": 198,
+  "185": {
+    "id": 185,
     "res": "s71、s17",
     "questionId": 0.0,
     "type": "追加",
@@ -2967,10 +2956,11 @@
     "talkId": 13,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 3
   },
-  "199": {
-    "id": 199,
+  "186": {
+    "id": 186,
     "res": "s71、s17",
     "questionId": 0.0,
     "type": "切换",
@@ -2982,10 +2972,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 2
+    "next": 2,
+    "chapter": 3
   },
-  "200": {
-    "id": 200,
+  "187": {
+    "id": 187,
     "res": "s71、s17",
     "questionId": 0.0,
     "type": "切换",
@@ -2997,10 +2988,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 1
+    "next": 1,
+    "chapter": 3
   },
-  "201": {
-    "id": 201,
+  "188": {
+    "id": 188,
     "res": "s71、s17",
     "questionId": 0.0,
     "type": "切换",
@@ -3012,10 +3004,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 3
   },
-  "202": {
-    "id": 202,
+  "189": {
+    "id": 189,
     "res": "s71、s17",
     "questionId": 0.0,
     "type": "切换",
@@ -3027,10 +3020,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 3
   },
-  "203": {
-    "id": 203,
+  "190": {
+    "id": 190,
     "res": "s71、s17",
     "questionId": 0.0,
     "type": "切换",
@@ -3042,10 +3036,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 3
   },
-  "204": {
-    "id": 204,
+  "191": {
+    "id": 191,
     "res": "s20",
     "questionId": 0.0,
     "type": "切换",
@@ -3057,10 +3052,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 3
   },
-  "205": {
-    "id": 205,
+  "192": {
+    "id": 192,
     "res": "s20",
     "questionId": 0.0,
     "type": "切换",
@@ -3072,10 +3068,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 3
   },
-  "206": {
-    "id": 206,
+  "193": {
+    "id": 193,
     "res": "s44、s69",
     "questionId": 0.0,
     "type": "追加",
@@ -3087,10 +3084,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 3
   },
-  "207": {
-    "id": 207,
+  "194": {
+    "id": 194,
     "res": "s20",
     "questionId": 0.0,
     "type": "切换",
@@ -3102,10 +3100,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 3
   },
-  "208": {
-    "id": 208,
+  "195": {
+    "id": 195,
     "res": "",
     "questionId": 15,
     "type": "谜题",
@@ -3117,25 +3116,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 3
   },
-  "209": {
-    "id": 209,
-    "res": "s20",
-    "questionId": 0.0,
-    "type": "切换",
-    "effect": "",
-    "effectTrigger": "",
-    "description": "许愿：我知道了！关键就在这宝蔵的蔵上面。藏这一字虽然在古时也写作蔵，但国家统一规范后，现在都写作藏，而日本自古就学习了我国部分汉字，对他们来说宝藏一词中就更习惯于用蔵，加奈给我的纸条便是她不经意间的书写习惯，这黑衣人也是同样写法，显然也应该是一个日本人。",
-    "sound": "",
-    "playTime": 0.0,
-    "talkId": 0.0,
-    "autoNextTime": 0.0,
-    "portrait": "",
-    "next": 0.0
-  },
-  "210": {
-    "id": 210,
+  "196": {
+    "id": 196,
     "res": "s20",
     "questionId": 0.0,
     "type": "切换",
@@ -3147,10 +3132,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 3
   },
-  "211": {
-    "id": 211,
+  "197": {
+    "id": 197,
     "res": "s0",
     "questionId": 0.0,
     "type": "切换",
@@ -3162,10 +3148,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 3
   },
-  "212": {
-    "id": 212,
+  "198": {
+    "id": 198,
     "res": "s0",
     "questionId": 0.0,
     "type": "切换",
@@ -3177,10 +3164,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 3
   },
-  "213": {
-    "id": 213,
+  "199": {
+    "id": 199,
     "res": "s23、s60",
     "questionId": 0.0,
     "type": "切换",
@@ -3192,10 +3180,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 3
   },
-  "214": {
-    "id": 214,
+  "200": {
+    "id": 200,
     "res": "",
     "questionId": 16,
     "type": "谜题",
@@ -3207,25 +3196,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 3
   },
-  "215": {
-    "id": 215,
-    "res": "s23、s60",
-    "questionId": 0.0,
-    "type": "切换",
-    "effect": "",
-    "effectTrigger": "",
-    "description": "许愿：原来如此！青铜器上的花纹是不同的两个半截字拼凑出来的。",
-    "sound": "",
-    "playTime": 0.0,
-    "talkId": 0.0,
-    "autoNextTime": 0.0,
-    "portrait": "",
-    "next": 0.0
-  },
-  "216": {
-    "id": 216,
+  "201": {
+    "id": 201,
     "res": "",
     "questionId": 27,
     "type": "谜题",
@@ -3237,25 +3212,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 3
   },
-  "217": {
-    "id": 217,
-    "res": "s23、s60",
-    "questionId": 0.0,
-    "type": "切换",
-    "effect": "",
-    "effectTrigger": "",
-    "description": "许愿：龙潭海眼，这不是长白山天池的别称吗？果然也是和长白山有关的，看来真相就藏在这里面了。既然青铜器的这几个花纹能拼成字，那么其它的一些应该也是可以，更详细的内容一定就隐藏在这些花纹上。",
-    "sound": "",
-    "playTime": 0.0,
-    "talkId": 0.0,
-    "autoNextTime": 0.0,
-    "portrait": "",
-    "next": 0.0
-  },
-  "218": {
-    "id": 218,
+  "202": {
+    "id": 202,
     "res": "s23、s60",
     "questionId": 0.0,
     "type": "切换",
@@ -3267,10 +3228,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 3
   },
-  "219": {
-    "id": 219,
+  "203": {
+    "id": 203,
     "res": "s23、s60",
     "questionId": 0.0,
     "type": "切换",
@@ -3282,10 +3244,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 3
   },
-  "220": {
-    "id": 220,
+  "204": {
+    "id": 204,
     "res": "s66、s21、s10、s22",
     "questionId": 0.0,
     "type": "切换",
@@ -3297,10 +3260,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 3
   },
-  "221": {
-    "id": 221,
+  "205": {
+    "id": 205,
     "res": "s66、s21、s10、s22",
     "questionId": 0.0,
     "type": "切换",
@@ -3312,10 +3276,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 3
   },
-  "222": {
-    "id": 222,
+  "206": {
+    "id": 206,
     "res": "s66、s21、s10、s22",
     "questionId": 0.0,
     "type": "切换",
@@ -3327,10 +3292,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 3
   },
-  "223": {
-    "id": 223,
+  "207": {
+    "id": 207,
     "res": "s66、s60",
     "questionId": 0.0,
     "type": "追加",
@@ -3342,10 +3308,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 3
   },
-  "224": {
-    "id": 224,
+  "208": {
+    "id": 208,
     "res": "s66、s21、s10、s22",
     "questionId": 0.0,
     "type": "切换",
@@ -3357,10 +3324,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 3
   },
-  "225": {
-    "id": 225,
+  "209": {
+    "id": 209,
     "res": "s66、s21、s10、s22",
     "questionId": 0.0,
     "type": "追加",
@@ -3372,10 +3340,11 @@
     "talkId": 14,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 3
   },
-  "226": {
-    "id": 226,
+  "210": {
+    "id": 210,
     "res": "s66、s21、s10、s22",
     "questionId": 0.0,
     "type": "切换",
@@ -3387,10 +3356,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 2
+    "next": 2,
+    "chapter": 3
   },
-  "227": {
-    "id": 227,
+  "211": {
+    "id": 211,
     "res": "s66、s21、s10、s22",
     "questionId": 0.0,
     "type": "切换",
@@ -3402,10 +3372,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 1
+    "next": 1,
+    "chapter": 3
   },
-  "228": {
-    "id": 228,
+  "212": {
+    "id": 212,
     "res": "s66、s21、s10、s22",
     "questionId": 0.0,
     "type": "切换",
@@ -3417,10 +3388,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 3
   },
-  "229": {
-    "id": 229,
+  "213": {
+    "id": 213,
     "res": "s66、s21、s10、s22",
     "questionId": 0.0,
     "type": "切换",
@@ -3432,10 +3404,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 3
   },
-  "230": {
-    "id": 230,
+  "214": {
+    "id": 214,
     "res": "s67",
     "questionId": 0.0,
     "type": "追加",
@@ -3447,10 +3420,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 3
   },
-  "231": {
-    "id": 231,
+  "215": {
+    "id": 215,
     "res": "s67",
     "questionId": 0.0,
     "type": "切换",
@@ -3462,10 +3436,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 3
   },
-  "232": {
-    "id": 232,
+  "216": {
+    "id": 216,
     "res": "s67",
     "questionId": 0.0,
     "type": "切换",
@@ -3477,10 +3452,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 3
   },
-  "233": {
-    "id": 233,
+  "217": {
+    "id": 217,
     "res": "s67",
     "questionId": 0.0,
     "type": "切换",
@@ -3492,10 +3468,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 3
   },
-  "234": {
-    "id": 234,
+  "218": {
+    "id": 218,
     "res": "",
     "questionId": 17,
     "type": "谜题",
@@ -3507,25 +3484,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 3
   },
-  "235": {
-    "id": 235,
-    "res": "s67",
-    "questionId": 0.0,
-    "type": "切换",
-    "effect": "",
-    "effectTrigger": "",
-    "description": "许愿：这段时间电视里天天都在宣传110报警电话，应该有不少人知道吧，反倒是认识英文知道SOS是啥意思的没多少，希望捡到纸片的人能看懂我的意思，帮我拨打报警电话。",
-    "sound": "",
-    "playTime": 0.0,
-    "talkId": 0.0,
-    "autoNextTime": 0.0,
-    "portrait": "",
-    "next": 0.0
-  },
-  "236": {
-    "id": 236,
+  "219": {
+    "id": 219,
     "res": "s67、s1",
     "questionId": 0.0,
     "type": "切换",
@@ -3537,10 +3500,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "半身",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 3
   },
-  "237": {
-    "id": 237,
+  "220": {
+    "id": 220,
     "res": "s67、s1",
     "questionId": 0.0,
     "type": "切换",
@@ -3552,10 +3516,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "半身",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 3
   },
-  "238": {
-    "id": 238,
+  "221": {
+    "id": 221,
     "res": "s67、s1",
     "questionId": 0.0,
     "type": "切换",
@@ -3567,10 +3532,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "半身",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 3
   },
-  "239": {
-    "id": 239,
+  "222": {
+    "id": 222,
     "res": "",
     "questionId": 0.0,
     "type": "转场特效",
@@ -3582,10 +3548,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 4
   },
-  "240": {
-    "id": 240,
+  "223": {
+    "id": 223,
     "res": "s38、s60",
     "questionId": 0.0,
     "type": "切换",
@@ -3597,10 +3564,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 4
   },
-  "241": {
-    "id": 241,
+  "224": {
+    "id": 224,
     "res": "s38、s60",
     "questionId": 0.0,
     "type": "切换",
@@ -3612,10 +3580,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 4
   },
-  "242": {
-    "id": 242,
+  "225": {
+    "id": 225,
     "res": "s38、s60",
     "questionId": 0.0,
     "type": "追加",
@@ -3627,10 +3596,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 4
   },
-  "243": {
-    "id": 243,
+  "226": {
+    "id": 226,
     "res": "s25",
     "questionId": 0.0,
     "type": "切换",
@@ -3642,10 +3612,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 4
   },
-  "244": {
-    "id": 244,
+  "227": {
+    "id": 227,
     "res": "s25",
     "questionId": 0.0,
     "type": "追加",
@@ -3657,10 +3628,11 @@
     "talkId": 15,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 4
   },
-  "245": {
-    "id": 245,
+  "228": {
+    "id": 228,
     "res": "s27",
     "questionId": 0.0,
     "type": "切换",
@@ -3672,10 +3644,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 2
+    "next": 2,
+    "chapter": 4
   },
-  "246": {
-    "id": 246,
+  "229": {
+    "id": 229,
     "res": "s26",
     "questionId": 0.0,
     "type": "切换",
@@ -3687,10 +3660,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 1
+    "next": 1,
+    "chapter": 4
   },
-  "247": {
-    "id": 247,
+  "230": {
+    "id": 230,
     "res": "s25",
     "questionId": 0.0,
     "type": "切换",
@@ -3702,10 +3676,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 4
   },
-  "248": {
-    "id": 248,
+  "231": {
+    "id": 231,
     "res": "s25、s21",
     "questionId": 0.0,
     "type": "追加",
@@ -3717,10 +3692,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 4
   },
-  "249": {
-    "id": 249,
+  "232": {
+    "id": 232,
     "res": "s24、s21",
     "questionId": 0.0,
     "type": "切换",
@@ -3732,10 +3708,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 4
   },
-  "250": {
-    "id": 250,
+  "233": {
+    "id": 233,
     "res": "",
     "questionId": 18,
     "type": "谜题",
@@ -3747,25 +3724,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 4
   },
-  "251": {
-    "id": 251,
-    "res": "s28",
-    "questionId": 0.0,
-    "type": "切换",
-    "effect": "",
-    "effectTrigger": "",
-    "description": "药不然：随着后面脚步声变得越来越远，我知道我应该是走对地方了，逐渐放下了戒备。",
-    "sound": "",
-    "playTime": 0.0,
-    "talkId": 0.0,
-    "autoNextTime": 0.0,
-    "portrait": "",
-    "next": 0.0
-  },
-  "252": {
-    "id": 252,
+  "234": {
+    "id": 234,
     "res": "s28",
     "questionId": 0.0,
     "type": "切换",
@@ -3777,10 +3740,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 4
   },
-  "253": {
-    "id": 253,
+  "235": {
+    "id": 235,
     "res": "",
     "questionId": 19,
     "type": "谜题",
@@ -3792,25 +3756,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 4
   },
-  "254": {
-    "id": 254,
-    "res": "s28",
-    "questionId": 0.0,
-    "type": "切换",
-    "effect": "",
-    "effectTrigger": "",
-    "description": "药不然：看来太子丹到死都没放下荆轲刺秦这事啊",
-    "sound": "",
-    "playTime": 0.0,
-    "talkId": 0.0,
-    "autoNextTime": 0.0,
-    "portrait": "",
-    "next": 0.0
-  },
-  "255": {
-    "id": 255,
+  "236": {
+    "id": 236,
     "res": "s28",
     "questionId": 0.0,
     "type": "切换",
@@ -3822,10 +3772,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 4
   },
-  "256": {
-    "id": 256,
+  "237": {
+    "id": 237,
     "res": "s28、s10、s70",
     "questionId": 0.0,
     "type": "追加",
@@ -3837,10 +3788,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 4
   },
-  "257": {
-    "id": 257,
+  "238": {
+    "id": 238,
     "res": "s28、s10、s70",
     "questionId": 0.0,
     "type": "切换",
@@ -3852,10 +3804,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 4
   },
-  "258": {
-    "id": 258,
+  "239": {
+    "id": 239,
     "res": "s28、s10、s70",
     "questionId": 0.0,
     "type": "追加",
@@ -3867,10 +3820,11 @@
     "talkId": 16,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 4
   },
-  "259": {
-    "id": 259,
+  "240": {
+    "id": 240,
     "res": "s28、s10、s70",
     "questionId": 0.0,
     "type": "切换",
@@ -3882,10 +3836,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 2
+    "next": 2,
+    "chapter": 4
   },
-  "260": {
-    "id": 260,
+  "241": {
+    "id": 241,
     "res": "s28、s10、s70",
     "questionId": 0.0,
     "type": "切换",
@@ -3897,10 +3852,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 1
+    "next": 1,
+    "chapter": 4
   },
-  "261": {
-    "id": 261,
+  "242": {
+    "id": 242,
     "res": "s28、s10、s70",
     "questionId": 0.0,
     "type": "切换",
@@ -3912,11 +3868,12 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 4
   },
-  "262": {
-    "id": 262,
-    "res": "s28、s10、s21",
+  "243": {
+    "id": 243,
+    "res": "s28、s10、s70",
     "questionId": 0.0,
     "type": "追加",
     "effect": "晃动",
@@ -3927,11 +3884,12 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 4
   },
-  "263": {
-    "id": 263,
-    "res": "s28、s10、s21",
+  "244": {
+    "id": 244,
+    "res": "s28、s10、s70",
     "questionId": 0.0,
     "type": "切换",
     "effect": "",
@@ -3942,10 +3900,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 4
   },
-  "264": {
-    "id": 264,
+  "245": {
+    "id": 245,
     "res": "",
     "questionId": 20,
     "type": "谜题",
@@ -3957,25 +3916,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 4
   },
-  "265": {
-    "id": 265,
-    "res": "s29",
-    "questionId": 0.0,
-    "type": "切换",
-    "effect": "",
-    "effectTrigger": "",
-    "description": "药不然：在战国，虎符就代表了发动战争的权力，踩掉他们便意味着对侵略战争的鄙弃，墨家果然是一生都在贯彻非攻的思想主张啊。",
-    "sound": "",
-    "playTime": 0.0,
-    "talkId": 0.0,
-    "autoNextTime": 0.0,
-    "portrait": "",
-    "next": 0.0
-  },
-  "266": {
-    "id": 266,
+  "246": {
+    "id": 246,
     "res": "s29",
     "questionId": 0.0,
     "type": "切换",
@@ -3987,10 +3932,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 4
   },
-  "267": {
-    "id": 267,
+  "247": {
+    "id": 247,
     "res": "s29",
     "questionId": 0.0,
     "type": "切换",
@@ -4002,10 +3948,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 4
   },
-  "268": {
-    "id": 268,
+  "248": {
+    "id": 248,
     "res": "s29、s1",
     "questionId": 0.0,
     "type": "切换",
@@ -4017,10 +3964,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "半身",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 4
   },
-  "269": {
-    "id": 269,
+  "249": {
+    "id": 249,
     "res": "s29、s1",
     "questionId": 0.0,
     "type": "切换",
@@ -4032,10 +3980,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "半身",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 4
   },
-  "270": {
-    "id": 270,
+  "250": {
+    "id": 250,
     "res": "s29、s1",
     "questionId": 0.0,
     "type": "追加",
@@ -4047,10 +3996,11 @@
     "talkId": 17,
     "autoNextTime": 0.0,
     "portrait": "半身",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 4
   },
-  "271": {
-    "id": 271,
+  "251": {
+    "id": 251,
     "res": "s29、s1",
     "questionId": 0.0,
     "type": "切换",
@@ -4062,10 +4012,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "半身",
-    "next": 2
+    "next": 2,
+    "chapter": 4
   },
-  "272": {
-    "id": 272,
+  "252": {
+    "id": 252,
     "res": "s29、s1",
     "questionId": 0.0,
     "type": "切换",
@@ -4077,10 +4028,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "半身",
-    "next": 1
+    "next": 1,
+    "chapter": 4
   },
-  "273": {
-    "id": 273,
+  "253": {
+    "id": 253,
     "res": "s29、s1",
     "questionId": 0.0,
     "type": "切换",
@@ -4092,10 +4044,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "半身",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 4
   },
-  "274": {
-    "id": 274,
+  "254": {
+    "id": 254,
     "res": "",
     "questionId": 21,
     "type": "谜题",
@@ -4107,25 +4060,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 4
   },
-  "275": {
-    "id": 275,
-    "res": "s68",
-    "questionId": 0.0,
-    "type": "切换",
-    "effect": "",
-    "effectTrigger": "",
-    "description": "药不然：以守代攻，以退为进，只是一味地进攻，不采取防守也是很难赢得胜利的，看来墨子的非攻思想也还是有他的道理。",
-    "sound": "",
-    "playTime": 0.0,
-    "talkId": 0.0,
-    "autoNextTime": 0.0,
-    "portrait": "",
-    "next": 0.0
-  },
-  "276": {
-    "id": 276,
+  "255": {
+    "id": 255,
     "res": "s68",
     "questionId": 0.0,
     "type": "切换",
@@ -4137,10 +4076,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 4
   },
-  "277": {
-    "id": 277,
+  "256": {
+    "id": 256,
     "res": "s32",
     "questionId": 0.0,
     "type": "追加",
@@ -4152,10 +4092,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 4
   },
-  "278": {
-    "id": 278,
+  "257": {
+    "id": 257,
     "res": "s32、s18",
     "questionId": 0.0,
     "type": "切换",
@@ -4167,10 +4108,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "半身",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 4
   },
-  "279": {
-    "id": 279,
+  "258": {
+    "id": 258,
     "res": "s32、s18",
     "questionId": 0.0,
     "type": "切换",
@@ -4182,10 +4124,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "半身",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 4
   },
-  "280": {
-    "id": 280,
+  "259": {
+    "id": 259,
     "res": "s32、s18",
     "questionId": 0.0,
     "type": "切换",
@@ -4197,10 +4140,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "半身",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 4
   },
-  "281": {
-    "id": 281,
+  "260": {
+    "id": 260,
     "res": "s32、s18",
     "questionId": 0.0,
     "type": "切换",
@@ -4212,10 +4156,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "半身",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 4
   },
-  "282": {
-    "id": 282,
+  "261": {
+    "id": 261,
     "res": "s32、s18",
     "questionId": 0.0,
     "type": "追加",
@@ -4227,10 +4172,11 @@
     "talkId": 18,
     "autoNextTime": 0.0,
     "portrait": "半身",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 4
   },
-  "283": {
-    "id": 283,
+  "262": {
+    "id": 262,
     "res": "s32、s18",
     "questionId": 0.0,
     "type": "切换",
@@ -4242,10 +4188,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "半身",
-    "next": 2
+    "next": 2,
+    "chapter": 4
   },
-  "284": {
-    "id": 284,
+  "263": {
+    "id": 263,
     "res": "s32、s18",
     "questionId": 0.0,
     "type": "切换",
@@ -4257,10 +4204,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "半身",
-    "next": 1
+    "next": 1,
+    "chapter": 4
   },
-  "285": {
-    "id": 285,
+  "264": {
+    "id": 264,
     "res": "s32、s18",
     "questionId": 0.0,
     "type": "切换",
@@ -4272,10 +4220,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "半身",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 4
   },
-  "286": {
-    "id": 286,
+  "265": {
+    "id": 265,
     "res": "",
     "questionId": 22,
     "type": "谜题",
@@ -4287,25 +4236,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 4
   },
-  "287": {
-    "id": 287,
-    "res": "s32",
-    "questionId": 0.0,
-    "type": "切换",
-    "effect": "",
-    "effectTrigger": "",
-    "description": "药不然：经过一番操作，我总算是把所有的方块都翻了过来，这下终于看清了上面写的字：止以久也无久之不止。我正琢磨着这句话会不会有什么提示，紧接着，魔方那边却传来一阵阵响动，看样子机关已经触发，经文的内容倒是没什么用了。于是我们不约而同地抬头向魔方望去……",
-    "sound": "",
-    "playTime": 0.0,
-    "talkId": 0.0,
-    "autoNextTime": 0.0,
-    "portrait": "",
-    "next": 0.0
-  },
-  "288": {
-    "id": 288,
+  "266": {
+    "id": 266,
     "res": "s32",
     "questionId": 0.0,
     "type": "切换",
@@ -4317,10 +4252,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 4
   },
-  "289": {
-    "id": 289,
+  "267": {
+    "id": 267,
     "res": "s32、s18",
     "questionId": 0.0,
     "type": "切换",
@@ -4332,10 +4268,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "半身",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 4
   },
-  "290": {
-    "id": 290,
+  "268": {
+    "id": 268,
     "res": "s32、s18",
     "questionId": 0.0,
     "type": "切换",
@@ -4347,10 +4284,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "半身",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 4
   },
-  "291": {
-    "id": 291,
+  "269": {
+    "id": 269,
     "res": "",
     "questionId": 0.0,
     "type": "转场特效",
@@ -4362,10 +4300,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 5
   },
-  "292": {
-    "id": 292,
+  "270": {
+    "id": 270,
     "res": "s68、s1、s60",
     "questionId": 0.0,
     "type": "切换",
@@ -4377,10 +4316,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 5
   },
-  "293": {
-    "id": 293,
+  "271": {
+    "id": 271,
     "res": "s35",
     "questionId": 0.0,
     "type": "追加",
@@ -4392,10 +4332,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 5
   },
-  "294": {
-    "id": 294,
+  "272": {
+    "id": 272,
     "res": "s35",
     "questionId": 0.0,
     "type": "追加",
@@ -4407,10 +4348,11 @@
     "talkId": 19,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 5
   },
-  "295": {
-    "id": 295,
+  "273": {
+    "id": 273,
     "res": "s35",
     "questionId": 0.0,
     "type": "切换",
@@ -4422,10 +4364,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 2
+    "next": 2,
+    "chapter": 5
   },
-  "296": {
-    "id": 296,
+  "274": {
+    "id": 274,
     "res": "s35",
     "questionId": 0.0,
     "type": "切换",
@@ -4437,10 +4380,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 1
+    "next": 1,
+    "chapter": 5
   },
-  "297": {
-    "id": 297,
+  "275": {
+    "id": 275,
     "res": "s35",
     "questionId": 0.0,
     "type": "切换",
@@ -4452,10 +4396,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 5
   },
-  "298": {
-    "id": 298,
+  "276": {
+    "id": 276,
     "res": "",
     "questionId": 23,
     "type": "谜题",
@@ -4467,10 +4412,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 5
   },
-  "299": {
-    "id": 299,
+  "277": {
+    "id": 277,
     "res": "s35",
     "questionId": 0.0,
     "type": "切换",
@@ -4482,10 +4428,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 5
   },
-  "300": {
-    "id": 300,
+  "278": {
+    "id": 278,
     "res": "s35",
     "questionId": 0.0,
     "type": "切换",
@@ -4497,10 +4444,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 5
   },
-  "301": {
-    "id": 301,
+  "279": {
+    "id": 279,
     "res": "s35、s60",
     "questionId": 0.0,
     "type": "切换",
@@ -4512,10 +4460,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "半身",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 5
   },
-  "302": {
-    "id": 302,
+  "280": {
+    "id": 280,
     "res": "s35、s18",
     "questionId": 0.0,
     "type": "追加",
@@ -4527,10 +4476,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 5
   },
-  "303": {
-    "id": 303,
+  "281": {
+    "id": 281,
     "res": "s35、s18",
     "questionId": 0.0,
     "type": "追加",
@@ -4542,10 +4492,11 @@
     "talkId": 20,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 5
   },
-  "304": {
-    "id": 304,
+  "282": {
+    "id": 282,
     "res": "s35、s18",
     "questionId": 0.0,
     "type": "切换",
@@ -4557,10 +4508,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 2
+    "next": 2,
+    "chapter": 5
   },
-  "305": {
-    "id": 305,
+  "283": {
+    "id": 283,
     "res": "s35、s18",
     "questionId": 0.0,
     "type": "切换",
@@ -4572,10 +4524,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 1
+    "next": 1,
+    "chapter": 5
   },
-  "306": {
-    "id": 306,
+  "284": {
+    "id": 284,
     "res": "s35、s18",
     "questionId": 0.0,
     "type": "切换",
@@ -4587,10 +4540,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 5
   },
-  "307": {
-    "id": 307,
+  "285": {
+    "id": 285,
     "res": "",
     "questionId": 24,
     "type": "谜题",
@@ -4602,10 +4556,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 5
   },
-  "308": {
-    "id": 308,
+  "286": {
+    "id": 286,
     "res": "s32",
     "questionId": 0.0,
     "type": "切换",
@@ -4617,10 +4572,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 5
   },
-  "309": {
-    "id": 309,
+  "287": {
+    "id": 287,
     "res": "s32",
     "questionId": 0.0,
     "type": "切换",
@@ -4632,10 +4588,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 5
   },
-  "310": {
-    "id": 310,
+  "288": {
+    "id": 288,
     "res": "s32、s18",
     "questionId": 0.0,
     "type": "切换",
@@ -4647,10 +4604,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 5
   },
-  "311": {
-    "id": 311,
+  "289": {
+    "id": 289,
     "res": "s32、s18",
     "questionId": 0.0,
     "type": "追加",
@@ -4662,10 +4620,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 5
   },
-  "312": {
-    "id": 312,
+  "290": {
+    "id": 290,
     "res": "s32、s60",
     "questionId": 0.0,
     "type": "切换",
@@ -4677,10 +4636,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "半身",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 5
   },
-  "313": {
-    "id": 313,
+  "291": {
+    "id": 291,
     "res": "",
     "questionId": 25,
     "type": "谜题",
@@ -4692,10 +4652,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 5
   },
-  "314": {
-    "id": 314,
+  "292": {
+    "id": 292,
     "res": "s32",
     "questionId": 0.0,
     "type": "切换",
@@ -4707,10 +4668,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 5
   },
-  "315": {
-    "id": 315,
+  "293": {
+    "id": 293,
     "res": "s32",
     "questionId": 0.0,
     "type": "切换",
@@ -4722,10 +4684,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 5
   },
-  "316": {
-    "id": 316,
+  "294": {
+    "id": 294,
     "res": "s32、s60",
     "questionId": 0.0,
     "type": "追加",
@@ -4737,10 +4700,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "半身",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 5
   },
-  "317": {
-    "id": 317,
+  "295": {
+    "id": 295,
     "res": "s32、s60",
     "questionId": 0.0,
     "type": "追加",
@@ -4752,10 +4716,11 @@
     "talkId": 21,
     "autoNextTime": 0.0,
     "portrait": "半身",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 5
   },
-  "318": {
-    "id": 318,
+  "296": {
+    "id": 296,
     "res": "s32、s60",
     "questionId": 0.0,
     "type": "切换",
@@ -4767,10 +4732,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "半身",
-    "next": 2
+    "next": 2,
+    "chapter": 5
   },
-  "319": {
-    "id": 319,
+  "297": {
+    "id": 297,
     "res": "s32、s60",
     "questionId": 0.0,
     "type": "切换",
@@ -4782,10 +4748,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "半身",
-    "next": 1
+    "next": 1,
+    "chapter": 5
   },
-  "320": {
-    "id": 320,
+  "298": {
+    "id": 298,
     "res": "s38",
     "questionId": 0.0,
     "type": "切换",
@@ -4797,10 +4764,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 5
   },
-  "321": {
-    "id": 321,
+  "299": {
+    "id": 299,
     "res": "s38、s69、s17",
     "questionId": 0.0,
     "type": "切换",
@@ -4812,10 +4780,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 5
   },
-  "322": {
-    "id": 322,
+  "300": {
+    "id": 300,
     "res": "s38、s69、s17",
     "questionId": 0.0,
     "type": "切换",
@@ -4827,10 +4796,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 5
   },
-  "323": {
-    "id": 323,
+  "301": {
+    "id": 301,
     "res": "s38、s69、s17",
     "questionId": 0.0,
     "type": "切换",
@@ -4842,10 +4812,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 5
   },
-  "324": {
-    "id": 324,
+  "302": {
+    "id": 302,
     "res": "s25、s69",
     "questionId": 0.0,
     "type": "切换",
@@ -4857,10 +4828,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 5
   },
-  "325": {
-    "id": 325,
+  "303": {
+    "id": 303,
     "res": "s25、s69",
     "questionId": 0.0,
     "type": "切换",
@@ -4872,10 +4844,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 5
   },
-  "326": {
-    "id": 326,
+  "304": {
+    "id": 304,
     "res": "s25",
     "questionId": 0.0,
     "type": "切换",
@@ -4887,10 +4860,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 5
   },
-  "327": {
-    "id": 327,
+  "305": {
+    "id": 305,
     "res": "s25、s1",
     "questionId": 0.0,
     "type": "切换",
@@ -4902,10 +4876,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 5
   },
-  "328": {
-    "id": 328,
+  "306": {
+    "id": 306,
     "res": "",
     "questionId": 26,
     "type": "谜题",
@@ -4917,10 +4892,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 5
   },
-  "329": {
-    "id": 329,
+  "307": {
+    "id": 307,
     "res": "s38",
     "questionId": 0.0,
     "type": "切换",
@@ -4932,10 +4908,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 5
   },
-  "330": {
-    "id": 330,
+  "308": {
+    "id": 308,
     "res": "s38",
     "questionId": 0.0,
     "type": "切换",
@@ -4947,10 +4924,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 5
   },
-  "331": {
-    "id": 331,
+  "309": {
+    "id": 309,
     "res": "s38、s17",
     "questionId": 0.0,
     "type": "切换",
@@ -4962,10 +4940,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 5
   },
-  "332": {
-    "id": 332,
+  "310": {
+    "id": 310,
     "res": "s4、s17",
     "questionId": 0.0,
     "type": "追加",
@@ -4977,10 +4956,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 5
   },
-  "333": {
-    "id": 333,
+  "311": {
+    "id": 311,
     "res": "s4、s17",
     "questionId": 0.0,
     "type": "追加",
@@ -4992,10 +4972,11 @@
     "talkId": 22,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 5
   },
-  "334": {
-    "id": 334,
+  "312": {
+    "id": 312,
     "res": "s4、s17",
     "questionId": 0.0,
     "type": "切换",
@@ -5007,10 +4988,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 2
+    "next": 2,
+    "chapter": 5
   },
-  "335": {
-    "id": 335,
+  "313": {
+    "id": 313,
     "res": "s72",
     "questionId": 0.0,
     "type": "切换",
@@ -5022,10 +5004,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 1
+    "next": 1,
+    "chapter": 5
   },
-  "336": {
-    "id": 336,
+  "314": {
+    "id": 314,
     "res": "s4、s1",
     "questionId": 0.0,
     "type": "切换",
@@ -5037,10 +5020,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 5
   },
-  "337": {
-    "id": 337,
+  "315": {
+    "id": 315,
     "res": "s40、s4",
     "questionId": 0.0,
     "type": "切换",
@@ -5052,10 +5036,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": "over"
+    "next": "over",
+    "chapter": 5
   },
-  "338": {
-    "id": 338,
+  "316": {
+    "id": 316,
     "res": "s73",
     "questionId": 0.0,
     "type": "切换",
@@ -5067,10 +5052,11 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 5
   },
-  "339": {
-    "id": 339,
+  "317": {
+    "id": 317,
     "res": "s74",
     "questionId": 0.0,
     "type": "切换",
@@ -5082,6 +5068,7 @@
     "talkId": 0.0,
     "autoNextTime": 0.0,
     "portrait": "",
-    "next": 0.0
+    "next": 0.0,
+    "chapter": 5
   }
 }

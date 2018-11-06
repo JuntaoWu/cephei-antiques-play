@@ -33,17 +33,12 @@ module game {
         }
 
         private loadResGroup() {
-            const chapterResGroup = [0, 34, 69, 133, 184, 223];
-            for (let i = 5; i >= 0; i--) {
-                if (this.proxy.playerInfo.plotId > chapterResGroup[i]) {
-                    try {
-                        RES.loadGroup(`chapter${i}`, 0);
-                    }
-                    catch (err) {
-                        console.log(err);
-                    }
-                    return;
-                }
+            let chapter = this.proxy.chapterPlot.get(this.proxy.playerInfo.plotId.toString()).chapter;
+            try {
+                RES.loadGroup(`chapter${chapter}`, 0);
+            }
+            catch (err) {
+                console.log(err);
             }
         }
 
@@ -357,7 +352,7 @@ module game {
             if (this.gameScreen.points || (!this.questionPoints[0] && !this.questionPoints[1])) {
                 this.showPointsAll = true;
             }
-            this.gameScreen.points = !this.gameScreen.points ? this.questionPoints[0] : `${this.questionPoints[0]}\n${this.questionPoints[1]}`;
+            this.gameScreen.points = !this.gameScreen.points ? this.questionPoints[0] : `${this.questionPoints[0]}\n————————\n${this.questionPoints[1]}`;
             if (!this.showPointsAll) {
                 this.proxy.reduceHints();
                 let hintCardsLabel = (this.gameScreen.btnTips.getChildByName("hintGroup") as eui.Group).getChildByName("hintCards") as eui.BitmapLabel;

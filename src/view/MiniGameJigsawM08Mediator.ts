@@ -14,7 +14,7 @@ module game {
                 , this.gameJigsaw.jigsawImgGroup7, this.gameJigsaw.jigsawImgGroup8, this.gameJigsaw.jigsawImgGroup9
             ]
             this.jigsawImgGroupList.forEach((i, index) => {
-                i.addEventListener(egret.TouchEvent.TOUCH_TAP, (e: egret.TouchEvent) => {
+                i.addEventListener(egret.TouchEvent.TOUCH_BEGIN, (e: egret.TouchEvent) => {
                     e.stopImmediatePropagation();
                     this.jigsawImgclick(index);
                 }, this);

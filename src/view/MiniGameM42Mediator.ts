@@ -81,6 +81,10 @@ module game {
         }
 
         public confirmClick() {
+            if (this.nowIndex == this.jigsawNameList.length) {
+                this.setResult();
+                return;
+            }
             if (this.jigsawNameList[this.nowIndex]) {
                 let jigsaw = this.miniGame.jigsawGroup.getChildByName(this.jigsawNameList[this.nowIndex]) as eui.Image;
                 let jigsawResult = this.miniGame.jigsawResult.getChildByName(this.jigsawNameList[this.nowIndex]) as eui.Image;
