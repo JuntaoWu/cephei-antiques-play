@@ -140,7 +140,7 @@ module game {
             }
             else if (plot.type == "界面切换经营") {
                 this.btnManageClick();
-                this.proxy.nextPlot();
+                // this.proxy.nextPlot();
                 this.canGoNext = true;
             }
             else {
@@ -164,13 +164,21 @@ module game {
                 }
                 //音效
                 if (plot.sound) {
-                    let timeout = +plot.playTime * 1000;
-                    egret.setTimeout(() => {
-                        SoundPool.playSoundEffect(plot.sound);
-                    }, this, timeout);
+                    let soundList = plot.sound.split("、");
+                    let timeList = plot.playTime.toString().split("、");
+                    soundList.forEach((v, i) => {
+                        let timeout = +timeList[i].replace("s", "") * 1000;
+                        egret.setTimeout(() => {
+                            SoundPool.playSoundEffect(v);
+                        }, this, timeout);
+                    })
+                    // let timeout = +plot.playTime * 1000;
+                    // egret.setTimeout(() => {
+                    //     SoundPool.playSoundEffect(plot.sound);
+                    // }, this, timeout);
                 }
                 //自动跳到下一条
-                if (isNaN(plot.autoNextTime)) {
+                if (plot.autoNextTime) {
                     let timeout = +plot.autoNextTime * 1000;
                     this.timeoutId = egret.setTimeout(() => {
                         this.showNext();

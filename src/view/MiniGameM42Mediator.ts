@@ -46,6 +46,10 @@ module game {
             jigsawResult.rotation = jigsaw.rotation;
             jigsaw.filters = [this._colorFlilter];
             jigsawResult.filters = [this._colorFlilter];
+            if (this.miniGame.questionId) {
+                let proxy = <GameProxy><any>this.facade().retrieveProxy(GameProxy.NAME);
+                this.miniGame.question = proxy.questions.get(this.miniGame.questionId.toString()).question;
+            }
         }
 
         public jigsawNameList: Array<string>;

@@ -24,6 +24,7 @@ module game {
         public btnReset: eui.Button;
         public btnBack: eui.Button;
         public showTipsImg: boolean;
+        public question: string;
         
 		public questionId: number;
 		public setQuestionId(id: number): void {

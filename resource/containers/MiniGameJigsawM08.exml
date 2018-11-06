@@ -30,4 +30,8 @@
             <e:Image name="jigsawImg" source="m08_6" verticalCenter="0" horizontalCenter="0"/>
         </e:Group>
     </e:Group>
+	<e:Group bottom="15" horizontalCenter="0">
+		<e:Label text="剩余步数：" horizontalCenter="-50"/>
+		<e:Label y="0" horizontalCenter="40" text="{step}"/>
+	</e:Group>
 </e:Skin>

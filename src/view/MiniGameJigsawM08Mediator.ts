@@ -24,7 +24,7 @@ module game {
 
         public async initData() {
             let imgList = ["m08_2", "m08_5", "m08_8", "m08_4", "", "m08_7", "m08_1", "m08_3", "m08_6"];
-
+            this.gameJigsaw.step = 15;
             this.jigsawImgGroupList.forEach((i, index) => {
                 let jigsawImg = i.getChildByName("jigsawImg") as eui.Image;
                 jigsawImg.source = imgList[index];
@@ -36,8 +36,10 @@ module game {
 
         public jigsawImgGroupList: Array<eui.Group>;
         public emptyIndex: number; //拼图空的那项index
+        private step: number; //可用步数
 
         public jigsawImgclick(index: number) {
+            if (!this.gameJigsaw.step) return;
             if (this.emptyIndex == index + 1 || this.emptyIndex == index - 1
                 || this.emptyIndex == index + 3 || this.emptyIndex == index - 3) {
                 
@@ -46,6 +48,7 @@ module game {
                 this.jigsawImgGroupList[index].addChild(emptyImg);
                 this.jigsawImgGroupList[this.emptyIndex].addChild(clickImg);
                 this.emptyIndex = index;
+                this.gameJigsaw.step -= 1;
             }
         }
 

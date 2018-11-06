@@ -29,7 +29,7 @@
 			"name": "chapter4"
 		},
 		{
-			"keys": "m42-tips,m42-item_json,m23,m22,s0,s17,s25,s35,s4,s68,s69,s60,s38,s32,s18,s1,M24_bg,word_bai,word_he,word_hei,word_jia,word_jiao,word_ti,word_yi,word_zhu,m42-bg,Y16",
+			"keys": "m42-tips,m42-item_json,m23,m22,s0,s17,s25,s35,s4,s68,s69,s60,s38,s32,s18,s1,M24_bg,word_bai,word_he,word_hei,word_jia,word_jiao,word_ti,word_yi,word_zhu,m42-bg,Y16,s74,s72,s73",
 			"name": "chapter5"
 		},
 		{
@@ -1273,6 +1273,21 @@
 			"url": "assets/game/tili.png",
 			"type": "image",
 			"name": "tili"
+		},
+		{
+			"url": "assets/scene/s74.jpg",
+			"type": "image",
+			"name": "s74"
+		},
+		{
+			"url": "assets/scene/s72.jpg",
+			"type": "image",
+			"name": "s72"
+		},
+		{
+			"url": "assets/scene/s73.jpg",
+			"type": "image",
+			"name": "s73"
 		}
 	]
 }

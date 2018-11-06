@@ -22,6 +22,7 @@ module game {
         public jigsawImgGroup7: eui.Group;
         public jigsawImgGroup8: eui.Group;
         public jigsawImgGroup9: eui.Group;
+        public step: number; //可用步数
         
 		public questionId: number;
 		public setQuestionId(id: number): void {

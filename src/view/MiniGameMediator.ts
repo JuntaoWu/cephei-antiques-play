@@ -4,12 +4,9 @@ module game {
     export class MiniGameMediator extends puremvc.Mediator implements puremvc.IMediator {
         public static NAME: string = "MiniGameMediator";
 
-        private proxy: GameProxy;
-
         public constructor(viewComponent: any) {
             super(MiniGameMediator.NAME, viewComponent);
             super.initializeNotifier("ApplicationFacade");
-            this.proxy = <GameProxy><any>this.facade().retrieveProxy(GameProxy.NAME);
         }
 
         public addMiniGameToStage(questionId: number, gameName: string) {
