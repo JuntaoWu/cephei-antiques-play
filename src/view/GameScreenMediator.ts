@@ -80,10 +80,10 @@ module game {
             if (!plot) {
                 return;
             }
-            if (plot.id == 38) {
+            if (plot.id == 35) {
                 this.proxy.playerInfo.isManage = true;
-                this.gameScreen.no_btnmanage.visible = !this.proxy.playerInfo.isManage;
-                this.gameScreen.btnManage.visible = this.proxy.playerInfo.isManage;
+                this.gameScreen.no_btnmanage.visible = false;
+                this.gameScreen.btnManage.visible = true;
             }
             // 选择不同对话下一条和不同结局
             this.next = plot.next || 1;
