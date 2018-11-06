@@ -72,6 +72,8 @@ module game {
             this.gameScreen.scrollGroup.bottom = 20;
             this.gameScreen.scrollGroup.viewport.scrollV = 0;
             this.gameScreen.fatigueValue.text = this.proxy.playerInfo.fatigueValue.toString();
+            this.gameScreen.no_btnmanage.visible = !this.proxy.playerInfo.isManage;
+            this.gameScreen.btnManage.visible = this.proxy.playerInfo.isManage;
 
             let barH = this.gameScreen.huangAndMubar.getChildByName("huangyanyan") as eui.Image;
             let barM = this.gameScreen.huangAndMubar.getChildByName("munai") as eui.Image;
@@ -81,6 +83,11 @@ module game {
             let plot: Plot = this.proxy.getCurrentPlot();
             if (!plot) {
                 return;
+            }
+            if (plot.id == 38) {
+                this.proxy.playerInfo.isManage = true;
+                this.gameScreen.no_btnmanage.visible = !this.proxy.playerInfo.isManage;
+                this.gameScreen.btnManage.visible = this.proxy.playerInfo.isManage;
             }
             // 选择不同对话下一条和不同结局
             this.next = plot.next || 1;
@@ -161,10 +168,12 @@ module game {
                 }
                 //音效
                 if (plot.sound) {
-                    let timeout = +plot.playTime * 1000;
-                    egret.setTimeout(() => {
-                        SoundPool.playSoundEffect(plot.sound);
-                    }, this, timeout);
+                    if (this.proxy.playerInfo.sound) {
+                        let timeout = +plot.playTime * 1000;
+                        egret.setTimeout(() => {
+                            SoundPool.playSoundEffect(plot.sound);
+                        }, this, timeout);
+                    }
                 }
                 //自动跳到下一条
                 if (plot.autoNextTime) {

@@ -39,5 +39,6 @@ module game {
 
         public btnPlot: eui.Button;
         public btnPicture: eui.Button;
+        public btnTutorial: eui.Button;
     }
 }

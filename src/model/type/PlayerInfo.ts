@@ -12,5 +12,8 @@ module game {
         guPrice?: Array<number>; //经营模式古董价格
         guColl?: Array<number>;  //经营模式获得古董数量
         guEventList?: Array<any>; //经营模式事件存档
+        sound?: boolean; //音效
+        music?: boolean; //音乐
+        isManage?: boolean; //是否开启经营模式
     }
 }

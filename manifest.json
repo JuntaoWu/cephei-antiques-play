@@ -60,6 +60,7 @@
 		"bin-debug/view/MiniGameSelectMediator.js",
 		"bin-debug/view/SceneDetailsWindowMediator.js",
 		"bin-debug/view/SceneSummaryWindowMediator.js",
+		"bin-debug/view/SettingWindowMediator.js",
 		"bin-debug/view/shop_listMediator.js",
 		"bin-debug/view/StartScreenMediator.js",
 		"bin-debug/view/StoreWindowMediator.js",

@@ -15,7 +15,7 @@ module game {
         public static REDUCE_POWER: string = "reduce_power";
 
         public playerInfo: PlayerInfo = {
-            plotId: 1,
+            plotId: 214,
             collectedScenes: [],
             fatigueValue: fatigueValue,
             gold: "40",
@@ -25,6 +25,9 @@ module game {
             guPrice: [0, 0, 0, 0],
             guColl: [5, 5, 5, 5],
             guEventList: [],
+            sound: true,
+            music: true,
+            isManage: false,
         };
         public pointHunag: number = 43;
         public pointMu: number = 43;

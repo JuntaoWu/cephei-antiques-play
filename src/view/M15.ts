@@ -6,6 +6,8 @@ module game {
         public button3: eui.Button;
         public button4: eui.Button;
 
+        public arr: Array<eui.Button> = [];
+
 
         public constructor() {
             super();
@@ -21,6 +23,7 @@ module game {
         protected childrenCreated(): void {
             super.childrenCreated();
 
+            this.arr = [this.button1, this.button2, this.button3, this.button4];
             this.button1.addEventListener(egret.TouchEvent.TOUCH_TAP, (() => { this.haha(1) }), this);
             this.button2.addEventListener(egret.TouchEvent.TOUCH_TAP, (() => { this.haha(2) }), this);
             this.button3.addEventListener(egret.TouchEvent.TOUCH_TAP, (() => { this.haha(3) }), this);
@@ -28,30 +31,38 @@ module game {
         }
 
 
-        public xx: number;
+        public xx: number = 0;
         public haha(aa: number) {
             this.xx = aa;
+            this.arr.forEach(ele => {
+                ele.scaleX = 1;
+                ele.scaleY = 1;
+            });
+            this.arr[aa - 1].scaleX = 0.8;
+            this.arr[aa - 1].scaleY = 0.8;
+
         }
 
         public iswin() {
             if (this.xx != 1) {
                 //失败
-                ApplicationFacade.getInstance().sendNotification(GameProxy.PASS_MINIGAME);
+                ApplicationFacade.getInstance().sendNotification(GameProxy.REDUCE_POWER);
 
             } else {
-                this.button1.enabled = false;
-                this.button2.enabled = false;
-                this.button3.enabled = false;
-                this.button4.enabled = false;
-                ApplicationFacade.getInstance().sendNotification(GameProxy.REDUCE_POWER);
+                this.arr.forEach(ele => {
+                    ele.scaleX = 1;
+                    ele.scaleY = 1;
+                    ele.enabled = false;
+                });
+                ApplicationFacade.getInstance().sendNotification(GameProxy.PASS_MINIGAME);
             }
-            
+
         }
 
-		public questionId: number;
-		public setQuestionId(id: number): void {
-			this.questionId = id;
-		}
+        public questionId: number;
+        public setQuestionId(id: number): void {
+            this.questionId = id;
+        }
 
     }
 

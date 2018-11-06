@@ -8,12 +8,12 @@
             </e:Skin>
         </e:Button>
 
-        <e:Button id="btnManage" x="160" verticalCenter="0">
+        <e:Button id="btnManage" x="108" verticalCenter="0.5" visible="false">
             <e:Skin>
                 <e:Image source="btn-manage"></e:Image>
             </e:Skin>
         </e:Button>
-        <e:Button id="btnPicture" verticalCenter="0.5" x="320">
+        <e:Button id="btnPicture" verticalCenter="1" x="204">
             <e:Skin>
                 <e:Image source="btn-picture"></e:Image>
             </e:Skin>
@@ -25,6 +25,11 @@
                 <e:Label text="下一步" verticalCenter="0" bold="true" textColor="0x000000" horizontalCenter="0" size="80"></e:Label>
             </e:Skin>
         </e:Button>
+			<e:Group x="303" y="47" anchorOffsetX="0" width="135">
+				<e:Image source="tili" x="0" y="3" anchorOffsetX="0" width="135"/>
+				<e:Label id="fatigueValue" text="0" x="43" y="0" anchorOffsetX="0" width="84" anchorOffsetY="0" height="49" verticalAlign="middle" textAlign="center" textColor="0xf7f7f7"/>
+			</e:Group>
+			<e:Image id="no_btnmanage" source="no_btnmanage" x="108" y="16"/>
     </e:Group>
     <e:Group visible="{showScene}" width="720" top="135">
         <e:Image width="720" horizontalCenter="0" source="s0" height="590"/>
@@ -81,7 +86,7 @@
         </e:Group>
     </e:Group>
     <e:Group id="questionGroup" visible="true" width="720" top="135">
-			<e:Image source="tili" x="16" y="15"/>
+
         <e:Group>
             <e:Image width="720" source="{questionRes}"/>
             <!-- 小游戏 -->
@@ -104,7 +109,7 @@
                 <e:Image source="tips-bg" width="450" height="100%"/>
                 <e:Label text="{points}" textColor="0x000000" horizontalCenter="0" maxWidth="450" verticalAlign="middle" textAlign="center" top="10" bottom="10"/>       
             </e:Group>
-					<e:Label id="fatigueValue" text="11" x="52" y="12" anchorOffsetX="0" width="140" anchorOffsetY="0" height="49" verticalAlign="middle" textAlign="center" textColor="0xf7f7f7"/>
+
         </e:Group>
     </e:Group>
     <e:Group visible="{showTransition}" top="135" bottom="0">
