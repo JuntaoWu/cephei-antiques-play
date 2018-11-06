@@ -582,7 +582,10 @@ module game {
         }
 
         public transferCards(num: number) {
-            if (num < 1) return;
+            if (num < 1) {
+                this.canSelectedCard = true;
+                return;
+            }
             let leftTime = num - 1;
             let randomIndex = _.random(0, 8);
             let swapIndex = _.random(0, 8);
