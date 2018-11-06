@@ -58,6 +58,7 @@ module game {
                 } else if (this.manageEvent.type == "小游戏") {
                     this.manageWindow.option.visible = false;
                     this.change = { ...this.proxy.changeArr.get("53") };
+                    this.manageWindow.text1.removeEventListener(egret.TouchEvent.TOUCH_TAP, this.nextManageEvent, this);
                 } else {
                     this.manageWindow.option.visible = false;
                     this.manageWindow.text1.addEventListener(egret.TouchEvent.TOUCH_TAP, this.nextManageEvent, this);
