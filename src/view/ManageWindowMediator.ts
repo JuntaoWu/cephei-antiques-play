@@ -6,6 +6,8 @@ module game {
 
         private proxy: GameProxy;
         public change: Change;
+        public baolist: Array<eui.Image> = [];
+        public gulist: Array<string> = ["木器", "书画", "青铜", "玉石"];
 
         public constructor(viewComponent: any) {
             super(ManageWindowMediator.NAME, viewComponent);
@@ -20,6 +22,8 @@ module game {
             this.manageWindow.addEventListener(egret.Event.ADDED_TO_STAGE, this.initData, this);
             this.manageWindow.gameList.addEventListener(eui.ItemTapEvent.ITEM_TAP, this.selectItem, this);
             this.manageWindow.text1.addEventListener(egret.TouchEvent.TOUCH_TAP, this.nextManageEvent, this);
+
+            this.baolist = [this.manageWindow.bao1, this.manageWindow.bao2, this.manageWindow.bao3, this.manageWindow.bao4];
         }
 
         private manageEvent: any;
@@ -64,6 +68,21 @@ module game {
                     this.manageWindow.text1.addEventListener(egret.TouchEvent.TOUCH_TAP, this.nextManageEvent, this);
                     this.change = { ...this.proxy.changeArr.get(this.manageEvent.Column9.toString()) };
                 }
+                if (this.manageEvent.subType == "药不然") {
+                    this.manageWindow.juese.visible = true;
+                    this.manageWindow.juese.source = "s60";
+                } else if (this.manageEvent.subType == "木户加奈") {
+                    this.manageWindow.juese.visible = true;
+                    this.manageWindow.juese.source = "s17";
+                } else if (this.manageEvent.subType == "黄烟烟") {
+                    this.manageWindow.juese.visible = true;
+                    this.manageWindow.juese.source = "s99";
+                } else if (this.manageEvent.subType == "山水") {
+                    this.manageWindow.juese.visible = true;
+                    this.manageWindow.juese.source = "s18";
+                } else {
+                    this.manageWindow.juese.visible = false;
+                }
             }
             this.manageWindow.gu1.text = this.proxy.playerInfo.guPrice[0].toString();
             this.manageWindow.gu2.text = this.proxy.playerInfo.guPrice[1].toString();
@@ -77,20 +96,71 @@ module game {
             this.manageWindow.gold.text = this.proxy.playerInfo.gold || "0";
         }
 
+        public xuanze: number = 0;
         public yes() {
-            this.change = { ...this.proxy.changeArr.get(this.manageEvent.selectedYes.toString()) };
-            this.nextManageEvent();
+            if (this.xuanze != 1) {
+                this.change = { ...this.proxy.changeArr.get(this.manageEvent.selectedYes.toString()) };
+                this.gaoliang();
+                this.manageWindow.yes.scaleX = 0.8;
+                this.manageWindow.yes.scaleY = 0.8;
+                this.manageWindow.no.scaleX = 1;
+                this.manageWindow.no.scaleY = 1;
+                this.xuanze = 1;
+            } else {
+                this.nextManageEvent();
+                this.uiset(false);
+                this.manageWindow.yes.scaleX = 1;
+                this.manageWindow.yes.scaleY = 1;
+                this.xuanze = 0;
+            }
         }
 
         public no() {
-            this.change = { ...this.proxy.changeArr.get(this.manageEvent.selectedNo.toString()) };
-            this.nextManageEvent();
+            if (this.xuanze != 2) {
+                this.change = { ...this.proxy.changeArr.get(this.manageEvent.selectedNo.toString()) };
+                this.gaoliang();
+                this.manageWindow.no.scaleX = 0.8;
+                this.manageWindow.no.scaleY = 0.8;
+                this.manageWindow.yes.scaleX = 1;
+                this.manageWindow.yes.scaleY = 1;
+                this.xuanze = 2;
+            } else {
+                this.nextManageEvent();
+                this.uiset(false);
+                this.manageWindow.no.scaleX = 1;
+                this.manageWindow.no.scaleY = 1;
+                this.xuanze = 0;
+            }
+        }
+
+        public gaoliang() {
+            this.uiset(false);
+            if (this.change.mubiao1 == "所有" || this.change.mubiao2 == "所有" || this.change.mubiao1 == "随机" || this.change.mubiao2 == "随机" || this.change.mubiao1 == "随机两种古董" || this.change.mubiao1 == "除木器" || this.change.mubiao1 == "除玉石" || this.change.mubiao1 == "除青铜" || this.change.mubiao1 == "除书画" || this.change.mubiao2 == "除木器" || this.change.mubiao2 == "除玉石" || this.change.mubiao2 == "除青铜" || this.change.mubiao2 == "除书画") {
+                this.uiset(true);
+            }
+            if (this.change.mubiao1 == "书画" || this.change.mubiao1 == "玉石" || this.change.mubiao1 == "木器" || this.change.mubiao1 == "青铜") {
+                this.baolist[this.gulist.indexOf(this.change.mubiao1)].visible = true;
+            }
+            if (this.change.mubiao2 == "书画" || this.change.mubiao2 == "玉石" || this.change.mubiao2 == "木器" || this.change.mubiao2 == "青铜") {
+                this.baolist[this.gulist.indexOf(this.change.mubiao2)].visible = true;
+            }
+        }
+
+        public uiset(bool: boolean) {
+            this.baolist.forEach(ele => {
+                ele.visible = bool;
+            });
+        }
+
+        public uiset2(tt: string) {
+            this.uiset(true);
+            this.baolist[this.gulist.indexOf(tt)].visible = false;
         }
 
         public eachGu: number = 0;
         public gogog() {
             console.log(this.change);
-            let aa: Array<string> = ["木器", "书画", "青铜", "金玉"];
+            let aa: Array<string> = ["木器", "书画", "青铜", "玉石"];
 
             if (this.change.leixing1 == "古董数量变化") {
                 if (this.change.mubiao1 == "随机") {
@@ -146,9 +216,9 @@ module game {
                         this.mmpriceMax(1);
                     } else if (this.change.tiaojian1 == "书画数量最多") {
                         this.mmNumMax(1);
-                    } else if (this.change.tiaojian1 == "金玉价格最高") {
+                    } else if (this.change.tiaojian1 == "玉石价格最高") {
                         this.mmpriceMax(3);
-                    } else if (this.change.tiaojian1 == "金玉数量最多") {
+                    } else if (this.change.tiaojian1 == "玉石数量最多") {
                         this.mmNumMax(3);
                     } else if (this.change.tiaojian1 == "随机") {
                         let xx: Array<any> = [0, 0, 0, 0];

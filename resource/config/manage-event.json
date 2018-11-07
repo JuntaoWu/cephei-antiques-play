@@ -159,7 +159,7 @@
     "subType": "木户加奈",
     "res": "",
     "answer": "",
-    "description": "桑，我要回国了，这几件古董你可以帮我保管吗？",
+    "description": "许桑，我要回国了，这几件古董你可以帮我保管吗？",
     "reward": "",
     "selectedYes": 13,
     "selectedNo": 14,
@@ -346,7 +346,7 @@
     "selectedYes": 51,
     "selectedNo": 52,
     "Column9": 0.0,
-    "yes":"没收金玉数量5",
+    "yes":"没收玉石数量5",
     "no":"随机古董价值下跌20%"
   },
   {
@@ -411,7 +411,7 @@
     "subType": "无选项",
     "res": "",
     "answer": "",
-    "description": "给予五个金玉古董五个回合后还十个",
+    "description": "给予五个玉石古董五个回合后还十个",
     "reward": "",
     "selectedYes": 0.0,
     "selectedNo": 0.0,

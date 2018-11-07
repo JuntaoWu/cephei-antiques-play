@@ -28,6 +28,10 @@ module game {
         public coll2: eui.Label;
         public coll3: eui.Label;
         public coll4: eui.Label;
+        public bao1: eui.Image;
+        public bao2: eui.Image;
+        public bao3: eui.Image;
+        public bao4: eui.Image;
 
         public description: string;
         public yes_text: string;
@@ -40,5 +44,6 @@ module game {
         public btnPlot: eui.Button;
         public btnPicture: eui.Button;
         public btnTutorial: eui.Button;
+        public juese: eui.Image;
     }
 }
