@@ -44,7 +44,6 @@ module game {
         private selectedList: Array<any> = [];
 
         public selectItem() {
-            console.log(this.floorSwitch.buttonList.selectedItem);
             let selectedItem = this.floorSwitch.buttonList.selectedItem;
             if (!this.selectedList.find(i => i.img == selectedItem.img)) {
                 if (this.selectedList.length < 3) {
@@ -71,6 +70,7 @@ module game {
         }
 
         public setResult() {
+            console.log(this.selectedList);
             if (this.selectedList.length == 3) {
                 let isRight = !this.selectedList.find(i => i.name != "虎");
                 if (isRight) {

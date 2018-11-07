@@ -144,8 +144,15 @@ module game {
                 }, this, 1500);
             }
             else if (plot.type == "界面切换经营") {
-                this.btnManageClick();
-                // this.proxy.nextPlot();
+                if (this.proxy.playerInfo.isNew) {
+                    this.sendNotification(SceneCommand.SHOW_GUIDE);
+                }
+                else if (this.proxy.playerInfo.time) {
+                    this.btnManageClick();
+                }
+                else {
+                    this.showNext();
+                }
                 this.canGoNext = true;
             }
             else {
@@ -335,12 +342,15 @@ module game {
             // if (this.proxy.playerInfo.fatigueValue <= 0) {
             //     return;
             // }
-            if (this.next == "over") { //最后有两个不同结局
-                if (this.proxy.pointMu > this.proxy.pointHunag) {
-                    this.proxy.nextPlot(2);
+            if (this.next == "end") {
+                return;
+            }
+            else if (this.next == "over") { //最后有两个不同结局
+                if (this.proxy.pointMu < this.proxy.pointHunag) {
+                    this.proxy.nextPlot();
                 }
                 else {
-                    this.proxy.nextPlot();
+                    this.proxy.nextPlot(2);
                 }
             }
             else {
@@ -372,12 +382,13 @@ module game {
             this.sendNotification(SceneCommand.CHANGE, Scene.Start);
         }
 
-        // public btnSaveClick() {
-        //     this.proxy.savePlayerInfoToStorage();
-        // }
-
         public btnManageClick() {
-            this.sendNotification(SceneCommand.SHOW_MANAGE);
+            if (!this.proxy.playerInfo.time) {
+                platform.showModal("经营模式每日只能完成一次，今日经营模式已完成！", false);
+            }
+            else {
+                this.sendNotification(SceneCommand.SHOW_MANAGE);
+            }
         }
 
         public pictClick() {

@@ -57,7 +57,12 @@ module game {
         }
 
         public showManage() {
-            this.sendNotification(SceneCommand.SHOW_MANAGE);
+            if (!this.proxy.playerInfo.time) {
+                platform.showModal("经营模式每日只能完成一次，今日经营模式已完成！", false);
+            }
+            else {
+                this.sendNotification(SceneCommand.SHOW_MANAGE);
+            }
         }
 
         public showDeveloper() {

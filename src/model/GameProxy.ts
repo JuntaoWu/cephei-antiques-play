@@ -15,7 +15,7 @@ module game {
         public static REDUCE_POWER: string = "reduce_power";
 
         public playerInfo: PlayerInfo = {
-            plotId: 1,
+            plotId: 34,
             collectedScenes: [],
             fatigueValue: fatigueValue,
             gold: "0",
@@ -28,6 +28,7 @@ module game {
             sound: true,
             music: true,
             isManage: false,
+            isNew: true,
         };
         public pointHunag: number = 43;
         public pointMu: number = 43;
@@ -148,24 +149,28 @@ module game {
                 console.log("mergeRemoteInfoToStorage: parse playerInfo");
                 this.playerInfo = JSON.parse(res.data);
                 console.log(this.playerInfo)
-                if (!this.playerInfo.time) {
-                    this.playerInfo.time = 24;
-                    this.playerInfo.guPrice = [0, 0, 0, 0];
-                    this.playerInfo.guColl = [5, 5, 5, 5];
-                    this.playerInfo.guEventList = [];
-                }
             }
             catch (error) {
                 console.error("localPlayerInfo is not JSON, skip.");
             }
             if (!this.playerInfo.lastEntryTime || this.playerInfo.lastEntryTime != new Date().toJSON().substr(0, 10)) {
-                this.playerInfo.fatigueValue = fatigueValue;
+                // this.playerInfo.fatigueValue = fatigueValue;
+                this.playerInfo.time = 24;
+                this.playerInfo.guPrice = [0, 0, 0, 0];
+                this.playerInfo.guColl = [5, 5, 5, 5];
+                this.playerInfo.guEventList = [];
                 this.playerInfo.lastEntryTime = new Date().toJSON().substr(0, 10);
+                this.savePlayerInfoToStorage();
             }
         }
 
         public savePlayerInfoToStorage() {
-            platform.setStorageAsync("playerInfo", JSON.stringify(this.playerInfo));
+            try {
+                platform.setStorageAsync("playerInfo", JSON.stringify(this.playerInfo));
+            }
+            catch (error) {
+                console.error(error);
+            }
         }
     }
 }

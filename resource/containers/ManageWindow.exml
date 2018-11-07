@@ -94,11 +94,13 @@
 		<e:Group id="miniGameGroup" y="180" horizontalCenter="0">
 			<e:Group id="gameTrueFalse">
 			</e:Group>
-			<e:List id="gameList" visible="false" bottom="20" horizontalCenter="0" width="640">
+			<e:List id="gameList" horizontalCenter="0" width="640" y="120" visible="false">
 				<e:layout>
 					<e:TileLayout orientation="columns" requestedColumnCount="2" verticalGap="40" columnWidth="300" />
 				</e:layout>
 			</e:List>
+			<e:Label text="{description}" width="670" horizontalCenter="0" textColor="0x000000" size="35" anchorOffsetY="0" verticalAlign="middle" textAlign="center" y="840" fontFamily="Microsoft YaHei"/>
+			
 		</e:Group>
 
 
