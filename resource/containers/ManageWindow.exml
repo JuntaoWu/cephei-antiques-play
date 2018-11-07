@@ -58,23 +58,27 @@
 		</e:Group>
 		<e:Group y="20" horizontalCenter="0">
 			<e:Image source="icon-group"/>
-			<e:Group x="415" y="10" width="60">
-				<e:Image id="bao1" source="text_close" x="-70" y="0" visible="false"/>
+			<e:Group x="415" y="4" width="60">
+				<e:Image source="mu" x="-75" y="0"/>
+				<e:Image id="bao1" x="-81" y="-6" source="mu_gao" visible="false"/>
 				<e:BitmapLabel id="gu1" text="6" textAlign="center" verticalAlign="middle" font="hintCardNumber_fnt" scaleX="1.5" scaleY="1.5" horizontalCenter="0" y="40"/>
 				<e:BitmapLabel id="coll1" text="0" textAlign="center" verticalAlign="middle" font="hintCardNumber_fnt" scaleX="1.5" scaleY="1.5" y="0" horizontalCenter="0"/>
 			</e:Group>
-			<e:Group x="75" width="60" y="10">
-				<e:Image source="text_close" x="-70" y="0" id="bao2" visible="false"/>
+			<e:Group x="75" width="60" y="5">
+				<e:Image source="shu" x="-74" y="-6"/>
+				<e:Image x="-79" y="-11" id="bao2" source="shu_gao" visible="false"/>
 				<e:BitmapLabel id="gu2" text="2" textAlign="center" verticalAlign="middle" font="hintCardNumber_fnt" scaleX="1.5" scaleY="1.5" horizontalCenter="0" y="40"/>
 				<e:BitmapLabel id="coll2" text="2" textAlign="center" verticalAlign="middle" font="hintCardNumber_fnt" scaleX="1.5" scaleY="1.5" horizontalCenter="0" top="0"/>
 			</e:Group>
-			<e:Group x="585" width="60" y="10">
-				<e:Image source="text_close" x="-70" y="0" id="bao3" visible="false"/>
+			<e:Group x="585" width="60" y="6">
+				<e:Image source="qing" x="-70" y="-2"/>
+				<e:Image x="-76" y="-8" id="bao3" source="qing_gao" visible="false"/>
 				<e:BitmapLabel id="gu3" text="3" textAlign="center" verticalAlign="middle" font="hintCardNumber_fnt" scaleX="1.5" scaleY="1.5" horizontalCenter="0" y="40"/>
 				<e:BitmapLabel id="coll3" text="3" textAlign="center" verticalAlign="middle" font="hintCardNumber_fnt" scaleX="1.5" scaleY="1.5" horizontalCenter="0" top="0"/>
 			</e:Group>
-			<e:Group width="60" y="10" x="245">
-				<e:Image id="bao4" source="text_close" x="-70" y="0" visible="false"/>
+			<e:Group width="60" y="5" x="245">
+				<e:Image source="yu" x="-79" y="0"/>
+				<e:Image id="bao4" x="-85" y="-6" source="yu_gao" visible="false"/>
 				<e:BitmapLabel id="gu4" text="4" textAlign="center" verticalAlign="middle" font="hintCardNumber_fnt" scaleX="1.5" scaleY="1.5" horizontalCenter="0" y="40"/>
 				<e:BitmapLabel id="coll4" text="4" textAlign="center" verticalAlign="middle" font="hintCardNumber_fnt" scaleX="1.5" scaleY="1.5" horizontalCenter="0" top="0"/>
 			</e:Group>
