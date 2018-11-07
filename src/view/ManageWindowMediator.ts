@@ -488,7 +488,7 @@ module game {
                 }
             }
             else {
-                this.manageWindow.eventGroup.visible = true;
+                this.manageWindow.eventGroup.visible = this.canSelectedCard = true;
             }
         }
 
@@ -609,6 +609,7 @@ module game {
 
         public five: Array<any> = [-1, -1, -1, -1];
         public nextManageEvent() {
+            if (!this.canSelectedCard) return;
             this.gogog();
             this.fivehaha();
             this.proxy.playerInfo.time--;
