@@ -30,7 +30,7 @@ module game {
             = this.guideWindow.group3.visible = this.guideWindow.group4.visible
             = this.guideWindow.group5.visible = this.guideWindow.moneyGroup.visible
             = this.guideWindow.antiGroup.visible = this.guideWindow.clockGroup.visible
-            = this.guideWindow.optionGroup.visible = false;
+            = this.guideWindow.optionGroup.visible = this.guideWindow.btnPlotGroup.visible = false;
             let guide = this._guides[this._index];
             if (!guide) return;
             const textElements = new egret.HtmlTextParser().parser(guide.content);
@@ -61,7 +61,8 @@ module game {
                     this.guideWindow.group5.visible = this.cannotNext =  this.isTrueFalseGame = true;
                     this.trueFalseGame();
                     break;
-                case "随机事件":
+                case "剧情图标":
+                    this.guideWindow.btnPlotGroup.visible = true;
                     break;
                 case "好友对话事件":
                     this.guideWindow.antiGroup.visible = this.guideWindow.optionGroup.visible = this.cannotNext = true;

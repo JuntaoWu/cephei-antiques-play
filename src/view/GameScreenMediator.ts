@@ -150,10 +150,20 @@ module game {
             }
             else if (plot.type == "界面切换经营") {
                 if (this.proxy.playerInfo.isNew) {
-                    this.sendNotification(SceneCommand.SHOW_GUIDE);
+                    this.gameScreen.showTransition = true;
+                    this.gameScreen.transitionText = "界面切换经营";
+                    this.timeoutId = egret.setTimeout(() => {
+                        this.gameScreen.showTransition = false;
+                        this.sendNotification(SceneCommand.SHOW_GUIDE);
+                    }, this, 1000);
                 }
                 else if (this.proxy.playerInfo.time) {
-                    this.btnManageClick();
+                    this.gameScreen.showTransition = true;
+                    this.gameScreen.transitionText = "界面切换经营";
+                    this.timeoutId = egret.setTimeout(() => {
+                        this.gameScreen.showTransition = false;
+                        this.btnManageClick();
+                    }, this, 1000);
                 }
                 else {
                     this.showNext();
@@ -206,6 +216,9 @@ module game {
             let added = this.gameScreen.sceneGroup.getChildByName("added") || this.gameScreen.sceneGroup.parent.getChildByName("added");
             if (!!added) { //移除某些效果添加的元素
                 added.parent.removeChild(added);
+            }
+            if (!!this.gameScreen.sceneGroup.mask) {
+                this.gameScreen.sceneGroup.mask = null;
             }
             egret.Tween.removeAllTweens();  //移除所有动画效果
             this.gameScreen.sceneBg.horizontalCenter = 0;

@@ -25,7 +25,8 @@ module game {
         public antiGroup: eui.Group;
         public clockGroup: eui.Group;
         public optionGroup: eui.Group;
-        
+        public btnPlotGroup: eui.Group;
+
         public yes: eui.Button;
         public no: eui.Button;
         public bao1: eui.Image;

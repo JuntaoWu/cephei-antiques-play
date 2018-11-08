@@ -99,26 +99,34 @@ module game {
         //睁眼效果
         public static gradualShow2(target: egret.DisplayObject) {
             var m = new egret.Shape();
+            m.touchEnabled = false;
+            target.touchEnabled = false;
             m.name = "added";
-            target.parent.addChild(m);
+            (target as eui.Group).addChild(m);
             m.x = target.width / 2;
             m.y = target.height / 2;
             let n = target.width;
-            let intervalId = egret.setInterval(() => {
-                m.graphics.beginFill(0xffffff);
-                m.graphics.drawCircle(0, 0, target.width - n);
-                m.graphics.endFill();
-                target.mask = m;
-                n -= 8;
-            }, this, 40);
+            let intervalFun = () => {
+                egret.setTimeout(() => {
+                    m.graphics.beginFill(0xffffff);
+                    m.graphics.drawCircle(0, 0, target.width - n);
+                    m.graphics.endFill();
+                    target.mask = m;
+                    n -= 5;
+                    if (target.width - n < 1.5 * target.width) {
+                        intervalFun();
+                    }
+                    else {
+                        target.mask = null;
+                        m.parent && m.parent.removeChild(m);
+                    }
+                }, this, 30)
+            }
+            intervalFun();
             target.alpha = 0;
             egret.setTimeout(() => {
-                egret.Tween.get(target).to({alpha: 1}, 2500);
+                egret.Tween.get(target).to({alpha: 1}, 3000);
             }, this, 500)
-            egret.setTimeout(() => {
-                m.parent && m.parent.removeChild(m);
-                egret.clearInterval(intervalId);
-            }, this, 3000)
         }
 
         //头晕目眩(场景图重影模糊)
