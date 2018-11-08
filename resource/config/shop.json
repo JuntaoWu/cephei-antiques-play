@@ -33,7 +33,7 @@
   {
     "id": 5,
     "res": "power_large",
-    "name": "礼物1",
+    "name": "木梳",
     "effect": "增加木户加奈好感度",
     "point": -4,
     "money": "100"
@@ -41,7 +41,7 @@
   {
     "id": 6,
     "res": "power_large",
-    "name": "礼物2",
+    "name": "发箍",
     "effect": "增加黄烟烟好感度",
     "point": 4,
     "money": "100"
