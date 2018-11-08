@@ -60,6 +60,7 @@ module game {
         public next: number | string;
         public questionId: number;
         private timeoutId: number;
+        public static manage_show: string = "manage_show";
 
         public initData() {
             this.gameScreen.bottomGroup.visible = this.gameScreen.plotSelectList.visible = this.gameScreen.questionGroup.visible = false;
@@ -84,6 +85,7 @@ module game {
                 this.proxy.playerInfo.isManage = true;
                 this.gameScreen.no_btnmanage.visible = false;
                 this.gameScreen.btnManage.visible = true;
+                this.sendNotification(GameScreenMediator.manage_show);
             }
             // 选择不同对话下一条和不同结局
             this.next = plot.next || 1;

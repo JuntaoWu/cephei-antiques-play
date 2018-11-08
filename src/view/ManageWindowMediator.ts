@@ -94,6 +94,7 @@ module game {
             this.manageWindow.coll4.text = this.proxy.playerInfo.guColl[3].toString();
             this.manageWindow.clock.text = this.proxy.playerInfo.time.toString();
             this.manageWindow.gold.text = this.proxy.playerInfo.gold || "0";
+            console.log(this.proxy.playerInfo.gold || "0");
         }
 
         public xuanze: number = 0;
