@@ -26,21 +26,22 @@ module game {
 
         public setPage() {
             this.guideWindow.dialogGroup.visible = true;
-            this.guideWindow.group1.visible = this.guideWindow.group2.visible = this.guideWindow.group3.visible
-                = this.guideWindow.group4.visible = this.guideWindow.group5.visible = false;
+            this.guideWindow.group1.visible = this.guideWindow.group2.visible 
+            = this.guideWindow.group3.visible = this.guideWindow.group4.visible
+            = this.guideWindow.group5.visible = this.guideWindow.moneyGroup.visible
+            = this.guideWindow.antiGroup.visible = this.guideWindow.clockGroup.visible = false;
             let guide = this._guides[this._index];
-            console.log(guide)
             const textElements = new egret.HtmlTextParser().parser(guide.content);
             this.guideWindow.dialog.textFlow = textElements;
             switch (guide.type) {
                 case "青豆图标":
-
+                    this.guideWindow.moneyGroup.visible = true;
                     break;
                 case "古董图标":
-
+                    this.guideWindow.antiGroup.visible = true;
                     break;
                 case "回合图标":
-
+                    this.guideWindow.clockGroup.visible = true;
                     break;
                 case "找不同":
                     this.guideWindow.group1.visible = true;
@@ -55,7 +56,7 @@ module game {
                     this.guideWindow.group4.visible = true;
                     break;
                 case "真假判别":
-                    this.guideWindow.group5.visible = true;
+                    this.guideWindow.group5.visible = this.isTrueFalseGame = true;
                     this.trueFalseGame();
                     break;
                 case "随机事件":
@@ -68,13 +69,15 @@ module game {
         }
 
         public next() {
-            // if (this.guideWindow.group5.visible && this.guideWindow.dialogGroup.visible) {
-            //     this.guideWindow.dialogGroup.visible = false;
-            //     this.moveCards();
-            //     return;
-            // }
+            if (this.guideWindow.group5.visible) {
+                if (this.isTrueFalseGame) {
+                    this.guideWindow.dialogGroup.visible = this.isTrueFalseGame = false;
+                    this.moveCards();
+                }
+                return;
+            }
             this._index += 1;
-            if (this._index > this._guides.length) {
+            if (this._index >= this._guides.length) {
                 this.guideWindow.close();
                 this.sendNotification(SceneCommand.SHOW_MANAGE);
             }
@@ -83,6 +86,7 @@ module game {
             }
         }
 
+        public isTrueFalseGame: boolean;
         public trueFalseGame() {
             this.trueAndFalseUIList = [];
             let trueFalseList = [
@@ -154,9 +158,11 @@ module game {
             e.currentTarget.removeEventListener(egret.TouchEvent.TOUCH_TAP, this.trueFalseSelect, this);
             console.log(currentImg.name);
             currentImg.source = "manage-card2";
-            this.clickTime = this.clickTime ? this.clickTime + 1 : 1;
+            e.currentTarget.addChildAt(currentImg, 0);
+            this.clickTime = !this.clickTime ? 1 : this.clickTime + 1;
             if (this.clickTime == 2) {
                 this.next();
+                this.guideWindow.group5.visible = false;
             }
         }
 

@@ -630,6 +630,7 @@ module game {
             e.currentTarget.removeEventListener(egret.TouchEvent.TOUCH_TAP, this.trueFalseSelect, this);
             console.log(currentImg.name);
             currentImg.source = "manage-card2";
+            e.currentTarget.addChildAt(currentImg, 0);
             this.selectedImg.push(this.trueFalseList[e.currentTarget.name]);
             if (this.selectedImg.length == 2) {
                 if (!this.selectedImg.includes(true)) {

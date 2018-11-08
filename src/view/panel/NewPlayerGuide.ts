@@ -21,5 +21,8 @@ module game {
         public group4: eui.Group;
         public group5: eui.Group;
         public dialogGroup: eui.Group;
+        public moneyGroup: eui.Group;
+        public antiGroup: eui.Group;
+        public clockGroup: eui.Group;
     }
 }
