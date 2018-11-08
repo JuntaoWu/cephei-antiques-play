@@ -93,7 +93,7 @@ module game {
         }
 
         public popupWindow: PopupWindow;
-        public showPopupWindow(msg: string, hasCancel: boolean, cbk: () => {}): void {
+        public showPopupWindow(msg: string, hasCancel?: boolean, cbk?: () => {}): void {
             if (!this.popupWindow) {
                 this.popupWindow = new PopupWindow();
             }

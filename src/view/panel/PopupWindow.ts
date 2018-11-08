@@ -27,6 +27,7 @@ module game {
             this.msg = msg;
             this.cbk = cbk;
             this.hasCancel = hasCancel;
+            this.btnConfirm.right = hasCancel ? 45 : 190;
         }
     }
 }

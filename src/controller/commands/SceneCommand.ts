@@ -82,8 +82,12 @@ module game {
                     appMediator.main.showGuideWindow();
                     break;
                 case SceneCommand.SHOW_POPUP:
-                    //
-                    appMediator.main.showPopupWindow(data.msg, data.hasCancel, data.cbk);
+                    if (typeof data === "string") {
+                        appMediator.main.showPopupWindow(data);
+                    }
+                    else {
+                        appMediator.main.showPopupWindow(data.msg, data.hasCancel, data.cbk);
+                    }
                     break;
             }
         }

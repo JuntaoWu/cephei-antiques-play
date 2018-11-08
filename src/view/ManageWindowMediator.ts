@@ -50,7 +50,8 @@ module game {
                     gold_haha += (this.proxy.playerInfo.guPrice[i] * this.proxy.playerInfo.guColl[i]);
                 }
                 this.proxy.playerInfo.gold = (parseFloat(this.proxy.playerInfo.gold) + gold_haha).toString();
-                platform.showModal("你获得了" + gold_haha + "金币", false);
+                // platform.showModal("你获得了" + gold_haha + "金币", false);
+                this.sendNotification(SceneCommand.SHOW_POPUP, "你获得了" + gold_haha + "金币");
             } else {
                 if (this.manageEvent.subType == "有选项" || this.manageEvent.type == "角色") {
                     this.manageWindow.option.visible = true;

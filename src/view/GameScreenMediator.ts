@@ -139,7 +139,8 @@ module game {
                         this.gameScreen.fatigueValue.text = this.proxy.playerInfo.fatigueValue.toString();
                     }
                     else {
-                        platform.showModal("体力不足，不能进入下一章", false);
+                        // platform.showModal("体力不足，不能进入下一章", false);
+                        this.sendNotification(SceneCommand.SHOW_POPUP, "体力不足，不能进入下一章");
                         return;
                     }
                 }
@@ -406,7 +407,8 @@ module game {
 
         public btnManageClick() {
             if (!this.proxy.playerInfo.time) {
-                platform.showModal("经营模式每日只能完成一次，今日经营模式已完成！", false);
+                // platform.showModal("经营模式每日只能完成一次，今日经营模式已完成！", false);
+                this.sendNotification(SceneCommand.SHOW_POPUP, "经营模式每日只能完成一次，今日经营模式已完成！");
             }
             else {
                 this.sendNotification(SceneCommand.SHOW_MANAGE);
@@ -469,9 +471,11 @@ module game {
                         this.proxy.reducePower(10);
                         this.gameScreen.fatigueValue.text = this.proxy.playerInfo.fatigueValue.toString();
                         try {
-                            platform.showModal("答案错误，扣除10点体力！", false).then(() => {
-                                this.btnResetClick();
-                            });
+                            // platform.showModal("答案错误，扣除10点体力！", false).then(() => {
+                            //     this.btnResetClick();
+                            // });
+                            this.sendNotification(SceneCommand.SHOW_POPUP, "答案错误，扣除10点体力！");
+                            this.btnResetClick();
                         }
                         catch (err) {
                             console.log(err);

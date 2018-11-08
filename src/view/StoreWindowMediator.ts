@@ -58,7 +58,8 @@ module game {
                     this.proxy.pointHunag += data.point;
                     this.proxy.pointMu -= data.point;
                 }
-                platform.showModal(data.effect,false);
+                // platform.showModal(data.effect,false);
+                this.sendNotification(SceneCommand.SHOW_POPUP, data.effect);
             } else {
                 this.storeWindow.note.visible = true;
                 egret.setTimeout(this.close_note, this, 1500);
