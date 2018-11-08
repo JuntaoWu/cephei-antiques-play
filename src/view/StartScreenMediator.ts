@@ -38,7 +38,7 @@ module game {
         public newGame() {
             if (this.proxy.playerInfo.plotId != 1) {
                 let obj = {
-                    msg: "是否确认新的开始？",
+                    msg: "你的进度将会被重置，是否确认开始新的有些？",
                     hasCancel: true,
                     cbk: () => {
                         this.proxy.playerInfo.plotId = 1;
