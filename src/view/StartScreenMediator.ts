@@ -49,8 +49,8 @@ module game {
                 try {
                     platform.showModal("是否确认新的开始？", true).then((res) => {
                         if (res.confirm) {
-                        this.proxy.playerInfo.plotId = 1;
-                        this.sendNotification(SceneCommand.CHANGE, Scene.Game);
+                            this.proxy.playerInfo.plotId = 1;
+                            this.sendNotification(SceneCommand.CHANGE, Scene.Game);
                         }
                     });
                 }
@@ -95,12 +95,17 @@ module game {
         }
 
         public listNotificationInterests(): Array<any> {
-            return [];
+            return [GameScreenMediator.manage_show];
         }
 
         public handleNotification(notification: puremvc.INotification): void {
             var data: any = notification.getBody();
             switch (notification.getName()) {
+                case GameScreenMediator.manage_show: {
+                    this.startScreen.no_manage.visible = false;
+                    this.startScreen.btnManage.visible = true;
+                    break;
+                }
             }
         }
 
