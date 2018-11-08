@@ -15,7 +15,7 @@ module game {
         public static REDUCE_POWER: string = "reduce_power";
 
         public playerInfo: PlayerInfo = {
-            plotId: 1,
+            plotId: 34,
             collectedScenes: [],
             fatigueValue: fatigueValue,
             gold: "0",
@@ -29,6 +29,7 @@ module game {
             music: true,
             isManage: false,
             isNew: true,
+            ending: [],
         };
         public pointHunag: number = 43;
         public pointMu: number = 43;
@@ -75,6 +76,12 @@ module game {
 
         public canReduecePower(value: number = 1): boolean {
             return this.playerInfo.fatigueValue >= value;
+        }
+
+        public addEnding(ending: string) {
+            if (!this.playerInfo.ending.includes(ending)) {
+                this.playerInfo.ending.push(ending);
+            }
         }
 
         // 减少体力值

@@ -91,5 +91,19 @@ module game {
             this.addChild(this.guideWindow);
             egret.Tween.get(this).to({ alpha: 1 }, 1500);
         }
+
+        public popupWindow: PopupWindow;
+        public showPopupWindow(msg: string, hasCancel: boolean, cbk: () => {}): void {
+            if (!this.popupWindow) {
+                this.popupWindow = new PopupWindow();
+            }
+            this.popupWindow.setPopupWindow(msg, hasCancel, cbk);
+            this.addChild(this.popupWindow);
+            this.popupWindow.verticalCenter = 0;
+            this.popupWindow.horizontalCenter = 0;
+            this.popupWindow.scaleX = 0.5;
+            this.popupWindow.scaleY = 0.5;
+            egret.Tween.get(this.popupWindow).to({ scaleX: 1, scaleY: 1 }, 500, egret.Ease.quadOut);
+        }
     }
 }

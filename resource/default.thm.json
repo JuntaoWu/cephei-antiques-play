@@ -44,6 +44,7 @@
 		"resource/containers/MiniGameM8_2.exml",
 		"resource/containers/MiniGameSelect.exml",
 		"resource/containers/NewPlayerGuide.exml",
+		"resource/containers/PopupWindow.exml",
 		"resource/containers/SceneDetailsWindow.exml",
 		"resource/containers/SceneSummaryWindow.exml",
 		"resource/containers/SettingWindow.exml",

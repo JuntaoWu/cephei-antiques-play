@@ -28,6 +28,8 @@ module game {
             this.gameScreen.btnReset.addEventListener(egret.TouchEvent.TOUCH_TAP, this.btnResetClick, this);
             this.gameScreen.btnConfirm.addEventListener(egret.TouchEvent.TOUCH_TAP, this.btnConfirmClick, this);
 
+            this.gameScreen.sceneGroup.addEventListener(egret.TouchEvent.TOUCH_TAP, () => {}, this);
+
             this.gameScreen.addEventListener(egret.Event.ADDED_TO_STAGE, this.initData, this);
             this.initData();
         }
@@ -62,8 +64,10 @@ module game {
         private timeoutId: number;
 
         public initData() {
+            this.gameScreen.miniGame.removeChildren();
             this.gameScreen.bottomGroup.visible = this.gameScreen.plotSelectList.visible = this.gameScreen.questionGroup.visible = false;
-            this.gameScreen.showReset = this.gameScreen.showMiniGame = this.gameScreen.showTransition = this.canGoNext = false;
+            this.gameScreen.pkBarGroup.visible = this.gameScreen.miniGame.visible = false;
+            this.gameScreen.showReset =this.gameScreen.showTransition = this.canGoNext = false;
             this.gameScreen.question = this.gameScreen.points = "";
             this.gameScreen.scrollGroup.bottom = 20;
             this.gameScreen.scrollGroup.viewport.scrollV = 0;
@@ -121,7 +125,7 @@ module game {
                 else if (question.type == "小游戏") {
                     this.gameScreen.bottomGroup.top = 0;
                     this.sendNotification(GameProxy.SHOW_MINIGAME, question);
-                    this.gameScreen.showMiniGame = this.gameScreen.showReset = true;
+                    this.gameScreen.miniGame.visible = this.gameScreen.showReset = true;
                 }
                 this.gameScreen.scrollGroup.bottom = this.gameScreen.footGroup.height;
                 this.gameScreen.scrollGroup.viewport.scrollH = 0;
@@ -133,6 +137,7 @@ module game {
                         this.gameScreen.fatigueValue.text = this.proxy.playerInfo.fatigueValue.toString();
                     }
                     else {
+                        platform.showModal("体力不足，不能进入下一章", false);
                         return;
                     }
                 }
@@ -262,7 +267,7 @@ module game {
         }
 
         public showPlotOption(talkId) {
-            this.gameScreen.plotSelectList.visible = true;
+            this.gameScreen.plotSelectList.visible = this.gameScreen.pkBarGroup.visible = true;
             let plotOption = this.plotOptions.get(talkId.toString());
             if (plotOption) {
                 this.gameScreen.question = plotOption.question || "";
@@ -348,9 +353,11 @@ module game {
             else if (this.next == "over") { //最后有两个不同结局
                 if (this.proxy.pointMu < this.proxy.pointHunag) {
                     this.proxy.nextPlot();
+                    this.proxy.addEnding("m1");
                 }
                 else {
                     this.proxy.nextPlot(2);
+                    this.proxy.addEnding("m2");
                 }
             }
             else {
@@ -370,7 +377,7 @@ module game {
             if (this.gameScreen.points || (!this.questionPoints[0] && !this.questionPoints[1])) {
                 this.showPointsAll = true;
             }
-            this.gameScreen.points = !this.gameScreen.points ? this.questionPoints[0] : `${this.questionPoints[0]}\n————————\n${this.questionPoints[1]}`;
+            this.gameScreen.points = !this.gameScreen.points ? this.questionPoints[0] : `${this.questionPoints[0]}\n———————————————\n${this.questionPoints[1]}`;
             if (!this.showPointsAll) {
                 this.proxy.reduceHints();
                 let hintCardsLabel = (this.gameScreen.btnTips.getChildByName("hintGroup") as eui.Group).getChildByName("hintCards") as eui.BitmapLabel;

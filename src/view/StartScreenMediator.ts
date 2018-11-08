@@ -37,6 +37,15 @@ module game {
 
         public newGame() {
             if (this.proxy.playerInfo.plotId != 1) {
+                // let obj = {
+                //     msg: "是否确认新的开始？",
+                //     hasCancel: true,
+                //     cbk: () => {
+                //         this.proxy.playerInfo.plotId = 1;
+                //         this.sendNotification(SceneCommand.CHANGE, Scene.Game);
+                //     }
+                // }
+                // this.sendNotification(SceneCommand.SHOW_POPUP, obj);
                 try {
                     platform.showModal("是否确认新的开始？", true).then((res) => {
                         if (res.confirm) {

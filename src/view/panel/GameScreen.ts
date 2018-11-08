@@ -25,13 +25,14 @@ module game {
         public question: string;
         public points: string;
         public description: string = "";
-        public showMiniGame: boolean;
         public showScene: boolean;
         public showTransition: boolean;
         public transitionText: string;
         public showPoints: boolean;
 
+        public miniGame: MiniGame;
         public sceneGroup: eui.Group;
+        public pkBarGroup: eui.Group;
         public questionGroup: eui.Group;
         public textGroup: eui.Group;
         public huangAndMubar: eui.Group;
@@ -50,6 +51,7 @@ module game {
 
         public inputGroup: MiniGameInput = new MiniGameInput();
         public selectGroup: MiniGameSelect = new MiniGameSelect();
+
 
         public showInput(questionId: number, answer) {
             this.bottomGroup.removeChildren();
