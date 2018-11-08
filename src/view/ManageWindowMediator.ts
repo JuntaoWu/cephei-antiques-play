@@ -51,10 +51,6 @@ module game {
                 }
                 this.proxy.playerInfo.gold = (parseFloat(this.proxy.playerInfo.gold) + gold_haha).toString();
                 platform.showModal("你获得了" + gold_haha + "金币", false);
-                this.proxy.playerInfo.time = 24;
-                this.proxy.playerInfo.guPrice = [0, 0, 0, 0];
-                this.proxy.playerInfo.guColl = [5, 5, 5, 5];
-                this.proxy.playerInfo.guEventList = [];
             } else {
                 if (this.manageEvent.subType == "有选项" || this.manageEvent.type == "角色") {
                     this.manageWindow.option.visible = true;
@@ -401,162 +397,205 @@ module game {
 
         public gameImgList: Array<any>;
         public answerImgList: Array<any>;
+        public falseIndexList: Array<number>;
         public trueFalseList: Array<boolean>;
         public trueAndFalseUIList: Array<eui.Group>;
         public setManageEvent() {
-            this.manageWindow.miniGameGroup.visible = this.manageWindow.eventGroup.visible = false;
             if (!this.manageEvent) return;
+            this.manageWindow.miniGameGroup.visible = false;
+            this.manageWindow.eventGroup.visible = true;
             console.log(this.manageEvent.type, this.manageEvent.subType);
             this.manageWindow.description = this.manageEvent.description;
             this.manageWindow.yes_text = this.manageEvent.yes;
             this.manageWindow.no_text = this.manageEvent.no;
-            this.manageWindow.text1.y = 800;
             if (this.manageEvent.type == "小游戏") {
-                this.canSelectedCard = false;
-                this.manageWindow.miniGameGroup.visible = true;
-                this.selectedImg = [];
-                this.manageWindow.gameTrueFalse.visible = this.manageWindow.gameList.visible = false;
-                this.manageWindow.gameTrueFalse.removeChildren();
-                if (this.manageEvent.subType == "猜真假") {
-                    this.manageWindow.gameTrueFalse.visible = true;
-                    this.manageWindow.eventGroup.visible = false;
-                    this.manageWindow.text1.y = 1020;
-                    this.trueAndFalseUIList = [];
-                    this.trueFalseList = [
-                        true, true, true
-                        , true, true, true
-                        , true, true, true
-                    ]
-                    for (let i = 0; i < 3; i++) {
-                        let randomIndex = _.random(i * 3, i * 3 + 2);
-                        this.trueFalseList[randomIndex] = false;
-                    }
-                    this.trueFalseList.forEach((v, i) => {
-                        let img = new eui.Image();
-                        img.source = "manage-card2";
-                        img.name = "img";
-                        let textLabel = new eui.Label();
-                        textLabel.text = v ? "真" : "假";
-                        textLabel.size = 60;
-                        textLabel.horizontalCenter = 0;
-                        textLabel.verticalCenter = 0;
-                        let group = new eui.Group();
-                        group.addChild(img);
-                        group.addChild(textLabel);
-                        group.name = i.toString();
-                        group.x = i % 3 ? 215 * (i % 3) : 0;
-                        group.y = (i - i % 3) / 3 ? 280 * ((i - i % 3) / 3) : 0;
-                        this.manageWindow.gameTrueFalse.addChild(group);
-                        group.addEventListener(egret.TouchEvent.TOUCH_TAP, this.trueFalseSelect, this);
-                        this.trueAndFalseUIList.push(group);
-                    })
-                    egret.setTimeout(() => {
-                        this.moveCards();
-                    }, this, 3000);
+                switch (this.manageEvent.subType) {
+                    case "猜真假":
+                        this.manageWindow.juese.source = "s8";
+                        this.manageWindow.description = "店家，来看看这几件宝贝，祖传的。你看看能给多少钱，不保证真假啊~"; 
+                        egret.setTimeout(() => {
+                            this.setMiniGame();
+                        }, this, 1500);
+                        break;
+                    case "找不同":
+                        this.manageWindow.juese.source = "s21";
+                        this.manageWindow.description = "呀，路上捡了几件宝贝，您给看看哪件能收给个价？"; 
+                        egret.setTimeout(() => {
+                            this.setMiniGame();
+                        }, this, 1500);
+                        break;
+                    case "找相同":
+                        this.manageWindow.juese.source = "s22";
+                        this.manageWindow.description = "给你件古董，你要是能鉴定出它是真的，票子大大的赏！"; 
+                        egret.setTimeout(() => {
+                            this.setMiniGame();
+                        }, this, 1500);
+                        break;
+                    case "找同类":
+                        this.manageWindow.juese.source = "s69";
+                        this.manageWindow.description = "嗨，从老家里的破柜子里翻出一件老物件，您给看看它是什么古董？"; 
+                        egret.setTimeout(() => {
+                            this.setMiniGame();
+                        }, this, 1500);
+                        break;
+                    case "找异类":
+                        this.manageWindow.juese.source = "s70";
+                        this.manageWindow.description = "老大让我给你带句话，要是这宝贝你坚定不出是假的，这店别想开了！"; 
+                        egret.setTimeout(() => {
+                            this.setMiniGame();
+                        }, this, 1500);
+                        break;
                 }
-                else {
-                    this.gameImgList = [];
-                    this.answerImgList = [];
-                    this.manageWindow.gameList.visible = true;
-                    let resTypeList = ["qingtong", "shuhua", "muqi", "ciqi", "yu"];
-                    let randomTypeIndex = _.random(0, 4);
-                    let yitong = [4, 5, 6];
-                    let randomIndex = _.random(0, 2);
-                    let randomNum = _.random(1, 8);
-                    switch (this.manageEvent.subType) {
-                        case "找不同":
-                            for (let i = 0; i < 4; i++) {
-                                if (i == randomIndex) {
-                                    this.gameImgList.push({
-                                        res: `${resTypeList[randomTypeIndex]}(${yitong[i]})`,
-                                        isSelected: false
-                                    })
-                                    this.answerImgList.push(`${resTypeList[randomTypeIndex]}(${yitong[i]})`);
-                                }
-                                else {
-                                    let i = (1 + randomIndex) % 3;
-                                    this.gameImgList.push({
-                                        res: `${resTypeList[randomTypeIndex]}(${yitong[i]})`,
-                                        isSelected: false
-                                    })
-                                }
-                            }
-                            break;
-                        case "找相同":
-                            this.gameImgList = yitong.map(i => {
-                                return {
-                                    res: `${resTypeList[randomTypeIndex]}(${i})`,
-                                    isSelected: false
-                                }
-                            })
-                            this.gameImgList.push({
-                                res: `${resTypeList[randomTypeIndex]}(${yitong[randomIndex]})`,
-                                isSelected: false
-                            })
-                            this.answerImgList.push(`${resTypeList[randomTypeIndex]}(${yitong[randomIndex]})`, `${resTypeList[randomTypeIndex]}(${yitong[randomIndex]})`);
-                            break;
-                        case "找同类":
-                            // 同类
-                            this.gameImgList.push({
-                                res: `${resTypeList[randomTypeIndex]}(${randomNum})`,
-                                isSelected: false
-                            }, {
-                                    res: `${resTypeList[randomTypeIndex]}(${(randomTypeIndex + randomNum) % 8 + 1})`,
-                                    isSelected: false
-                                })
-                            this.answerImgList.push(`${resTypeList[randomTypeIndex]}(${randomNum})`, `${resTypeList[randomTypeIndex]}(${(randomTypeIndex + randomNum) % 8 + 1})`);
-                            // 异类
-                            let otherTypeIndex = _.random(0, 4);
-                            while (otherTypeIndex == randomTypeIndex) {
-                                otherTypeIndex = _.random(0, 4);
-                            }
-                            let otherTypeIndex2 = _.random(0, 4);
-                            while (otherTypeIndex2 == randomTypeIndex || otherTypeIndex2 == otherTypeIndex) {
-                                otherTypeIndex2 = _.random(0, 4);
-                            }
-                            this.gameImgList.push({
-                                res: `${resTypeList[otherTypeIndex]}(${(otherTypeIndex2 + randomNum) % 8 + 1})`,
-                                isSelected: false
-                            }, {
-                                    res: `${resTypeList[otherTypeIndex2]}(${(otherTypeIndex + randomNum) % 8 + 1})`,
-                                    isSelected: false
-                                })
-                            break;
-                        case "找异类":
-                            let index = _.random(0, 3);
-                            this.gameImgList = [0, 1, 2, 3].map(i => {
-                                let obj = null;
-                                if (i == index) {
-                                    let otherTypeIndex = _.random(0, 4);
-                                    while (otherTypeIndex == randomTypeIndex) {
-                                        otherTypeIndex = _.random(0, 4);
-                                    }
-                                    obj = {
-                                        res: `${resTypeList[otherTypeIndex]}(${randomNum})`,
-                                        isSelected: false
-                                    }
-                                    this.answerImgList.push(`${resTypeList[otherTypeIndex]}(${randomNum})`);
-                                }
-                                else {
-                                    obj = {
-                                        res: `${resTypeList[randomTypeIndex]}(${(randomTypeIndex + randomNum + i) % 8 + 1})`,
-                                        isSelected: false
-                                    }
-                                }
-                                return obj;
-                            })
-                            break;
-                    }
-                    this.gameImgList.forEach((i, index) => {
-                        i.index = index;
-                    })
-                    this.manageWindow.gameList.dataProvider = new eui.ArrayCollection(this.gameImgList);
-                    this.manageWindow.gameList.itemRenderer = ManageGameItemRenderer;
-                    this.canSelectedCard = true;
-                }
+                this.manageWindow.juese.visible = true;
             }
             else {
-                this.manageWindow.eventGroup.visible = true;
+            }
+        }
+
+        public setMiniGame() {
+            this.canSelectedCard = this.manageWindow.eventGroup.visible = false;
+            this.manageWindow.miniGameGroup.visible = true;
+            this.selectedImg = [];
+            this.manageWindow.gameTrueFalse.visible = this.manageWindow.gameList.visible = false;
+            this.manageWindow.gameTrueFalse.removeChildren();
+            this.manageWindow.description = this.manageEvent.description;
+            if (this.manageEvent.subType == "猜真假") {
+                this.manageWindow.gameTrueFalse.visible = true;
+                this.manageWindow.eventGroup.visible = false;
+                this.trueAndFalseUIList = [];
+                this.trueFalseList = [
+                    true, true, true
+                    , true, true, true
+                    , true, true, true
+                ]
+                this.falseIndexList = [];
+                for (let i = 0; i < 3; i++) {
+                    let randomIndex = _.random(i * 3, i * 3 + 2);
+                    this.trueFalseList[randomIndex] = false;
+                    this.falseIndexList.push(randomIndex);
+                }
+                this.trueFalseList.forEach((v, i) => {
+                    let img = new eui.Image();
+                    img.source = "manage-card2";
+                    img.name = "img";
+                    let textLabel = new eui.Label();
+                    textLabel.text = v ? "真" : "假";
+                    textLabel.size = 60;
+                    textLabel.horizontalCenter = 0;
+                    textLabel.verticalCenter = 0;
+                    let group = new eui.Group();
+                    group.addChild(img);
+                    group.addChild(textLabel);
+                    group.name = i.toString();
+                    group.x = i % 3 ? 215 * (i % 3) : 0;
+                    group.y = (i - i % 3) / 3 ? 280 * ((i - i % 3) / 3) : 0;
+                    this.manageWindow.gameTrueFalse.addChild(group);
+                    group.addEventListener(egret.TouchEvent.TOUCH_TAP, this.trueFalseSelect, this);
+                    this.trueAndFalseUIList.push(group);
+                })
+                egret.setTimeout(() => {
+                    this.moveCards();
+                }, this, 3000);
+            }
+            else {
+                this.gameImgList = [];
+                this.answerImgList = [];
+                this.manageWindow.gameList.visible = true;
+                let resTypeList = ["qingtong", "shuhua", "muqi", "ciqi", "yu"];
+                let randomTypeIndex = _.random(0, 4);
+                let yitong = [4, 5, 6];
+                let randomIndex = _.random(0, 2);
+                let randomNum = _.random(1, 8);
+                switch (this.manageEvent.subType) {
+                    case "找不同":
+                        for (let i = 0; i < 4; i++) {
+                            if (i == randomIndex) {
+                                this.gameImgList.push({
+                                    res: `${resTypeList[randomTypeIndex]}(${yitong[i]})`,
+                                    isSelected: false
+                                })
+                                this.answerImgList.push(`${resTypeList[randomTypeIndex]}(${yitong[i]})`);
+                            }
+                            else {
+                                let i = (1 + randomIndex) % 3;
+                                this.gameImgList.push({
+                                    res: `${resTypeList[randomTypeIndex]}(${yitong[i]})`,
+                                    isSelected: false
+                                })
+                            }
+                        }
+                        break;
+                    case "找相同":
+                        this.gameImgList = yitong.map(i => {
+                            return {
+                                res: `${resTypeList[randomTypeIndex]}(${i})`,
+                                isSelected: false
+                            }
+                        })
+                        this.gameImgList.push({
+                            res: `${resTypeList[randomTypeIndex]}(${yitong[randomIndex]})`,
+                            isSelected: false
+                        })
+                        this.answerImgList.push(`${resTypeList[randomTypeIndex]}(${yitong[randomIndex]})`, `${resTypeList[randomTypeIndex]}(${yitong[randomIndex]})`);
+                        break;
+                    case "找同类":
+                        // 同类
+                        this.gameImgList.push({
+                            res: `${resTypeList[randomTypeIndex]}(${randomNum})`,
+                            isSelected: false
+                        }, {
+                                res: `${resTypeList[randomTypeIndex]}(${(randomTypeIndex + randomNum) % 8 + 1})`,
+                                isSelected: false
+                            })
+                        this.answerImgList.push(`${resTypeList[randomTypeIndex]}(${randomNum})`, `${resTypeList[randomTypeIndex]}(${(randomTypeIndex + randomNum) % 8 + 1})`);
+                        // 异类
+                        let otherTypeIndex = _.random(0, 4);
+                        while (otherTypeIndex == randomTypeIndex) {
+                            otherTypeIndex = _.random(0, 4);
+                        }
+                        let otherTypeIndex2 = _.random(0, 4);
+                        while (otherTypeIndex2 == randomTypeIndex || otherTypeIndex2 == otherTypeIndex) {
+                            otherTypeIndex2 = _.random(0, 4);
+                        }
+                        this.gameImgList.push({
+                            res: `${resTypeList[otherTypeIndex]}(${(otherTypeIndex2 + randomNum) % 8 + 1})`,
+                            isSelected: false
+                        }, {
+                                res: `${resTypeList[otherTypeIndex2]}(${(otherTypeIndex + randomNum) % 8 + 1})`,
+                                isSelected: false
+                            })
+                        break;
+                    case "找异类":
+                        let index = _.random(0, 3);
+                        this.gameImgList = [0, 1, 2, 3].map(i => {
+                            let obj = null;
+                            if (i == index) {
+                                let otherTypeIndex = _.random(0, 4);
+                                while (otherTypeIndex == randomTypeIndex) {
+                                    otherTypeIndex = _.random(0, 4);
+                                }
+                                obj = {
+                                    res: `${resTypeList[otherTypeIndex]}(${randomNum})`,
+                                    isSelected: false
+                                }
+                                this.answerImgList.push(`${resTypeList[otherTypeIndex]}(${randomNum})`);
+                            }
+                            else {
+                                obj = {
+                                    res: `${resTypeList[randomTypeIndex]}(${(randomTypeIndex + randomNum + i) % 8 + 1})`,
+                                    isSelected: false
+                                }
+                            }
+                            return obj;
+                        })
+                        break;
+                }
+                this.gameImgList.forEach((i, index) => {
+                    i.index = index;
+                })
+                this.manageWindow.gameList.dataProvider = new eui.ArrayCollection(this.gameImgList);
+                this.manageWindow.gameList.itemRenderer = ManageGameItemRenderer;
+                this.canSelectedCard = true;
             }
         }
 
@@ -658,7 +697,7 @@ module game {
                 return;
             }
             let leftTime = num - 1;
-            let randomIndex = _.random(0, 8);
+            let randomIndex = this.falseIndexList[_.random(0, 2)];
             let swapIndex = _.random(0, 8);
             while (randomIndex == swapIndex) {
                 swapIndex = _.random(0, 8);

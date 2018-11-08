@@ -82,5 +82,14 @@ module game {
             this.addChild(this.settingWindow);
             egret.Tween.get(this).to({ alpha: 1 }, 1500);
         }
+
+        public guideWindow: NewPlayerGuide;
+        public showGuideWindow(): void {
+            if (!this.guideWindow) {
+                this.guideWindow = new NewPlayerGuide();
+            }
+            this.addChild(this.guideWindow);
+            egret.Tween.get(this).to({ alpha: 1 }, 1500);
+        }
     }
 }

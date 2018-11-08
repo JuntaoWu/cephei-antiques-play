@@ -24,6 +24,8 @@ module game {
         public static SHOW_SCENE_DETAILS: string = "show_scene_details";
         public static SHOW_SETTING: string = "show_setting";
 
+        public static SHOW_GUIDE: string = "show_guide";
+
         public register(): void {
             this.initializeNotifier("ApplicationFacade");
         }
@@ -37,6 +39,7 @@ module game {
             this.facade().registerCommand(SceneCommand.SHOW_SCENE, SceneCommand);
             this.facade().registerCommand(SceneCommand.SHOW_SCENE_DETAILS, SceneCommand);
             this.facade().registerCommand(SceneCommand.SHOW_SETTING, SceneCommand);
+            this.facade().registerCommand(SceneCommand.SHOW_GUIDE, SceneCommand);
         }
 
         public async execute(notification: puremvc.INotification): Promise<any> {
@@ -71,6 +74,9 @@ module game {
                     break;
                 case SceneCommand.SHOW_SETTING:
                     appMediator.main.showSettingWindow();
+                    break;
+                case SceneCommand.SHOW_GUIDE:
+                    appMediator.main.showGuideWindow();
                     break;
             }
         }
