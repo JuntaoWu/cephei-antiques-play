@@ -84,6 +84,14 @@ module game {
             }
         }
 
+        public addCollectedScenes(sceneCG: string) {
+            if (sceneCG == "s0") return;
+            if (!this.playerInfo.collectedScenes.includes(sceneCG)) {
+                this.playerInfo.collectedScenes.push(sceneCG);
+                this.savePlayerInfoToStorage();
+            }
+        }
+
         // 减少体力值
         public reducePower(value: number = 1): void {
             this.playerInfo.fatigueValue -= value;

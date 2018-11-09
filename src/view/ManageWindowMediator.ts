@@ -414,7 +414,7 @@ module game {
             if (!this.manageEvent) return;
             this.manageWindow.eventGroup.visible = true;
             console.log(this.manageEvent.type, this.manageEvent.subType);
-            this.manageWindow.description = this.manageEvent.description;
+            this.manageWindow.description = "";
             this.manageWindow.yes_text = this.manageEvent.yes;
             this.manageWindow.no_text = this.manageEvent.no;
             if (this.manageEvent.type == "小游戏") {
@@ -458,11 +458,12 @@ module game {
                 this.manageWindow.juese.visible = this.manageWindow.setMiniGame.visible = true;
             }
             else {
+                this.manageWindow.description = this.manageEvent.description;
             }
         }
 
         public setMiniGame() {
-            this.canSelectedCard = this.manageWindow.eventGroup.visible = false;
+            this.canSelectedCard = this.manageWindow.eventGroup.visible = this.manageWindow.setMiniGame.visible = false;
             this.manageWindow.miniGameGroup.visible = true;
             this.selectedImg = [];
             this.manageWindow.gameTrueFalse.visible = this.manageWindow.gameList.visible = false;

@@ -66,8 +66,9 @@ module game {
 
         public initData() {
             this.gameScreen.miniGame.removeChildren();
-            this.gameScreen.bottomGroup.visible = this.gameScreen.plotSelectList.visible = this.gameScreen.questionGroup.visible = false;
-            this.gameScreen.pkBarGroup.visible = this.gameScreen.miniGame.visible = false;
+            this.aa && this.aa.parent && this.aa.parent.removeChild(this.aa);
+            this.gameScreen.bottomGroup.visible = this.gameScreen.plotSelectList.visible
+            = this.gameScreen.questionGroup.visible = this.gameScreen.miniGame.visible = false;
             this.gameScreen.showReset =this.gameScreen.showTransition = this.canGoNext = false;
             this.gameScreen.question = this.gameScreen.points = "";
             this.gameScreen.scrollGroup.bottom = 20;
@@ -110,7 +111,7 @@ module game {
                 hintCardsLabel.text = this.proxy.playerInfo.hints.toString();
 
                 if (question.type == "填空") {
-                    this.gameScreen.bottomGroup.top = 80;
+                    this.gameScreen.bottomGroup.top = 110;
                     this.gameScreen.bottomGroup.visible = this.gameScreen.showReset = true;
                     this.gameScreen.showInput(question.id, question.answer);
                 }
@@ -228,9 +229,7 @@ module game {
             this.gameScreen.sceneAddGroup.removeChildren();
             let sceneResList = res.split("、");
             sceneResList.forEach((v, i) => {
-                if (!this.proxy.playerInfo.collectedScenes.includes(v)) {
-                    this.proxy.playerInfo.collectedScenes.push(v);
-                }
+                this.proxy.addCollectedScenes(v);
                 if (!i) {
                     this.gameScreen.sceneBg.source = v;
                     if (v == effectTigger) {
@@ -281,7 +280,7 @@ module game {
         }
 
         public showPlotOption(talkId) {
-            this.gameScreen.plotSelectList.visible = this.gameScreen.pkBarGroup.visible = true;
+            this.gameScreen.plotSelectList.visible = true;
             let plotOption = this.plotOptions.get(talkId.toString());
             if (plotOption) {
                 this.gameScreen.question = plotOption.question || "";
@@ -378,25 +377,24 @@ module game {
                 this.proxy.nextPlot(this.next as number);
             }
             this.initData();
-            this.aa && this.aa.parent && this.aa.parent.removeChild(this.aa);
         }
 
         public btnTipsClick() {
             this.gameScreen.showPoints = !this.gameScreen.showPoints;
             if (!this.gameScreen.showPoints) return;
             if (!this.proxy.playerInfo.hints) {
-                this.gameScreen.points = "没有提示卡";
+                this.sendNotification(SceneCommand.SHOW_POPUP, "没有提示卡了");
                 return;
             }
-            if (this.gameScreen.points || (!this.questionPoints[0] && !this.questionPoints[1])) {
-                this.showPointsAll = true;
-            }
-            this.gameScreen.points = !this.gameScreen.points ? this.questionPoints[0] : `${this.questionPoints[0]}\n———————————————\n${this.questionPoints[1]}`;
             if (!this.showPointsAll) {
                 this.proxy.reduceHints();
                 let hintCardsLabel = (this.gameScreen.btnTips.getChildByName("hintGroup") as eui.Group).getChildByName("hintCards") as eui.BitmapLabel;
                 hintCardsLabel.text = this.proxy.playerInfo.hints.toString();
             }
+            if (this.gameScreen.points || (!this.questionPoints[0] && !this.questionPoints[1])) {
+                this.showPointsAll = true;
+            }
+            this.gameScreen.points = !this.gameScreen.points ? this.questionPoints[0] : `${this.questionPoints[0]}\n———————————————\n${this.questionPoints[1]}`; 
         }
 
         public btnBackClick() {
@@ -442,8 +440,14 @@ module game {
         }
 
         public nextTestClick() {
-            this.textIsOver && this.showNext();
-            this.textIsOver = true;
+            if (!this.textIsOver) {
+                this.textIsOver = true;
+            }
+            else {
+                egret.setTimeout(() => {
+                    this.showNext();
+                }, this, 150);
+            }
         }
 
         public btnResetClick() {

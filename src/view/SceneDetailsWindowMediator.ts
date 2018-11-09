@@ -20,7 +20,7 @@ module game {
         public initData() {
             let sceneList = this.proxy.sceneRes.get(this.sceneDetailsWindow.type).map((i) => {
                 let scene = { ...i }
-                if (this.proxy.playerInfo.collectedScenes.includes(i.res)) {
+                if (this.proxy.playerInfo.collectedScenes.includes(i.res.replace("S", "s"))) {
                     scene.isCollected = true;
                     if (scene.type == SceneType.ScenePerson) {
                         scene.scale = 0.25;
