@@ -13,6 +13,8 @@ module game {
             this.proxy = <GameProxy><any>this.facade().retrieveProxy(GameProxy.NAME);
             this.initData();
             this.guideWindow.addEventListener(egret.TouchEvent.TOUCH_TAP, this.next, this);
+            this.guideWindow.btnNext.addEventListener(egret.TouchEvent.TOUCH_TAP, this.next, this);
+            this.guideWindow.btnSkip.addEventListener(egret.TouchEvent.TOUCH_TAP, this.closeWindow, this);
         }
 
         private _guides: Array<any>;
@@ -74,6 +76,11 @@ module game {
             }
         }
 
+        public closeWindow() {
+            this.guideWindow.close();
+            this.sendNotification(SceneCommand.SHOW_MANAGE);
+        }
+
         public next() {
             if (this.cannotNext) {
                 if (this.isTrueFalseGame) {
@@ -84,8 +91,7 @@ module game {
             }
             this._index += 1;
             if (this._index > this._guides.length) {
-                this.guideWindow.close();
-                this.sendNotification(SceneCommand.SHOW_MANAGE);
+                this.closeWindow();
             }
             else {
                 this.setPage();

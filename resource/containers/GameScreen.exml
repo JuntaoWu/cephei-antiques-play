@@ -21,7 +21,7 @@
         
         <e:Group x="300" anchorOffsetX="0" verticalCenter="15">
             <e:Image source="tili" scaleX="1.5" scaleY="1.5"/>
-            <e:Label id="fatigueValue" text="0" anchorOffsetX="0" width="84" anchorOffsetY="0" height="49" verticalAlign="middle" textAlign="center" textColor="0xf7f7f7" verticalCenter="0" size="60" x="115"/>
+            <e:Label id="fatigueValue" text="0" anchorOffsetX="0" anchorOffsetY="0" height="49" verticalAlign="middle" textAlign="center" textColor="0xf7f7f7" verticalCenter="0" size="60" x="115"/>
         </e:Group>
         <e:Button id="nextTest" anchorOffsetX="0" width="309" anchorOffsetY="0" verticalCenter="0" right="0">
             <e:Skin>

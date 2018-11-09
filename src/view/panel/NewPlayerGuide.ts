@@ -26,6 +26,8 @@ module game {
         public clockGroup: eui.Group;
         public optionGroup: eui.Group;
         public btnPlotGroup: eui.Group;
+        public btnSkip: eui.Image;
+        public btnNext: eui.Image;
 
         public yes: eui.Button;
         public no: eui.Button;
