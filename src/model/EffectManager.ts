@@ -111,8 +111,9 @@ module game {
                     m.graphics.beginFill(0xffffff);
                     m.graphics.drawCircle(0, 0, target.width - n);
                     m.graphics.endFill();
+                    target.mask = null;
                     target.mask = m;
-                    n -= 5;
+                    n -= 8;
                     if (target.width - n < 1.5 * target.width) {
                         intervalFun();
                     }
@@ -120,13 +121,13 @@ module game {
                         target.mask = null;
                         m.parent && m.parent.removeChild(m);
                     }
-                }, this, 30)
+                }, this, 20)
             }
             intervalFun();
             target.alpha = 0;
             egret.setTimeout(() => {
-                egret.Tween.get(target).to({alpha: 1}, 3000);
-            }, this, 500)
+                egret.Tween.get(target).to({alpha: 1}, 2500);
+            }, this, 400)
         }
 
         //头晕目眩(场景图重影模糊)

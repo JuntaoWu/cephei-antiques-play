@@ -85,12 +85,6 @@ module game {
             if (!plot) {
                 return;
             }
-            if (plot.id == 35) {
-                this.proxy.playerInfo.isManage = true;
-                this.gameScreen.no_btnmanage.visible = false;
-                this.gameScreen.btnManage.visible = true;
-                this.sendNotification(GameScreenMediator.manage_show);
-            }
             // 选择不同对话下一条和不同结局
             this.next = plot.next || 1;
             if (this.timeoutId) {
@@ -152,17 +146,21 @@ module game {
                 }, this, 1500);
             }
             else if (plot.type == "界面切换经营") {
-                if (this.proxy.playerInfo.isNew) {
+                if (!this.proxy.playerInfo.isManage) {
                     this.gameScreen.showTransition = true;
-                    this.gameScreen.transitionText = "界面切换经营";
+                    this.gameScreen.transitionText = "进入经营模式";
                     this.timeoutId = egret.setTimeout(() => {
                         this.gameScreen.showTransition = false;
                         this.sendNotification(SceneCommand.SHOW_GUIDE);
                     }, this, 1000);
+                    this.proxy.playerInfo.isManage = true;
+                    this.gameScreen.no_btnmanage.visible = false;
+                    this.gameScreen.btnManage.visible = true;
+                    this.sendNotification(GameScreenMediator.manage_show);
                 }
                 else if (this.proxy.playerInfo.time) {
                     this.gameScreen.showTransition = true;
-                    this.gameScreen.transitionText = "界面切换经营";
+                    this.gameScreen.transitionText = "进入经营模式";
                     this.timeoutId = egret.setTimeout(() => {
                         this.gameScreen.showTransition = false;
                         this.btnManageClick();
@@ -326,7 +324,7 @@ module game {
             egret.setTimeout(() => {
                 this.gameScreen.removeChild(this.bb);
                 this.showNext();
-            }, this, 1300);
+            }, this, 3000);
             this.proxy.pointHunag += point;
             this.proxy.pointMu -= point;
             if (this.proxy.pointHunag > 86 || this.proxy.pointMu < 0) {

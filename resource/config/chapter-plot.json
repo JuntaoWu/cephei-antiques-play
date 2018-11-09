@@ -842,7 +842,7 @@
     "sound": "",
     "playTime": 0.0,
     "talkId": 0.0,
-    "autoNextTime": 2,
+    "autoNextTime": 0.0,
     "portrait": "半身",
     "next": 0.0,
     "chapter": 1

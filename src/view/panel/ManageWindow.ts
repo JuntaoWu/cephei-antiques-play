@@ -45,5 +45,6 @@ module game {
         public btnPicture: eui.Button;
         public btnTutorial: eui.Button;
         public juese: eui.Image;
+        public setMiniGame: eui.Button;
     }
 }

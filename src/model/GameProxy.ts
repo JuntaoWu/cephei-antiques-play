@@ -27,8 +27,7 @@ module game {
             guEventList: [],
             sound: true,
             music: true,
-            isManage: false,
-            isNew: true,
+            isManage: true,
             ending: [],
         };
         public pointHunag: number = 43;
@@ -154,7 +153,7 @@ module game {
             try {
                 let res = await platform.getStorageAsync("playerInfo");
                 console.log("mergeRemoteInfoToStorage: parse playerInfo");
-                this.playerInfo = JSON.parse(res.data);
+                this.playerInfo = Object.assign(this.playerInfo, JSON.parse(res.data));
                 console.log(this.playerInfo)
             }
             catch (error) {
