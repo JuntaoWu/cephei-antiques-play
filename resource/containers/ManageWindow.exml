@@ -36,9 +36,6 @@
 			<e:Image source="s4" horizontalCenter="0"/>
 			<e:Image id="juese" verticalCenter="0" horizontalCenter="0" source="s60"/>
 			<e:Image source="game-bg" horizontalCenter="0" x="0" scaleX="1" scaleY="1" top="566" bottom="0"/>
-			<e:Label id="text1" text="{description}" width="670" horizontalCenter="0" textColor="0x000000" size="35" anchorOffsetY="0" verticalAlign="middle" textAlign="center" y="800" fontFamily="Microsoft YaHei"/>
-			<e:Button id="setMiniGame" alpha="0" width="670" horizontalCenter="0" y="600" height="400">
-			</e:Button>
 			<e:Group id="option" width="720" height="129" horizontalCenter="0" bottom="0" anchorOffsetY="0">
 				<e:Button id="yes" bottom="0" left="0" label="{yes_text}" width="360">
 				<e:skinName>
@@ -102,8 +99,9 @@
 				</e:layout>
 			</e:List>
 		</e:Group>
-
-
+		<e:Label id="text1" text="{description}" width="670" horizontalCenter="0" textColor="0x000000" size="35" anchorOffsetY="0" verticalAlign="middle" textAlign="center" y="800" fontFamily="Microsoft YaHei"/>
+		<e:Button id="setMiniGame" alpha="0" width="670" horizontalCenter="0" y="600" height="400">
+		</e:Button>
 	</e:Group>
 
 </e:Skin>
