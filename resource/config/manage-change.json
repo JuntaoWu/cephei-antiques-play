@@ -134,7 +134,7 @@
   "12": {
     "id": "12",
     "leixing1": "价格变化",
-    "shuzhi1": "*1.2",
+    "shuzhi1": "1.2",
     "mubiao1": "除木器",
     "tiaojian1": "木器",
     "leixing2": "价格变化",
@@ -230,7 +230,7 @@
   "20": {
     "id": "20",
     "leixing1": "价格变化",
-    "shuzhi1": "*1.2",
+    "shuzhi1": "1.2",
     "mubiao1": "除书画",
     "tiaojian1": "书画",
     "leixing2": "价格变化",
@@ -266,7 +266,7 @@
   "23": {
     "id": "23",
     "leixing1": "古董数量变化",
-    "shuzhi1": "书画数量*0.5",
+    "shuzhi1": "书画数量*1.5",
     "mubiao1": "书画",
     "tiaojian1": "书画数量最多",
     "leixing2": "",
@@ -302,7 +302,7 @@
   "26": {
     "id": "26",
     "leixing1": "价格变化",
-    "shuzhi1": "*1.2",
+    "shuzhi1": "1.2",
     "mubiao1": "除玉石",
     "tiaojian1": "玉石",
     "leixing2": "价格变化",
