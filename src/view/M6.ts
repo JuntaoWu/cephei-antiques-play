@@ -48,6 +48,8 @@ module game {
 				} else {
 					ApplicationFacade.getInstance().sendNotification(GameProxy.REDUCE_POWER);
 				}
+			} else {
+				ApplicationFacade.getInstance().sendNotification(GameProxy.REDUCE_POWER);
 			}
 		}
 
