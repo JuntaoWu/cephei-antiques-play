@@ -1,7 +1,7 @@
 {
 	"groups": [
 		{
-			"keys": "question_json,select-options_json,game-bg,input-item,option-bg,input-bg,chapter-plot_json,plot-options_json,bar-bg,head-bg,scene_json,not-get,logo,start-btn_json,bar-icon_json,scene-btn_json,scene-text_json,game-btn_json,pay,pay_bg,power_bg,power_large,power_medium,note_bg,note_prop,shop_json,power_small,jiemi_ske_json,jiemi_tex_json,jiemi_tex_png,answer_right,heart,heiban,a,b,c,d,M17_bg,nono,yy,manage-event_json,yes,no,manage-change_json,money,tili,sound_close,sound_open,text_close,text_open,company,company_logo,music,music_close,music_open,sound,no_manage,no_btnmanage,tutorial,s99,yu_gao,mu,mu_gao,qing,qing_gao,shu,shu_gao,yu",
+			"keys": "question_json,select-options_json,game-bg,input-item,option-bg,input-bg,chapter-plot_json,plot-options_json,bar-bg,head-bg,scene_json,not-get,logo,start-btn_json,bar-icon_json,scene-btn_json,scene-text_json,game-btn_json,pay,pay_bg,power_bg,power_large,power_medium,note_bg,note_prop,shop_json,power_small,jiemi_ske_json,jiemi_tex_json,jiemi_tex_png,answer_right,heart,heiban,a,b,c,d,M17_bg,nono,yy,manage-event_json,yes,no,manage-change_json,money,tili,sound_close,sound_open,text_close,text_open,company,company_logo,music,music_close,music_open,sound,no_manage,no_btnmanage,tutorial,s99,yu_gao,mu,mu_gao,qing,qing_gao,shu,shu_gao,yu,btn-confirm-mini,popup-bg,btn-cancel-mini",
 			"name": "preload"
 		},
 		{
@@ -13,7 +13,7 @@
 			"name": "chapter0"
 		},
 		{
-			"keys": "s7,s5,s6,s1,s0,s4,s58,s56,s9,m04,M5_1_png,M5_2_png,M5_3_png,M5_4_png,M5_5_png,M5_6_png,M5_7_png,M5_8_png,M5_9_png,M5_bg_png,bg_png,ha1_png,ha2_png,ha3_png,ha4_png,ha5_png,Y5",
+			"keys": "s7,s5,s6,s1,s0,s4,s58,s56,s9,m04,M5_1_png,M5_2_png,M5_3_png,M5_4_png,M5_5_png,M5_6_png,M5_7_png,M5_8_png,M5_9_png,M5_bg_png,bg_png,ha1_png,ha2_png,ha3_png,ha4_png,ha5_png,Y5,s24,s8",
 			"name": "chapter1"
 		},
 		{
@@ -29,11 +29,11 @@
 			"name": "chapter4"
 		},
 		{
-			"keys": "m42-tips,m42-item_json,m23,m22,s0,s17,s25,s35,s4,s60,s38,s32,s18,s1,M24_bg,word_bai,word_he,word_hei,word_jia,word_jiao,word_ti,word_yi,word_zhu,m42-bg,Y16,s50_jpg,s39_jpg,s49_jpg",
+			"keys": "m42-tips,m42-item_json,m23,m22,s0,s17,s25,s35,s4,s60,s38,s32,s18,s1,M24_bg,word_bai,word_he,word_hei,word_jia,word_jiao,word_ti,word_yi,word_zhu,m42-bg,Y16,s50,s39,s49",
 			"name": "chapter5"
 		},
 		{
-			"keys": "button_down_png,button_up_png,checkbox_select_disabled_png,checkbox_select_down_png,checkbox_select_up_png,checkbox_unselect_png,selected_png,border_png,header_png,thumb_pb_png,track_pb_png,radiobutton_select_disabled_png,radiobutton_select_down_png,radiobutton_select_up_png,radiobutton_unselect_png,roundthumb_png,track_sb_png,thumb_png,track_png,tracklight_png,handle_png,off_png,on_png,hintCardNumber_png,tips-ellipse,hintCardNumber_fnt,manage-antiqe_json,manage-card2,manage-card1,manage-errer,manage-right,btn-plot,icon-group,icon-money,icon-clock,Y18,skip-btn,dialog-box,guide_json,ellipse,btn-confirm-mini,popup-bg,btn-cancel-mini",
+			"keys": "button_down_png,button_up_png,checkbox_select_disabled_png,checkbox_select_down_png,checkbox_select_up_png,checkbox_unselect_png,selected_png,border_png,header_png,thumb_pb_png,track_pb_png,radiobutton_select_disabled_png,radiobutton_select_down_png,radiobutton_select_up_png,radiobutton_unselect_png,roundthumb_png,track_sb_png,thumb_png,track_png,tracklight_png,handle_png,off_png,on_png,hintCardNumber_png,tips-ellipse,hintCardNumber_fnt,manage-antiqe_json,manage-card2,manage-card1,manage-errer,manage-right,btn-plot,icon-group,icon-money,icon-clock,Y18,skip-btn,dialog-box,guide_json,ellipse",
 			"name": "lazyload"
 		}
 	],
@@ -1397,32 +1397,32 @@
 		{
 			"url": "assets/scene/s24.png",
 			"type": "image",
-			"name": "s24_png"
+			"name": "s24"
 		},
 		{
 			"url": "assets/scene/s30.png",
 			"type": "image",
-			"name": "s30_png"
+			"name": "s30"
 		},
 		{
 			"url": "assets/scene/s39.jpg",
 			"type": "image",
-			"name": "s39_jpg"
+			"name": "s39"
 		},
 		{
 			"url": "assets/scene/s49.jpg",
 			"type": "image",
-			"name": "s49_jpg"
+			"name": "s49"
 		},
 		{
 			"url": "assets/scene/s50.jpg",
 			"type": "image",
-			"name": "s50_jpg"
+			"name": "s50"
 		},
 		{
 			"url": "assets/scene/s8.png",
 			"type": "image",
-			"name": "s8_png"
+			"name": "s8"
 		}
 	]
 }

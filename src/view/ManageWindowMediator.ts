@@ -22,7 +22,8 @@ module game {
             this.manageWindow.addEventListener(egret.Event.ADDED_TO_STAGE, this.initData, this);
             this.manageWindow.gameList.addEventListener(eui.ItemTapEvent.ITEM_TAP, this.selectItem, this);
             this.manageWindow.text1.addEventListener(egret.TouchEvent.TOUCH_TAP, this.nextManageEvent, this);
-
+            this.manageWindow.setMiniGame.addEventListener(egret.TouchEvent.TOUCH_TAP, this.setMiniGame, this);
+            this.initData();
             this.baolist = [this.manageWindow.bao1, this.manageWindow.bao2, this.manageWindow.bao3, this.manageWindow.bao4];
         }
 
@@ -390,7 +391,7 @@ module game {
                 this.manageEvent = this.proxy.getRandomManageEvent();
             }
             else {
-                this.manageEvent = this.proxy.manageEventArr.find(i => i.id == this.proxy.playerInfo.guEventList[this.proxy.playerInfo.guEventList.length - 1]);
+                this.manageEvent = this.proxy.manageEventArr.find(i => i.id == this.proxy.playerInfo.guEventList[this.proxy.playerInfo.guEventList.length - 1] || i.subType == this.proxy.playerInfo.guEventList[this.proxy.playerInfo.guEventList.length - 1]);
             }
             console.log(this.manageEvent);
             this.setManageEvent();
@@ -403,7 +404,7 @@ module game {
         public trueAndFalseUIList: Array<eui.Group>;
         public setManageEvent() {
             if (!this.manageEvent) return;
-            this.manageWindow.miniGameGroup.visible = false;
+            this.manageWindow.miniGameGroup.visible = this.manageWindow.setMiniGame.visible = false;
             this.manageWindow.eventGroup.visible = true;
             console.log(this.manageEvent.type, this.manageEvent.subType);
             this.manageWindow.description = this.manageEvent.description;
@@ -414,40 +415,40 @@ module game {
                     case "猜真假":
                         this.manageWindow.juese.source = "s8";
                         this.manageWindow.description = "店家，来看看这几件宝贝，祖传的。你看看能给多少钱，不保证真假啊~"; 
-                        egret.setTimeout(() => {
-                            this.setMiniGame();
-                        }, this, 1500);
+                        // egret.setTimeout(() => {
+                        //     this.setMiniGame();
+                        // }, this, 1500);
                         break;
                     case "找不同":
                         this.manageWindow.juese.source = "s21";
                         this.manageWindow.description = "呀，路上捡了几件宝贝，您给看看哪件能收给个价？"; 
-                        egret.setTimeout(() => {
-                            this.setMiniGame();
-                        }, this, 1500);
+                        // egret.setTimeout(() => {
+                        //     this.setMiniGame();
+                        // }, this, 1500);
                         break;
                     case "找相同":
                         this.manageWindow.juese.source = "s22";
                         this.manageWindow.description = "给你件古董，你要是能鉴定出它是真的，票子大大的赏！"; 
-                        egret.setTimeout(() => {
-                            this.setMiniGame();
-                        }, this, 1500);
+                        // egret.setTimeout(() => {
+                        //     this.setMiniGame();
+                        // }, this, 1500);
                         break;
                     case "找同类":
-                        this.manageWindow.juese.source = "s69";
+                        this.manageWindow.juese.source = "s24";
                         this.manageWindow.description = "嗨，从老家里的破柜子里翻出一件老物件，您给看看它是什么古董？"; 
-                        egret.setTimeout(() => {
-                            this.setMiniGame();
-                        }, this, 1500);
+                        // egret.setTimeout(() => {
+                        //     this.setMiniGame();
+                        // }, this, 1500);
                         break;
                     case "找异类":
-                        this.manageWindow.juese.source = "s70";
+                        this.manageWindow.juese.source = "s30";
                         this.manageWindow.description = "老大让我给你带句话，要是这宝贝你坚定不出是假的，这店别想开了！"; 
-                        egret.setTimeout(() => {
-                            this.setMiniGame();
-                        }, this, 1500);
+                        // egret.setTimeout(() => {
+                        //     this.setMiniGame();
+                        // }, this, 1500);
                         break;
                 }
-                this.manageWindow.juese.visible = true;
+                this.manageWindow.juese.visible = this.manageWindow.setMiniGame.visible = true;
             }
             else {
             }

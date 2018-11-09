@@ -21,6 +21,7 @@ module game {
         public initData() {
             this._guides = RES.getRes("guide_json");
             this._index = 0;
+            console.log(this._guides);
             this.setPage();
         }
 
@@ -114,7 +115,6 @@ module game {
                 this.guideWindow.coll3.text = "6";
                 this.guideWindow.coll4.text = "5";
                 this.cannotNext = false;
-                this.next();
             }
         }
 
@@ -139,7 +139,6 @@ module game {
                 this.guideWindow.coll3.text = "2";
                 this.guideWindow.coll4.text = "5";
                 this.cannotNext = false;
-                this.next();
             }
         }
 

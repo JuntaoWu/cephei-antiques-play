@@ -15,7 +15,6 @@ module game {
         sound?: boolean; //音效
         music?: boolean; //音乐
         isManage?: boolean; //是否开启经营模式
-        isNew?: boolean; //新手？
         ending?: Array<string>; //完成结局
     }
 }
