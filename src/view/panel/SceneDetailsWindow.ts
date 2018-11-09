@@ -19,18 +19,22 @@ module game {
         public scrollGroup: eui.Scroller;
         public type: string;
         public titleRes: string;
+        public title: string;
         public collectedText: string;
 
         public setSceneType(type: string) {
             this.type = type;
             if (type == SceneType.SceneBg) {
                 this.titleRes = "title-scene-cg";
+                this.title = "";
             }
             else if (type == SceneType.ScenePerson) {
-                this.titleRes = "title-person-cg";
+                this.titleRes = "";
+                this.title = "人物CG";
             }
             else {
-                this.titleRes = "title-props-cg";
+                this.titleRes = "";
+                this.title = "道具CG";
             }
         }
     }
