@@ -26,6 +26,8 @@ module game {
 
         public static SHOW_GUIDE: string = "show_guide";
 
+        public static SHOW_POPUP: string = "show_popup";
+
         public register(): void {
             this.initializeNotifier("ApplicationFacade");
         }
@@ -40,6 +42,7 @@ module game {
             this.facade().registerCommand(SceneCommand.SHOW_SCENE_DETAILS, SceneCommand);
             this.facade().registerCommand(SceneCommand.SHOW_SETTING, SceneCommand);
             this.facade().registerCommand(SceneCommand.SHOW_GUIDE, SceneCommand);
+            this.facade().registerCommand(SceneCommand.SHOW_POPUP, SceneCommand);
         }
 
         public async execute(notification: puremvc.INotification): Promise<any> {
@@ -77,6 +80,14 @@ module game {
                     break;
                 case SceneCommand.SHOW_GUIDE:
                     appMediator.main.showGuideWindow();
+                    break;
+                case SceneCommand.SHOW_POPUP:
+                    if (typeof data === "string") {
+                        appMediator.main.showPopupWindow(data);
+                    }
+                    else {
+                        appMediator.main.showPopupWindow(data.msg, data.hasCancel, data.cbk);
+                    }
                     break;
             }
         }

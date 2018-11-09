@@ -24,5 +24,22 @@ module game {
         public moneyGroup: eui.Group;
         public antiGroup: eui.Group;
         public clockGroup: eui.Group;
+        public optionGroup: eui.Group;
+        public btnPlotGroup: eui.Group;
+
+        public yes: eui.Button;
+        public no: eui.Button;
+        public bao1: eui.Image;
+        public bao2: eui.Image;
+        public bao3: eui.Image;
+        public bao4: eui.Image;
+        public gu1: eui.Label;
+        public gu2: eui.Label;
+        public gu3: eui.Label;
+        public gu4: eui.Label;
+        public coll1: eui.Label;
+        public coll2: eui.Label;
+        public coll3: eui.Label;
+        public coll4: eui.Label;
     }
 }

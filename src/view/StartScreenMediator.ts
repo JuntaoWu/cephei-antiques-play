@@ -37,18 +37,27 @@ module game {
 
         public newGame() {
             if (this.proxy.playerInfo.plotId != 1) {
-                try {
-                    platform.showModal("是否确认新的开始？", true).then((res) => {
-                        if (res.confirm) {
-                            this.proxy.playerInfo.plotId = 1;
-                            this.sendNotification(SceneCommand.CHANGE, Scene.Game);
-                        }
-                    });
+                let obj = {
+                    msg: "你的进度将会被重置，是否确认开始新的有些？",
+                    hasCancel: true,
+                    cbk: () => {
+                        this.proxy.playerInfo.plotId = 1;
+                        this.sendNotification(SceneCommand.CHANGE, Scene.Game);
+                    }
                 }
-                catch (err) {
-                    this.proxy.playerInfo.plotId = 1;
-                    this.sendNotification(SceneCommand.CHANGE, Scene.Game);
-                }
+                this.sendNotification(SceneCommand.SHOW_POPUP, obj);
+                // try {
+                //     platform.showModal("是否确认新的开始？", true).then((res) => {
+                //         if (res.confirm) {
+                //             this.proxy.playerInfo.plotId = 1;
+                //             this.sendNotification(SceneCommand.CHANGE, Scene.Game);
+                //         }
+                //     });
+                // }
+                // catch (err) {
+                //     this.proxy.playerInfo.plotId = 1;
+                //     this.sendNotification(SceneCommand.CHANGE, Scene.Game);
+                // }
             }
             else {
                 this.sendNotification(SceneCommand.CHANGE, Scene.Game);
@@ -58,7 +67,8 @@ module game {
 
         public showManage() {
             if (!this.proxy.playerInfo.time) {
-                platform.showModal("经营模式每日只能完成一次，今日经营模式已完成！", false);
+                // platform.showModal("经营模式每日只能完成一次，今日经营模式已完成！", false);
+                this.sendNotification(SceneCommand.SHOW_POPUP, "经营模式每日只能完成一次，今日经营模式已完成！");
             }
             else {
                 this.sendNotification(SceneCommand.SHOW_MANAGE);

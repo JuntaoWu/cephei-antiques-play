@@ -28,6 +28,8 @@ module game {
             this.gameScreen.btnReset.addEventListener(egret.TouchEvent.TOUCH_TAP, this.btnResetClick, this);
             this.gameScreen.btnConfirm.addEventListener(egret.TouchEvent.TOUCH_TAP, this.btnConfirmClick, this);
 
+            this.gameScreen.sceneGroup.addEventListener(egret.TouchEvent.TOUCH_TAP, () => {}, this);
+
             this.gameScreen.addEventListener(egret.Event.ADDED_TO_STAGE, this.initData, this);
             this.initData();
         }
@@ -63,8 +65,10 @@ module game {
         public static manage_show: string = "manage_show";
 
         public initData() {
+            this.gameScreen.miniGame.removeChildren();
             this.gameScreen.bottomGroup.visible = this.gameScreen.plotSelectList.visible = this.gameScreen.questionGroup.visible = false;
-            this.gameScreen.showReset = this.gameScreen.showMiniGame = this.gameScreen.showTransition = this.canGoNext = false;
+            this.gameScreen.pkBarGroup.visible = this.gameScreen.miniGame.visible = false;
+            this.gameScreen.showReset =this.gameScreen.showTransition = this.canGoNext = false;
             this.gameScreen.question = this.gameScreen.points = "";
             this.gameScreen.scrollGroup.bottom = 20;
             this.gameScreen.scrollGroup.viewport.scrollV = 0;
@@ -123,7 +127,7 @@ module game {
                 else if (question.type == "小游戏") {
                     this.gameScreen.bottomGroup.top = 0;
                     this.sendNotification(GameProxy.SHOW_MINIGAME, question);
-                    this.gameScreen.showMiniGame = this.gameScreen.showReset = true;
+                    this.gameScreen.miniGame.visible = this.gameScreen.showReset = true;
                 }
                 this.gameScreen.scrollGroup.bottom = this.gameScreen.footGroup.height;
                 this.gameScreen.scrollGroup.viewport.scrollH = 0;
@@ -135,6 +139,8 @@ module game {
                         this.gameScreen.fatigueValue.text = this.proxy.playerInfo.fatigueValue.toString();
                     }
                     else {
+                        // platform.showModal("体力不足，不能进入下一章", false);
+                        this.sendNotification(SceneCommand.SHOW_POPUP, "体力不足，不能进入下一章");
                         return;
                     }
                 }
@@ -147,10 +153,20 @@ module game {
             }
             else if (plot.type == "界面切换经营") {
                 if (this.proxy.playerInfo.isNew) {
-                    this.sendNotification(SceneCommand.SHOW_GUIDE);
+                    this.gameScreen.showTransition = true;
+                    this.gameScreen.transitionText = "界面切换经营";
+                    this.timeoutId = egret.setTimeout(() => {
+                        this.gameScreen.showTransition = false;
+                        this.sendNotification(SceneCommand.SHOW_GUIDE);
+                    }, this, 1000);
                 }
                 else if (this.proxy.playerInfo.time) {
-                    this.btnManageClick();
+                    this.gameScreen.showTransition = true;
+                    this.gameScreen.transitionText = "界面切换经营";
+                    this.timeoutId = egret.setTimeout(() => {
+                        this.gameScreen.showTransition = false;
+                        this.btnManageClick();
+                    }, this, 1000);
                 }
                 else {
                     this.showNext();
@@ -203,6 +219,9 @@ module game {
             let added = this.gameScreen.sceneGroup.getChildByName("added") || this.gameScreen.sceneGroup.parent.getChildByName("added");
             if (!!added) { //移除某些效果添加的元素
                 added.parent.removeChild(added);
+            }
+            if (!!this.gameScreen.sceneGroup.mask) {
+                this.gameScreen.sceneGroup.mask = null;
             }
             egret.Tween.removeAllTweens();  //移除所有动画效果
             this.gameScreen.sceneBg.horizontalCenter = 0;
@@ -264,7 +283,7 @@ module game {
         }
 
         public showPlotOption(talkId) {
-            this.gameScreen.plotSelectList.visible = true;
+            this.gameScreen.plotSelectList.visible = this.gameScreen.pkBarGroup.visible = true;
             let plotOption = this.plotOptions.get(talkId.toString());
             if (plotOption) {
                 this.gameScreen.question = plotOption.question || "";
@@ -350,9 +369,11 @@ module game {
             else if (this.next == "over") { //最后有两个不同结局
                 if (this.proxy.pointMu < this.proxy.pointHunag) {
                     this.proxy.nextPlot();
+                    this.proxy.addEnding("m1");
                 }
                 else {
                     this.proxy.nextPlot(2);
+                    this.proxy.addEnding("m2");
                 }
             }
             else {
@@ -372,7 +393,7 @@ module game {
             if (this.gameScreen.points || (!this.questionPoints[0] && !this.questionPoints[1])) {
                 this.showPointsAll = true;
             }
-            this.gameScreen.points = !this.gameScreen.points ? this.questionPoints[0] : `${this.questionPoints[0]}\n————————\n${this.questionPoints[1]}`;
+            this.gameScreen.points = !this.gameScreen.points ? this.questionPoints[0] : `${this.questionPoints[0]}\n———————————————\n${this.questionPoints[1]}`;
             if (!this.showPointsAll) {
                 this.proxy.reduceHints();
                 let hintCardsLabel = (this.gameScreen.btnTips.getChildByName("hintGroup") as eui.Group).getChildByName("hintCards") as eui.BitmapLabel;
@@ -386,7 +407,8 @@ module game {
 
         public btnManageClick() {
             if (!this.proxy.playerInfo.time) {
-                platform.showModal("经营模式每日只能完成一次，今日经营模式已完成！", false);
+                // platform.showModal("经营模式每日只能完成一次，今日经营模式已完成！", false);
+                this.sendNotification(SceneCommand.SHOW_POPUP, "经营模式每日只能完成一次，今日经营模式已完成！");
             }
             else {
                 this.sendNotification(SceneCommand.SHOW_MANAGE);
@@ -449,9 +471,11 @@ module game {
                         this.proxy.reducePower(10);
                         this.gameScreen.fatigueValue.text = this.proxy.playerInfo.fatigueValue.toString();
                         try {
-                            platform.showModal("答案错误，扣除10点体力！", false).then(() => {
-                                this.btnResetClick();
-                            });
+                            // platform.showModal("答案错误，扣除10点体力！", false).then(() => {
+                            //     this.btnResetClick();
+                            // });
+                            this.sendNotification(SceneCommand.SHOW_POPUP, "答案错误，扣除10点体力！");
+                            this.btnResetClick();
                         }
                         catch (err) {
                             console.log(err);

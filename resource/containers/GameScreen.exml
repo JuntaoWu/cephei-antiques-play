@@ -18,28 +18,26 @@
                 <e:Image source="btn-picture"></e:Image>
             </e:Skin>
         </e:Button>
-
-
-
-			<e:Group x="303" anchorOffsetX="0" verticalCenter="0">
-				<e:Image source="tili" x="0" y="3" anchorOffsetX="0" scaleX="1.8" scaleY="1.8"/>
-				<e:Label id="fatigueValue" text="0" anchorOffsetX="0" width="84" anchorOffsetY="0" height="49" verticalAlign="middle" textAlign="center" textColor="0xf7f7f7" verticalCenter="0" size="60" x="130"/>
-			</e:Group>
-			<e:Button id="nextTest" anchorOffsetX="0" width="309" anchorOffsetY="0" verticalCenter="0" right="0">
-				<e:Skin>
-				<e:Label text="下一步" verticalCenter="0" bold="true" textColor="0x000000" horizontalCenter="0" size="80"/>
-				</e:Skin>
-			</e:Button>
-			<e:Image id="no_btnmanage" source="no_btnmanage" x="108" y="16"/>
+        
+        <e:Group x="300" anchorOffsetX="0" verticalCenter="15">
+            <e:Image source="tili" scaleX="1.5" scaleY="1.5"/>
+            <e:Label id="fatigueValue" text="0" anchorOffsetX="0" width="84" anchorOffsetY="0" height="49" verticalAlign="middle" textAlign="center" textColor="0xf7f7f7" verticalCenter="0" size="60" x="115"/>
+        </e:Group>
+        <e:Button id="nextTest" anchorOffsetX="0" width="309" anchorOffsetY="0" verticalCenter="0" right="0">
+            <e:Skin>
+            <e:Label text="下一步" verticalCenter="0" bold="true" textColor="0x000000" horizontalCenter="0" size="80"/>
+            </e:Skin>
+        </e:Button>
+        <e:Image id="no_btnmanage" source="no_btnmanage" x="108" y="16"/>
     </e:Group>
-    <e:Group visible="{showScene}" width="720" top="135">
+    <e:Group visible="{showScene}" touchEnabled="false" touchChildren="false" width="720" top="135">
         <e:Image width="720" horizontalCenter="0" source="s0" height="590"/>
-        <e:Group id="sceneGroup">
+        <e:Group id="sceneGroup" touchEnabled="false">
             <e:Image id="sceneBg" width="720" horizontalCenter="0" source="s0" height="590"/>
             <e:Group id="sceneAddGroup" horizontalCenter="0" height="100%">
             </e:Group>
         </e:Group>
-        <e:Group width="720" y="5">
+        <e:Group id="pkBarGroup" width="720" y="5">
             <e:Image source="img-h" left="20"/>
             <e:Image source="img-m" right="20"/>
             <e:Group horizontalCenter="0" width="490" y="10">
@@ -55,10 +53,10 @@
     </e:Group>
     <e:Group id="textGroup" bottom="0" top="725">
         <e:Image width="720" source="game-bg" height="100%" scale9Grid="90,70,540,422"/>
-        <e:Scroller id="scrollGroup" width="640" horizontalCenter="0" top="35" bottom="372">
+        <e:Scroller id="scrollGroup" width="640" horizontalCenter="0" top="25" bottom="372">
             <e:viewport>
                 <e:Group>
-                    <e:Label text="{description}" lineSpacing="10" textColor="0x000000" horizontalCenter="0" width="640" fontFamily="Microsoft YaHei"/>
+                    <e:Label text="{description}" y="15" lineSpacing="10" textColor="0x000000" horizontalCenter="0" width="640" fontFamily="Microsoft YaHei"/>
                 </e:Group>
             </e:viewport>
         </e:Scroller>
@@ -93,7 +91,7 @@
         <e:Group>
             <e:Image width="720" source="{questionRes}"/>
             <!-- 小游戏 -->
-            <game:MiniGame visible="{showMiniGame}" width="720" height="600" />
+            <game:MiniGame id="miniGame" visible="{showMiniGame}" width="720" height="600" />
             <e:Button id="btnTips" bottom="35" left="30">
                 <e:Skin>
                     <e:Image source="btn-tips"></e:Image>

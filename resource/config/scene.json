@@ -67,7 +67,7 @@
   },
   {
     "res": "S12",
-    "name": "破旧屋子",
+    "name": "僻静之地",
     "type": "场景CG",
     "description": ""
   },
@@ -121,14 +121,14 @@
   },
   {
     "res": "S21",
-    "name": "万货全小喽啰",
+    "name": "小弟A",
     "type": "人物CG",
-    "description": "不露脸只有声音的一个角色"
+    "description": ""
   },
   {
     "res": "S22",
-    "name": "黑衣人众人",
-    "type": "场景CG",
+    "name": "日本人",
+    "type": "人物CG",
     "description": ""
   },
   {
@@ -139,7 +139,7 @@
   },
   {
     "res": "S24",
-    "name": "万货全众人",
+    "name": "小弟B",
     "type": "人物CG",
     "description": ""
   },
@@ -175,7 +175,7 @@
   },
   {
     "res": "S30",
-    "name": "墨子公输",
+    "name": "小弟C",
     "type": "人物CG",
     "description": ""
   },
@@ -198,28 +198,10 @@
     "description": "墓室结构发生改变"
   },
   {
-    "res": "S34",
-    "name": "魔方方块",
-    "type": "道具CG",
-    "description": ""
-  },
-  {
     "res": "S35",
     "name": "墨经壁画",
     "type": "场景CG",
     "description": ""
-  },
-  {
-    "res": "S36",
-    "name": "长白山壁画C",
-    "type": "场景CG",
-    "description": "描画长白山里归墟的发现"
-  },
-  {
-    "res": "S37",
-    "name": "长白山壁画D",
-    "type": "场景CG",
-    "description": "描画磁石的发现"
   },
   {
     "res": "S38",
@@ -228,88 +210,34 @@
     "description": ""
   },
   {
-    "res": "S72",
+    "res": "S39",
     "name": "木户加奈亲吻许愿",
     "type": "场景CG",
     "description": ""
   },
   {
-    "res": "S40",
-    "name": "鲧王分水镜变化",
-    "type": "道具CG",
-    "description": ""
-  },
-  {
-    "res": "S41",
-    "name": "黄烟烟",
-    "type": "人物CG",
-    "description": ""
-  },
-  {
-    "res": "S42",
-    "name": "方震",
-    "type": "人物CG",
-    "description": ""
-  },
-  {
     "res": "S43",
-    "name": "县城房子",
+    "name": "陆仁贾的家",
     "type": "场景CG",
     "description": ""
   },
   {
     "res": "S44",
-    "name": "黑色轿车",
+    "name": "轿车",
     "type": "场景CG",
     "description": ""
   },
   {
-    "res": "S45",
-    "name": "木门阵",
-    "type": "场景CG",
-    "description": ""
-  },
-  {
-    "res": "S46",
-    "name": "黄烟烟体操",
-    "type": "场景CG",
-    "description": "黄烟烟在建筑工地上的钢管做了个引体向上360度动作跳跃到了另一栋楼"
-  },
-  {
-    "res": "S47",
-    "name": "黄烟烟结局A",
-    "type": "场景CG",
-    "description": "许愿拿着黄烟烟的项链黯然伤神"
-  },
-  {
-    "res": "S48",
-    "name": "黄烟烟结局B",
-    "type": "场景CG",
-    "description": "许愿和黄烟烟在厨房做菜"
-  },
-  {
-    "res": "S73",
+    "res": "S49",
     "name": "木户加奈结局A",
     "type": "场景CG",
     "description": "许愿在机场目送木户加奈坐上飞机离开"
   },
   {
-    "res": "S74",
+    "res": "S50",
     "name": "木户加奈结局B",
     "type": "场景CG",
     "description": "许愿和木户加奈共进烛光晚餐"
-  },
-  {
-    "res": "S51",
-    "name": "长白山枪战",
-    "type": "场景CG",
-    "description": ""
-  },
-  {
-    "res": "S52",
-    "name": "",
-    "type": "封面",
-    "description": ""
   },
   {
     "res": "S53",
@@ -336,12 +264,6 @@
     "description": ""
   },
   {
-    "res": "S57",
-    "name": "陆二康",
-    "type": "人物CG",
-    "description": ""
-  },
-  {
     "res": "S58",
     "name": "鲧王分水镜组合图Q1",
     "type": "道具CG",
@@ -349,7 +271,7 @@
   },
   {
     "res": "S59",
-    "name": "僻静之地",
+    "name": "兵俑开道",
     "type": "场景CG",
     "description": ""
   },
@@ -367,7 +289,7 @@
   },
   {
     "res": "S62",
-    "name": "县城老房子",
+    "name": "县城房子",
     "type": "场景CG",
     "description": ""
   },
@@ -381,12 +303,6 @@
     "res": "S64",
     "name": "废弃化工厂",
     "type": "场景CG",
-    "description": ""
-  },
-  {
-    "res": "S65",
-    "name": "墨家地图",
-    "type": "道具CG",
     "description": ""
   },
   {
