@@ -9,7 +9,7 @@ module game {
             this.addEventListener(eui.UIEvent.CREATION_COMPLETE, this.createCompleteEvent, this);
             this.btnConfirm.addEventListener(egret.TouchEvent.TOUCH_TAP, () => {
                 this.close();
-                this.cbk();
+                this.cbk && this.cbk();
             },this);
         }
         
@@ -23,7 +23,7 @@ module game {
         public hasCancel: boolean;
         public cbk: () => {};
 
-        public setPopupWindow(msg: string, hasCancel: boolean = false, cbk: () => {}) {
+        public setPopupWindow(msg: string, hasCancel: boolean = false, cbk: () => {} = null) {
             this.msg = msg;
             this.cbk = cbk;
             this.hasCancel = hasCancel;

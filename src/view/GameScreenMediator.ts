@@ -451,6 +451,9 @@ module game {
         }
 
         public btnConfirmClick() {
+            if (this.proxy.playerInfo.fatigueValue <= 0) {
+                this.sendNotification(SceneCommand.SHOW_POPUP, "没有体力玩小游戏了！");
+            }
             this.sendNotification(GameProxy.CONFIRM_MINIGAME, this.questionId);
         }
 
@@ -478,9 +481,9 @@ module game {
                         catch (err) {
                             console.log(err);
                         }
-                    }
-                    if (this.proxy.playerInfo.fatigueValue <= 0) {
-                        //TODO
+                    } 
+                    else {
+                        this.sendNotification(SceneCommand.SHOW_POPUP, "没有体力了！");
                     }
                     break;
             }

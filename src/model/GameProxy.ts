@@ -15,7 +15,7 @@ module game {
         public static REDUCE_POWER: string = "reduce_power";
 
         public playerInfo: PlayerInfo = {
-            plotId: 34,
+            plotId: 1,
             collectedScenes: [],
             fatigueValue: fatigueValue,
             gold: "0",
@@ -27,7 +27,7 @@ module game {
             guEventList: [],
             sound: true,
             music: true,
-            isManage: true,
+            isManage: false,
             ending: [],
         };
         public pointHunag: number = 43;
@@ -80,18 +80,21 @@ module game {
         public addEnding(ending: string) {
             if (!this.playerInfo.ending.includes(ending)) {
                 this.playerInfo.ending.push(ending);
+                this.savePlayerInfoToStorage();
             }
         }
 
         // 减少体力值
         public reducePower(value: number = 1): void {
             this.playerInfo.fatigueValue -= value;
+            this.savePlayerInfoToStorage();
             console.log("减", value, "体力，剩余体力值：", this.playerInfo.fatigueValue);
         }
 
         // 减少提示次数
         public reduceHints(value: number = 1): void {
             this.playerInfo.hints -= value;
+            this.savePlayerInfoToStorage();
         }
 
         private _sceneRes: Map<string, any>;

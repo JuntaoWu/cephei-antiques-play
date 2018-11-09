@@ -67,7 +67,8 @@
 	</e:Group>
 
 	<e:Group width="720" height="100%" >
-		<e:Rect id="rect" top="0" bottom="0" left="0" right="0" alpha="0.4"/>
+		<e:Rect top="0" bottom="0" left="0" right="0" alpha="0.4"/>
+		<e:Image id="btnSkip" source="skip-btn" right="0" y="29"/>
 		<e:Group id="moneyGroup" y="229" right="23">
 			<e:Image source="icon-money" verticalCenter="0" x="5"/>
 			<e:Label text="0" textColor="0x000000" verticalCenter="5" x="75" height="40" width="90" verticalAlign="middle" textAlign="center"/>
@@ -179,6 +180,20 @@
 		</e:Group>
 		<e:Group id="group5" y="300" horizontalCenter="0">
 		</e:Group>
+		<e:Group id="btnPlotGroup" height="135" x="152">
+			<e:Button verticalCenter="0">
+				<e:Skin>
+					<e:Image source="btn-plot"></e:Image>
+				</e:Skin>
+			</e:Button>
+			<e:Image source="ellipse" scale9Grid="29,28,14,14" x="-15" y="0" width="90" height="135"/>
+		</e:Group>
+		<e:Group id="dialogGroup" bottom="0">
+			<e:Image source="dialog-box"/>
+			<e:Label id="dialog" x="50" textColor="0x000000" anchorOffsetX="0" anchorOffsetY="0" lineSpacing="10" width="470" top="50" bottom="90"/>
+		</e:Group>
+		<e:Button id="btnNext" alpha="0" width="720" horizontalCenter="0" y="135" height="1140">
+		</e:Button>
 		<e:Group id="optionGroup" width="720" horizontalCenter="0" bottom="0" anchorOffsetY="0">
 			<e:Label text="许兄，其实人生的道理就是福兮祸所伏，你认为呢？" textColor="0x020202" bold="true" y="-220" width="680" horizontalCenter="0" size="28"/>
 			<e:Button id="yes" bottom="0" left="0" width="360">
@@ -197,18 +212,6 @@
 				</e:Skin>
 			</e:skinName>
 			</e:Button>
-		</e:Group>
-		<e:Group id="btnPlotGroup" height="135" x="152">
-			<e:Button verticalCenter="0">
-				<e:Skin>
-					<e:Image source="btn-plot"></e:Image>
-				</e:Skin>
-			</e:Button>
-			<e:Image source="ellipse" scale9Grid="29,28,14,14" x="-15" y="0" width="90" height="135"/>
-		</e:Group>
-		<e:Group id="dialogGroup" bottom="0">
-			<e:Image source="dialog-box"/>
-			<e:Label id="dialog" x="50" textColor="0x000000" anchorOffsetX="0" anchorOffsetY="0" lineSpacing="10" width="470" top="50" bottom="90"/>
 		</e:Group>
 	</e:Group>
 </e:Skin>

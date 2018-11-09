@@ -101,8 +101,6 @@
 					<e:TileLayout orientation="columns" requestedColumnCount="2" verticalGap="40" columnWidth="300" />
 				</e:layout>
 			</e:List>
-			<e:Label text="{description}" width="670" horizontalCenter="0" textColor="0x000000" size="35" anchorOffsetY="0" verticalAlign="middle" textAlign="center" y="840" fontFamily="Microsoft YaHei"/>
-			
 		</e:Group>
 
 

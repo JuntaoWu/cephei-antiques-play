@@ -23,6 +23,10 @@ module game {
             this.manageWindow.gameList.addEventListener(eui.ItemTapEvent.ITEM_TAP, this.selectItem, this);
             this.manageWindow.text1.addEventListener(egret.TouchEvent.TOUCH_TAP, this.nextManageEvent, this);
             this.manageWindow.setMiniGame.addEventListener(egret.TouchEvent.TOUCH_TAP, this.setMiniGame, this);
+            this.manageWindow.btnTutorial.addEventListener(egret.TouchEvent.TOUCH_TAP, () => {
+                this.manageWindow.close();
+                this.sendNotification(SceneCommand.SHOW_GUIDE);
+            }, this);
             this.initData();
             this.baolist = [this.manageWindow.bao1, this.manageWindow.bao2, this.manageWindow.bao3, this.manageWindow.bao4];
         }
@@ -54,10 +58,12 @@ module game {
                 // platform.showModal("你获得了" + gold_haha + "金币", false);
                 this.sendNotification(SceneCommand.SHOW_POPUP, "你获得了" + gold_haha + "金币");
             } else {
+                this.manageWindow.juese.visible = false;
                 if (this.manageEvent.subType == "有选项" || this.manageEvent.type == "角色") {
                     this.manageWindow.option.visible = true;
                     this.manageWindow.text1.removeEventListener(egret.TouchEvent.TOUCH_TAP, this.nextManageEvent, this);
                 } else if (this.manageEvent.type == "小游戏") {
+                    this.manageWindow.juese.visible = true;
                     this.manageWindow.option.visible = false;
                     this.change = { ...this.proxy.changeArr.get("53") };
                     this.manageWindow.text1.removeEventListener(egret.TouchEvent.TOUCH_TAP, this.nextManageEvent, this);
@@ -79,7 +85,7 @@ module game {
                     this.manageWindow.juese.visible = true;
                     this.manageWindow.juese.source = "s18";
                 } else {
-                    this.manageWindow.juese.visible = false;
+                    // this.manageWindow.juese.visible = false;
                 }
             }
             this.manageWindow.gu1.text = this.proxy.playerInfo.guPrice[0].toString();
@@ -403,8 +409,9 @@ module game {
         public trueFalseList: Array<boolean>;
         public trueAndFalseUIList: Array<eui.Group>;
         public setManageEvent() {
-            if (!this.manageEvent) return;
             this.manageWindow.miniGameGroup.visible = this.manageWindow.setMiniGame.visible = false;
+            this.manageWindow.text1.y = 800;
+            if (!this.manageEvent) return;
             this.manageWindow.eventGroup.visible = true;
             console.log(this.manageEvent.type, this.manageEvent.subType);
             this.manageWindow.description = this.manageEvent.description;
@@ -461,6 +468,7 @@ module game {
             this.manageWindow.gameTrueFalse.visible = this.manageWindow.gameList.visible = false;
             this.manageWindow.gameTrueFalse.removeChildren();
             this.manageWindow.description = this.manageEvent.description;
+            this.manageWindow.text1.y = 1020;
             if (this.manageEvent.subType == "猜真假") {
                 this.manageWindow.gameTrueFalse.visible = true;
                 this.manageWindow.eventGroup.visible = false;
