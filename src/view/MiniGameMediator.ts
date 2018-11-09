@@ -7,17 +7,27 @@ module game {
         public constructor(viewComponent: any) {
             super(MiniGameMediator.NAME, viewComponent);
             super.initializeNotifier("ApplicationFacade");
+
         }
 
+        private gameObjPool: Object;
         public addMiniGameToStage(questionId: number, gameName: string) {
             // if (gameName) {
             //     this.miniGame.addMiniGame(gameName);
             // }
             this.miniGame.clearStage();
-            let displayObject = this.getGameDisplayObject(gameName);
-            if (displayObject) {
-                displayObject.setQuestionId && displayObject.setQuestionId(questionId);
-                this.miniGame.addMiniGameObject(displayObject);
+            if (!this.gameObjPool) {
+                this.gameObjPool = {};
+            }
+            if (!this.gameObjPool[gameName]) {
+                this.gameObjPool[gameName] = this.getGameDisplayObject(gameName);
+            }
+            try {
+                this.gameObjPool[gameName].setQuestionId && this.gameObjPool[gameName].setQuestionId(questionId);
+                this.miniGame.addMiniGameObject(this.gameObjPool[gameName]);
+            }
+            catch (err) {
+                console.log(err);
             }
         }
 
