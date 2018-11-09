@@ -358,10 +358,10 @@ module game {
             egret.Tween.get(lab).to({ scaleX: 0.5, scaleY: 0.5 }, 500);
             egret.setTimeout(() => {
                 egret.Tween.get(lab).to({ alpha: 1 }, 500);
-                egret.Tween.get(lab).to({ scaleX: 1.5, scaleY: 1.5 }, 500);
+                egret.Tween.get(lab).to({ scaleX: 2, scaleY: 2 }, 500);
             }, this, 600);
             egret.setTimeout(() => {
-                egret.Tween.get(lab).to({ scaleX: 1, scaleY: 1 }, 500);
+                egret.Tween.get(lab).to({ scaleX: 1.5, scaleY: 1.5 }, 500);
             }, this, 1200);
         }
 
@@ -738,6 +738,9 @@ module game {
             rewardList.forEach((v, i) => {
                 this.proxy.playerInfo.guColl[i] += v;
             })
+            this.colllist.forEach(ele => {
+                this.numberbilibili(ele);
+            })
         }
 
         public moveCards() {
@@ -784,7 +787,9 @@ module game {
             this.proxy.playerInfo.time--;
             let bb: number = this.suiji(0, 3);
             this.proxy.playerInfo.guColl[bb] += this.eachGu;
-            this.numberbilibili(this.colllist[bb]);
+            if (this.eachGu != 0) {
+                this.numberbilibili(this.colllist[bb]);
+            }
             this.manageEvent = this.proxy.getRandomManageEvent();
             this.setManageEvent();
             this.manageWindow.text1.addEventListener(egret.TouchEvent.TOUCH_TAP, this.nextManageEvent, this);
