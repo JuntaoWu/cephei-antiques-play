@@ -24,7 +24,6 @@ module game {
 			ApplicationFacade.getInstance().registerMediator(new M3_2Mediator(this));
 		}
 
-
 		protected childrenCreated(): void {
 			super.childrenCreated();
 
@@ -72,6 +71,8 @@ module game {
 		public isWin() {
 			if (this.word1.viewport.scrollV == 0 && this.word2.viewport.scrollV == 420 && this.word3.viewport.scrollV == 280 && this.word4.viewport.scrollV == 140) {
 				ApplicationFacade.getInstance().sendNotification(GameProxy.PASS_MINIGAME);
+				this.turnOffLight.enabled = false;
+				this.turnOnLight.enabled = false;
 			} else {
 				ApplicationFacade.getInstance().sendNotification(GameProxy.REDUCE_POWER);
 			}
@@ -105,7 +106,7 @@ module game {
 				word.viewport.scrollV = -70;
 			}
 		}
-		
+
 		public questionId: number;
 		public setQuestionId(id: number): void {
 			this.questionId = id;
@@ -131,9 +132,9 @@ module game {
 
 		public handleNotification(notification: puremvc.INotification): void {
 			var data: any = notification.getBody();
-            if (this.gameM3_2.questionId != data) {
-                return;
-            }
+			if (this.gameM3_2.questionId != data) {
+				return;
+			}
 			switch (notification.getName()) {
 				case GameProxy.RESET_MINIGAME:
 					this.gameM3_2.word1.viewport.scrollV = 0;
