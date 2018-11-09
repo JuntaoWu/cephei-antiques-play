@@ -48,15 +48,15 @@ module game {
         public iswin() {
             if (this.bai.scaleX == 0.8 && this.jiao.scaleX == 0.8) {
                 ApplicationFacade.getInstance().sendNotification(GameProxy.PASS_MINIGAME);
-            }else{
+            } else {
                 ApplicationFacade.getInstance().sendNotification(GameProxy.REDUCE_POWER);
             }
         }
-        
-		public questionId: number;
-		public setQuestionId(id: number): void {
-			this.questionId = id;
-		}
+
+        public questionId: number;
+        public setQuestionId(id: number): void {
+            this.questionId = id;
+        }
     }
 
     export class M24Mediator extends puremvc.Mediator implements puremvc.IMediator {
@@ -65,7 +65,18 @@ module game {
         public constructor(viewComponent: any) {
             super(M24Mediator.NAME, viewComponent);
             super.initializeNotifier("ApplicationFacade");
+            this.gameM24.addEventListener(egret.Event.ADDED_TO_STAGE, this.initData, this);
+        }
 
+        public async initData() {
+            this.gameM24.arr1.forEach(e => {
+                e.scaleX = 1;
+                e.scaleY = 1;
+            });
+            this.gameM24.arr2.forEach(e => {
+                e.scaleX = 1;
+                e.scaleY = 1;
+            });
         }
 
         public setResult() {

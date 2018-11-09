@@ -24,7 +24,6 @@ module game {
 			ApplicationFacade.getInstance().registerMediator(new M3_2Mediator(this));
 		}
 
-
 		protected childrenCreated(): void {
 			super.childrenCreated();
 
@@ -55,6 +54,11 @@ module game {
 			this.word4.addEventListener(eui.UIEvent.CHANGE_END, (() => this.stoptouch(this.word4)), this);
 			this.turnOffLight.addEventListener(egret.TouchEvent.TOUCH_TAP, this.turn, this);
 			this.turnOnLight.addEventListener(egret.TouchEvent.TOUCH_TAP, this.turn, this);
+			this.word1.viewport.scrollV = 0;
+			this.word2.viewport.scrollV = 0;
+			this.word3.viewport.scrollV = 0;
+			this.word4.viewport.scrollV = 0;
+			this.bright.visible = true;
 		}
 
 		public stoptouch(word: eui.Scroller) {
@@ -72,6 +76,8 @@ module game {
 		public isWin() {
 			if (this.word1.viewport.scrollV == 0 && this.word2.viewport.scrollV == 420 && this.word3.viewport.scrollV == 280 && this.word4.viewport.scrollV == 140) {
 				ApplicationFacade.getInstance().sendNotification(GameProxy.PASS_MINIGAME);
+				this.turnOffLight.enabled = false;
+				this.turnOnLight.enabled = false;
 			} else {
 				ApplicationFacade.getInstance().sendNotification(GameProxy.REDUCE_POWER);
 			}
@@ -105,7 +111,7 @@ module game {
 				word.viewport.scrollV = -70;
 			}
 		}
-		
+
 		public questionId: number;
 		public setQuestionId(id: number): void {
 			this.questionId = id;
@@ -118,7 +124,19 @@ module game {
 		public constructor(viewComponent: any) {
 			super(M3_2Mediator.NAME, viewComponent);
 			super.initializeNotifier("ApplicationFacade");
+			this.gameM3_2.addEventListener(egret.Event.ADDED_TO_STAGE, this.initData, this);
+		}
 
+		public async initData() {
+			this.f5();
+		}
+
+		public f5() {
+			this.gameM3_2.word1.viewport.scrollV = 0;
+			this.gameM3_2.word2.viewport.scrollV = 0;
+			this.gameM3_2.word3.viewport.scrollV = 0;
+			this.gameM3_2.word4.viewport.scrollV = 0;
+			this.gameM3_2.bright.visible = true;
 		}
 
 		public setResult() {
@@ -131,16 +149,13 @@ module game {
 
 		public handleNotification(notification: puremvc.INotification): void {
 			var data: any = notification.getBody();
-            if (this.gameM3_2.questionId != data) {
-                return;
-            }
+			if (this.gameM3_2.questionId != data) {
+				this.f5();
+				return;
+			}
 			switch (notification.getName()) {
 				case GameProxy.RESET_MINIGAME:
-					this.gameM3_2.word1.viewport.scrollV = 0;
-					this.gameM3_2.word2.viewport.scrollV = 0;
-					this.gameM3_2.word3.viewport.scrollV = 0;
-					this.gameM3_2.word4.viewport.scrollV = 0;
-					this.gameM3_2.bright.visible = true;
+
 					break;
 				case GameProxy.CONFIRM_MINIGAME:
 					this.setResult();

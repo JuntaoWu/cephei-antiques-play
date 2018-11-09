@@ -73,7 +73,7 @@ module game {
 
 		protected partAdded(partName: string, instance: any): void {
 			super.partAdded(partName, instance);
-            ApplicationFacade.getInstance().registerMediator(new M2Mediator(this));
+			ApplicationFacade.getInstance().registerMediator(new M2Mediator(this));
 		}
 
 
@@ -147,7 +147,18 @@ module game {
 		public constructor(viewComponent: any) {
 			super(M2Mediator.NAME, viewComponent);
 			super.initializeNotifier("ApplicationFacade");
+			this.gameM2.addEventListener(egret.Event.ADDED_TO_STAGE, this.initData, this);
+		}
 
+		public async initData() {
+			this.f5();
+		}
+
+		public f5() {
+			for (let i = 0; i < 45; i++) {
+				this.gameM2.allCube[i].x = this.gameM2.record[i].x;
+				this.gameM2.allCube[i].y = this.gameM2.record[i].y;
+			}
 		}
 
 		public setResult() {
@@ -160,15 +171,12 @@ module game {
 
 		public handleNotification(notification: puremvc.INotification): void {
 			var data: any = notification.getBody();
-            if (this.gameM2.questionId != data) {
-                return;
-            }
+			if (this.gameM2.questionId != data) {
+				return;
+			}
 			switch (notification.getName()) {
 				case GameProxy.RESET_MINIGAME:
-					for (let i = 0; i < 45; i++) {
-						this.gameM2.allCube[i].x = this.gameM2.record[i].x;
-						this.gameM2.allCube[i].y = this.gameM2.record[i].y;
-					}
+					this.f5();
 					break;
 				case GameProxy.CONFIRM_MINIGAME:
 					this.setResult();

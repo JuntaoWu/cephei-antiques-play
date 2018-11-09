@@ -59,7 +59,7 @@ module game {
 				but.scaleY = 1;
 			})
 		}
-		
+
 		public questionId: number;
 		public setQuestionId(id: number): void {
 			this.questionId = id;
@@ -72,7 +72,11 @@ module game {
 		public constructor(viewComponent: any) {
 			super(M6Mediator.NAME, viewComponent);
 			super.initializeNotifier("ApplicationFacade");
+			this.gameM6.addEventListener(egret.Event.ADDED_TO_STAGE, this.initData, this);
+		}
 
+		public async initData() {
+			this.gameM6.tryAgain();
 		}
 
 		public setResult() {
@@ -85,9 +89,9 @@ module game {
 
 		public handleNotification(notification: puremvc.INotification): void {
 			var data: any = notification.getBody();
-            if (this.gameM6.questionId != data) {
-                return;
-            }
+			if (this.gameM6.questionId != data) {
+				return;
+			}
 			switch (notification.getName()) {
 				case GameProxy.RESET_MINIGAME:
 					this.gameM6.tryAgain();

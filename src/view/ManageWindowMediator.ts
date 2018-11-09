@@ -7,6 +7,8 @@ module game {
         private proxy: GameProxy;
         public change: Change;
         public baolist: Array<eui.Image> = [];
+        public pricelist: Array<eui.Label> = [];
+        public colllist: Array<eui.Label> = [];
         public gulist: Array<string> = ["木器", "书画", "青铜", "玉石"];
 
         public constructor(viewComponent: any) {
@@ -29,6 +31,8 @@ module game {
             }, this);
             this.initData();
             this.baolist = [this.manageWindow.bao1, this.manageWindow.bao2, this.manageWindow.bao3, this.manageWindow.bao4];
+            this.pricelist = [this.manageWindow.gu1, this.manageWindow.gu2, this.manageWindow.gu3, this.manageWindow.gu4];
+            this.colllist = [this.manageWindow.coll1, this.manageWindow.coll2, this.manageWindow.coll3, this.manageWindow.coll4];
         }
 
         private manageEvent: any;
@@ -44,7 +48,7 @@ module game {
                 let gold_haha: number = 0;
                 this.manageWindow.option.visible = false;
                 this.manageWindow.text1.removeEventListener(egret.TouchEvent.TOUCH_TAP, this.nextManageEvent, this);
-                this.manageWindow.text1.text = "OVER";
+                this.manageWindow.text1.text = "今天的古董店已经打烊，可以点返回到剧情模式。";
                 this.proxy.playerInfo.guPrice[this.suiji(0, 3)] *= 4;
                 for (let i = 0; i < 4; i++) {
                     this.proxy.playerInfo.guPrice[i] *= 0.5;
@@ -52,6 +56,7 @@ module game {
                     if (this.proxy.playerInfo.guPrice[i] <= 0) {
                         this.proxy.playerInfo.guPrice[i] = 1;
                     }
+                    this.numberbilibili(this.pricelist[i]);
                     gold_haha += (this.proxy.playerInfo.guPrice[i] * this.proxy.playerInfo.guColl[i]);
                 }
                 this.proxy.playerInfo.gold = (parseFloat(this.proxy.playerInfo.gold) + gold_haha).toString();
@@ -169,15 +174,19 @@ module game {
 
             if (this.change.leixing1 == "古董数量变化") {
                 if (this.change.mubiao1 == "随机") {
-                    this.proxy.playerInfo.guColl[this.suiji(0, 3)] += parseInt(this.change.shuzhi1);
+                    let ss: number = this.suiji(0, 3);
+                    this.proxy.playerInfo.guColl[ss] += parseInt(this.change.shuzhi1);
+                    this.numberbilibili(this.colllist[ss]);
                 } else if (this.change.mubiao1 == "价值最低") {
                     this.jiazhipaixu();
                     if (this.ary[0] != this.ary[1]) {
                         this.proxy.playerInfo.guColl[this.proxy.playerInfo.guPrice.indexOf(this.ary[0])] += parseInt(this.change.shuzhi1);
+                        this.numberbilibili(this.colllist[this.proxy.playerInfo.guPrice.indexOf(this.ary[0])]);
                     }
                 } else if (this.change.mubiao1 == "所有") {
                     for (let i = 0; i < 4; i++) {
                         this.proxy.playerInfo.guColl[i] += parseInt(this.change.shuzhi1);
+                        this.numberbilibili(this.colllist[i]);
                     }
                 } else if (this.change.mubiao1 == "随机两种古董") {
                     let no1: number = this.suiji(0, 3);
@@ -185,6 +194,8 @@ module game {
                     no2 = (no1 + no2) % 4;
                     this.proxy.playerInfo.guColl[no1] += 2;
                     this.proxy.playerInfo.guColl[no2] += 2;
+                    this.numberbilibili(this.colllist[no1]);
+                    this.numberbilibili(this.colllist[no2]);
                 } else if (this.change.mubiao1 == "每回合") {
                     this.eachGu += parseInt(this.change.shuzhi1);
                 } else if (this.change.mubiao1 == "特殊1") {
@@ -197,6 +208,9 @@ module game {
                             hh += this.proxy.playerInfo.guColl[i];
                         }
                         this.proxy.playerInfo.guColl[less] += hh;
+                        this.colllist.forEach(ele => {
+                            this.numberbilibili(ele);
+                        })
                     }
                 } else if (this.change.mubiao1 == "特殊2") {
                     this.shuliangpaixu();
@@ -207,6 +221,9 @@ module game {
                         for (let i = 0; i < 4; i++) {
                             this.proxy.playerInfo.guColl[i] += a;
                         }
+                        this.colllist.forEach(ele => {
+                            this.numberbilibili(ele);
+                        })
                     }
                 } else {
                     if (this.change.tiaojian1 == "青铜价格最高") {
@@ -238,29 +255,41 @@ module game {
                         console.log(xx);
                         for (let i = 0; i < 4; i++) {
                             this.proxy.playerInfo.guColl[i] += xx[i];
+                            if (xx[i] != 0) {
+                                this.numberbilibili(this.colllist[i]);
+                            }
                         }
                     } else {
                         this.proxy.playerInfo.guColl[aa.indexOf(this.change.mubiao1)] += parseInt(this.change.shuzhi1);
+                        this.numberbilibili(this.colllist[aa.indexOf(this.change.mubiao1)]);
                     }
                 }
             } else if (this.change.leixing1 == "价格变化") {
                 for (let i = 0; i < 4; i++) {
                     this.proxy.playerInfo.guPrice[i] *= parseFloat(this.change.shuzhi1);
+                    if (i != aa.indexOf(this.change.tiaojian1)) {
+                        this.numberbilibili(this.pricelist[i]);
+                    }
                 }
                 this.proxy.playerInfo.guPrice[aa.indexOf(this.change.tiaojian1)] /= parseFloat(this.change.shuzhi1);
             }
 
+
+
             if (this.change.leixing2 == "价格变化") {
                 if (this.change.mubiao2 == "随机") {
+                    let cc: number = this.suiji(0, 3)
                     if (this.change.chengyi) {
-                        this.proxy.playerInfo.guPrice[this.suiji(0, 3)] *= parseFloat(this.change.shuzhi2);
+                        this.proxy.playerInfo.guPrice[cc] *= parseFloat(this.change.shuzhi2);
                     } else {
-                        this.proxy.playerInfo.guPrice[this.suiji(0, 3)] += parseInt(this.change.shuzhi2);
+                        this.proxy.playerInfo.guPrice[cc] += parseInt(this.change.shuzhi2);
                     }
+                    this.numberbilibili(this.pricelist[cc]);
                 } else if (this.change.mubiao2 == "价值最低") {
                     this.jiazhipaixu();
                     if (this.ary[0] != this.ary[1]) {
                         this.proxy.playerInfo.guPrice[this.proxy.playerInfo.guPrice.indexOf(this.ary[0])] += parseInt(this.change.shuzhi2);
+                        this.numberbilibili(this.pricelist[this.proxy.playerInfo.guPrice.indexOf(this.ary[0])]);
                     }
                 } else if (this.change.mubiao2 == "所有") {
                     for (let i = 0; i < 4; i++) {
@@ -269,6 +298,7 @@ module game {
                         } else {
                             this.proxy.playerInfo.guPrice[i] += parseInt(this.change.shuzhi2);
                         }
+                        this.numberbilibili(this.pricelist[i]);
                     }
                 } else if (this.change.mubiao2 == "第一二古董价格") {
                     this.jiazhipaixu();
@@ -280,6 +310,8 @@ module game {
                             this.proxy.playerInfo.guPrice[this.proxy.playerInfo.guPrice.indexOf(this.ary[1])] += parseInt(this.change.shuzhi2);
                             this.proxy.playerInfo.guPrice[this.proxy.playerInfo.guPrice.indexOf(this.ary[0])] += parseInt(this.change.shuzhi2);
                         }
+                        this.numberbilibili(this.pricelist[this.proxy.playerInfo.guPrice.indexOf(this.ary[1])]);
+                        this.numberbilibili(this.pricelist[this.proxy.playerInfo.guPrice.indexOf(this.ary[0])]);
                     }
                 } else if (this.change.mubiao2 == "第三四古董价格") {
                     this.jiazhipaixu();
@@ -291,6 +323,8 @@ module game {
                             this.proxy.playerInfo.guPrice[this.proxy.playerInfo.guPrice.indexOf(this.ary[2])] += parseInt(this.change.shuzhi2);
                             this.proxy.playerInfo.guPrice[this.proxy.playerInfo.guPrice.indexOf(this.ary[3])] += parseInt(this.change.shuzhi2);
                         }
+                        this.numberbilibili(this.pricelist[this.proxy.playerInfo.guPrice.indexOf(this.ary[2])]);
+                        this.numberbilibili(this.pricelist[this.proxy.playerInfo.guPrice.indexOf(this.ary[3])]);
                     }
                 } else {
                     if (this.change.chengyi) {
@@ -298,20 +332,37 @@ module game {
                     } else {
                         this.proxy.playerInfo.guPrice[aa.indexOf(this.change.mubiao2)] += parseInt(this.change.shuzhi2);
                     }
+                    this.numberbilibili(this.pricelist[aa.indexOf(this.change.mubiao2)]);
                 }
             } else if (this.change.leixing2 == "回合变化") {
                 this.proxy.playerInfo.time -= parseInt(this.change.shuzhi2);
+                this.numberbilibili(this.manageWindow.clock);
             } else if (this.change.leixing2 == "古董数量变化") {
                 if (this.change.tiaojian2 == "五回合") {
                     this.five[aa.indexOf(this.change.mubiao2)] = 5;
                 } else {
                     for (let i = 0; i < 4; i++) {
                         this.proxy.playerInfo.guColl[i] += parseInt(this.change.shuzhi2);
+                        if (i != aa.indexOf(this.change.tiaojian2)) {
+                            this.numberbilibili(this.colllist[i]);
+                        }
                     }
                     this.proxy.playerInfo.guColl[aa.indexOf(this.change.tiaojian2)] -= parseInt(this.change.shuzhi2);
                 }
             }
             this.shuzhijiance();
+        }
+
+        public numberbilibili(lab: eui.Label) {
+            egret.Tween.get(lab).to({ alpha: 0.5 }, 500);
+            egret.Tween.get(lab).to({ scaleX: 0.5, scaleY: 0.5 }, 500);
+            egret.setTimeout(() => {
+                egret.Tween.get(lab).to({ alpha: 1 }, 500);
+                egret.Tween.get(lab).to({ scaleX: 2, scaleY: 2 }, 500);
+            }, this, 600);
+            egret.setTimeout(() => {
+                egret.Tween.get(lab).to({ scaleX: 1.5, scaleY: 1.5 }, 500);
+            }, this, 1200);
         }
 
         public shuzhijiance() {
@@ -331,6 +382,7 @@ module game {
             this.jiazhipaixu();
             if (this.ary[3] != this.ary[2] && this.proxy.playerInfo.guPrice[data] == this.ary[3]) {
                 this.proxy.playerInfo.guColl[data] += 5;
+                this.numberbilibili(this.colllist[data]);
             }
         }
 
@@ -338,6 +390,7 @@ module game {
             this.shuliangpaixu();
             if (this.ary2[3] != this.ary2[2] && this.proxy.playerInfo.guColl[data] == this.ary2[3]) {
                 this.proxy.playerInfo.guColl[data] *= 1.5;
+                this.numberbilibili(this.colllist[data]);
             }
         }
 
@@ -421,35 +474,35 @@ module game {
                 switch (this.manageEvent.subType) {
                     case "猜真假":
                         this.manageWindow.juese.source = "s8";
-                        this.manageWindow.description = "店家，来看看这几件宝贝，祖传的。你看看能给多少钱，不保证真假啊~"; 
+                        this.manageWindow.description = "店家，来看看这几件宝贝，祖传的。你看看能给多少钱，不保证真假啊~";
                         // egret.setTimeout(() => {
                         //     this.setMiniGame();
                         // }, this, 1500);
                         break;
                     case "找不同":
                         this.manageWindow.juese.source = "s21";
-                        this.manageWindow.description = "呀，路上捡了几件宝贝，您给看看哪件能收给个价？"; 
+                        this.manageWindow.description = "呀，路上捡了几件宝贝，您给看看哪件能收给个价？";
                         // egret.setTimeout(() => {
                         //     this.setMiniGame();
                         // }, this, 1500);
                         break;
                     case "找相同":
                         this.manageWindow.juese.source = "s22";
-                        this.manageWindow.description = "给你件古董，你要是能鉴定出它是真的，票子大大的赏！"; 
+                        this.manageWindow.description = "给你件古董，你要是能鉴定出它是真的，票子大大的赏！";
                         // egret.setTimeout(() => {
                         //     this.setMiniGame();
                         // }, this, 1500);
                         break;
                     case "找同类":
                         this.manageWindow.juese.source = "s24";
-                        this.manageWindow.description = "嗨，从老家里的破柜子里翻出一件老物件，您给看看它是什么古董？"; 
+                        this.manageWindow.description = "嗨，从老家里的破柜子里翻出一件老物件，您给看看它是什么古董？";
                         // egret.setTimeout(() => {
                         //     this.setMiniGame();
                         // }, this, 1500);
                         break;
                     case "找异类":
                         this.manageWindow.juese.source = "s30";
-                        this.manageWindow.description = "老大让我给你带句话，要是这宝贝你坚定不出是假的，这店别想开了！"; 
+                        this.manageWindow.description = "老大让我给你带句话，要是这宝贝你坚定不出是假的，这店别想开了！";
                         // egret.setTimeout(() => {
                         //     this.setMiniGame();
                         // }, this, 1500);
@@ -686,6 +739,9 @@ module game {
             rewardList.forEach((v, i) => {
                 this.proxy.playerInfo.guColl[i] += v;
             })
+            this.colllist.forEach(ele => {
+                this.numberbilibili(ele);
+            })
         }
 
         public moveCards() {
@@ -730,9 +786,14 @@ module game {
             this.gogog();
             this.fivehaha();
             this.proxy.playerInfo.time--;
-            this.proxy.playerInfo.guColl[this.suiji(0, 3)] += this.eachGu;
+            let bb: number = this.suiji(0, 3);
+            this.proxy.playerInfo.guColl[bb] += this.eachGu;
+            if (this.eachGu != 0) {
+                this.numberbilibili(this.colllist[bb]);
+            }
             this.manageEvent = this.proxy.getRandomManageEvent();
             this.setManageEvent();
+            this.manageWindow.text1.addEventListener(egret.TouchEvent.TOUCH_TAP, this.nextManageEvent, this);
             this.haha();
         }
 
@@ -741,6 +802,7 @@ module game {
                 this.five[i]--;
                 if (this.five[i] == 0) {
                     this.proxy.playerInfo.guColl[i] -= 10;
+                    this.numberbilibili(this.colllist[i]);
                 }
             }
             this.shuzhijiance();

@@ -132,6 +132,14 @@ module game {
 			}
 		}
 
+		public f5() {
+			for (let i = 0; i < 8; i++) {
+				this.paperList[i].x = this.jilu[i].x;
+				this.paperList[i].y = this.jilu[i].y;
+				this.paperList[i].rotation = this.jilu[i].rotation;
+			}
+		}
+
 		public questionId: number;
 		public setQuestionId(id: number): void {
 			this.questionId = id;
@@ -144,7 +152,11 @@ module game {
 		public constructor(viewComponent: any) {
 			super(M14Mediator.NAME, viewComponent);
 			super.initializeNotifier("ApplicationFacade");
+			this.gameM14.addEventListener(egret.Event.ADDED_TO_STAGE, this.initData, this);
+		}
 
+		public async initData() {
+			this.gameM14.f5();
 		}
 
 		public setResult() {
@@ -157,16 +169,12 @@ module game {
 
 		public handleNotification(notification: puremvc.INotification): void {
 			var data: any = notification.getBody();
-            if (this.gameM14.questionId != data) {
-                return;
-            }
+			if (this.gameM14.questionId != data) {
+				return;
+			}
 			switch (notification.getName()) {
 				case GameProxy.RESET_MINIGAME:
-					for (let i = 0; i < 8; i++) {
-						this.gameM14.paperList[i].x = this.gameM14.jilu[i].x;
-						this.gameM14.paperList[i].y = this.gameM14.jilu[i].y;
-						this.gameM14.paperList[i].rotation = this.gameM14.jilu[i].rotation;
-					}
+					this.gameM14.f5();
 					break;
 				case GameProxy.CONFIRM_MINIGAME:
 					this.setResult();
