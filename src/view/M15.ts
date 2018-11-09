@@ -72,7 +72,11 @@ module game {
         public constructor(viewComponent: any) {
             super(M15Mediator.NAME, viewComponent);
             super.initializeNotifier("ApplicationFacade");
+            this.gameM15.addEventListener(egret.Event.ADDED_TO_STAGE, this.initData, this);
+        }
 
+        public async initData() {
+            this.gameM15.xx = 0;
         }
 
         public setResult() {

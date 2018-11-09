@@ -98,7 +98,7 @@ module game {
 				ApplicationFacade.getInstance().sendNotification(GameProxy.REDUCE_POWER);
 			}
 		}
-		
+
 		public questionId: number;
 		public setQuestionId(id: number): void {
 			this.questionId = id;
@@ -111,7 +111,14 @@ module game {
 		public constructor(viewComponent: any) {
 			super(M5Mediator.NAME, viewComponent);
 			super.initializeNotifier("ApplicationFacade");
+			this.gameM5.addEventListener(egret.Event.ADDED_TO_STAGE, this.initData, this);
+		}
 
+		public async initData() {
+			for (let i = 0; i < 11; i++) {
+				this.gameM5.moveCube[i].x = this.gameM5.record[i].x;
+				this.gameM5.moveCube[i].y = this.gameM5.record[i].y;
+			}
 		}
 
 		public setResult() {
@@ -124,9 +131,9 @@ module game {
 
 		public handleNotification(notification: puremvc.INotification): void {
 			var data: any = notification.getBody();
-            if (this.gameM5.questionId != data) {
-                return;
-            }
+			if (this.gameM5.questionId != data) {
+				return;
+			}
 			switch (notification.getName()) {
 				case GameProxy.RESET_MINIGAME:
 					for (let i = 0; i < 11; i++) {

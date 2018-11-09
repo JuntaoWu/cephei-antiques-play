@@ -69,7 +69,14 @@ module game {
 		public constructor(viewComponent: any) {
 			super(M17Mediator.NAME, viewComponent);
 			super.initializeNotifier("ApplicationFacade");
+			this.gameM17.addEventListener(egret.Event.ADDED_TO_STAGE, this.initData, this);
+		}
 
+		public async initData() {
+			for (let i = 0; i < 4; i++) {
+				this.gameM17.wuqi[i].x = this.gameM17.record[i].x;
+				this.gameM17.wuqi[i].y = this.gameM17.record[i].y;
+			}
 		}
 
 		public setResult() {
@@ -86,9 +93,9 @@ module game {
 
 		public handleNotification(notification: puremvc.INotification): void {
 			var data: any = notification.getBody();
-            if (this.gameM17.questionId != data) {
-                return;
-            }
+			if (this.gameM17.questionId != data) {
+				return;
+			}
 			switch (notification.getName()) {
 				case GameProxy.RESET_MINIGAME:
 					for (let i = 0; i < 4; i++) {
