@@ -724,6 +724,7 @@ module game {
             this.proxy.playerInfo.guColl[this.suiji(0, 3)] += this.eachGu;
             this.manageEvent = this.proxy.getRandomManageEvent();
             this.setManageEvent();
+            this.manageWindow.text1.addEventListener(egret.TouchEvent.TOUCH_TAP, this.nextManageEvent, this);
             this.haha();
         }
 
