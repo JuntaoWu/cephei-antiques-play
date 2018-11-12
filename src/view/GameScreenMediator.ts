@@ -36,6 +36,7 @@ module game {
 
         private loadResGroup() {
             let chapter = this.proxy.chapterPlot.get(this.proxy.playerInfo.plotId.toString()).chapter;
+            console.log(`loadResGroup：chapter${chapter}`)
             try {
                 RES.loadGroup(`chapter${chapter}`, 0);
             }
@@ -128,6 +129,7 @@ module game {
                 this.gameScreen.scrollGroup.viewport.scrollH = 0;
             }
             else if (plot.type == plotType.Transition) {
+                this.loadResGroup();
                 if (plot.effect != "序章") {
                     if (this.proxy.canReduecePower(30)) {
                         this.proxy.reducePower(30);
@@ -141,7 +143,6 @@ module game {
                 }
                 this.gameScreen.showTransition = true;
                 this.gameScreen.transitionText = plot.effect;
-                this.loadResGroup();
                 this.timeoutId = egret.setTimeout(() => {
                     this.showNext();
                 }, this, 1500);

@@ -22,7 +22,7 @@ module game {
                 let scene = { ...i }
                 if (this.proxy.playerInfo.collectedScenes.includes(i.res.replace("S", "s"))) {
                     scene.isCollected = true;
-                    if (scene.type == SceneType.ScenePerson) {
+                    if (scene.type == SceneType.ScenePerson || scene.res == "s56") {
                         scene.scale = 0.25;
                     }
                     else {

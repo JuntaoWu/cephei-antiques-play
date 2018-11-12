@@ -12,7 +12,6 @@ module game {
             super.initializeNotifier("ApplicationFacade");
             this.proxy = <GameProxy><any>this.facade().retrieveProxy(GameProxy.NAME);
             this.initData();
-            this.guideWindow.addEventListener(egret.TouchEvent.TOUCH_TAP, this.next, this);
             this.guideWindow.btnNext.addEventListener(egret.TouchEvent.TOUCH_TAP, this.next, this);
             this.guideWindow.btnSkip.addEventListener(egret.TouchEvent.TOUCH_TAP, this.closeWindow, this);
         }
@@ -21,21 +20,31 @@ module game {
         private _index: number;
         
         public initData() {
+            this.trueAndFalseUIList = [];
+            for (let i = 1; i < 10; i++) {
+                let group = this.guideWindow.group5.getChildByName(`card${i}`) as eui.Group;
+                this.trueAndFalseUIList.push(group);
+            }
+            [2, 4, 9].forEach(i => {
+                let group = this.guideWindow.group5.getChildByName(`card${i}`) as eui.Group;
+                group.addEventListener(egret.TouchEvent.TOUCH_TAP, this.trueFalseSelect, this);
+            })
             this._guides = RES.getRes("guide_json");
             this._index = 0;
-            console.log(this._guides);
             this.setPage();
         }
 
         public setPage() {
-            this.guideWindow.dialogGroup.visible = true;
+            let guide = this._guides[this._index];
+            if (!guide) return;
+            this.guideWindow.dialogGroup.bottom = 0;        
+            this.guideWindow.dialogGroup.visible = this.guideWindow.btnNext.visible = true;
             this.guideWindow.group1.visible = this.guideWindow.group2.visible 
-            = this.guideWindow.group3.visible = this.guideWindow.group4.visible
+            = this.cannotNext = this.guideWindow.group3.visible = this.guideWindow.group4.visible
             = this.guideWindow.group5.visible = this.guideWindow.moneyGroup.visible
             = this.guideWindow.antiGroup.visible = this.guideWindow.clockGroup.visible
             = this.guideWindow.optionGroup.visible = this.guideWindow.btnPlotGroup.visible = false;
-            let guide = this._guides[this._index];
-            if (!guide) return;
+
             const textElements = new egret.HtmlTextParser().parser(guide.content);
             this.guideWindow.dialog.textFlow = textElements;
             switch (guide.type) {
@@ -61,7 +70,6 @@ module game {
                     this.guideWindow.group4.visible = true;
                     break;
                 case "真假判别":
-                    this.guideWindow.group5.visible = this.cannotNext =  this.isTrueFalseGame = true;
                     this.trueFalseGame();
                     break;
                 case "剧情图标":
@@ -77,6 +85,8 @@ module game {
         }
 
         public closeWindow() {
+            this._index = 0;
+            this.setPage();
             this.guideWindow.close();
             this.sendNotification(SceneCommand.SHOW_MANAGE);
         }
@@ -85,6 +95,7 @@ module game {
             if (this.cannotNext) {
                 if (this.isTrueFalseGame) {
                     this.guideWindow.dialogGroup.visible = this.isTrueFalseGame = false;
+                    this.guideWindow.btnNext.visible = false;
                     this.moveCards();
                 }
                 return;
@@ -121,6 +132,7 @@ module game {
                 this.guideWindow.coll3.text = "6";
                 this.guideWindow.coll4.text = "5";
                 this.cannotNext = false;
+                this.next();
             }
         }
 
@@ -145,44 +157,19 @@ module game {
                 this.guideWindow.coll3.text = "2";
                 this.guideWindow.coll4.text = "5";
                 this.cannotNext = false;
+                this.next();
             }
         }
 
         public isTrueFalseGame: boolean;
         public trueFalseGame() {
-            this.trueAndFalseUIList = [];
-            let trueFalseList = [
-                true, true, false
-                , true, false, true
-                , false, true, true
-            ]
-            this.canSelectedCard = false;
-            trueFalseList.forEach((v, i) => {
-                let img = new eui.Image();
+            this.guideWindow.group5.visible = this.cannotNext =  this.isTrueFalseGame = true; 
+            this.canSelectedCard = false;       
+            this.trueAndFalseUIList.forEach(i => {
+                let img = i.getChildByName("img") as eui.Image;
                 img.source = "manage-card2";
-                img.name = "img";
-                let textLabel = new eui.Label();
-                textLabel.text = v ? "真" : "假";
-                textLabel.size = 60;
-                textLabel.horizontalCenter = 0;
-                textLabel.verticalCenter = 0;
-                let group = new eui.Group();
-                group.addChild(img);
-                group.addChild(textLabel);
-                group.name = i.toString();
-                group.x = i % 3 ? 215 * (i % 3) : 0;
-                group.y = (i - i % 3) / 3 ? 280 * ((i - i % 3) / 3) : 0;
-                this.guideWindow.group5.addChild(group);
-                if (!v) {
-                    let img2 = new eui.Image();
-                    img2.source="ellipse";
-                    img2.scale9Grid= new egret.Rectangle(29,28,14,14);
-                    img2.top = img2.bottom = img2.left = img2.right = 0;
-                    group.addChild(img2);
-                    group.addEventListener(egret.TouchEvent.TOUCH_TAP, this.trueFalseSelect, this);
-                }
-                this.trueAndFalseUIList.push(group);
-            })
+                i.addChildAt(img, 0);
+            });
         }
         
         public trueAndFalseUIList: Array<eui.Group>;
@@ -229,13 +216,14 @@ module game {
             if (!this.canSelectedCard) return;
             let currentImg = e.currentTarget.getChildByName("img") as eui.Image;
             e.currentTarget.removeEventListener(egret.TouchEvent.TOUCH_TAP, this.trueFalseSelect, this);
-            console.log(currentImg.name);
             currentImg.source = "manage-card2";
             e.currentTarget.addChildAt(currentImg, 0);
             this.clickTime = !this.clickTime ? 1 : this.clickTime + 1;
             if (this.clickTime == 2) {
                 egret.setTimeout(() => {
+                    this.clickTime == 0;
                     this.cannotNext = false;
+                    this.guideWindow.btnNext.visible = true;
                     this.next();
                 }, this, 300);
             }
