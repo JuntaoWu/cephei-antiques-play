@@ -312,18 +312,21 @@ module game {
             let point = +this.gameScreen.plotSelectList.selectedItem.result;
             this.bb = new eui.Image();
             this.bb.source = "heart";
+            this.bb.alpha = 1;
             this.bb.x = 320;
             this.bb.y = 1000;
             this.gameScreen.addChild(this.bb);
             if (point > 0) {
-                egret.Tween.get(this.bb).to({ x: 20, y: 150 }, 1000);
+                egret.Tween.get(this.bb).to({ x: 20, y: 150 }, 700);
             } else {
-                egret.Tween.get(this.bb).to({ x: 590, y: 150 }, 1000);
+                egret.Tween.get(this.bb).to({ x: 590, y: 150 }, 700);
             }
             egret.setTimeout(() => {
-                this.gameScreen.removeChild(this.bb);
-                this.showNext();
-            }, this, 3000);
+                egret.Tween.get(this.bb).to({ alpha: 0 }, 400).call(() => {
+                    this.gameScreen.removeChild(this.bb);
+                    this.showNext();
+                });
+            }, this, 700);
             this.proxy.pointHunag += point;
             this.proxy.pointMu -= point;
             if (this.proxy.pointHunag > 86 || this.proxy.pointMu < 0) {

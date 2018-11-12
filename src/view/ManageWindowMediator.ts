@@ -354,6 +354,7 @@ module game {
         }
 
         public numberbilibili(lab: eui.Label) {
+            if (!lab) return;
             egret.Tween.get(lab).to({ alpha: 0.5 }, 500);
             egret.Tween.get(lab).to({ scaleX: 0.5, scaleY: 0.5 }, 500);
             egret.setTimeout(() => {
