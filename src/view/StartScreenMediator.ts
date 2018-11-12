@@ -42,6 +42,8 @@ module game {
                     hasCancel: true,
                     cbk: () => {
                         this.proxy.playerInfo.plotId = 1;
+                        this.proxy.playerInfo.pointMu = 43;
+                        this.proxy.playerInfo.pointHunag = 43;
                         this.sendNotification(SceneCommand.CHANGE, Scene.Game);
                     }
                 }
