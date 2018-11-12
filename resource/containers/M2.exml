@@ -63,5 +63,5 @@
 		<e:Image id="column2_1" source="xia_png" x="336" y="3" scaleX="0.5" scaleY="0.5" width="90" height="55"/>
 		<e:Image id="column3_1" source="xia_png" x="393" y="3" scaleX="0.5" scaleY="0.5" width="90" height="55"/>
 	</e:Group>
-	<e:Image source="kuang_png" verticalCenter="-3" horizontalCenter="0"/>
+	<e:Image source="kuang_png" verticalCenter="-3" horizontalCenter="0" rotation="0"/>
 </e:Skin>

@@ -23,7 +23,7 @@ module game {
             this.manageWindow.no.addEventListener(egret.TouchEvent.TOUCH_TAP, this.no, this);
             this.manageWindow.addEventListener(egret.Event.ADDED_TO_STAGE, this.initData, this);
             this.manageWindow.gameList.addEventListener(eui.ItemTapEvent.ITEM_TAP, this.selectItem, this);
-            this.manageWindow.text1.addEventListener(egret.TouchEvent.TOUCH_TAP, this.nextManageEvent, this);
+            this.manageWindow.text2.addEventListener(egret.TouchEvent.TOUCH_TAP, this.nextManageEvent, this);
             this.manageWindow.setMiniGame.addEventListener(egret.TouchEvent.TOUCH_TAP, this.setMiniGame, this);
             this.manageWindow.btnTutorial.addEventListener(egret.TouchEvent.TOUCH_TAP, () => {
                 this.manageWindow.close();
@@ -47,7 +47,8 @@ module game {
             if (!this.manageEvent) {
                 let gold_haha: number = 0;
                 this.manageWindow.option.visible = false;
-                this.manageWindow.text1.removeEventListener(egret.TouchEvent.TOUCH_TAP, this.nextManageEvent, this);
+                // this.manageWindow.text2.removeEventListener(egret.TouchEvent.TOUCH_TAP, this.nextManageEvent, this);
+                this.manageWindow.text2.visible = false;
                 this.manageWindow.text1.text = "今天的古董店已经打烊，可以点返回到剧情模式。";
                 this.proxy.playerInfo.guPrice[this.suiji(0, 3)] *= 4;
                 for (let i = 0; i < 4; i++) {
@@ -66,15 +67,18 @@ module game {
                 this.manageWindow.juese.visible = false;
                 if (this.manageEvent.subType == "有选项" || this.manageEvent.type == "角色") {
                     this.manageWindow.option.visible = true;
-                    this.manageWindow.text1.removeEventListener(egret.TouchEvent.TOUCH_TAP, this.nextManageEvent, this);
+                    // this.manageWindow.text2.removeEventListener(egret.TouchEvent.TOUCH_TAP, this.nextManageEvent, this);
+                    this.manageWindow.text2.visible = false;
                 } else if (this.manageEvent.type == "小游戏") {
                     this.manageWindow.juese.visible = true;
                     this.manageWindow.option.visible = false;
                     this.change = { ...this.proxy.changeArr.get("53") };
-                    this.manageWindow.text1.removeEventListener(egret.TouchEvent.TOUCH_TAP, this.nextManageEvent, this);
+                    // this.manageWindow.text2.removeEventListener(egret.TouchEvent.TOUCH_TAP, this.nextManageEvent, this);
+                    this.manageWindow.text2.visible = false;
                 } else {
                     this.manageWindow.option.visible = false;
-                    this.manageWindow.text1.addEventListener(egret.TouchEvent.TOUCH_TAP, this.nextManageEvent, this);
+                    // this.manageWindow.text2.addEventListener(egret.TouchEvent.TOUCH_TAP, this.nextManageEvent, this);
+                    this.manageWindow.text2.visible = true;
                     this.change = { ...this.proxy.changeArr.get(this.manageEvent.Column9.toString()) };
                 }
                 if (this.manageEvent.subType == "药不然") {
@@ -794,7 +798,8 @@ module game {
             }
             this.manageEvent = this.proxy.getRandomManageEvent();
             this.setManageEvent();
-            this.manageWindow.text1.addEventListener(egret.TouchEvent.TOUCH_TAP, this.nextManageEvent, this);
+            // this.manageWindow.text2.addEventListener(egret.TouchEvent.TOUCH_TAP, this.nextManageEvent, this);
+            this.manageWindow.text2.visible = true;
             this.haha();
         }
 

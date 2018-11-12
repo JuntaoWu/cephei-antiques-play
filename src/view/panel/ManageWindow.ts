@@ -20,6 +20,7 @@ module game {
         public gu4: eui.Label;
         public clock: eui.Label;
         public text1: eui.Label;
+        public text2: eui.Label;
         public gold: eui.Label;
         public yes: eui.Button;
         public no: eui.Button;
