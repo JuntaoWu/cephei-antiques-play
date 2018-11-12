@@ -66,6 +66,11 @@ module game {
             return this._changeArr;
         }
 
+        public resetGame() {
+            this.playerInfo.plotId = 1;
+            this.playerInfo.pointMu = this.playerInfo.pointHunag = 43;
+        }
+
         /**
          * 进入故事下一个情节
          */
