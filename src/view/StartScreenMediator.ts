@@ -41,9 +41,7 @@ module game {
                     msg: "你的进度将会被重置，是否确认开始新的游戏？",
                     hasCancel: true,
                     cbk: () => {
-                        this.proxy.playerInfo.plotId = 1;
-                        this.proxy.playerInfo.pointMu = 43;
-                        this.proxy.playerInfo.pointHunag = 43;
+                        this.proxy.resetGame();
                         this.sendNotification(SceneCommand.CHANGE, Scene.Game);
                     }
                 }

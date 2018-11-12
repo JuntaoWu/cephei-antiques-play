@@ -507,7 +507,7 @@ module game {
                         break;
                     case "找异类":
                         this.manageWindow.juese.source = "s30";
-                        this.manageWindow.description = "老大让我给你带句话，要是这宝贝你坚定不出是假的，这店别想开了！";
+                        this.manageWindow.description = "老大让我给你带句话，要是这宝贝你鉴定不出是假的，这店别想开了！";
                         // egret.setTimeout(() => {
                         //     this.setMiniGame();
                         // }, this, 1500);

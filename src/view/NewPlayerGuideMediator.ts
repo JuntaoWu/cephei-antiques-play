@@ -87,6 +87,7 @@ module game {
         public closeWindow() {
             this._index = 0;
             this.setPage();
+            this.proxy.playerInfo.isShowGuide = false;
             this.guideWindow.close();
             this.sendNotification(SceneCommand.SHOW_MANAGE);
         }

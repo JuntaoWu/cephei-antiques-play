@@ -28,6 +28,7 @@ module game {
             sound: true,
             music: true,
             isManage: false,
+            isShowGuide: true,
             ending: [],
             pointHunag: 43,
             pointMu: 43,
@@ -64,6 +65,11 @@ module game {
                 this._changeArr = new Map(Object.entries(RES.getRes("manage-change_json")));
             }
             return this._changeArr;
+        }
+
+        public resetGame() {
+            this.playerInfo.plotId = 1;
+            this.playerInfo.pointMu = this.playerInfo.pointHunag = 43;
         }
 
         /**
@@ -165,6 +171,9 @@ module game {
                 let res = await platform.getStorageAsync("playerInfo");
                 console.log("mergeRemoteInfoToStorage: parse playerInfo");
                 this.playerInfo = Object.assign(this.playerInfo, JSON.parse(res.data));
+                if (isNaN(+this.playerInfo.gold)) {
+                    this.playerInfo.gold = "0";
+                }
                 console.log(this.playerInfo)
             }
             catch (error) {
@@ -172,6 +181,7 @@ module game {
             }
             if (!this.playerInfo.lastEntryTime || this.playerInfo.lastEntryTime != new Date().toJSON().substr(0, 10)) {
                 // this.playerInfo.fatigueValue = fatigueValue;
+                this.playerInfo.isShowGuide = true;
                 this.playerInfo.time = 24;
                 this.playerInfo.guPrice = [0, 0, 0, 0];
                 this.playerInfo.guColl = [5, 5, 5, 5];

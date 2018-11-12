@@ -2,7 +2,10 @@
 <e:Skin class="MiniGameM42" currentState="up" xmlns:e="http://ns.egret.com/eui" xmlns:game="game.*" xmlns:w="http://ns.egret.com/wing" states="down,up" >
     <e:Group width="720" height="100%">
         <e:Image source="m42-bg" left="0" top="0" bottom="0" right="0"/>
-        <e:Image visible="{showTipsImg}" source="m42-tips" left="0" top="0" right="0"/>
+        <e:Group visible="{showTipsImg}" width="100%" top="0">
+            <e:Image source="m42-tips" left="0" right="0"/>
+            <e:Label text="六乾离九是朝宗，坤宫坎脉一和通。天三地八为朋友，天七地四气相通。离九来龙定震穴，原由地八是乾宫。坎水朝时来到兑，巽龙入脉是坤宫。后天来龙先天向，生成推照互相融。" lineSpacing="5" right="0" width="249" y="130" textColor="0x020202"/>
+        </e:Group>
         <e:Button id="btnBack" y="20" right="50">
             <e:Skin states="up, down">
                 <e:Image source="btn-back" scaleX.down="0.9" scaleY.down="0.9"></e:Image>

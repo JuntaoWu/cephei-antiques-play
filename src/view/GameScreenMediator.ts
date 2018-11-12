@@ -138,6 +138,7 @@ module game {
                     else {
                         // platform.showModal("体力不足，不能进入下一章", false);
                         this.sendNotification(SceneCommand.SHOW_POPUP, "体力不足，不能进入下一章");
+                        this.canGoNext = false;
                         return;
                     }
                 }
@@ -148,7 +149,7 @@ module game {
                 }, this, 1500);
             }
             else if (plot.type == "界面切换经营") {
-                if (!this.proxy.playerInfo.isManage) {
+                if (!this.proxy.playerInfo.isShowGuide) {
                     this.gameScreen.showTransition = true;
                     this.gameScreen.transitionText = "进入经营模式";
                     this.timeoutId = egret.setTimeout(() => {
@@ -159,6 +160,7 @@ module game {
                     this.gameScreen.no_btnmanage.visible = false;
                     this.gameScreen.btnManage.visible = true;
                     this.sendNotification(GameScreenMediator.manage_show);
+                    this.canGoNext = true;
                 }
                 else if (this.proxy.playerInfo.time) {
                     this.gameScreen.showTransition = true;
@@ -167,11 +169,11 @@ module game {
                         this.gameScreen.showTransition = false;
                         this.btnManageClick();
                     }, this, 1000);
+                    this.canGoNext = true;
                 }
                 else {
                     this.showNext();
                 }
-                this.canGoNext = true;
             }
             else {
                 this.gameScreen.scrollGroup.bottom = 20;
