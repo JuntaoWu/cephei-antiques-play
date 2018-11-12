@@ -2,7 +2,7 @@
   {
     "id": 1,
     "res": "power_small",
-    "name": "体力药水(小)",
+    "name": "茶水",
     "effect": "增加10点体力",
     "tili": 10,
     "money": "20"
@@ -10,7 +10,7 @@
   {
     "id": 2,
     "res": "power_medium",
-    "name": "体力药水(中)",
+    "name": "小吃",
     "effect": "增加30点体力",
     "tili": 30,
     "money": "50"
@@ -18,7 +18,7 @@
   {
     "id": 3,
     "res": "power_large",
-    "name": "体力药水(大)",
+    "name": "甜点",
     "effect": "增加60点体力",
     "tili": 60,
     "money": "90"
