@@ -124,7 +124,7 @@ module game {
 		public isWin() {
 			let iwin: boolean = true;
 			this.whiteCube.forEach(cube => {
-				if (this.rowList[6] > cube.x) {
+				if (this.rowList[2] < cube.x) {
 					iwin = false;
 				}
 			});
