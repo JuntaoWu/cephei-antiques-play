@@ -155,7 +155,7 @@ module game {
 			}
 			switch (notification.getName()) {
 				case GameProxy.RESET_MINIGAME:
-
+					this.f5();
 					break;
 				case GameProxy.CONFIRM_MINIGAME:
 					this.setResult();

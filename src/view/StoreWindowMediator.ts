@@ -55,8 +55,8 @@ module game {
                 } else if (data.id == 4) {
                     this.proxy.playerInfo.hints += 1;
                 } else if (data.point) {
-                    this.proxy.pointHunag += data.point;
-                    this.proxy.pointMu -= data.point;
+                    this.proxy.playerInfo.pointHunag += data.point;
+                    this.proxy.playerInfo.pointMu -= data.point;
                 }
                 // platform.showModal(data.effect,false);
                 this.sendNotification(SceneCommand.SHOW_POPUP, data.effect);

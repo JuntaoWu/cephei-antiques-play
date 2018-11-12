@@ -28,7 +28,7 @@ module game {
             this.gameScreen.btnReset.addEventListener(egret.TouchEvent.TOUCH_TAP, this.btnResetClick, this);
             this.gameScreen.btnConfirm.addEventListener(egret.TouchEvent.TOUCH_TAP, this.btnConfirmClick, this);
 
-            this.gameScreen.sceneGroup.addEventListener(egret.TouchEvent.TOUCH_TAP, () => {}, this);
+            this.gameScreen.sceneGroup.addEventListener(egret.TouchEvent.TOUCH_TAP, () => { }, this);
 
             this.gameScreen.addEventListener(egret.Event.ADDED_TO_STAGE, this.initData, this);
             this.initData();
@@ -68,8 +68,8 @@ module game {
             this.gameScreen.miniGame.removeChildren();
             this.aa && this.aa.parent && this.aa.parent.removeChild(this.aa);
             this.gameScreen.bottomGroup.visible = this.gameScreen.plotSelectList.visible
-            = this.gameScreen.questionGroup.visible = this.gameScreen.miniGame.visible = false;
-            this.gameScreen.showReset =this.gameScreen.showTransition = this.canGoNext = false;
+                = this.gameScreen.questionGroup.visible = this.gameScreen.miniGame.visible = false;
+            this.gameScreen.showReset = this.gameScreen.showTransition = this.canGoNext = false;
             this.gameScreen.question = this.gameScreen.points = "";
             this.gameScreen.scrollGroup.bottom = 20;
             this.gameScreen.scrollGroup.viewport.scrollV = 0;
@@ -79,8 +79,8 @@ module game {
 
             let barH = this.gameScreen.huangAndMubar.getChildByName("huangyanyan") as eui.Image;
             let barM = this.gameScreen.huangAndMubar.getChildByName("munai") as eui.Image;
-            barH.width = this.gameScreen.huangAndMubar.width * this.proxy.pointHunag / 86;
-            barM.width = this.gameScreen.huangAndMubar.width * this.proxy.pointMu / 86;
+            barH.width = this.gameScreen.huangAndMubar.width * this.proxy.playerInfo.pointHunag / 86;
+            barM.width = this.gameScreen.huangAndMubar.width * this.proxy.playerInfo.pointMu / 86;
 
             let plot: Plot = this.proxy.getCurrentPlot();
             if (!plot) {
@@ -327,14 +327,14 @@ module game {
                     this.showNext();
                 });
             }, this, 700);
-            this.proxy.pointHunag += point;
-            this.proxy.pointMu -= point;
-            if (this.proxy.pointHunag > 86 || this.proxy.pointMu < 0) {
-                this.proxy.pointHunag = 86;
-                this.proxy.pointMu = 0;
-            } else if (this.proxy.pointHunag < 0 || this.proxy.pointMu > 86) {
-                this.proxy.pointHunag = 0;
-                this.proxy.pointMu = 86;
+            this.proxy.playerInfo.pointHunag += point;
+            this.proxy.playerInfo.pointMu -= point;
+            if (this.proxy.playerInfo.pointHunag > 86 || this.proxy.playerInfo.pointMu < 0) {
+                this.proxy.playerInfo.pointHunag = 86;
+                this.proxy.playerInfo.pointMu = 0;
+            } else if (this.proxy.playerInfo.pointHunag < 0 || this.proxy.playerInfo.pointMu > 86) {
+                this.proxy.playerInfo.pointHunag = 0;
+                this.proxy.playerInfo.pointMu = 86;
             }
             this.next = this.gameScreen.plotSelectList.selectedItem.next;
             this.gameScreen.plotSelectList.removeEventListener(eui.ItemTapEvent.ITEM_TAP, this.selectItem, this);
@@ -367,7 +367,7 @@ module game {
                 return;
             }
             else if (this.next == "over") { //最后有两个不同结局
-                if (this.proxy.pointMu < this.proxy.pointHunag) {
+                if (this.proxy.playerInfo.pointMu < this.proxy.playerInfo.pointHunag) {
                     this.proxy.nextPlot();
                     this.proxy.addEnding("m1");
                 }
@@ -397,7 +397,7 @@ module game {
             if (this.gameScreen.points || (!this.questionPoints[0] && !this.questionPoints[1])) {
                 this.showPointsAll = true;
             }
-            this.gameScreen.points = !this.gameScreen.points ? this.questionPoints[0] : `${this.questionPoints[0]}\n———————————————\n${this.questionPoints[1]}`; 
+            this.gameScreen.points = !this.gameScreen.points ? this.questionPoints[0] : `${this.questionPoints[0]}\n———————————————\n${this.questionPoints[1]}`;
         }
 
         public btnBackClick() {
@@ -459,7 +459,8 @@ module game {
 
         public btnConfirmClick() {
             if (this.proxy.playerInfo.fatigueValue <= 0) {
-                this.sendNotification(SceneCommand.SHOW_POPUP, "没有体力玩小游戏了！");
+                this.sendNotification(SceneCommand.SHOW_POPUP, "没有体力破解谜题了！");
+                return;
             }
             this.sendNotification(GameProxy.CONFIRM_MINIGAME, this.questionId);
         }
@@ -488,7 +489,7 @@ module game {
                         catch (err) {
                             console.log(err);
                         }
-                    } 
+                    }
                     else {
                         this.sendNotification(SceneCommand.SHOW_POPUP, "没有体力了！");
                     }

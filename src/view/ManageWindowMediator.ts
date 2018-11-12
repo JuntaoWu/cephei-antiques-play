@@ -61,7 +61,7 @@ module game {
                 }
                 this.proxy.playerInfo.gold = (parseFloat(this.proxy.playerInfo.gold) + gold_haha).toString();
                 // platform.showModal("你获得了" + gold_haha + "金币", false);
-                this.sendNotification(SceneCommand.SHOW_POPUP, "你获得了" + gold_haha + "金币");
+                this.sendNotification(SceneCommand.SHOW_POPUP, "你获得了" + gold_haha + "青豆");
             } else {
                 this.manageWindow.juese.visible = false;
                 if (this.manageEvent.subType == "有选项" || this.manageEvent.type == "角色") {

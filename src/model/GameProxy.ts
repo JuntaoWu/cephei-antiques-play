@@ -29,9 +29,9 @@ module game {
             music: true,
             isManage: false,
             ending: [],
+            pointHunag: 43,
+            pointMu: 43,
         };
-        public pointHunag: number = 43;
-        public pointMu: number = 43;
 
         public constructor() {
             super(GameProxy.NAME);
