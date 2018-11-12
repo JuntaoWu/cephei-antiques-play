@@ -149,7 +149,7 @@ module game {
                 }, this, 1500);
             }
             else if (plot.type == "界面切换经营") {
-                if (!this.proxy.playerInfo.isManage) {
+                if (!this.proxy.playerInfo.isShowGuide) {
                     this.gameScreen.showTransition = true;
                     this.gameScreen.transitionText = "进入经营模式";
                     this.timeoutId = egret.setTimeout(() => {

@@ -15,6 +15,7 @@ module game {
         sound?: boolean; //音效
         music?: boolean; //音乐
         isManage?: boolean; //是否开启经营模式
+        isShowGuide?: boolean; //开始是否显示教程
         ending?: Array<string>; //完成结局
         pointHunag?: number;
         pointMu?: number;
