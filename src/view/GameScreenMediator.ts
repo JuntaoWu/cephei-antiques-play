@@ -137,7 +137,7 @@ module game {
                     }
                     else {
                         // platform.showModal("体力不足，不能进入下一章", false);
-                        this.sendNotification(SceneCommand.SHOW_POPUP, "体力不足，不能进入下一章");
+                        this.sendNotification(SceneCommand.SHOW_POPUP, "需要消耗30点体力才可进入下一章(体力可在商城购买)");
                         this.canGoNext = false;
                         return;
                     }
