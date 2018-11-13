@@ -14,6 +14,8 @@ module game {
             this.initData();
             this.guideWindow.btnNext.addEventListener(egret.TouchEvent.TOUCH_TAP, this.next, this);
             this.guideWindow.btnSkip.addEventListener(egret.TouchEvent.TOUCH_TAP, this.closeWindow, this);
+            this.guideWindow.yes.addEventListener(egret.TouchEvent.TOUCH_TAP, this.yes, this);
+            this.guideWindow.no.addEventListener(egret.TouchEvent.TOUCH_TAP, this.no, this);
         }
 
         private _guides: Array<any>;
@@ -38,48 +40,58 @@ module game {
             let guide = this._guides[this._index];
             if (!guide) return;
             this.guideWindow.dialogGroup.bottom = 0;        
-            this.guideWindow.dialogGroup.visible = this.guideWindow.btnNext.visible = true;
+            this.guideWindow.dialogGroup.visible = this.guideWindow.btnNext.visible = this.guideWindow.eventGroup.visible = true;
             this.guideWindow.group1.visible = this.guideWindow.group2.visible 
-            = this.cannotNext = this.guideWindow.group3.visible = this.guideWindow.group4.visible
+            = this.cannotNext = this.guideWindow.group3.visible 
+            = this.guideWindow.group4.visible = this.guideWindow.showAntiEllipse
             = this.guideWindow.group5.visible = this.guideWindow.moneyGroup.visible
             = this.guideWindow.antiGroup.visible = this.guideWindow.clockGroup.visible
             = this.guideWindow.optionGroup.visible = this.guideWindow.btnPlotGroup.visible = false;
 
             const textElements = new egret.HtmlTextParser().parser(guide.content);
             this.guideWindow.dialog.textFlow = textElements;
+            this.guideWindow.dialogImg = "";
             switch (guide.type) {
-                case "青豆图标":
-                    this.guideWindow.moneyGroup.visible = true;
+                case "图片":
+                    if (guide.content == "guide-img1") {
+                        this.guideWindow.moneyGroup.visible = true;
+                    }
+                    this.guideWindow.dialogImg = guide.content;
+                    this.guideWindow.dialog.textFlow = null;
                     break;
                 case "古董图标":
-                    this.guideWindow.antiGroup.visible = true;
+                    this.guideWindow.bao1.visible = this.guideWindow.bao2.visible 
+                    = this.guideWindow.bao3.visible = this.guideWindow.bao4.visible = false;
+                    this.guideWindow.antiGroup.visible = this.guideWindow.showAntiEllipse = true;
                     break;
                 case "回合图标":
                     this.guideWindow.clockGroup.visible = true;
                     break;
                 case "找不同":
+                    this.guideWindow.eventGroup.visible = false;
                     this.guideWindow.group1.visible = true;
                     break;
                 case "找相同":
+                    this.guideWindow.eventGroup.visible = false;
                     this.guideWindow.group2.visible = true;
                     break;
                 case "找异类":
+                    this.guideWindow.eventGroup.visible = false;
                     this.guideWindow.group3.visible = true;
                     break;
                 case "找同类":
+                    this.guideWindow.eventGroup.visible = false;
                     this.guideWindow.group4.visible = true;
                     break;
                 case "真假判别":
+                    this.guideWindow.eventGroup.visible = false;
                     this.trueFalseGame();
                     break;
                 case "剧情图标":
                     this.guideWindow.btnPlotGroup.visible = true;
                     break;
                 case "好友对话事件":
-                    this.guideWindow.antiGroup.visible = this.guideWindow.optionGroup.visible = this.cannotNext = true;
-                    this.guideWindow.dialogGroup.bottom = 420;
-                    this.guideWindow.yes.addEventListener(egret.TouchEvent.TOUCH_TAP, this.yes, this);
-                    this.guideWindow.no.addEventListener(egret.TouchEvent.TOUCH_TAP, this.no, this);
+                    this.showFriend = this.cannotNext = true;
                     break;
             }
         }
@@ -99,6 +111,10 @@ module game {
                     this.guideWindow.btnNext.visible = false;
                     this.moveCards();
                 }
+                else if (this.showFriend) {
+                    this.guideWindow.dialogGroup.visible = this.isTrueFalseGame = this.guideWindow.btnNext.visible = false;
+                    this.showFriendEvent();
+                }
                 return;
             }
             this._index += 1;
@@ -108,6 +124,12 @@ module game {
             else {
                 this.setPage();
             }
+        }
+
+        public showFriend: boolean;
+        public showFriendEvent() {
+            this.guideWindow.antiGroup.visible = this.guideWindow.optionGroup.visible = true;
+
         }
 
         public cannotNext: boolean;
@@ -191,6 +213,10 @@ module game {
         public transferCards(num: number) {
             if (num < 1) {
                 this.canSelectedCard = true;
+                [2, 4, 9].forEach(i => {
+                    let group = this.guideWindow.group5.getChildByName(`card${i}`) as eui.Group;
+                    egret.Tween.get(group, {loop: true}).to({ scaleX: 0.9, scaleY: 0.9 }, 500).to({ scaleX: 1, scaleY: 1 }, 500);
+                })
                 return;
             }
             let leftTime = num - 1;
@@ -215,12 +241,13 @@ module game {
         public clickTime: number;
         public trueFalseSelect(e: egret.TouchEvent) {
             if (!this.canSelectedCard) return;
+            egret.Tween.removeTweens(e.currentTarget);
             let currentImg = e.currentTarget.getChildByName("img") as eui.Image;
-            e.currentTarget.removeEventListener(egret.TouchEvent.TOUCH_TAP, this.trueFalseSelect, this);
             currentImg.source = "manage-card2";
             e.currentTarget.addChildAt(currentImg, 0);
             this.clickTime = !this.clickTime ? 1 : this.clickTime + 1;
             if (this.clickTime == 2) {
+                egret.Tween.removeAllTweens();
                 egret.setTimeout(() => {
                     this.clickTime == 0;
                     this.cannotNext = false;
