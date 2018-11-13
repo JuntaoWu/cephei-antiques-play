@@ -28,6 +28,9 @@ module game {
         public btnPlotGroup: eui.Group;
         public btnSkip: eui.Image;
         public btnNext: eui.Image;
+        public eventGroup: eui.Group;
+        public dialogImg: string;
+        public showAntiEllipse: boolean;
 
         public yes: eui.Button;
         public no: eui.Button;
