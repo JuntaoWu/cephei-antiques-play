@@ -42,6 +42,9 @@ module game {
                 case "画面慢慢变模糊变黑":
                     EffectManager.gradualVague(target);
                     break;
+                case "画面扭曲变形渐变":
+                    EffectManager.gradualDistort(target);
+                    break;
             }
         }
  
@@ -181,6 +184,17 @@ module game {
             egret.Tween.get(target).to({alpha: 0}, 4000).call(() => {
                 img.parent && img.parent.removeChild(img);
             });
+        }
+        
+        // 画面扭曲变形渐变
+        public static gradualDistort(target: egret.DisplayObject) {
+            target.scaleX = 1;
+            target.scaleY = 1.1;
+            egret.Tween.get(target).to({scaleX: 1.05, scaleY: 1.05}, 500)
+            .to({scaleX: 1.1, scaleY: 1}, 500).to({scaleX: 1, scaleY: 1.1}, 1000)
+            .to({scaleX: 1.05, scaleY: 1.05}, 500)
+            .to({scaleX: 1.1, scaleY: 1}, 500).to({scaleX: 1.05, scaleY: 1.05}, 500)
+            .to({scaleX: 1, scaleY: 1}, 1000);
         }
     }
 }

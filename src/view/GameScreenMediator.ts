@@ -149,20 +149,12 @@ module game {
                 }, this, 1500);
             }
             else if (plot.type == "界面切换经营") {
-                if (!this.proxy.playerInfo.isShowGuide) {
-                    this.gameScreen.showTransition = true;
-                    this.gameScreen.transitionText = "进入经营模式";
-                    this.timeoutId = egret.setTimeout(() => {
-                        this.gameScreen.showTransition = false;
-                        this.sendNotification(SceneCommand.SHOW_GUIDE);
-                    }, this, 1000);
-                    this.proxy.playerInfo.isManage = true;
-                    this.gameScreen.no_btnmanage.visible = false;
-                    this.gameScreen.btnManage.visible = true;
-                    this.sendNotification(GameScreenMediator.manage_show);
-                    this.canGoNext = true;
-                }
-                else if (this.proxy.playerInfo.time) {
+                if (this.proxy.playerInfo.time) {
+                    if (!this.proxy.playerInfo.isManage) {
+                        this.proxy.playerInfo.isManage = true;
+                        this.gameScreen.no_btnmanage.visible = false;
+                        this.gameScreen.btnManage.visible = true;
+                    }
                     this.gameScreen.showTransition = true;
                     this.gameScreen.transitionText = "进入经营模式";
                     this.timeoutId = egret.setTimeout(() => {

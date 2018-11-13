@@ -37,6 +37,9 @@ module game {
 
         private manageEvent: any;
         public initData() {
+            if (this.proxy.playerInfo.isShowGuide) {
+                this.sendNotification(SceneCommand.SHOW_GUIDE);
+            }
             if (this.proxy.playerInfo.time > 0) {
                 this.chushishezhi();
                 this.haha();

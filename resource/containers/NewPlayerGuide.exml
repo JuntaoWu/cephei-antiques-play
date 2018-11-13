@@ -227,7 +227,7 @@
 		</e:Group>
 		<e:Group id="dialogGroup" bottom="0">
 			<e:Image source="dialog-box"/>
-			<e:Label id="dialog" x="50" textColor="0x000000" anchorOffsetX="0" anchorOffsetY="0" lineSpacing="10" width="470" top="50" bottom="90"/>
+			<e:Label id="dialog" x="50" textColor="0x000000" anchorOffsetX="0" anchorOffsetY="0" lineSpacing="10" width="470" top="50" bottom="90" fontFamily="SimHei"/>
 		</e:Group>
 		<e:Button id="btnNext" alpha="0" width="720" horizontalCenter="0" y="135" height="1140">
 		</e:Button>
