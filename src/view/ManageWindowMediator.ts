@@ -673,11 +673,18 @@ module game {
 
         public selectedImg: Array<any>;
         public selectItem() {
+            egret.Bitmap
             if (!this.canSelectedCard) return;
             this.gameImgList.forEach(i => {
                 if (i.index == this.manageWindow.gameList.selectedItem.index) {
                     i.isSelected = !i.isSelected;
-                    this.selectedImg.push(i);
+                    if (i.isSelected) {
+                        this.selectedImg.push(i);
+                    }
+                    else {
+                        let index = this.selectedImg.findIndex(v => i.index == v.index);
+                        this.selectedImg.splice(index, 1);
+                    }
                 }
             })
             if (this.selectedImg.length > this.answerImgList.length) {
@@ -783,8 +790,8 @@ module game {
             let swapY = this.trueAndFalseUIList[swapIndex].y;
             this.manageWindow.gameTrueFalse.addChild(this.trueAndFalseUIList[randomIndex]);
             this.manageWindow.gameTrueFalse.addChild(this.trueAndFalseUIList[swapIndex]);
-            egret.Tween.get(this.trueAndFalseUIList[randomIndex]).to({ x: swapX, y: swapY }, 800);
-            egret.Tween.get(this.trueAndFalseUIList[swapIndex]).to({ x: randomX, y: randomY }, 800).call(() => {
+            egret.Tween.get(this.trueAndFalseUIList[randomIndex]).to({ x: swapX, y: swapY }, 700);
+            egret.Tween.get(this.trueAndFalseUIList[swapIndex]).to({ x: randomX, y: randomY }, 700).call(() => {
                 this.transferCards(leftTime);
             });
         }

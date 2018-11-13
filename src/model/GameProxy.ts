@@ -15,7 +15,7 @@ module game {
         public static REDUCE_POWER: string = "reduce_power";
 
         public playerInfo: PlayerInfo = {
-            plotId: 41,
+            plotId: 1,
             collectedScenes: [],
             fatigueValue: fatigueValue,
             gold: "0",
@@ -32,6 +32,7 @@ module game {
             ending: [],
             pointHunag: 43,
             pointMu: 43,
+            _v: 1,
         };
 
         public constructor() {
@@ -70,6 +71,7 @@ module game {
         public resetGame() {
             this.playerInfo.plotId = 1;
             this.playerInfo.pointMu = this.playerInfo.pointHunag = 43;
+            this.playerInfo.fatigueValue = fatigueValue;
         }
 
         /**
@@ -171,9 +173,6 @@ module game {
                 let res = await platform.getStorageAsync("playerInfo");
                 console.log("mergeRemoteInfoToStorage: parse playerInfo");
                 this.playerInfo = Object.assign(this.playerInfo, JSON.parse(res.data));
-                if (isNaN(+this.playerInfo.gold)) {
-                    this.playerInfo.gold = "0";
-                }
                 console.log(this.playerInfo)
             }
             catch (error) {

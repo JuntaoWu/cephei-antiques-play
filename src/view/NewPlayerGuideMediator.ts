@@ -100,6 +100,7 @@ module game {
             this._index = 0;
             this.setPage();
             this.proxy.playerInfo.isShowGuide = false;
+            this.proxy.savePlayerInfoToStorage();
             this.guideWindow.close();
             this.sendNotification(SceneCommand.SHOW_MANAGE);
         }

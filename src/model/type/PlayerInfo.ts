@@ -19,5 +19,6 @@ module game {
         ending?: Array<string>; //完成结局
         pointHunag?: number;
         pointMu?: number;
+        _v?: number;
     }
 }

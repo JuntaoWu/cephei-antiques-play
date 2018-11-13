@@ -22,7 +22,7 @@ module game {
             this.storeWindow.shoplist.dataProvider = euiArr;
             this.storeWindow.shoplist.itemRenderer = shop_list;
 
-            this.storeWindow.gold.text = this.proxy.playerInfo.gold;
+            this.storeWindow.gold.text = this.proxy.playerInfo.gold || "0";
         }
 
         public backClick() {

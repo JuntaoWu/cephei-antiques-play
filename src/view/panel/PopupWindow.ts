@@ -20,6 +20,7 @@ module game {
 
         public btnConfirm: eui.Button;
         public msg: string;
+        public msg1: string;
         public hasCancel: boolean;
         public cbk: () => {};
 
@@ -28,6 +29,16 @@ module game {
             this.cbk = cbk;
             this.hasCancel = hasCancel;
             this.btnConfirm.right = hasCancel ? 45 : 190;
+            this.isShowMoneyIcon();
         } 
+
+        public isShowMoneyIcon() {
+            this.msg1 = "";
+            if (this.msg.indexOf("青豆") != -1) {
+                this.msg1 = this.msg.replace("青豆", "");
+                this.msg = "";
+                console.log(this.msg, this.msg1)
+            }
+        }
     }
 }

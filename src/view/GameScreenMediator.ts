@@ -381,7 +381,7 @@ module game {
             this.gameScreen.showPoints = !this.gameScreen.showPoints;
             if (!this.gameScreen.showPoints) return;
             if (!this.proxy.playerInfo.hints) {
-                this.sendNotification(SceneCommand.SHOW_POPUP, "没有提示卡了");
+                this.sendNotification(SceneCommand.SHOW_POPUP, "没有提示卡了，提示卡可在商城购买");
                 return;
             }
             if (!this.showPointsAll) {
