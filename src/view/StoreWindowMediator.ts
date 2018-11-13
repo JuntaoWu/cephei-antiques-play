@@ -49,6 +49,7 @@ module game {
             if (gold_number >= spend_gold) {
                 gold_number -= spend_gold;
                 this.proxy.playerInfo.gold = gold_number.toString();
+                this.proxy.goldchange(0);
                 this.storeWindow.gold.text = this.proxy.playerInfo.gold;
                 if (data.tili) {
                     this.proxy.playerInfo.fatigueValue += data.tili;

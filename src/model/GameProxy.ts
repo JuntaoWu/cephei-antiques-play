@@ -15,7 +15,7 @@ module game {
         public static REDUCE_POWER: string = "reduce_power";
 
         public playerInfo: PlayerInfo = {
-            plotId: 41,
+            plotId: 1,
             collectedScenes: [],
             fatigueValue: fatigueValue,
             gold: "0",
@@ -96,6 +96,11 @@ module game {
                 this.playerInfo.collectedScenes.push(sceneCG);
                 this.savePlayerInfoToStorage();
             }
+        }
+
+        public goldchange(value:number): void {
+            this.playerInfo.gold = (Number(this.playerInfo.gold) + value).toString();
+            this.savePlayerInfoToStorage();
         }
 
         // 减少体力值

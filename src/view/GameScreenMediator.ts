@@ -154,6 +154,8 @@ module game {
                         this.proxy.playerInfo.isManage = true;
                         this.gameScreen.no_btnmanage.visible = false;
                         this.gameScreen.btnManage.visible = true;
+                        // this.proxy.playerInfo.gold = (Number(this.proxy.playerInfo.gold) + 40).toString();
+                        this.proxy.goldchange(40);
                     }
                     this.gameScreen.showTransition = true;
                     this.gameScreen.transitionText = "进入经营模式";
