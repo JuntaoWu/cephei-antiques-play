@@ -32,7 +32,7 @@
   },
   {
     "id": 5,
-    "res": "power_large",
+    "res": "shop-icon-m",
     "name": "木梳",
     "effect": "增加木户加奈好感度",
     "point": -4,
@@ -40,7 +40,7 @@
   },
   {
     "id": 6,
-    "res": "power_large",
+    "res": "shop-icon-h",
     "name": "发箍",
     "effect": "增加黄烟烟好感度",
     "point": 4,
