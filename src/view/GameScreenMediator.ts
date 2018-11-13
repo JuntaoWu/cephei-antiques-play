@@ -137,7 +137,7 @@ module game {
                     }
                     else {
                         // platform.showModal("体力不足，不能进入下一章", false);
-                        this.sendNotification(SceneCommand.SHOW_POPUP, "体力不足，不能进入下一章");
+                        this.sendNotification(SceneCommand.SHOW_POPUP, "需要消耗30点体力才可进入下一章(体力可在商城购买)");
                         this.canGoNext = false;
                         return;
                     }
@@ -154,6 +154,8 @@ module game {
                         this.proxy.playerInfo.isManage = true;
                         this.gameScreen.no_btnmanage.visible = false;
                         this.gameScreen.btnManage.visible = true;
+                        // this.proxy.playerInfo.gold = (Number(this.proxy.playerInfo.gold) + 40).toString();
+                        this.proxy.goldchange(40);
                     }
                     this.gameScreen.showTransition = true;
                     this.gameScreen.transitionText = "进入经营模式";

@@ -100,6 +100,11 @@ module game {
             }
         }
 
+        public goldchange(value:number): void {
+            this.playerInfo.gold = (Number(this.playerInfo.gold) + value).toString();
+            this.savePlayerInfoToStorage();
+        }
+
         // 减少体力值
         public reducePower(value: number = 1): void {
             this.playerInfo.fatigueValue -= value;
