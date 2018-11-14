@@ -4,9 +4,12 @@ module game {
     export class MiniGameM42Mediator extends puremvc.Mediator implements puremvc.IMediator {
         public static NAME: string = "MiniGameM42Mediator";
 
+        private proxy: GameProxy;
+
         public constructor(viewComponent: any) {
             super(MiniGameM42Mediator.NAME, viewComponent);
             super.initializeNotifier("ApplicationFacade");
+            this.proxy = <GameProxy><any>this.facade().retrieveProxy(GameProxy.NAME);
 
             let colorMatrix = [
                 1,0,0,0,100,
@@ -81,6 +84,10 @@ module game {
         }
 
         public confirmClick() {
+            if (this.proxy.playerInfo.fatigueValue <= 0) {
+                this.sendNotification(SceneCommand.SHOW_POPUP, "没有体力破解谜题了！（体力可在商城购买）");
+                return;
+            }
             if (this.nowIndex == this.jigsawNameList.length) {
                 this.setResult();
                 return;

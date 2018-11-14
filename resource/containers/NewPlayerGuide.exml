@@ -68,7 +68,7 @@
 
 	<e:Group width="720" height="100%" >
 		<e:Rect top="0" bottom="0" left="0" right="0" alpha="0.4"/>
-		<e:Image id="btnSkip" source="skip-btn" right="0" y="29"/>
+		<e:Image id="btnSkip" source="skip-btn" right="0" y="60"/>
 		<e:Group id="moneyGroup" y="229" right="23">
 			<e:Image source="icon-money" verticalCenter="0" x="5"/>
 			<e:Label text="0" textColor="0x000000" verticalCenter="5" x="75" height="40" width="90" verticalAlign="middle" textAlign="center"/>

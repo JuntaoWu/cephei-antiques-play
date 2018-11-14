@@ -209,6 +209,16 @@ module game {
                     }, this, timeout);
                 }
             }
+            if (this.next == "end") {
+                if (this.proxy.playerInfo.pointMu < this.proxy.playerInfo.pointHunag) {
+                    this.proxy.addEnding("m1");
+                    this.sendNotification(SceneCommand.SHOW_POPUP, "达成木户加奈坏结局");
+                }
+                else {
+                    this.proxy.addEnding("m2");
+                    this.sendNotification(SceneCommand.SHOW_POPUP, "达成木户加奈好结局");
+                }
+            }
         }
 
         public settingScene(res: string, addType?: string, effect?: string, effectTigger?: string) {
@@ -366,11 +376,9 @@ module game {
             else if (this.next == "over") { //最后有两个不同结局
                 if (this.proxy.playerInfo.pointMu < this.proxy.playerInfo.pointHunag) {
                     this.proxy.nextPlot();
-                    this.proxy.addEnding("m1");
                 }
                 else {
                     this.proxy.nextPlot(2);
-                    this.proxy.addEnding("m2");
                 }
             }
             else {
@@ -456,7 +464,7 @@ module game {
 
         public btnConfirmClick() {
             if (this.proxy.playerInfo.fatigueValue <= 0) {
-                this.sendNotification(SceneCommand.SHOW_POPUP, "没有体力破解谜题了！");
+                this.sendNotification(SceneCommand.SHOW_POPUP, "没有体力破解谜题了！（体力可在商城购买）");
                 return;
             }
             this.sendNotification(GameProxy.CONFIRM_MINIGAME, this.questionId);
