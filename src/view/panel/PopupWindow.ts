@@ -32,9 +32,20 @@ module game {
             this.cbk = cbk;
             this.hasCancel = hasCancel;
             this.btnConfirm.right = hasCancel ? 45 : 190;
-            this.insertIcon();
+            this.showMoneyIcon();
         } 
         
+        public showMoneyIcon() {
+            if (this.msg.indexOf("青豆") == -1) {
+                this.textGroup.visible = false;
+            }
+            else {
+                this.textGroup.visible = true;
+                this.textMsg.text = this.msg.replace("青豆", "");
+                this.msg = "";
+            }
+        }
+
         private insertIcon() {
             this.textIconGroup.removeChildren();
             if (this.msg.indexOf("青豆") == -1) {
@@ -55,8 +66,8 @@ module game {
             
             this.textMsg.textFlow = ( new egret.HtmlTextParser ).parser( str );
 
-            var x = this.textMsg.x + (this.textMsg.size * idx) % 480;
-            var y = this.textMsg.y + Math.floor((this.textMsg.size * idx) / 480) * this.textMsg.textHeight;
+            var x = this.textMsg.x + (this.textMsg.size * idx) % 600;
+            var y = this.textMsg.y + Math.floor((this.textMsg.size * idx) / 600) * this.textMsg.textHeight;
     
             console.log(x, y)
             icon.x = x;
