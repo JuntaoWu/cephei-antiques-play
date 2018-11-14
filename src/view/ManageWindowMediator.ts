@@ -63,10 +63,19 @@ module game {
                     this.numberbilibili(this.pricelist[i]);
                     gold_haha += (this.proxy.playerInfo.guPrice[i] * this.proxy.playerInfo.guColl[i]);
                 }
+                let dd: number;
+                if (gold_haha < 150) {
+                    dd = 50;
+                } else if (150 <= gold_haha && gold_haha >= 250) {
+                    dd = 80;
+                } else {
+                    dd = 120;
+                }
+                this.proxy.goldchange(dd);
                 // this.proxy.playerInfo.gold = (parseFloat(this.proxy.playerInfo.gold) + gold_haha).toString();
-                this.proxy.goldchange(gold_haha);
+                // this.proxy.goldchange(gold_haha);
                 // platform.showModal("你获得了" + gold_haha + "金币", false);
-                this.sendNotification(SceneCommand.SHOW_POPUP, "你获得了" + gold_haha + "青豆");
+                this.sendNotification(SceneCommand.SHOW_POPUP, "你获得了" + gold_haha + "代币,兑换为" + dd + "青豆");
             } else {
                 this.manageWindow.juese.visible = false;
                 if (this.manageEvent.subType == "有选项" || this.manageEvent.type == "角色") {
