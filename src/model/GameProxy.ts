@@ -20,7 +20,7 @@ module game {
             fatigueValue: fatigueValue,
             gold: "0",
             lastEntryTime: "",
-            hints: 50,
+            hints: 0,
             time: 24,
             guPrice: [0, 0, 0, 0],
             guColl: [5, 5, 5, 5],

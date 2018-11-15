@@ -63,6 +63,7 @@ module game {
         public next: number | string;
         public questionId: number;
         private timeoutId: number;
+        private timeoutIdAddWord: number;
         public static manage_show: string = "manage_show";
 
         public initData() {
@@ -92,6 +93,10 @@ module game {
             if (this.timeoutId) {
                 egret.clearTimeout(this.timeoutId);
                 this.timeoutId = null;
+            }
+            if (this.timeoutIdAddWord) {
+                egret.clearTimeout(this.timeoutIdAddWord);
+                this.timeoutIdAddWord = null;
             }
             if (plot.type == plotType.PlotQuestion) {
                 this.gameScreen.showScene = false;
@@ -278,7 +283,7 @@ module game {
             else {
                 let str = this.wordList.shift();
                 this.gameScreen.description = this.gameScreen.description + str;
-                egret.setTimeout(() => {
+                this.timeoutIdAddWord = egret.setTimeout(() => {
                     this.addWordToDescription();
                 }, this, 100)
             }
@@ -371,6 +376,8 @@ module game {
             //     return;
             // }
             if (this.next == "end") {
+                this.proxy.resetGame();
+                this.btnBackClick();
                 return;
             }
             else if (this.next == "over") { //最后有两个不同结局
