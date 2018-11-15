@@ -12,7 +12,6 @@ module game {
             this.jigsawNameList = ["jigsaw01", "jigsaw02", "jigsaw03", "jigsaw04", "jigsaw05", "jigsaw06"];
             this.jigsawNameList.forEach((i) => {
                 let jigsawImg = this.miniGame.jigsawGroup.getChildByName(i) as eui.Image;
-                jigsawImg.rotation = 0.1;
                 jigsawImg.addEventListener(egret.TouchEvent.TOUCH_BEGIN, this.touchBegin, this);
                 jigsawImg.addEventListener(egret.TouchEvent.TOUCH_MOVE, this.onMove, this);
                 jigsawImg.addEventListener(egret.TouchEvent.TOUCH_CANCEL, this.touchReleaseOutside, this);
@@ -23,7 +22,20 @@ module game {
         }
 
         public async initData() {
-            
+            let offsetList = [
+                {x: 215, y: 460}
+                , {x: 75, y: 460}
+                , {x: 215, y: 275}
+                , {x: 75, y: 275}
+                , {x: 215, y: 90}
+                , {x: 75, y: 90}
+            ]
+            this.jigsawNameList.forEach((v, i) => {
+                let jigsawImg = this.miniGame.jigsawGroup.getChildByName(v) as eui.Image;
+                jigsawImg.rotation = 0.1;
+                jigsawImg.x = offsetList[i].x;
+                jigsawImg.y = offsetList[i].y;
+            })
         }
 
         public jigsawNameList: Array<string>;
