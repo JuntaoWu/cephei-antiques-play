@@ -1,12 +1,12 @@
 
-module game {
+namespace ap {
 
     export class MiniGameFloorSwitchMediator extends puremvc.Mediator implements puremvc.IMediator {
         public static NAME: string = "MiniGameFloorSwitchMediator";
 
         public constructor(viewComponent: any) {
             super(MiniGameFloorSwitchMediator.NAME, viewComponent);
-            super.initializeNotifier("ApplicationFacade");
+            super.initializeNotifier("ApApplicationFacade");
 
             this.floorSwitch.buttonList.addEventListener(eui.ItemTapEvent.ITEM_TAP, this.selectItem, this);
             this.floorSwitch.addEventListener(egret.Event.ADDED_TO_STAGE, this.initData, this);

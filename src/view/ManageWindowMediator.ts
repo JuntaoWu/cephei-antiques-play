@@ -1,5 +1,5 @@
 
-module game {
+namespace ap {
 
     export class ManageWindowMediator extends puremvc.Mediator implements puremvc.IMediator {
         public static NAME: string = "ManageWindowMediator";
@@ -13,7 +13,7 @@ module game {
 
         public constructor(viewComponent: any) {
             super(ManageWindowMediator.NAME, viewComponent);
-            super.initializeNotifier("ApplicationFacade");
+            super.initializeNotifier("ApApplicationFacade");
             this.proxy = <GameProxy><any>this.facade().retrieveProxy(GameProxy.NAME);
 
             this.manageWindow.btnPlot.addEventListener(egret.TouchEvent.TOUCH_TAP, this.btnPlotClick, this);
@@ -835,11 +835,11 @@ module game {
         }
 
         public btnPlotClick() {
-            this.sendNotification(game.SceneCommand.CHANGE, Scene.Game);
+            this.sendNotification(ap.SceneCommand.CHANGE, Scene.Game);
         }
 
         public pictClick() {
-            this.sendNotification(game.SceneCommand.SHOW_SCENE);
+            this.sendNotification(ap.SceneCommand.SHOW_SCENE);
         }
 
         public get manageWindow(): ManageWindow {

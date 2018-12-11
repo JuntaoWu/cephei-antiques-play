@@ -1,12 +1,12 @@
 
-module game {
+namespace ap {
 
     export class MiniGameInputMediator extends puremvc.Mediator implements puremvc.IMediator {
         public static NAME: string = "MiniGameInputMediator";
 
         public constructor(viewComponent: any) {
             super(MiniGameInputMediator.NAME, viewComponent);
-            super.initializeNotifier("ApplicationFacade");
+            super.initializeNotifier("ApApplicationFacade");
 
             this.gameInput.answerInput.addEventListener(egret.FocusEvent.FOCUS_OUT, this.focusOut, this)
             this.gameInput.addEventListener(egret.Event.ADDED_TO_STAGE, this.initData, this);

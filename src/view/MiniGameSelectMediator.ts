@@ -1,12 +1,12 @@
 
-module game {
+namespace ap {
 
     export class MiniGameSelectMediator extends puremvc.Mediator implements puremvc.IMediator {
         public static NAME: string = "MiniGameSelectMediator";
 
         public constructor(viewComponent: any) {
             super(MiniGameSelectMediator.NAME, viewComponent);
-            super.initializeNotifier("ApplicationFacade");
+            super.initializeNotifier("ApApplicationFacade");
 
             this.gameSelect.buttonList.addEventListener(eui.ItemTapEvent.ITEM_TAP, this.selectItem, this);
             this.gameSelect.addEventListener(egret.Event.ADDED_TO_STAGE, this.initData, this);

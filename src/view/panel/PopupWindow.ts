@@ -1,4 +1,4 @@
-module game {
+namespace ap {
 
     export class PopupWindow extends eui.Panel {
 

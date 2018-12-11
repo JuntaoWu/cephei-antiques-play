@@ -1,4 +1,4 @@
-module game {
+namespace ap {
 
     export class shop_listMediator extends puremvc.Mediator implements puremvc.IMediator {
         public static NAME: string = "shop_listMediator";
@@ -8,7 +8,7 @@ module game {
 
         public constructor(viewComponent: any) {
             super(shop_listMediator.NAME, viewComponent);
-            super.initializeNotifier("ApplicationFacade");
+            super.initializeNotifier("ApApplicationFacade");
             this.proxy = <GameProxy><any>this.facade().retrieveProxy(GameProxy.NAME);
             this.shop_list.pay.addEventListener(egret.TouchEvent.TOUCH_TAP, this.haha, this);
 

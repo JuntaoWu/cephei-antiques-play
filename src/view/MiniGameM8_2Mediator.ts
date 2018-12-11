@@ -1,12 +1,12 @@
 
-module game {
+namespace ap {
 
     export class MiniGameM8_2Mediator extends puremvc.Mediator implements puremvc.IMediator {
         public static NAME: string = "MiniGameM8_2Mediator";
 
         public constructor(viewComponent: any) {
             super(MiniGameM8_2Mediator.NAME, viewComponent);
-            super.initializeNotifier("ApplicationFacade");
+            super.initializeNotifier("ApApplicationFacade");
 
             this.rightRotationList = [-60, 0, 60, 120, 180, -120];
             this.jigsawNameList = ["jigsaw01", "jigsaw02", "jigsaw03", "jigsaw04", "jigsaw05", "jigsaw06"];

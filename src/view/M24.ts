@@ -1,4 +1,4 @@
-module game {
+namespace ap {
     export class M24 extends eui.Component implements eui.UIComponent {
 
         public hei: eui.Image;
@@ -64,7 +64,7 @@ module game {
 
         public constructor(viewComponent: any) {
             super(M24Mediator.NAME, viewComponent);
-            super.initializeNotifier("ApplicationFacade");
+            super.initializeNotifier("ApApplicationFacade");
             this.gameM24.addEventListener(egret.Event.ADDED_TO_STAGE, this.initData, this);
         }
 

@@ -1,4 +1,4 @@
-module game {
+namespace ap {
 	export class M17 extends eui.Component implements eui.UIComponent {
 
 		public di: eui.Image;
@@ -68,7 +68,7 @@ module game {
 
 		public constructor(viewComponent: any) {
 			super(M17Mediator.NAME, viewComponent);
-			super.initializeNotifier("ApplicationFacade");
+			super.initializeNotifier("ApApplicationFacade");
 			this.gameM17.addEventListener(egret.Event.ADDED_TO_STAGE, this.initData, this);
 		}
 

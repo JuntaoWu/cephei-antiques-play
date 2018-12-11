@@ -2,7 +2,7 @@
  * Created by xzper on 2014/11/15.
  */
 
-module game {
+namespace ap {
 
     export class SceneCommand extends puremvc.SimpleCommand implements puremvc.ICommand {
 
@@ -29,7 +29,7 @@ module game {
         public static SHOW_POPUP: string = "show_popup";
 
         public register(): void {
-            this.initializeNotifier("ApplicationFacade");
+            this.initializeNotifier("ApApplicationFacade");
         }
 
         initializeNotifier(key: string) {

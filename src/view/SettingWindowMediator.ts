@@ -1,4 +1,4 @@
-module game {
+namespace ap {
     export class SettingWindowMediator extends puremvc.Mediator implements puremvc.IMediator {
         public static NAME: string = "SettingWindowMediator";
 
@@ -6,7 +6,7 @@ module game {
 
         public constructor(viewComponent: any) {
             super(SettingWindowMediator.NAME, viewComponent);
-            super.initializeNotifier("ApplicationFacade");
+            super.initializeNotifier("ApApplicationFacade");
             this.proxy = <GameProxy><any>this.facade().retrieveProxy(GameProxy.NAME);
             this.settingWindow.addEventListener(egret.Event.ADDED_TO_STAGE, this.initData, this);
 

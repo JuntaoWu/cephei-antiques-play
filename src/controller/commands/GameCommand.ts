@@ -1,5 +1,5 @@
 
-module game {
+namespace ap {
 
     export class GameCommand extends puremvc.SimpleCommand implements puremvc.ICommand {
 
@@ -17,7 +17,7 @@ module game {
          * 注册消息
          */
         public register(): void {
-            this.initializeNotifier("ApplicationFacade");
+            this.initializeNotifier("ApApplicationFacade");
             this.facade().registerCommand(GameCommand.START_GAME, GameCommand);
         }
 

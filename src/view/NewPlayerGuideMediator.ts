@@ -1,5 +1,5 @@
 
-module game {
+namespace ap {
 
     export class NewPlayerGuideMediator extends puremvc.Mediator implements puremvc.IMediator {
         public static NAME: string = "NewPlayerGuideMediator";
@@ -9,7 +9,7 @@ module game {
 
         public constructor(viewComponent: any) {
             super(NewPlayerGuideMediator.NAME, viewComponent);
-            super.initializeNotifier("ApplicationFacade");
+            super.initializeNotifier("ApApplicationFacade");
             this.proxy = <GameProxy><any>this.facade().retrieveProxy(GameProxy.NAME);
             this.initData();
             this.guideWindow.btnNext.addEventListener(egret.TouchEvent.TOUCH_TAP, this.next, this);

@@ -2,13 +2,13 @@
     "compilerOptions": {
         "target": "es5",
         "noImplicitAny": false,
-        "sourceMap": true,
+        "sourceMap": false,
         "declaration": true,
-        "outFile": "bin/antiques-play-lib.js",
+        "outDir": "bin-debug/",
         "experimentalDecorators": true,
         "lib": [
             "dom",
-            "es2018",
+            "es2017",
             "esnext"
         ]
     },

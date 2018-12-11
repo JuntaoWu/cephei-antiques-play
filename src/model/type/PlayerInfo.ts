@@ -1,5 +1,5 @@
 
-module game {
+namespace ap {
 
     export class PlayerInfo {
         plotId: number; //当前剧情id

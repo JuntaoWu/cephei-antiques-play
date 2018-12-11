@@ -1,5 +1,5 @@
 
-module game {
+namespace ap {
 
     export class EffectManager {
 

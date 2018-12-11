@@ -22,9 +22,9 @@
 		"resource/components/QuestionSelectItemSkin.exml",
 		"resource/components/SceneDetailsItemSkin.exml",
 		"resource/components/SwitchItemSkin.exml",
+		"resource/containers/ApLoadingUI.exml",
 		"resource/containers/DeveloperWindow.exml",
 		"resource/containers/GameScreen.exml",
-		"resource/containers/LoadingUI.exml",
 		"resource/containers/M14.exml",
 		"resource/containers/M15.exml",
 		"resource/containers/M17.exml",
@@ -66,5 +66,5 @@
 		"resource/eui_skins/VScrollBarSkin.exml",
 		"resource/eui_skins/VSliderSkin.exml"
 	],
-	"path": "resource/default.thm.json"
+	"path": "resource/ap.thm.json"
 }

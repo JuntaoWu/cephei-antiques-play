@@ -1,4 +1,4 @@
-module game {
+namespace ap {
 	export class M6 extends eui.Component implements eui.UIComponent {
 
 		public button1: eui.Button;
@@ -73,7 +73,7 @@ module game {
 
 		public constructor(viewComponent: any) {
 			super(M6Mediator.NAME, viewComponent);
-			super.initializeNotifier("ApplicationFacade");
+			super.initializeNotifier("ApApplicationFacade");
 			this.gameM6.addEventListener(egret.Event.ADDED_TO_STAGE, this.initData, this);
 		}
 

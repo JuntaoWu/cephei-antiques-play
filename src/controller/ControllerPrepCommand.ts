@@ -1,6 +1,6 @@
 
 
-module game {
+namespace ap {
 
     export class ControllerPrepCommand extends puremvc.SimpleCommand implements puremvc.ICommand {
 

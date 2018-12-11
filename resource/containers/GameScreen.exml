@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<e:Skin class="GameScreen" xmlns:e="http://ns.egret.com/eui" xmlns:game="game.*" xmlns:w="http://ns.egret.com/wing">
+<e:Skin class="GameScreen" xmlns:e="http://ns.egret.com/eui" xmlns:ap="ap.*" xmlns:w="http://ns.egret.com/wing">
     <e:Group width="720">
         <e:Image width="720" source="head-bg"/>
         <e:Button id="btnBack" verticalCenter="0" x="20">
@@ -91,7 +91,7 @@
         <e:Group>
             <e:Image width="720" source="{questionRes}"/>
             <!-- 小游戏 -->
-            <game:MiniGame id="miniGame" visible="{showMiniGame}" width="720" height="600" />
+            <ap:MiniGame id="miniGame" visible="{showMiniGame}" width="720" height="600" />
             <e:Button id="btnTips" bottom="35" left="30">
                 <e:Skin>
                     <e:Image source="btn-tips"></e:Image>

@@ -1,5 +1,5 @@
 
-module game {
+namespace ap {
 
     export class StartScreenMediator extends puremvc.Mediator implements puremvc.IMediator {
         public static NAME: string = "StartScreenMediator";
@@ -8,7 +8,7 @@ module game {
 
         public constructor(viewComponent: any) {
             super(StartScreenMediator.NAME, viewComponent);
-            super.initializeNotifier("ApplicationFacade");
+            super.initializeNotifier("ApApplicationFacade");
             this.proxy = <GameProxy><any>this.facade().retrieveProxy(GameProxy.NAME);
 
             this.startScreen.btnResumeGame.addEventListener(egret.TouchEvent.TOUCH_TAP, this.entryGame, this);
@@ -32,7 +32,7 @@ module game {
         }
 
         public entryGame() {
-            this.sendNotification(game.SceneCommand.CHANGE, Scene.Game);
+            this.sendNotification(ap.SceneCommand.CHANGE, Scene.Game);
         }
 
         public newGame() {

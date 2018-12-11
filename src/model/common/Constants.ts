@@ -1,10 +1,10 @@
 
-module game {
+namespace ap {
 
     export class Constants {
 
         public static get ResourceEndpoint(): string {
-            return platform.name == "DebugPlatform" ? this.Endpoints.localResource : this.Endpoints.remoteResource;
+            return platform.env == "dev" ? this.Endpoints.localResource : this.Endpoints.remoteResource;
         };
 
         public static get Endpoints() {
@@ -51,7 +51,7 @@ module game {
     }
 
     export const fatigueValue = 100;
-    
+
     export const Antiques = ["木器", "书画", "青铜", "金玉"];
 
     export const PlotEnding = ["m1", "m2"];

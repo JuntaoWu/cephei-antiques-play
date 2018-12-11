@@ -1,5 +1,5 @@
 
-module game {
+namespace ap {
 
     export class SceneSummaryWindowMediator extends puremvc.Mediator implements puremvc.IMediator {
         public static NAME: string = "SceneSummaryWindowMediator";
@@ -8,7 +8,7 @@ module game {
 
         public constructor(viewComponent: any) {
             super(SceneSummaryWindowMediator.NAME, viewComponent);
-            super.initializeNotifier("ApplicationFacade");
+            super.initializeNotifier("ApApplicationFacade");
             this.proxy = <GameProxy><any>this.facade().retrieveProxy(GameProxy.NAME);
             this.loadResGroup();
 

@@ -1,4 +1,4 @@
-module game {
+namespace ap {
 	export class M2 extends eui.Component implements eui.UIComponent {
 
 		public red1: eui.Image;
@@ -146,7 +146,7 @@ module game {
 
 		public constructor(viewComponent: any) {
 			super(M2Mediator.NAME, viewComponent);
-			super.initializeNotifier("ApplicationFacade");
+			super.initializeNotifier("ApApplicationFacade");
 			this.gameM2.addEventListener(egret.Event.ADDED_TO_STAGE, this.initData, this);
 		}
 

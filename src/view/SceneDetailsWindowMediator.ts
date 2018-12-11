@@ -1,5 +1,5 @@
 
-module game {
+namespace ap {
 
     export class SceneDetailsWindowMediator extends puremvc.Mediator implements puremvc.IMediator {
         public static NAME: string = "SceneDetailsWindowMediator";
@@ -8,7 +8,7 @@ module game {
 
         public constructor(viewComponent: any) {
             super(SceneDetailsWindowMediator.NAME, viewComponent);
-            super.initializeNotifier("ApplicationFacade");
+            super.initializeNotifier("ApApplicationFacade");
             this.proxy = <GameProxy><any>this.facade().retrieveProxy(GameProxy.NAME);
 
             this.sceneDetailsWindow.sceneList.addEventListener(eui.ItemTapEvent.ITEM_TAP, this.previewClick, this);
@@ -55,7 +55,7 @@ module game {
             let sceneItem = this.sceneDetailsWindow.sceneList.selectedItem;
             if (sceneItem.isCollected) {
                 let imgList = [
-                    `${game.Constants.ResourceEndpoint}resource/assets/scene/${sceneItem.res}.${this.sceneDetailsWindow.type == SceneType.SceneBg ? "jpg" : "png"}`
+                    `${ap.Constants.ResourceEndpoint}resource/assets/scene/${sceneItem.res}.${this.sceneDetailsWindow.type == SceneType.SceneBg ? "jpg" : "png"}`
                 ]
                 platform.showPreImage(imgList);
             }

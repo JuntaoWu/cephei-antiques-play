@@ -1,4 +1,4 @@
-module game {
+namespace ap {
 	export class M3_2 extends eui.Component implements eui.UIComponent {
 
 		public bright: eui.Group;
@@ -123,7 +123,7 @@ module game {
 
 		public constructor(viewComponent: any) {
 			super(M3_2Mediator.NAME, viewComponent);
-			super.initializeNotifier("ApplicationFacade");
+			super.initializeNotifier("ApApplicationFacade");
 			this.gameM3_2.addEventListener(egret.Event.ADDED_TO_STAGE, this.initData, this);
 		}
 

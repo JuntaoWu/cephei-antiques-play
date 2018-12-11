@@ -1,4 +1,4 @@
-module game {
+namespace ap {
     export class shop_list extends eui.ItemRenderer {
 
         public pay:eui.Group;
@@ -6,7 +6,7 @@ module game {
 
         public constructor() {
             super();
-            this.skinName = 'resource/containers/skins_list/shop_list.exml';
+            this.skinName = 'shop_list';
             this.addEventListener(eui.UIEvent.CREATION_COMPLETE, this.createCompleteEvent, this);
         }
 

@@ -1,4 +1,4 @@
-module game {
+namespace ap {
     export class M9 extends eui.Component implements eui.UIComponent {
 
         public bg: eui.Image;
@@ -180,7 +180,7 @@ module game {
 
         public constructor(viewComponent: any) {
             super(M9Mediator.NAME, viewComponent);
-            super.initializeNotifier("ApplicationFacade");
+            super.initializeNotifier("ApApplicationFacade");
             this.gameM9.addEventListener(egret.Event.ADDED_TO_STAGE, this.initData, this);
         }
 

@@ -1,4 +1,4 @@
-module game {
+namespace ap {
 
     export class MiniGameM42 extends eui.Component {
 

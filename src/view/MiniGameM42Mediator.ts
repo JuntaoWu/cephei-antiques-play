@@ -1,5 +1,5 @@
 
-module game {
+namespace ap {
 
     export class MiniGameM42Mediator extends puremvc.Mediator implements puremvc.IMediator {
         public static NAME: string = "MiniGameM42Mediator";
@@ -8,7 +8,7 @@ module game {
 
         public constructor(viewComponent: any) {
             super(MiniGameM42Mediator.NAME, viewComponent);
-            super.initializeNotifier("ApplicationFacade");
+            super.initializeNotifier("ApApplicationFacade");
             this.proxy = <GameProxy><any>this.facade().retrieveProxy(GameProxy.NAME);
 
             let colorMatrix = [

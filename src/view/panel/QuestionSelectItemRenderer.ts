@@ -1,4 +1,4 @@
-module game {
+namespace ap {
 
     export class QuestionSelectItemRenderer extends eui.ItemRenderer {
 

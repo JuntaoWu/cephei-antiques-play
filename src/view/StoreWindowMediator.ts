@@ -1,5 +1,5 @@
 
-module game {
+namespace ap {
 
     export class StoreWindowMediator extends puremvc.Mediator implements puremvc.IMediator {
         public static NAME: string = "StoreWindowMediator";
@@ -8,7 +8,7 @@ module game {
 
         public constructor(viewComponent: any) {
             super(StoreWindowMediator.NAME, viewComponent);
-            super.initializeNotifier("ApplicationFacade");
+            super.initializeNotifier("ApApplicationFacade");
             this.proxy = <GameProxy><any>this.facade().retrieveProxy(GameProxy.NAME);
 
             this.storeWindow.btnBack.addEventListener(egret.TouchEvent.TOUCH_TAP, this.backClick, this);

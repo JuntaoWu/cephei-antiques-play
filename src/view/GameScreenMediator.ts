@@ -1,5 +1,5 @@
 
-module game {
+namespace ap {
 
     export class GameScreenMediator extends puremvc.Mediator implements puremvc.IMediator {
         public static NAME: string = "GameScreenMediator";
@@ -8,7 +8,7 @@ module game {
 
         public constructor(viewComponent: any) {
             super(GameScreenMediator.NAME, viewComponent);
-            super.initializeNotifier("ApplicationFacade");
+            super.initializeNotifier("ApApplicationFacade");
             this.proxy = <GameProxy><any>this.facade().retrieveProxy(GameProxy.NAME);
             this.loadResGroup();
 
@@ -427,7 +427,7 @@ module game {
         }
 
         public pictClick() {
-            this.sendNotification(game.SceneCommand.SHOW_SCENE);
+            this.sendNotification(ap.SceneCommand.SHOW_SCENE);
         }
 
         private beforeX: number;

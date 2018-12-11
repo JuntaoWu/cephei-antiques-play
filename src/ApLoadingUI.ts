@@ -27,36 +27,40 @@
 //
 //////////////////////////////////////////////////////////////////////////////////////
 
-class LoadingUI extends eui.Component implements RES.PromiseTaskReporter {
+namespace ap {
 
-    private loadingText: egret.TextField;
-    private labelText: egret.TextField;
+    export class ApLoadingUI extends eui.Component implements RES.PromiseTaskReporter {
 
-    private progressBg: egret.Bitmap;
-    private progressBar: egret.Bitmap;
-    private loadingLabel: egret.DisplayObject;
+        private loadingText: egret.TextField;
+        private labelText: egret.TextField;
 
-    public constructor() {
-        super();
-        this.skinName = "skins.LoadingUI";
-        this.addEventListener(eui.UIEvent.CREATION_COMPLETE, this.createCompleteEvent, this);
-    }
+        private progressBg: egret.Bitmap;
+        private progressBar: egret.Bitmap;
+        private loadingLabel: egret.DisplayObject;
 
-    public createCompleteEvent(event: eui.UIEvent): void {
-        this.removeEventListener(eui.UIEvent.CREATION_COMPLETE, this.createCompleteEvent, this);
+        public constructor() {
+            super();
+            this.skinName = "ApLoadingUI";
+            this.addEventListener(eui.UIEvent.CREATION_COMPLETE, this.createCompleteEvent, this);
+        }
 
-        this.progressBg.y = this.stage.stageHeight - 30;
-        this.progressBar.y = this.stage.stageHeight - 30;
-        this.loadingLabel.y = this.stage.stageHeight - 60;
-    }
+        public createCompleteEvent(event: eui.UIEvent): void {
+            this.removeEventListener(eui.UIEvent.CREATION_COMPLETE, this.createCompleteEvent, this);
 
-    public onProgress(current: number, total: number): void {
-        this.labelText.text = `${current}/${total}`;
-        this.progressBar.width = this.stage.width * current / total;
-    }
+            this.progressBg.y = this.stage.stageHeight - 30;
+            this.progressBar.y = this.stage.stageHeight - 30;
+            this.loadingLabel.y = this.stage.stageHeight - 60;
+        }
 
-    public showInformation(message) {
-        this.loadingText.text = message;
-        this.labelText.text = "";
+        public onProgress(current: number, total: number): void {
+            this.labelText.text = `${current}/${total}`;
+            this.progressBar.width = this.stage.width * current / total;
+        }
+
+        public showInformation(message) {
+            this.loadingText.text = message;
+            this.labelText.text = "";
+        }
     }
 }
+

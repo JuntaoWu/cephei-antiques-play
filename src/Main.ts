@@ -27,109 +27,113 @@
 //
 //////////////////////////////////////////////////////////////////////////////////////
 
-class Main extends eui.UILayer {
+namespace ap {
+
+    export class Main extends eui.UILayer {
 
 
-    protected createChildren(): void {
-        super.createChildren();
-        Object.entries = typeof Object.entries === 'function' ? Object.entries : obj => Object.keys(obj).map(k => [k, obj[k]] as [string, any]);
+        protected createChildren(): void {
+            super.createChildren();
+            Object.entries = typeof Object.entries === 'function' ? Object.entries : obj => Object.keys(obj).map(k => [k, obj[k]] as [string, any]);
 
-        egret.lifecycle.addLifecycleListener((context) => {
-            // custom lifecycle plugin
-        })
+            egret.lifecycle.addLifecycleListener((context) => {
+                // custom lifecycle plugin
+            })
 
-        egret.lifecycle.onPause = () => {
-            egret.ticker.pause();
-        }
-
-        egret.lifecycle.onResume = () => {
-            egret.ticker.resume();
-        }
-
-        //inject the custom material parser
-        //注入自定义的素材解析器
-        let assetAdapter = new AssetAdapter();
-        egret.registerImplementation("eui.IAssetAdapter", assetAdapter);
-        egret.registerImplementation("eui.IThemeAdapter", new ThemeAdapter());
-
-
-        this.runGame().catch(e => {
-            console.log(e);
-        })
-    }
-
-    private async runGame() {
-        await this.loadResource()
-        this.createGameScene();
-        await platform.login();
-    }
-
-    private async loadResource() {
-        try {
-            const checkVersionResult: any = await AccountAdapter.checkForUpdate();
-
-            if (checkVersionResult.hasUpdate) {
-                platform.applyUpdate(checkVersionResult.version);
+            egret.lifecycle.onPause = () => {
+                egret.ticker.pause();
             }
-            await RES.loadConfig("default.res.json", `${game.Constants.ResourceEndpoint}resource/`);
-            await this.loadTheme();
 
-            await RES.loadGroup("loading", 1);
-            const loadingView = new LoadingUI();
-            this.stage.addChild(loadingView);
+            egret.lifecycle.onResume = () => {
+                egret.ticker.resume();
+            }
 
-            await RES.loadGroup("preload", 0, loadingView);
-            RES.loadGroup("lazyload", 0);
-            this.stage.removeChild(loadingView);
+            //inject the custom material parser
+            //注入自定义的素材解析器
+            let assetAdapter = new AssetAdapter();
+            egret.registerImplementation("eui.IAssetAdapter", assetAdapter);
+            egret.registerImplementation("eui.IThemeAdapter", new ThemeAdapter());
+
+
+            this.runGame().catch(e => {
+                console.log(e);
+            })
         }
-        catch (e) {
-            console.error(e);
+
+        private async runGame() {
+            await this.loadResource()
+            this.createGameScene();
+            await platform.login();
         }
-    }
 
-    private loadTheme() {
-        return new Promise((resolve, reject) => {
-            // load skin theme configuration file, you can manually modify the file. And replace the default skin.
-            //加载皮肤主题配置文件,可以手动修改这个文件。替换默认皮肤。
-            let theme = new eui.Theme("resource/default.thm.json", this.stage);
-            theme.addEventListener(eui.UIEvent.COMPLETE, () => {
-                resolve();
-            }, this);
+        private async loadResource() {
+            try {
+                const checkVersionResult: any = await AccountAdapter.checkForUpdate();
 
-        })
-    }
+                if (checkVersionResult.hasUpdate) {
+                    platform.applyUpdate(checkVersionResult.version);
+                }
+                await RES.loadConfig("ap.res.json", `${ap.Constants.ResourceEndpoint}resource/`);
+                await this.loadTheme();
 
-    private textfield: egret.TextField;
-    /**
-     * 创建场景界面
-     * Create scene interface
-     */
-    protected createGameScene(): void {
-        const appContainer = new game.AppContainer();
-        this.addChild(appContainer);
+                await RES.loadGroup("loading", 1);
+                const loadingView = new ApLoadingUI();
+                this.stage.addChild(loadingView);
 
-        game.ApplicationFacade.getInstance().startUp(appContainer);
-    }
-    /**
-     * 根据name关键字创建一个Bitmap对象。name属性请参考resources/resource.json配置文件的内容。
-     * Create a Bitmap object according to name keyword.As for the property of name please refer to the configuration file of resources/resource.json.
-     */
-    private createBitmapByName(name: string): egret.Bitmap {
-        let result = new egret.Bitmap();
-        let texture: egret.Texture = RES.getRes(name);
-        result.texture = texture;
-        return result;
-    }
+                await RES.loadGroup("preload", 0, loadingView);
+                RES.loadGroup("lazyload", 0);
+                this.stage.removeChild(loadingView);
+            }
+            catch (e) {
+                console.error(e);
+            }
+        }
 
-    /**
-     * 点击按钮
-     * Click the button
-     */
-    private onButtonClick(e: egret.TouchEvent) {
-        let panel = new eui.Panel();
-        panel.title = "Title";
-        panel.horizontalCenter = 0;
-        panel.verticalCenter = 0;
-        this.addChild(panel);
+        private loadTheme() {
+            return new Promise((resolve, reject) => {
+                // load skin theme configuration file, you can manually modify the file. And replace the default skin.
+                //加载皮肤主题配置文件,可以手动修改这个文件。替换默认皮肤。
+                let theme = new eui.Theme("resource/ap.thm.json", this.stage);
+                theme.addEventListener(eui.UIEvent.COMPLETE, () => {
+                    resolve();
+                }, this);
+
+            })
+        }
+
+        private textfield: egret.TextField;
+        /**
+         * 创建场景界面
+         * Create scene interface
+         */
+        protected createGameScene(): void {
+            const appContainer = new ap.AppContainer();
+            this.addChild(appContainer);
+
+            ap.ApplicationFacade.getInstance().startUp(appContainer);
+        }
+        /**
+         * 根据name关键字创建一个Bitmap对象。name属性请参考resources/resource.json配置文件的内容。
+         * Create a Bitmap object according to name keyword.As for the property of name please refer to the configuration file of resources/resource.json.
+         */
+        private createBitmapByName(name: string): egret.Bitmap {
+            let result = new egret.Bitmap();
+            let texture: egret.Texture = RES.getRes(name);
+            result.texture = texture;
+            return result;
+        }
+
+        /**
+         * 点击按钮
+         * Click the button
+         */
+        private onButtonClick(e: egret.TouchEvent) {
+            let panel = new eui.Panel();
+            panel.title = "Title";
+            panel.horizontalCenter = 0;
+            panel.verticalCenter = 0;
+            this.addChild(panel);
+        }
     }
 }
+

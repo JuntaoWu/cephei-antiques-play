@@ -4,180 +4,180 @@
  * 推荐开发者通过这种方式封装平台逻辑，以保证整体结构的稳定
  * 由于不同平台的接口形式各有不同，白鹭推荐开发者将所有接口封装为基于 Promise 的异步形式
  */
-declare interface Platform {
 
-    env: string;
-    name: string;
-    appVersion: string;
+namespace ap {
 
-    getUserInfo(): Promise<any>;
+    export declare interface Platform {
 
-    login(): Promise<any>;
 
-    checkForUpdate(): Promise<any>;
 
-    getVersion(): Promise<any>;
+        env: string;
+        name: string;
+        appVersion: string;
 
-    applyUpdate(version: string);
+        getUserInfo(): Promise<any>;
 
-    getOpenDataContext();
+        login(): Promise<any>;
 
-    shareAppMessage(message?: string, query?: string, callback?: Function);
+        checkForUpdate(): Promise<any>;
 
-    showShareMenu();
+        getVersion(): Promise<any>;
 
-    setStorage(key, value);
+        applyUpdate(version: string);
 
-    getStorage(key);
+        getOpenDataContext();
 
-    setStorageAsync(key, value);
+        shareAppMessage(message?: string, query?: string, callback?: Function);
 
-    getStorageAsync(key): Promise<any>;
+        showShareMenu();
 
-    getLaunchInfo();
+        setStorage(key, value);
 
-    showPreImage(data: Array<string>);
+        getStorage(key);
 
-    authorizeUserInfo(callback);
+        setStorageAsync(key, value);
 
-    createBannerAd(name: string, adUnitId: string, style: any);
+        getStorageAsync(key): Promise<any>;
 
-    showBannerAd(name: string);
+        getLaunchInfo();
 
-    hideAllBannerAds();
+        showPreImage(data: Array<string>);
 
-    createRewardedVideoAd(name: string, adUnitId: string, callback: Function, onError: Function);
+        authorizeUserInfo(callback);
 
-    showVideoAd(name: string);
+        createBannerAd(name: string, adUnitId: string, style: any);
 
-    isVideoAdDisabled(name: string);
+        showBannerAd(name: string);
 
-    disableVideoAd(name: string);
+        hideAllBannerAds();
 
-    showModal(msg: string, showCancel: boolean);
-}
+        createRewardedVideoAd(name: string, adUnitId: string, callback: Function, onError: Function);
 
-class DebugPlatform implements Platform {
+        showVideoAd(name: string);
 
-    public get env() {
-        return "dev";
+        isVideoAdDisabled(name: string);
+
+        disableVideoAd(name: string);
+
+        showModal(msg: string, showCancel: boolean);
     }
 
-    public get name() {
-        return "DebugPlatform";
+    export class DebugPlatform implements Platform {
+
+        public get env() {
+            return "dev";
+        }
+
+        public get name() {
+            return "DebugPlatform";
+        }
+
+        public get appVersion() {
+            return "0.1.1";
+        }
+
+        public async getUserInfo() {
+            return {
+                nickName: "盒中闪电测试账号",
+                avatarUrl: `unit(001-050)_json#hero(004)`
+            };
+        }
+
+        public async login() {
+            return { code: "debug-code" };
+        }
+
+        public async checkForUpdate() {
+            return {
+                hasUpdate: false
+            };
+        }
+
+        public async getVersion() {
+            return "0";
+        }
+
+        public applyUpdate() {
+            return true;
+        }
+
+        public getOpenDataContext() {
+            return {
+                postMessage: () => { },
+                createDisplayObject: () => { },
+            };
+        }
+
+        public shareAppMessage(message?: string, query?: string, callback?: Function) {
+
+        }
+
+        public showShareMenu() {
+
+        }
+
+        public setStorage(key, data) {
+            localStorage.setItem(key, JSON.stringify(data));
+        }
+
+        public getStorage(key) {
+            return JSON.parse(localStorage.getItem(key));
+        }
+
+        public setStorageAsync(key, data) {
+            localStorage.setItem(key, JSON.stringify(data));
+        }
+
+        public async getStorageAsync(key): Promise<any> {
+            return JSON.parse(localStorage.getItem(key));
+        }
+
+        public getLaunchInfo() {
+
+        }
+
+        public showPreImage(data) {
+        }
+
+        public authorizeUserInfo(callback) {
+
+        }
+
+        public createBannerAd(name: string, adUnitId: string, style: any) {
+
+        }
+
+        public showBannerAd(name: string) {
+
+        }
+
+        public hideAllBannerAds() {
+
+        }
+
+        public async createRewardedVideoAd(name: string, adUnitId: string, callback: Function, onError: Function) {
+
+        }
+
+        public async showVideoAd(name: string) {
+
+        }
+
+        public async isVideoAdDisabled(name: string) {
+
+        }
+
+        public async disableVideoAd(name: string) {
+
+        }
+
+        public showModal(msg: string, showCancel: boolean) {
+
+        }
     }
 
-    public get appVersion() {
-        return "0.1.1";
-    }
+    // todo: in the wrapped project, the platform had been declared in the child lib project alreay.
+    export let platform: Platform;
+    platform = window["platform"] || new DebugPlatform();
 
-    public async getUserInfo() {
-        return {
-            nickName: "盒中闪电测试账号",
-            avatarUrl: `unit(001-050)_json#hero(004)`
-        };
-    }
-
-    public async login() {
-        return { code: "debug-code" };
-    }
-
-    public async checkForUpdate() {
-        return {
-            hasUpdate: false
-        };
-    }
-
-    public async getVersion() {
-        return "0";
-    }
-
-    public applyUpdate() {
-        return true;
-    }
-
-    public getOpenDataContext() {
-        return {
-            postMessage: () => { },
-            createDisplayObject: () => { },
-        };
-    }
-
-    public shareAppMessage(message?: string, query?: string, callback?: Function) {
-
-    }
-
-    public showShareMenu() {
-
-    }
-
-    public setStorage(key, data) {
-        localStorage.setItem(key, JSON.stringify(data));
-    }
-
-    public getStorage(key) {
-        return JSON.parse(localStorage.getItem(key));
-    }
-
-    public setStorageAsync(key, data) {
-        localStorage.setItem(key, JSON.stringify(data));
-    }
-
-    public async getStorageAsync(key): Promise<any> {
-        return JSON.parse(localStorage.getItem(key));
-    }
-
-    public getLaunchInfo() {
-
-    }
-
-    public showPreImage(data) {
-    }
-
-    public authorizeUserInfo(callback) {
-
-    }
-
-    public createBannerAd(name: string, adUnitId: string, style: any) {
-
-    }
-
-    public showBannerAd(name: string) {
-
-    }
-
-    public hideAllBannerAds() {
-
-    }
-
-    public async createRewardedVideoAd(name: string, adUnitId: string, callback: Function, onError: Function) {
-
-    }
-
-    public async showVideoAd(name: string) {
-
-    }
-
-    public async isVideoAdDisabled(name: string) {
-
-    }
-
-    public async disableVideoAd(name: string) {
-
-    }
-
-    public showModal(msg: string, showCancel: boolean) {
-
-    }
-}
-
-
-if (!window.platform) {
-    window.platform = new DebugPlatform();
-}
-
-declare let platform: Platform;
-
-declare interface Window {
-    platform: Platform
 }

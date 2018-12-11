@@ -1,12 +1,12 @@
 
-module game {
+namespace ap {
 
     export class MiniGameMediator extends puremvc.Mediator implements puremvc.IMediator {
         public static NAME: string = "MiniGameMediator";
 
         public constructor(viewComponent: any) {
             super(MiniGameMediator.NAME, viewComponent);
-            super.initializeNotifier("ApplicationFacade");
+            super.initializeNotifier("ApApplicationFacade");
 
         }
 

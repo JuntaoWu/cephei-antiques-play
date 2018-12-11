@@ -1,4 +1,4 @@
-module game {
+namespace ap {
 
     export class MiniGameJigsawM16 extends eui.Component {
 

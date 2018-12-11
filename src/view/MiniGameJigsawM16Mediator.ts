@@ -1,12 +1,12 @@
 
-module game {
+namespace ap {
 
     export class MiniGameJigsawM16Mediator extends puremvc.Mediator implements puremvc.IMediator {
         public static NAME: string = "MiniGameJigsawM16Mediator";
 
         public constructor(viewComponent: any) {
             super(MiniGameJigsawM16Mediator.NAME, viewComponent);
-            super.initializeNotifier("ApplicationFacade");
+            super.initializeNotifier("ApApplicationFacade");
 
             this.jigsawImgGroupList = [
                 this.gameJigsaw.jigsawImgGroup1, this.gameJigsaw.jigsawImgGroup2
