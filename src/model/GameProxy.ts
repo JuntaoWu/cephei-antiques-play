@@ -72,6 +72,7 @@ namespace ap {
             this.playerInfo.plotId = 1;
             this.playerInfo.pointMu = this.playerInfo.pointHunag = 43;
             this.playerInfo.fatigueValue = fatigueValue;
+            this.savePlayerInfoToStorage();
         }
 
         /**

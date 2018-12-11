@@ -399,6 +399,7 @@ namespace ap {
             if (!this.gameScreen.showPoints) return;
             if (!this.proxy.playerInfo.hints) {
                 this.sendNotification(SceneCommand.SHOW_POPUP, "没有提示卡了，提示卡可在商城购买");
+                this.gameScreen.showPoints = false;
                 return;
             }
             if (!this.showPointsAll) {
