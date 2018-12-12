@@ -4,7 +4,7 @@
         "noImplicitAny": false,
         "sourceMap": false,
         "declaration": true,
-        "outDir": "bin-debug/",
+        "outFile": "bin/antiques-play.js",
         "experimentalDecorators": true,
         "lib": [
             "dom",

@@ -9,17 +9,16 @@ namespace ap {
 
     export declare interface Platform {
 
-
-
         env: string;
         name: string;
         appVersion: string;
+        isConnected: boolean;
 
-        getUserInfo(): Promise<any>;
+        getUserInfo(): Promise<UserInfo>;
+
+        authorizeUserInfo(imageUrl?: string): Promise<UserInfo>;
 
         login(): Promise<any>;
-
-        checkForUpdate(): Promise<any>;
 
         getVersion(): Promise<any>;
 
@@ -27,23 +26,41 @@ namespace ap {
 
         getOpenDataContext();
 
-        shareAppMessage(message?: string, query?: string, callback?: Function);
+        onNetworkStatusChange(callback: Function);
 
-        showShareMenu();
+        onResume: Function;
 
-        setStorage(key, value);
+        registerOnResume(callback: Function);
+
+        resume();
+
+        showToast(message: string);
+
+        setStorage(key, data);
 
         getStorage(key);
 
-        setStorageAsync(key, value);
+        setStorageAsync(key, data);
 
-        getStorageAsync(key): Promise<any>;
+        getStorageAsync(key);
 
-        getLaunchInfo();
+        setSecurityStorageAsync(key, data);
 
-        showPreImage(data: Array<string>);
+        getSecurityStorageAsync(key);
 
-        authorizeUserInfo(callback);
+        playVideo(src: string);
+
+        showModal(message: string, confirmText?: string, cancelText?: string): Promise<any>;
+
+        showLoading(message?: string);
+
+        hideLoading();
+
+        shareAppMessage(message?: string, imageUrl?: string, query?: string, callback?: Function);
+
+        showShareMenu(imageUrl?: string);
+
+        showPreImage(data: any, index?: any);
 
         createBannerAd(name: string, adUnitId: string, style: any);
 
@@ -59,46 +76,39 @@ namespace ap {
 
         disableVideoAd(name: string);
 
-        showModal(msg: string, showCancel: boolean);
+        navigateToMiniProgram();
     }
 
     export class DebugPlatform implements Platform {
 
-        public get env() {
+        public get env(): string {
             return "dev";
         }
 
-        public get name() {
+        public get name(): string {
             return "DebugPlatform";
         }
 
-        public get appVersion() {
-            return "0.1.1";
+        public get appVersion(): string {
+            return "0.2.0";
         }
 
+        public isConnected: boolean = true;
+
         public async getUserInfo() {
-            return {
-                nickName: "盒中闪电测试账号",
-                avatarUrl: `unit(001-050)_json#hero(004)`
-            };
+            return { nickName: CommonData.logon && CommonData.logon.unionId || "username" };
+        }
+
+        public async authorizeUserInfo() {
+            return { nickName: CommonData.logon && CommonData.logon.unionId || "username" };
         }
 
         public async login() {
-            return { code: "debug-code" };
-        }
-
-        public async checkForUpdate() {
-            return {
-                hasUpdate: false
-            };
+            return { code: "anonymous", token: "" };
         }
 
         public async getVersion() {
-            return "0";
-        }
 
-        public applyUpdate() {
-            return true;
         }
 
         public getOpenDataContext() {
@@ -108,12 +118,50 @@ namespace ap {
             };
         }
 
-        public shareAppMessage(message?: string, query?: string, callback?: Function) {
+        public showShareMenu() {
 
         }
 
-        public showShareMenu() {
+        public getLaunchInfo() {
 
+        }
+
+        public createRewardedVideoAd() {
+
+        }
+
+        public showVideoAd() {
+
+        }
+
+        public isVideoAdDisabled() {
+            return true;
+        }
+
+        public disableVideoAd() {
+
+        }
+
+        public applyUpdate() {
+            return true;
+        }
+
+        public onNetworkStatusChange(callback: Function) {
+
+        }
+
+        public onResume: Function;
+
+        public registerOnResume(callback: Function) {
+
+        }
+
+        public resume() {
+
+        }
+
+        public showToast(message: string) {
+            console.log(message);
         }
 
         public setStorage(key, data) {
@@ -124,22 +172,43 @@ namespace ap {
             return JSON.parse(localStorage.getItem(key));
         }
 
-        public setStorageAsync(key, data) {
+        public async setStorageAsync(key, data) {
             localStorage.setItem(key, JSON.stringify(data));
         }
 
-        public async getStorageAsync(key): Promise<any> {
+        public async getStorageAsync(key) {
             return JSON.parse(localStorage.getItem(key));
         }
 
-        public getLaunchInfo() {
+        public async setSecurityStorageAsync(key, data) {
+            localStorage.setItem(key, JSON.stringify(data));
+        }
+
+        public async getSecurityStorageAsync(key) {
+            return JSON.parse(localStorage.getItem(key));
+        }
+
+        public playVideo() {
+            return {};
+        }
+
+        public showPreImage(data, index?) {
 
         }
 
-        public showPreImage(data) {
+        public async showModal(message: string, confirmText?: string, cancelText?: string): Promise<any> {
+            return { confirm: false, cancel: true };
         }
 
-        public authorizeUserInfo(callback) {
+        public showLoading() {
+            return true;
+        }
+
+        public hideLoading() {
+            return true;
+        }
+
+        public shareAppMessage() {
 
         }
 
@@ -147,7 +216,7 @@ namespace ap {
 
         }
 
-        public showBannerAd(name: string) {
+        public showBannerAd(name: string = "bottom") {
 
         }
 
@@ -155,23 +224,7 @@ namespace ap {
 
         }
 
-        public async createRewardedVideoAd(name: string, adUnitId: string, callback: Function, onError: Function) {
-
-        }
-
-        public async showVideoAd(name: string) {
-
-        }
-
-        public async isVideoAdDisabled(name: string) {
-
-        }
-
-        public async disableVideoAd(name: string) {
-
-        }
-
-        public showModal(msg: string, showCancel: boolean) {
+        public navigateToMiniProgram() {
 
         }
     }

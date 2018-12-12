@@ -31,6 +31,7 @@ namespace ap {
 
     export class Main extends eui.UILayer {
 
+        private loadingView: ApLoadingUI;
 
         protected createChildren(): void {
             super.createChildren();
@@ -60,10 +61,29 @@ namespace ap {
             })
         }
 
+        private async retryAuthorize() {
+            const userInfo = await AccountAdapter.loadUserInfo();
+            if (userInfo && userInfo.userId) {
+                this.createGameScene();
+            }
+            else {
+                await this.retryAuthorize();
+            }
+        }
+
         private async runGame() {
-            await this.loadResource()
-            this.createGameScene();
-            await platform.login();
+            await this.loadResource();
+            this.loadingView.groupLoading.visible = false;
+
+            if (platform.name == "wxgame") {
+                await AccountAdapter.login();
+                await this.retryAuthorize();
+            }
+            else if (platform.name == "DebugPlatform") {
+                let anonymousToken = platform.getStorage("anonymoustoken");
+                await AccountAdapter.login({ token: anonymousToken });
+                this.createGameScene();
+            }
         }
 
         private async loadResource() {
@@ -107,6 +127,10 @@ namespace ap {
          * Create scene interface
          */
         protected createGameScene(): void {
+            egret.Tween.get(this.loadingView).to({ alpha: 0 }, 1500).call(() => {
+                this.stage.removeChild(this.loadingView);
+            });
+
             const appContainer = new ap.AppContainer();
             this.addChild(appContainer);
 

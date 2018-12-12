@@ -88,7 +88,7 @@ namespace ap {
         }
 
         public shareClick() {
-            platform.shareAppMessage();
+            platform.shareAppMessage(Constants.gameTitle, Constants.shareImageUrl);
         }
 
         public settingClick() {

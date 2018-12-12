@@ -515,7 +515,7 @@ namespace ap {
         }
 
         public share() {
-            platform.shareAppMessage();
+            platform.shareAppMessage(Constants.gameTitle, Constants.shareImageUrl);
         }
 
         public armatureDisplay: dragonBones.EgretArmatureDisplay;

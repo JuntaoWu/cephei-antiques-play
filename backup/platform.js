@@ -6,7 +6,7 @@ import * as fileutil from 'library/file-util';
 
 class WxgamePlatform {
 
-    env = 'prod';
+    env = 'dev';
     name = 'wxgame';
     appVersion = '0.1.1';
 
@@ -374,6 +374,5 @@ class WxgameOpenDataContext {
         openDataContext.postMessage(data);
     }
 }
-
 
 window.platform = new WxgamePlatform();

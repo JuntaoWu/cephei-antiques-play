@@ -23,6 +23,10 @@ namespace ap {
                 };
             }
         }
+
+        public static authorizeButtonImageUrl = `${Constants.ResourceEndpoint}resource/assets/Button/btn-wxlogin.png`;
+        public static gameTitle = `寻墨探宝`;
+        public static shareImageUrl = `${Constants.ResourceEndpoint}resource/assets/start/logo.png`;
     }
 
     export enum Scene {

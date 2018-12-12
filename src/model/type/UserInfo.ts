@@ -1,7 +1,12 @@
 
 namespace ap {
     export class UserInfo {
-        openId?: string;
+        public userId?: string;
+        public wxgameOpenId?: string;
+        public nativeOpenId?: string;
+        public unionId?: string;
+        public session_key?: string;
+
         public avatarUrl?: string;
         public city?: string;
         public country?: string;
@@ -10,5 +15,10 @@ namespace ap {
         public nickName?: string;
         public province?: string;
 
+        public encryptedData?: string;
+        public iv?: string;
+
+        public token?: string;  // jwt-token here
+        public anonymous?: boolean;
     }
 }
