@@ -32,7 +32,7 @@ namespace ap {
             ending: [],
             pointHunag: 43,
             pointMu: 43,
-            _v: 1,
+            gameTime: 0,
         };
 
         public constructor() {
@@ -73,6 +73,12 @@ namespace ap {
             this.playerInfo.pointMu = this.playerInfo.pointHunag = 43;
             this.playerInfo.fatigueValue = fatigueValue;
             this.savePlayerInfoToStorage();
+        }
+
+        addPlayLength(length: number) {
+            this.playerInfo.gameTime += length;
+            this.savePlayerInfoToStorage();
+            console.log(this.playerInfo.gameTime);
         }
 
         /**
