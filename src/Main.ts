@@ -80,8 +80,15 @@ namespace ap {
                 await this.retryAuthorize();
             }
             else if (platform.name == "DebugPlatform") {
-                let anonymousToken = platform.getStorage("anonymoustoken");
+                let anonymousToken = platform.getStorage("ap-anonymoustoken");
                 await AccountAdapter.login({ token: anonymousToken });
+                this.createGameScene();
+            }
+            else {
+                // note: we should use "token" rather than "ap-token" because we're inside the union native package.
+                // and we won't override this "token" value after login.
+                let token = await platform.getSecurityStorageAsync("token");
+                await AccountAdapter.login({ token: token });
                 this.createGameScene();
             }
         }
