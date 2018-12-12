@@ -84,10 +84,10 @@ namespace ap {
             else if (CommonData.logon && CommonData.logon.userId) {
                 this.userInfo = CommonData.logon;
                 if (platform.name == "native") {
-                    platform.setSecurityStorageAsync(this.userInfo.anonymous ? "anonymoustoken" : "token", this.userInfo.token);
+                    platform.setSecurityStorageAsync(this.userInfo.anonymous ? "ap-anonymoustoken" : "ap-token", this.userInfo.token);
                 }
                 else if (platform.name == "DebugPlatform") {
-                    platform.setStorage(this.userInfo.anonymous ? "anonymoustoken" : "token", this.userInfo.token);
+                    platform.setStorage(this.userInfo.anonymous ? "ap-anonymoustoken" : "ap-token", this.userInfo.token);
                 }
                 return this.userInfo;
             }
@@ -169,23 +169,23 @@ namespace ap {
         }
 
         /**
-         * loadUserGameRecords
+         * loadPlayerInfo
          */
-        public static async loadUserGameRecords(): Promise<UserInfo> {
+        public static async loadPlayerInfo(): Promise<PlayerInfo> {
 
             if (CommonData.logon && CommonData.logon.userId) {
-                console.log(`loadUserGameRecords via app server begin, userId: ${CommonData.logon.userId}.`);
+                console.log(`loadPlayerInfo via app server begin, userId: ${CommonData.logon.userId}.`);
 
                 var request = new egret.HttpRequest();
                 request.responseType = egret.HttpResponseType.TEXT;
-                request.open(`${Constants.Endpoints.service}records/?token=${CommonData.logon.token}`, egret.HttpMethod.POST);
+                request.open(`${Constants.Endpoints.service}playerinfo/?token=${CommonData.logon.token}`, egret.HttpMethod.GET);
                 request.setRequestHeader("Content-Type", "application/json");
 
                 request.send();
 
-                return new Promise((resolve, reject) => {
+                return new Promise<PlayerInfo>((resolve, reject) => {
                     request.addEventListener(egret.Event.COMPLETE, (event: egret.Event) => {
-                        console.log(`loadUserGameRecords via app server end.`);
+                        console.log(`loadPlayerInfo via app server end.`);
 
                         let req = <egret.HttpRequest>(event.currentTarget);
                         let res = JSON.parse(req.response);
@@ -196,44 +196,49 @@ namespace ap {
                         else {
                             // todo:
                             console.log("update current userInfo object");
-                            return resolve(this.userInfo);
+                            return resolve(res.data);
                         }
                     }, this);
                 });
             }
             else {
                 console.log(`We don't have unionId now, skip.`);
-                return this.userInfo;
             }
         }
 
         /**
-         * saveUserGameRecords
+         * savePlayerInfo
          */
-        public static saveUserGameRecords(records) {
+        public static async savePlayerInfo(playerInfo): Promise<PlayerInfo> {
 
             if (CommonData.logon && CommonData.logon.userId) {
-                console.log(`saveUserGameRecords via app server begin, userId: ${CommonData.logon.userId}.`);
+                console.log(`savePlayerInfo via app server begin, userId: ${CommonData.logon.userId}.`);
 
                 var request = new egret.HttpRequest();
                 request.responseType = egret.HttpResponseType.TEXT;
-                request.open(`${Constants.Endpoints.service}records/create/?token=${CommonData.logon.token}`, egret.HttpMethod.POST);
+                request.open(`${Constants.Endpoints.service}playerinfo/?token=${CommonData.logon.token}`, egret.HttpMethod.POST);
                 request.setRequestHeader("Content-Type", "application/json");
 
-                request.send(JSON.stringify(records));
+                request.send(JSON.stringify(playerInfo));
 
-                request.addEventListener(egret.Event.COMPLETE, (event: egret.Event) => {
-                    console.log(`saveUserGameRecords via app server end.`);
+                return new Promise<PlayerInfo>((resolve, reject) => {
+                    request.addEventListener(egret.Event.COMPLETE, (event: egret.Event) => {
+                        console.log(`savePlayerInfo via app server end.`);
 
-                    let req = <egret.HttpRequest>(event.currentTarget);
-                    let res = JSON.parse(req.response);
-                    if (res.error) {
-                        console.error(res.message);
-                    }
-                    else {
+                        let req = <egret.HttpRequest>(event.currentTarget);
+                        let res = JSON.parse(req.response);
+                        if (res.code !== 0) {
+                            console.error(res.message);
+                            return reject(res.message);
+                        }
+                        else {
+                            // todo: server returned version changed res.data.
+                            // merge this.
+                            return resolve(res.data);
+                        }
+                    }, this);
+                });
 
-                    }
-                }, this);
             }
             else {
                 console.log(`We don't have openId now, skip.`);
