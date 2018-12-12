@@ -32,6 +32,16 @@ namespace ap {
 
             this.gameScreen.addEventListener(egret.Event.ADDED_TO_STAGE, this.initData, this);
             this.initData();
+        
+            //创建一个计时器对象
+            this.timer = 30000; //间隔时长
+            var timer: egret.Timer = new egret.Timer(this.timer, 0);
+            timer.addEventListener(egret.TimerEvent.TIMER, this.timerFunc, this);
+            timer.start();
+        }
+        private timer: number;
+        private timerFunc() {
+            this.proxy.addPlayLength(this.timer / 1000);
         }
 
         private loadResGroup() {
