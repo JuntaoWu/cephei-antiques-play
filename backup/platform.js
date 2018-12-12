@@ -8,7 +8,7 @@ class WxgamePlatform {
 
   env = 'dev';
   name = 'wxgame';
-  appVersion = '0.2.0';
+  appVersion = '0.5.0';
 
   login() {
     return new Promise((resolve, reject) => {
