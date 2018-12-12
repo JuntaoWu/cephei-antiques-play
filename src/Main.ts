@@ -97,12 +97,11 @@ namespace ap {
                 await this.loadTheme();
 
                 await RES.loadGroup("loading", 1);
-                const loadingView = new ApLoadingUI();
-                this.stage.addChild(loadingView);
+                this.loadingView = new ApLoadingUI();
+                this.stage.addChild(this.loadingView);
 
-                await RES.loadGroup("preload", 0, loadingView);
+                await RES.loadGroup("preload", 0, this.loadingView);
                 RES.loadGroup("lazyload", 0);
-                this.stage.removeChild(loadingView);
             }
             catch (e) {
                 console.error(e);

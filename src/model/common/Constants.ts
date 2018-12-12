@@ -10,16 +10,16 @@ namespace ap {
         public static get Endpoints() {
             if (platform.env == "dev") {
                 return {
-                    service: "http://gdjzj.hzsdgames.com:8091/",
+                    service: "http://gdjzj.hzsdgames.com:8098/",
                     localResource: "",
-                    remoteResource: "http://gdjzj.hzsdgames.com:8091/miniGame/"
+                    remoteResource: "http://gdjzj.hzsdgames.com:8098/miniGame/"
                 };
             }
             if (platform.env == "prod") {
                 return {
-                    service: "http://gdjzj.hzsdgames.com:8091/",
+                    service: "https://gdjzj.hzsdgames.com:8099/",
                     localResource: "",
-                    remoteResource: "http://gdjzj.hzsdgames.com:8091/miniGame/"
+                    remoteResource: "https://gdjzj.hzsdgames.com:8099/miniGame/"
                 };
             }
         }
