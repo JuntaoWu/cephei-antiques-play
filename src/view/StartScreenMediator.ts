@@ -20,12 +20,23 @@ namespace ap {
             this.startScreen.btnStore.addEventListener(egret.TouchEvent.TOUCH_TAP, this.storeClick, this);
             this.startScreen.btnShare.addEventListener(egret.TouchEvent.TOUCH_TAP, this.shareClick, this);
             this.startScreen.btnSetting.addEventListener(egret.TouchEvent.TOUCH_TAP, this.settingClick, this);
-            this.startScreen.addEventListener(egret.Event.ADDED_TO_STAGE, this.initData, this);
+            this.startScreen.addEventListener(egret.Event.ADDED_TO_STAGE, this.savePlayerInfo, this);
             this.initData();
         }
 
         public async initData() {
-            await this.proxy.getPlayerInfoFromStorage();
+            await this.proxy.mergeInfoToStorage();
+            this.setUI();
+        }
+
+        public savePlayerInfo() {
+            if (this.proxy.shouldSavedGame) {
+                AccountAdapter.savePlayerInfo(this.proxy.playerInfo);
+                this.proxy.shouldSavedGame = false;
+            }
+        }
+
+        private setUI() {
             this.startScreen.btnResumeGame.visible = this.proxy.playerInfo.plotId != 1 ? true : false;
             this.startScreen.btnManage.visible = this.proxy.playerInfo.isManage;
             this.startScreen.no_manage.visible = !this.proxy.playerInfo.isManage;
@@ -96,15 +107,14 @@ namespace ap {
         }
 
         public listNotificationInterests(): Array<any> {
-            return [GameScreenMediator.manage_show];
+            return [GameProxy.UPDATE_PLAYER];
         }
 
         public handleNotification(notification: puremvc.INotification): void {
             var data: any = notification.getBody();
             switch (notification.getName()) {
-                case GameScreenMediator.manage_show: {
-                    this.startScreen.no_manage.visible = false;
-                    this.startScreen.btnManage.visible = true;
+                case GameProxy.UPDATE_PLAYER: {
+                    this.setUI();
                     break;
                 }
             }

@@ -74,7 +74,6 @@ namespace ap {
         public questionId: number;
         private timeoutId: number;
         private timeoutIdAddWord: number;
-        public static manage_show: string = "manage_show";
 
         public initData() {
             this.gameScreen.miniGame.removeChildren();
@@ -169,6 +168,7 @@ namespace ap {
                         this.proxy.playerInfo.isManage = true;
                         this.gameScreen.no_btnmanage.visible = false;
                         this.gameScreen.btnManage.visible = true;
+                        this.sendNotification(GameProxy.UPDATE_PLAYER);
                         // this.proxy.playerInfo.gold = (Number(this.proxy.playerInfo.gold) + 40).toString();
                         this.proxy.goldchange(40);
                     }

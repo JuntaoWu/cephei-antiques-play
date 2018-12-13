@@ -14,6 +14,10 @@ namespace ap {
         //小游戏减体力值
         public static REDUCE_POWER: string = "reduce_power";
 
+        //PlayerInfo更新
+        public static UPDATE_PLAYER: string = "update_player";
+        public shouldSavedGame: boolean = false;
+
         public playerInfo: PlayerInfo = {
             plotId: 1,
             collectedScenes: [],
@@ -56,7 +60,6 @@ namespace ap {
         }
 
         public getCurrentPlot(): Plot {
-            this.savePlayerInfoToStorage();
             return this.chapterPlot.get(this.playerInfo.plotId.toString());
         }
 
@@ -73,12 +76,12 @@ namespace ap {
             this.playerInfo.pointMu = this.playerInfo.pointHunag = 43;
             this.playerInfo.fatigueValue = fatigueValue;
             this.savePlayerInfoToStorage();
+            this.sendNotification(GameProxy.UPDATE_PLAYER);
         }
 
         addPlayLength(length: number) {
             this.playerInfo.gameTime += length;
             this.savePlayerInfoToStorage();
-            console.log(this.playerInfo.gameTime);
         }
 
         /**
@@ -86,6 +89,8 @@ namespace ap {
          */
         public nextPlot(skipPlotNum: number = 1): void {
             this.playerInfo.plotId += skipPlotNum;
+            this.savePlayerInfoToStorage();
+            this.sendNotification(GameProxy.UPDATE_PLAYER);
         }
 
         public canReduecePower(value: number = 1): boolean {
@@ -180,15 +185,17 @@ namespace ap {
             }
         }
 
-        public async getPlayerInfoFromStorage() {
+        public async mergeInfoToStorage() {
+            const serverPlayerInfo = await AccountAdapter.loadPlayerInfo();
             try {
-                let res = await platform.getStorageAsync("playerInfo");
-                console.log("mergeRemoteInfoToStorage: parse playerInfo");
-                this.playerInfo = Object.assign(this.playerInfo, JSON.parse(res.data));
-                console.log(this.playerInfo)
+                 this.playerInfo = JSON.parse(await platform.getStorageAsync("playerInfo"));
             }
             catch (error) {
                 console.error("localPlayerInfo is not JSON, skip.");
+            }
+            console.log(serverPlayerInfo.gameTime, this.playerInfo.gameTime)
+            if (serverPlayerInfo.gameTime > this.playerInfo.gameTime) {
+                this.playerInfo = Object.assign(this.playerInfo, serverPlayerInfo);
             }
             if (!this.playerInfo.lastEntryTime || this.playerInfo.lastEntryTime != new Date().toJSON().substr(0, 10)) {
                 // this.playerInfo.fatigueValue = fatigueValue;
@@ -205,6 +212,8 @@ namespace ap {
         public savePlayerInfoToStorage() {
             try {
                 platform.setStorageAsync("playerInfo", JSON.stringify(this.playerInfo));
+                // AccountAdapter.savePlayerInfo(this.playerInfo);
+                this.shouldSavedGame = true;
             }
             catch (error) {
                 console.error(error);
