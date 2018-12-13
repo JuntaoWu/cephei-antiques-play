@@ -22,6 +22,13 @@ namespace ap {
                     remoteResource: "https://gdjzj.hzsdgames.com:8099/miniGame/"
                 };
             }
+            if (platform.env == "test") {
+                return {
+                    service: "http://gdjzj.hzsdgames.com:8098/",
+                    localResource: "",
+                    remoteResource: "http://gdjzj.hzsdgames.com:8098/miniGame/"
+                };
+            }
         }
 
         public static authorizeButtonImageUrl = `${Constants.ResourceEndpoint}resource/assets/Button/btn-wxlogin.png`;
