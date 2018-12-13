@@ -193,8 +193,8 @@ namespace ap {
             catch (error) {
                 console.error("localPlayerInfo is not JSON, skip.");
             }
-            console.log(serverPlayerInfo.gameTime, this.playerInfo.gameTime)
-            if (serverPlayerInfo.gameTime > this.playerInfo.gameTime) {
+            console.log(serverPlayerInfo && serverPlayerInfo.gameTime, this.playerInfo && this.playerInfo.gameTime)
+            if (serverPlayerInfo && serverPlayerInfo.gameTime > (this.playerInfo && this.playerInfo.gameTime)) {
                 this.playerInfo = Object.assign(this.playerInfo, serverPlayerInfo);
             }
             if (!this.playerInfo.lastEntryTime || this.playerInfo.lastEntryTime != new Date().toJSON().substr(0, 10)) {
