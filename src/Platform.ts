@@ -90,7 +90,7 @@ namespace ap {
         }
 
         public get appVersion(): string {
-            return "0.2.0";
+            return "0.5.0";
         }
 
         public isConnected: boolean = true;
