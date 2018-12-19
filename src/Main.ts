@@ -82,6 +82,7 @@ namespace ap {
             else if (platform.name == "DebugPlatform") {
                 let anonymousToken = platform.getStorage("ap-anonymoustoken");
                 await AccountAdapter.login({ token: anonymousToken });
+                await AccountAdapter.loadUserInfo();
                 this.createGameScene();
             }
             else {
