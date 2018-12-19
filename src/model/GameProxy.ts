@@ -188,7 +188,10 @@ namespace ap {
         public async mergeInfoToStorage() {
             const serverPlayerInfo = await AccountAdapter.loadPlayerInfo();
             try {
-                 this.playerInfo = JSON.parse(await platform.getStorageAsync("playerInfo"));
+                 let playerInfo = JSON.parse(await platform.getStorageAsync("playerInfo"));
+                 if (playerInfo) {
+                     this.playerInfo = playerInfo;
+                 }
             }
             catch (error) {
                 console.error("localPlayerInfo is not JSON, skip.");
