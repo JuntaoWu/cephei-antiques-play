@@ -201,10 +201,10 @@ class WxgamePlatform {
       wx.getStorage({
         key: `${this.env}${key}`,
         success: function(res) {
-          resolve(res);
+          resolve(res.data);
         },
         fail: function(res) {
-          reject(res);
+          resolve("");
         }
       });
     });
@@ -216,7 +216,7 @@ class WxgamePlatform {
         title: '提示',
         content: message,
         showCancel: !!cancelText,
-        cancelText: cancelText,
+        cancelText: cancelText || '',
         confirmText: confirmText || '确定',
         success: function(res) {
           resolve(res);
@@ -245,6 +245,10 @@ class WxgamePlatform {
     return wx.createVideo({
       src: src
     });
+  }
+
+  destroyVideo(videoContainer) {
+    videoContainer && videoContainer.destroy && videoContainer.destroy();
   }
 
   showPreImage(imgList, currentIndex) {
@@ -382,6 +386,29 @@ class WxgamePlatform {
       })
     })
   }
+
+  setClipboardData(data) {
+    return new Promise((resolve, reject) => {
+      wx.setClipboardData({
+        data: data,
+        success: function (res) {
+          return resolve()
+         },
+        fail: function (res) { },
+        complete: function (res) { },
+      });
+    });
+  }
+
+  openExternalLink(url) {
+    let self = this;
+    self.showModal(`请复制该链接并在外部浏览器打开\r\n${url}`, '复制').then(res => {
+      self.setClipboardData(url).then(() => {
+        self.showToast('复制成功');
+      });
+    });
+  }
+
 }
 
 class WxgameOpenDataContext {
