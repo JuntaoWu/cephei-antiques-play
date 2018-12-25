@@ -12,8 +12,10 @@ namespace ap {
             this.proxy = <GameProxy><any>this.facade().retrieveProxy(GameProxy.NAME);
             this.loadResGroup();
 
-            this.gameScreen.nextBtn.addEventListener(egret.TouchEvent.TOUCH_BEGIN, this.touchBegin, this);
-            this.gameScreen.nextBtn.addEventListener(egret.TouchEvent.TOUCH_END, this.touchEnd, this);
+            this.gameScreen.textGroup.addEventListener(egret.TouchEvent.TOUCH_BEGIN, this.touchBegin, this);
+            this.gameScreen.textGroup.addEventListener(egret.TouchEvent.TOUCH_END, this.touchEnd, this);
+
+            this.gameScreen.nextBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.showNext, this);
 
             // this.gameScreen.nextTest.addEventListener(egret.TouchEvent.TOUCH_TAP, this.nextTestClick, this);
 
@@ -78,7 +80,7 @@ namespace ap {
         public initData() {
             this.gameScreen.miniGame.removeChildren();
             this.aa && this.aa.parent && this.aa.parent.removeChild(this.aa);
-            this.gameScreen.bottomGroup.visible = this.gameScreen.plotSelectList.visible
+            this.gameScreen.bottomGroup.visible = this.gameScreen.plotSelectList.visible = this.gameScreen.nextBtn.visible
                 = this.gameScreen.questionGroup.visible = this.gameScreen.miniGame.visible = false;
             this.gameScreen.showReset = this.gameScreen.showTransition = this.canGoNext = false;
             this.gameScreen.question = this.gameScreen.points = "";
@@ -138,6 +140,9 @@ namespace ap {
                     this.gameScreen.bottomGroup.top = 0;
                     this.sendNotification(GameProxy.SHOW_MINIGAME, question);
                     this.gameScreen.miniGame.visible = this.gameScreen.showReset = true;
+                    if (question.keyword == "拼装分水镜") {
+                        this.gameScreen.nextBtn.visible = true;
+                    }
                 }
                 this.gameScreen.scrollGroup.bottom = this.gameScreen.footGroup.height;
                 this.gameScreen.scrollGroup.viewport.scrollH = 0;
@@ -497,11 +502,6 @@ namespace ap {
             switch (notification.getName()) {
                 case GameProxy.PASS_MINIGAME:
                     this.showRightResult();
-                    if (data == "next") {
-                        egret.setTimeout(() => {
-                            this.showNext();
-                        }, this, 1500);
-                    }
                     break;
                 case GameProxy.REDUCE_POWER:
                     if (this.proxy.canReduecePower(10)) {
