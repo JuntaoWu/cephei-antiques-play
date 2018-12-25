@@ -14,6 +14,7 @@ namespace ap {
             ApplicationFacade.getInstance().registerMediator(new GameScreenMediator(this));
         }
 
+        public nextBtn: eui.Button;
         public btnBack: eui.Button;
         // public btnSave: eui.Button;
         public btnManage: eui.Button;
