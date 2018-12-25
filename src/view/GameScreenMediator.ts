@@ -12,8 +12,8 @@ namespace ap {
             this.proxy = <GameProxy><any>this.facade().retrieveProxy(GameProxy.NAME);
             this.loadResGroup();
 
-            this.gameScreen.textGroup.addEventListener(egret.TouchEvent.TOUCH_BEGIN, this.touchBegin, this);
-            this.gameScreen.textGroup.addEventListener(egret.TouchEvent.TOUCH_END, this.touchEnd, this);
+            this.gameScreen.nextBtn.addEventListener(egret.TouchEvent.TOUCH_BEGIN, this.touchBegin, this);
+            this.gameScreen.nextBtn.addEventListener(egret.TouchEvent.TOUCH_END, this.touchEnd, this);
 
             // this.gameScreen.nextTest.addEventListener(egret.TouchEvent.TOUCH_TAP, this.nextTestClick, this);
 
