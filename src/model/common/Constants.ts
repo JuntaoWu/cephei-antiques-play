@@ -4,7 +4,7 @@ namespace ap {
     export class Constants {
 
         public static get ResourceEndpoint(): string {
-            return platform.env == "dev" ? Constants.Endpoints.localResource : Constants.Endpoints.remoteResource;
+            return (platform.env == "local" || platform.env == "dev" || platform.name != "wxgame") ? Constants.Endpoints.localResource : Constants.Endpoints.remoteResource;
         };
 
         public static get Endpoints() {

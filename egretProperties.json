@@ -27,13 +27,19 @@
     {
       "name": "promise"
     },
-		{
-			"name": "lodash",
-			"path": "../3rdparty-libs/lodash"
-		},
-		{
-			"name": "puremvc",
-			"path": "../3rdparty-libs/puremvc"
-		}
-  ]
+    {
+      "name": "lodash",
+      "path": "../3rdparty-libs/lodash"
+    },
+    {
+      "name": "puremvc",
+      "path": "../3rdparty-libs/puremvc"
+    }
+  ],
+  "targets": {
+    "android": {
+      "appname": "antiques-play-android",
+      "packagename": "com.toolbar.childar"
+    }
+  }
 }

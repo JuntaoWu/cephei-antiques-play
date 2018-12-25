@@ -348,6 +348,6 @@ namespace ap {
 
     // todo: in the wrapped project, the platform had been declared in the child lib project alreay.
     export let platform: Platform;
-    platform = window["platform"] || new DebugPlatform();
+    platform = window["platform"] || new NativePlatform();
 
 }
