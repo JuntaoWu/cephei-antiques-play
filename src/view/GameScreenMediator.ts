@@ -497,6 +497,11 @@ namespace ap {
             switch (notification.getName()) {
                 case GameProxy.PASS_MINIGAME:
                     this.showRightResult();
+                    if (data == "next") {
+                        egret.setTimeout(() => {
+                            this.showNext();
+                        }, this, 1500);
+                    }
                     break;
                 case GameProxy.REDUCE_POWER:
                     if (this.proxy.canReduecePower(10)) {
