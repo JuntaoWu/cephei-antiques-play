@@ -37,8 +37,10 @@ namespace ap {
         }
 
         public setPage() {
+            console.log(this._index, this._guides);
             let guide = this._guides[this._index];
             if (!guide) return;
+            console.log("set page");
             this.guideWindow.dialogGroup.bottom = 0;        
             this.guideWindow.dialogGroup.visible = this.guideWindow.btnNext.visible = this.guideWindow.eventGroup.visible = true;
             this.guideWindow.group1.visible = this.guideWindow.group2.visible 
