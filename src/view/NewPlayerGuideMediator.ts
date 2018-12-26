@@ -198,6 +198,7 @@ namespace ap {
         
         public trueAndFalseUIList: Array<eui.Group>;
         public moveCards() {
+            this.clickTime = 0;
             this.trueAndFalseUIList.forEach(i => {
                 let img = i.getChildByName("img") as eui.Image;
                 i.addChild(img);
@@ -205,7 +206,11 @@ namespace ap {
                     img.source = "manage-card1";
                     egret.Tween.get(img).to({ scaleX: 1 }, 500);
                 });
-            })
+            });
+            [2, 4, 9].forEach(i => {
+                let group = this.guideWindow.group5.getChildByName(`card${i}`) as eui.Group;
+                group.scaleX = group.scaleY = 1;
+            });
             egret.setTimeout(() => {
                 this.transferCards(5);
             }, this, 1000)
@@ -243,6 +248,7 @@ namespace ap {
         public trueFalseSelect(e: egret.TouchEvent) {
             if (!this.canSelectedCard) return;
             egret.Tween.removeTweens(e.currentTarget);
+            e.currentTarget.scaleX = e.currentTarget.scaleY = 1;
             let currentImg = e.currentTarget.getChildByName("img") as eui.Image;
             currentImg.source = "manage-card2";
             e.currentTarget.addChildAt(currentImg, 0);
