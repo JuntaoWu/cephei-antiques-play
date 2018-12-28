@@ -7,6 +7,7 @@ namespace ap {
         name: string;
         appVersion: string;
         isConnected: boolean;
+        os: string;
 
         getUserInfo(): Promise<UserInfo>;
 
@@ -82,7 +83,7 @@ namespace ap {
     export class DebugPlatform implements Platform {
 
         public get env(): string {
-            return "dev";
+            return "prod";
         }
 
         public get name(): string {
@@ -91,6 +92,10 @@ namespace ap {
 
         public get appVersion(): string {
             return "0.5.0";
+        }
+
+        public get os(): string {
+            return "Browser";
         }
 
         public isConnected: boolean = true;
@@ -189,11 +194,13 @@ namespace ap {
         }
 
         public playVideo(url) {
+
             const video = new egret.Video();
             video.load(url);
             video.once(egret.Event.COMPLETE, () => {
                 video.play();
             }, this);
+
             return video;
         }
 
@@ -209,12 +216,12 @@ namespace ap {
             return { confirm: false, cancel: true };
         }
 
-        public showLoading() {
-            return true;
+        public showLoading(message?: string) {
+            return;
         }
 
         public hideLoading() {
-            return true;
+            return;
         }
 
         public shareAppMessage(message?: string, imageUrl?: string, query?: string, callback?: Function) {
@@ -234,7 +241,7 @@ namespace ap {
         }
 
         public navigateToMiniProgram() {
-            //location.href = "https://gdjzj.hzsdgames.com:8095";
+            location.href = "https://gdjzj.hzsdgames.com:8095";
         }
 
 
@@ -253,15 +260,15 @@ namespace ap {
         private hasSendShowModalCallback: boolean = false;
 
         public get env(): string {
-            return "test";
+            return "prod";
         }
 
         public get name(): string {
             return "native";
         }
 
-        public get appVersion(): string {
-            return "0.4.0";
+        public get os(): string {
+            return "ios";
         }
 
         public setStorage(key, data) {
@@ -294,6 +301,7 @@ namespace ap {
                 if (!this.hasGetSecurityStorageAsyncCallback) {
                     this.hasGetSecurityStorageAsyncCallback = true;
                     egret.ExternalInterface.addCallback("getSecurityStorageAsyncCallback", (value) => {
+                        console.log("getSecurityStorageAsyncCallback:", value);
                         return resolve(value);
                     });
                 }
@@ -340,8 +348,24 @@ namespace ap {
             egret.ExternalInterface.call("sendShowToastToNative", message);
         }
 
+        public showLoading(message?: string) {
+            egret.ExternalInterface.call("sendShowLoadingToNative", message || "Loading");
+        }
+
+        public hideLoading() {
+            egret.ExternalInterface.call("sendHideLoadingToNative", "");
+        }
+
         public navigateToMiniProgram() {
             throw "Don't do this in native.";
+        }
+
+        public destroyVideo(videoContainer) {
+            console.log("destroyVideo did nothing.");
+        }
+
+        public openExternalLink(url) {
+            egret.ExternalInterface.call("sendOpenExternalLinkToNative", url);
         }
 
     }

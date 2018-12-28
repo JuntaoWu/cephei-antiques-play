@@ -66,5 +66,5 @@
 		"resource/eui_skins/VScrollBarSkin.exml",
 		"resource/eui_skins/VSliderSkin.exml"
 	],
-	"path": "resource/ap.thm.json"
+	"path": "resource/default.thm.json"
 }

@@ -6,9 +6,11 @@ import * as fileutil from 'library/file-util';
 
 class WxgamePlatform {
 
-  env = 'dev';
+  env = 'prod';
   name = 'wxgame';
   appVersion = '0.5.0';
+  isConnected = true;
+  os = 'wxgame';
 
   login() {
     return new Promise((resolve, reject) => {
@@ -151,6 +153,7 @@ class WxgamePlatform {
 
   onNetworkStatusChange(callback) {
     wx.onNetworkStatusChange((res) => {
+      this.isConnected = res.isConnected;
       this.showToast(`当前网络${res.isConnected ? '已连接' : '未连接'}`);
       callback(res);
     });
