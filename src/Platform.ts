@@ -78,6 +78,8 @@ namespace ap {
         setClipboardData(data: string): Promise<any>;
 
         openExternalLink(url: string);
+
+        checkIfWeChatInstalled(): Promise<boolean>;
     }
 
     export class DebugPlatform implements Platform {
@@ -252,6 +254,10 @@ namespace ap {
         public openExternalLink(url: string) {
             window.open(url);
         }
+
+        public async checkIfWeChatInstalled() {
+            return false;
+        }
     }
 
     export class NativePlatform extends DebugPlatform implements Platform {
@@ -366,6 +372,15 @@ namespace ap {
 
         public openExternalLink(url) {
             egret.ExternalInterface.call("sendOpenExternalLinkToNative", url);
+        }
+
+        public async checkIfWeChatInstalled(): Promise<boolean> {
+            egret.ExternalInterface.call("sendCheckIfWeChatInstalledToNative", "");
+            return new Promise<boolean>((resolve, reject) => {
+                egret.ExternalInterface.addCallback("sendCheckIfWeChatInstalledToNativeCallback", (value) => {
+                    return resolve(value && value != "0");
+                });
+            });
         }
 
     }

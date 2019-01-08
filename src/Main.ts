@@ -74,6 +74,9 @@ namespace ap {
         private async runGame() {
             await this.loadResource();
             this.loadingView.groupLoading.visible = false;
+            if (platform.name == "native") {
+                platform.hideLoading();
+            }
 
             if (platform.name == "wxgame") {
                 await AccountAdapter.login();
@@ -96,10 +99,12 @@ namespace ap {
 
         private async loadResource() {
             try {
-                const checkVersionResult: any = await AccountAdapter.checkForUpdate();
+                if (platform.name != "native") {
+                    const checkVersionResult: any = await AccountAdapter.checkForUpdate();
 
-                if (checkVersionResult.hasUpdate) {
-                    platform.applyUpdate(checkVersionResult.version);
+                    if (checkVersionResult.hasUpdate) {
+                        platform.applyUpdate(checkVersionResult.version);
+                    }
                 }
                 await RES.loadConfig("ap.res.json", `${ap.Constants.ResourceEndpoint}resource/`);
                 await this.loadTheme();

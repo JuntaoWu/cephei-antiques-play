@@ -8,6 +8,13 @@ namespace ap {
         };
 
         public static get Endpoints() {
+            if (platform.env == "local") {
+                return {
+                    service: "http://localhost:8098/",
+                    localResource: "",
+                    remoteResource: "http://localhost:8098/miniGame/"
+                };
+            }
             if (platform.env == "dev") {
                 return {
                     service: "http://gdjzj.hzsdgames.com:8098/",

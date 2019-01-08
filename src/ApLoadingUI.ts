@@ -51,6 +51,11 @@ namespace ap {
         public createCompleteEvent(event: eui.UIEvent): void {
             this.removeEventListener(eui.UIEvent.CREATION_COMPLETE, this.createCompleteEvent, this);
 
+            if (platform.name === "native") {
+                this.groupLoading.visible = false;
+                platform.showLoading("加载中");
+            }
+
             this.progressBg.y = this.stage.stageHeight - 30;
             this.progressBar.y = this.stage.stageHeight - 30;
             this.loadingLabel.y = this.stage.stageHeight - 60;
