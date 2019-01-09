@@ -80,6 +80,12 @@ namespace ap {
         openExternalLink(url: string);
 
         checkIfWeChatInstalled(): Promise<boolean>;
+
+        loginIM(imInfo): Promise<any>;
+
+        createGroupChat(users: any[]): Promise<any>;
+
+        openGroupChat(teamId: string): Promise<any>;
     }
 
     export class DebugPlatform implements Platform {
@@ -257,6 +263,18 @@ namespace ap {
 
         public async checkIfWeChatInstalled() {
             return false;
+        }
+
+        public async loginIM(imInfo: any): Promise<any> {
+            return;
+        }
+
+        public async createGroupChat(users: any[]): Promise<any> {
+            return;
+        }
+
+        public async openGroupChat(teamId: string): Promise<any> {
+            return;
         }
     }
 
